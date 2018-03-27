@@ -1,51 +1,43 @@
 package door.opposite.grupo2.dungeonscrolls;
 
 import android.app.TabActivity;
+import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TabHost;
-import android.widget.TabHost.TabSpec;
-import android.widget.TextView;
 
+@SuppressWarnings("deprecation")
 public class MainActivity extends TabActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
 
-        TabHost tabhost = getTabHost();
+        TabHost host = (TabHost) findViewById(R.id.tabHostLogin);
 
-        TextView tv1 = (TextView) tabhost.getTabWidget().findViewById(R.id.tabEntrar);
-        tv1.setText("Entrar");
+        // Nota: getResources().getString() é usado pois os parametros de saída do R.string.* são números
+        //       que referenciam as palavras no XML string
+        createTab(this, host, "tabLogin", getResources().getString(R.string.login_activity_tabLogin_title_br), LoginActivity.class);
+        createTab(this, host, "tabSignUp", getResources().getString(R.string.login_activity_tabSignUp_title_br), LoginActivity.class);
 
-        TextView tv2 = (TextView) tabhost.getTabWidget().findViewById(R.id.tabCadastrar);
-        tv2.setText("Criar Conta");
 
-        /*
-        Resources resources = getResources();
+    }
 
-        TabHost host = getTabHost();
+    /** setNewTab
+     *      Descrição: cria uma tab no programa ao serem passadas suas especificações nos parâmetros
+     */
+    private void createTab(Context context, TabHost tabhost, String tag, String title, Class tabView){
+        // Instancia um objeto TabSpec que engloba as especificações de uma Taba e instancia um Intent
+        // que representará a Activity que será chamada na exibição da Tab
+        TabHost.TabSpec specifications = tabhost.newTabSpec(tag);
+        Intent intent = new Intent(context, tabView);
 
-        //Intent intent1 = new Intent(this, LoanCalculator.class);
+        // Define as especificações da Tab
+        specifications.setIndicator(title)
+                      .setContent(intent);
 
-        //Bundle loanBundle1
-        //        = LoanBundler.makeLoanInfoBundle(100000, 7.5, 120);
-
-        //intent1.putExtras(loanBundle1);
-
-        TabSpec tabEntrar = host.newTabSpec("Tab Entrar")
-                                .setIndicator("Entrar");
-                                //.setContent(intent1);
-
-        host.addTab(tabEntrar);
-
-        TabSpec tabCadastrar = host.newTabSpec("Tab Cadastrar")
-                .setIndicator("Criar Conta");
-        //.setContent(intent1);
-
-        host.addTab(tabEntrar);
-        */
+        // Faz a tab ser executada
+        tabhost.addTab(specifications);
     }
 }

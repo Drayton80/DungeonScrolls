@@ -7,6 +7,7 @@
     tools:context="door.opposite.grupo2.dungeonscrolls.MainActivity">
 
     <TabHost
+        android:id="@+id/tabHostLogin"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX=""
@@ -20,28 +21,15 @@
             <TabWidget
                 android:id="@android:id/tabs"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                />
+
 
             <FrameLayout
                 android:id="@android:id/tabcontent"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/tabEntrar"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                </android.support.constraint.ConstraintLayout>
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/tabCadastrar"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                </android.support.constraint.ConstraintLayout>
             </FrameLayout>
         </LinearLayout>
     </TabHost>
