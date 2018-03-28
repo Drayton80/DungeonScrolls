@@ -7,11 +7,9 @@
     tools:context="door.opposite.grupo2.dungeonscrolls.MainActivity">
 
     <TabHost
-        android:id="@+id/tabHostLogin"
+        android:id="@android:id/tabhost"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX=""
-        tools:layout_editor_absoluteY="">
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
