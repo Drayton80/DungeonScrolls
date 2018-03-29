@@ -2,10 +2,12 @@
     <string name="app_name">Dungeon Scrolls</string>
 
     <string name="login_activity_tabLogin_title_br">Entrar</string>
-        <string name="login_activity_tabLogin_username_textView_br">Nome de Usuário</string>
-        <string name="login_activity_tabLogin_password_textView_br">Senha</string>
-        <string name="login_activity_tabLogin_button_br">Entrar</string>
+        <string name="login_activity_tabLogin_button_br">Conectar</string>
     <string name="login_activity_tabSignUp_title_br">Criar Conta</string>
+        <string name="login_activity_tabSignUp_email_br">Email</string>
+        <string name="login_activity_tabSignUp_button_br">Cadastrar</string>
+    <string name="login_activity_username_textView_br">Nome de Usuário</string>
+    <string name="login_activity_password_textView_br">Senha</string>
 
     <string name="choose_language_english">American English</string>
     <string name="choose_language_portuguese">Português Brasileiro</string>

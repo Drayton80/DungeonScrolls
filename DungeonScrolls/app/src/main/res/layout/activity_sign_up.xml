@@ -6,4 +6,112 @@
     android:layout_height="match_parent"
     tools:context="door.opposite.grupo2.dungeonscrolls.SignUpActivity">
 
+    <TextView
+        android:id="@+id/signup_username_textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="48dp"
+        android:text="@string/login_activity_username_textView_br"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/signup_username_plainText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/signup_username_textView"
+        app:layout_constraintStart_toStartOf="@+id/signup_username_textView"
+        app:layout_constraintTop_toBottomOf="@+id/signup_username_textView" />
+
+    <EditText
+        android:id="@+id/signup_email_textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintEnd_toEndOf="@+id/signup_email_plainTextEmail"
+        app:layout_constraintStart_toStartOf="@+id/signup_email_plainTextEmail"
+        app:layout_constraintTop_toBottomOf="@+id/signup_email_plainTextEmail" />
+
+    <TextView
+        android:id="@+id/signup_email_plainTextEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/login_activity_tabSignUp_email_br"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_username_plainText" />
+
+    <TextView
+        android:id="@+id/signup_password_textView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/login_activity_password_textView_br"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_email_textView" />
+
+    <EditText
+        android:id="@+id/signup_password_password"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/signup_password_textView"
+        app:layout_constraintStart_toStartOf="@+id/signup_password_textView"
+        app:layout_constraintTop_toBottomOf="@+id/signup_password_textView" />
+
+    <RadioButton
+        android:id="@+id/signup_english_radioButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/choose_language_english"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_password_password" />
+
+    <RadioButton
+        android:id="@+id/signup_portuguese_radioButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/choose_language_portuguese"
+        app:layout_constraintEnd_toEndOf="@+id/signup_english_radioButton"
+        app:layout_constraintStart_toStartOf="@+id/signup_english_radioButton"
+        app:layout_constraintTop_toBottomOf="@+id/signup_english_radioButton" />
+
+    <Button
+        android:id="@+id/signup_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/login_activity_tabSignUp_button_br"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signup_portuguese_radioButton" />
+
 </android.support.constraint.ConstraintLayout>
