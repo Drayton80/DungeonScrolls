@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="door.opposite.grupo2.dungeonscrolls.RecordSheetActivity">
+
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <android.support.constraint.ConstraintLayout
+            android:tag="atributes"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <!--app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"-->
+
+            <TextView
+                android:id="@+id/sheet_textView_title"
+                android:layout_width="174dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/sheet_activity_recordSheet_title_br"
+                android:textSize="18dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:id="@+id/sheet_textView_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/sheet_activity_recordSheet_name_br"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_title" />
+
+            <EditText
+                android:id="@+id/sheet_plainText_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text=""
+                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_name"
+                app:layout_constraintStart_toStartOf="@+id/sheet_textView_name"
+                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_name" />
+
+            <TextView
+                android:id="@+id/sheet_textView_age"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/sheet_activity_recordSheet_age_br"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sheet_plainText_name" />
+
+            <EditText
+                android:id="@+id/sheet_plainNumber_age"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_age"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/sheet_textView_age"
+                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_age" />
+
+            <TextView
+                android:id="@+id/sheet_textView_race"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:text="@string/sheet_activity_recordSheet_race_br"
+                app:layout_constraintBottom_toBottomOf="@+id/sheet_textView_age"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sheet_textView_age"
+                app:layout_constraintTop_toTopOf="@+id/sheet_textView_age" />
+
+            <EditText
+                android:id="@+id/sheet_plainText_race"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:text=""
+                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_race"
+                app:layout_constraintStart_toStartOf="@+id/sheet_textView_race"
+                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_race" />
+
+            <TextView
+                android:id="@+id/sheet_textView_pv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/sheet_activity_recordSheet_pv_br"
+                app:layout_constraintEnd_toEndOf="@+id/sheet_plainNumber_age"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sheet_plainNumber_age" />
+
+            <EditText
+                android:id="@+id/sheet_plainNumber_ca"
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_ca"
+                app:layout_constraintStart_toStartOf="@+id/sheet_textView_ca"
+                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_ca" />
+
+            <TextView
+                android:id="@+id/sheet_textView_ca"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:text="@string/sheet_activity_recordSheet_ca_br"
+                app:layout_constraintBottom_toBottomOf="@+id/sheet_textView_pv"
+                app:layout_constraintStart_toEndOf="@+id/sheet_textView_pv"
+                app:layout_constraintTop_toTopOf="@+id/sheet_textView_pv" />
+
+            <EditText
+                android:id="@+id/sheet_plainNumber_pv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="number"
+                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_pv"
+                app:layout_constraintStart_toStartOf="@+id/sheet_textView_pv"
+                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_pv" />
+
+            <TextView
+                android:id="@+id/sheet_textView_modAtack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:text="@string/sheet_activity_recordSheet_attack_br"
+                app:layout_constraintBottom_toBottomOf="@+id/sheet_textView_ca"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sheet_textView_ca"
+                app:layout_constraintTop_toTopOf="@+id/sheet_textView_ca" />
+
+            <EditText
+                android:id="@+id/sheet_plainSignedNumber_modAttack"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="numberSigned"
+                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_modAtack"
+                app:layout_constraintStart_toStartOf="@+id/sheet_textView_modAtack"
+                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_modAtack" />
+
+            <Button
+                android:id="@+id/sheet_button_aparencia"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/sheet_activity_recordSheet_aparencia_br"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sheet_plainNumber_pv" />
+
+            <Button
+                android:id="@+id/sheet_button_caracteisticasGerais"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/sheet_activity_recordSheet_gerais_br"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sheet_button_aparencia" />
+
+            <Button
+                android:id="@+id/sheet_button_caracteristicasCombate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/sheet_activity_recordSheet_combate_br"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sheet_button_caracteisticasGerais" />
+
+            <Button
+                android:id="@+id/sheet_button_caracteristicasEspeciais"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/sheet_activity_recordSheet_especiais_br"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sheet_button_caracteristicasCombate" />
+
+            <Button
+                android:id="@+id/sheet_button_pericias"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/sheet_activity_recordSheet_pericias_br"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sheet_button_caracteristicasEspeciais" />
+
+            <Button
+                android:id="@+id/sheet_button_talentos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/sheet_activity_recordSheet_talentos_br"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sheet_button_pericias" />
+
+            <Button
+                android:id="@+id/sheet_button_equipamentos"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/sheet_activity_recordSheet_equipamentos_br"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sheet_button_talentos" />
+
+            <Button
+                android:id="@+id/sheet_button_magias"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/sheet_activity_recordSheet_magias_br"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sheet_button_equipamentos" />
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>
