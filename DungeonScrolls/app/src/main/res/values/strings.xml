@@ -36,6 +36,9 @@
     <string name="sheet_activity_appearanceSheet_appearange_br">Descrição da Aparência</string>
     <string name="sheet_activity_appearanceSheet_languages_br">Idiomas Aprendidos</string>
 
+    <string name="sheet_activity_featSkillSheet_title_br">Talentos e Perícias</string>
+    <string name="sheet_activity_featSkillSheet_feats_br">Talentos</string>
+
     <!-- Textos Relativos ao Idioma American English (EN) -->
 
     <!-- Textos Gerais -->
