@@ -20,7 +20,7 @@
             android:background="#f0f0f0">
 
             <TextView
-                android:id="@+id/sheetAp_textView_title"
+                android:id="@+id/sheetFS_textView_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="32dp"
@@ -42,7 +42,7 @@
                 android:text="@string/sheet_activity_appearanceSheet_height_br"
                 app:layout_constraintEnd_toStartOf="@+id/blank_space"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_title" />
+                app:layout_constraintTop_toBottomOf="@+id/sheetFS_textView_title" />
 
             <EditText
                 android:id="@+id/sheetAp_editText_height"
@@ -64,9 +64,9 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:text="  "
-                app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_title"
-                app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_title"
-                app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_title" />
+                app:layout_constraintEnd_toEndOf="@+id/sheetFS_textView_title"
+                app:layout_constraintStart_toStartOf="@+id/sheetFS_textView_title"
+                app:layout_constraintTop_toBottomOf="@+id/sheetFS_textView_title" />
 
             <TextView
                 android:id="@+id/sheetAp_textView_weight"
@@ -78,7 +78,7 @@
                 android:text="@string/sheet_activity_appearanceSheet_weight_br"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/blank_space"
-                app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_title" />
+                app:layout_constraintTop_toBottomOf="@+id/sheetFS_textView_title" />
 
             <EditText
                 android:id="@+id/sheetAp_editText_weight"
@@ -184,7 +184,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_size" />
 
             <TextView
-                android:id="@+id/sheetAp_textView_appearance"
+                android:id="@+id/sheetFS_textView_feats"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -200,9 +200,9 @@
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="textMultiLine"
-                app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_appearance"
-                app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_appearance"
-                app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_appearance" />
+                app:layout_constraintEnd_toEndOf="@+id/sheetFS_textView_feats"
+                app:layout_constraintStart_toStartOf="@+id/sheetFS_textView_feats"
+                app:layout_constraintTop_toBottomOf="@+id/sheetFS_textView_feats" />
 
             <TextView
                 android:id="@+id/sheetAp_textView_languages"
