@@ -1,13 +1,13 @@
 package door.opposite.grupo2.dungeonscrolls;
 
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 
-public class RecordSheetActivity extends FragmentActivity {
+public class SheetAppearanceActivityDF extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_record_sheet);
+        setContentView(R.layout.activity_sheet_appearance_df);
     }
 }

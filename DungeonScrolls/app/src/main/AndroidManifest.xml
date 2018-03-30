@@ -18,7 +18,8 @@
         </activity>
         <activity android:name=".LoginActivity" />
         <activity android:name=".SignUpActivity" />
-        <activity android:name=".RecordSheetActivity"></activity>
+        <activity android:name=".SheetActivity" />
+        <activity android:name=".SheetAppearanceActivityDF"></activity>
     </application>
 
 </manifest>

@@ -3,10 +3,10 @@
 
     <!-- Textos Relativos ao Idioma Portugues Brasileiro (PT-BR) -->
     <string name="login_activity_tabLogin_title_br">Entrar</string>
-        <string name="login_activity_tabLogin_button_br">Conectar</string>
+    <string name="login_activity_tabLogin_button_br">Conectar</string>
     <string name="login_activity_tabSignUp_title_br">Criar Conta</string>
-        <string name="login_activity_tabSignUp_email_br">Email</string>
-        <string name="login_activity_tabSignUp_button_br">Cadastrar</string>
+    <string name="login_activity_tabSignUp_email_br">Email</string>
+    <string name="login_activity_tabSignUp_button_br">Cadastrar</string>
     <string name="login_activity_username_textView_br">Nome de Usuário</string>
     <string name="login_activity_password_textView_br">Senha</string>
 
@@ -25,6 +25,16 @@
     <string name="sheet_activity_recordSheet_talentos_br">Talentos</string>
     <string name="sheet_activity_recordSheet_equipamentos_br">Equipamentos</string>
     <string name="sheet_activity_recordSheet_magias_br">Magias</string>
+
+    <string name="sheet_activity_appearanceSheet_title_br">Informações e Aparência</string>
+    <string name="sheet_activity_appearanceSheet_height_br">Altura</string>
+    <string name="sheet_activity_appearanceSheet_weight_br">Peso</string>
+    <string name="sheet_activity_appearanceSheet_inclination_br">Tendência</string>
+    <string name="sheet_activity_appearanceSheet_divinity_br">Divindade</string>
+    <string name="sheet_activity_appearanceSheet_gender_br">Sexo</string>
+    <string name="sheet_activity_appearanceSheet_size_br">Categoria de Tamanho</string>
+    <string name="sheet_activity_appearanceSheet_appearange_br">Descrição da Aparência</string>
+    <string name="sheet_activity_appearanceSheet_languages_br">Idiomas Aprendidos</string>
 
     <!-- Textos Relativos ao Idioma American English (EN) -->
 
