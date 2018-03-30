@@ -21,8 +21,7 @@
     <string name="sheet_activity_recordSheet_gerais_br">Características Gerais</string>
     <string name="sheet_activity_recordSheet_combate_br">Características de Combate</string>
     <string name="sheet_activity_recordSheet_especiais_br">Características Especiais</string>
-    <string name="sheet_activity_recordSheet_pericias_br">Perícias</string>
-    <string name="sheet_activity_recordSheet_talentos_br">Talentos</string>
+    <string name="sheet_activity_recordSheet_featsSkills_br">Talentos e Perícias</string>
     <string name="sheet_activity_recordSheet_equipamentos_br">Equipamentos</string>
     <string name="sheet_activity_recordSheet_magias_br">Magias</string>
 
@@ -38,6 +37,8 @@
 
     <string name="sheet_activity_featSkillSheet_title_br">Talentos e Perícias</string>
     <string name="sheet_activity_featSkillSheet_feats_br">Talentos</string>
+
+    <string name="sheet_activity_equipmentItensSheet_pc_br">M. de Cobre</string>
 
     <!-- Textos Relativos ao Idioma American English (EN) -->
 

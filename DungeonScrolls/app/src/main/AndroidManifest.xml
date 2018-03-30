@@ -20,7 +20,8 @@
         <activity android:name=".SignUpActivity" />
         <activity android:name=".SheetActivity" />
         <activity android:name=".SheetAppearanceActivityDF" />
-        <activity android:name=".SheetFeatsSkillsActivityDF"></activity>
+        <activity android:name=".SheetFeatsSkillsActivityDF" />
+        <activity android:name=".SheetEquipmentItensActivityDF"></activity>
     </application>
 
 </manifest>

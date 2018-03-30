@@ -20,12 +20,12 @@
             android:background="#f0f0f0">
 
             <TextView
-                android:id="@+id/sheetFS_textView_title"
+                android:id="@+id/sheetEI_textView_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="32dp"
                 android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:text="@string/sheet_activity_featSkillSheet_title_br"
                 android:textSize="18dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -33,17 +33,17 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/sheetFS_textView_feats"
+                android:id="@+id/sheetEI_textView_pc"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/sheet_activity_featSkillSheet_feats_br"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sheetFS_textView_title" />
+                app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_title" />
 
             <EditText
                 android:id="@+id/sheetAp_editText_appearance"
@@ -52,9 +52,9 @@
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="textMultiLine"
-                app:layout_constraintEnd_toEndOf="@+id/sheetFS_textView_feats"
-                app:layout_constraintStart_toStartOf="@+id/sheetFS_textView_feats"
-                app:layout_constraintTop_toBottomOf="@+id/sheetFS_textView_feats" />
+                app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_pc"
+                app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_pc"
+                app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_pc" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -83,7 +83,7 @@
                 android:id="@+id/editText3"
                 android:layout_width="65dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:ems="10"
                 android:inputType="numberSigned"
                 android:textSize="12sp"
@@ -95,7 +95,7 @@
                 android:id="@+id/editText4"
                 android:layout_width="65dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:ems="10"
                 android:inputType="numberSigned"
                 android:textSize="12sp"
@@ -107,7 +107,7 @@
                 android:id="@+id/editText5"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:ems="10"
                 android:inputType="numberSigned"
                 android:textSize="12sp"
@@ -161,7 +161,7 @@
                 android:id="@+id/editText9"
                 android:layout_width="65dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:ems="10"
                 android:inputType="numberSigned"
                 android:textSize="12sp"
@@ -185,7 +185,7 @@
                 android:id="@+id/editText10"
                 android:layout_width="65dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:ems="10"
                 android:inputType="numberSigned"
                 android:textSize="12sp"
@@ -209,7 +209,7 @@
                 android:id="@+id/editText11"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:ems="10"
                 android:inputType="numberSigned"
                 android:textSize="12sp"
@@ -236,15 +236,15 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text=".... (...) =  "
-                android:textAlignment="viewEnd"
                 app:layout_constraintStart_toStartOf="@+id/textView2"
-                app:layout_constraintTop_toBottomOf="@+id/textView12" />
+                app:layout_constraintTop_toBottomOf="@+id/textView12"
+                android:gravity="end" />
 
             <EditText
                 android:id="@+id/editText"
                 android:layout_width="65dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:ems="10"
                 android:inputType="numberSigned"
                 android:textSize="12sp"
@@ -268,7 +268,7 @@
                 android:id="@+id/editText2"
                 android:layout_width="65dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:ems="10"
                 android:inputType="numberSigned"
                 android:textSize="12sp"
@@ -292,7 +292,7 @@
                 android:id="@+id/editText6"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
                 android:ems="10"
                 android:inputType="numberSigned"
                 android:textSize="12sp"

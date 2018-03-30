@@ -222,28 +222,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/sheet_button_caracteristicasCombate" />
 
             <Button
-                android:id="@+id/sheet_button_pericias"
+                android:id="@+id/sheet_button_featsSkills"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="@string/sheet_activity_recordSheet_pericias_br"
+                android:text="@string/sheet_activity_recordSheet_featsSkills_br"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sheet_button_caracteristicasEspeciais" />
-
-            <Button
-                android:id="@+id/sheet_button_talentos"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/sheet_activity_recordSheet_talentos_br"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sheet_button_pericias" />
 
             <Button
                 android:id="@+id/sheet_button_equipamentos"
@@ -255,7 +243,7 @@
                 android:text="@string/sheet_activity_recordSheet_equipamentos_br"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sheet_button_talentos" />
+                app:layout_constraintTop_toBottomOf="@+id/sheet_button_featsSkills" />
 
             <Button
                 android:id="@+id/sheet_button_magias"
