@@ -20,7 +20,7 @@
             android:background="#f0f0f0">
 
             <TextView
-                android:id="@+id/sheetEI_textView_title"
+                android:id="@+id/sheetBI_textView_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="32dp"
@@ -33,19 +33,19 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/sheetEI_textView_generalIteins"
+                android:id="@+id/sheetBI_textView_details"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/sheet_activity_equipmentItensSheet_titleItens_br"
                 android:textAlignment="center"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_title"
-                app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_title"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_title" />
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_title"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_title"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_title" />
 
             <TextView
-                android:id="@+id/sheetEI_textView_pc"
+                android:id="@+id/sheetBI_textView_pvAtual"
                 android:layout_width="0dp"
                 android:layout_height="18dp"
                 android:layout_marginRight="6dp"
@@ -58,15 +58,15 @@
                 app:layout_constraintTop_toTopOf="@+id/white_space" />
 
             <EditText
-                android:id="@+id/sheetEI_editText_pc"
+                android:id="@+id/sheetBI_editText_pvAtual"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="number"
-                app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_pc"
-                app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_pc"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_pc" />
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_pvAtual"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_pvAtual"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_pvAtual" />
 
             <TextView
                 android:id="@+id/sheetEI_textView_pp"
@@ -79,7 +79,7 @@
                 android:textAlignment="center"
                 app:layout_constraintEnd_toStartOf="@+id/white_space"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_editText_pc" />
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_editText_pvAtual" />
 
             <EditText
                 android:id="@+id/sheetEI_editText_pp"
@@ -147,8 +147,8 @@
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="16dp"
                 android:text="   "
-                app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_title"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_generalIteins" />
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_title"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_details" />
 
             <TextView
                 android:id="@+id/sheetEI_textView_itens"
@@ -291,7 +291,7 @@
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="16dp"
                 android:text="   "
-                app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_generalIteins"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_details"
                 app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_armor" />
 
             <EditText
@@ -409,7 +409,7 @@
                 android:layout_marginLeft="24dp"
                 android:layout_marginTop="16dp"
                 android:text="   "
-                app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_generalIteins"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_details"
                 app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_protectionItem" />
 
             <TextView

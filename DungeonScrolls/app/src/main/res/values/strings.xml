@@ -60,6 +60,22 @@
     <string name="sheet_activity_equipmentItensSheet_protectionItenEspecial_br">Qualidades Especiais</string>
     <string name="sheet_activity_equipmentItensSheet_addProtectionIten_br">Adicionar Item de Proteção</string>
 
+    <string name="sheet_activity_battleInformationSheet_title_br">Características de Combate</string>
+    <string name="sheet_activity_battleInformationSheet_details_br">Detalhes</string>
+    <string name="sheet_activity_battleInformationSheet_pvAtual_br">PV Atual</string>
+    <string name="sheet_activity_battleInformationSheet_pvTotal_br">PV Total</string>
+    <string name="sheet_activity_battleInformationSheet_dv_br">DV</string>
+    <string name="sheet_activity_battleInformationSheet_caNormal_br">Defesa</string>
+    <string name="sheet_activity_battleInformationSheet_caSurpresa_br">Surpresa</string>
+    <string name="sheet_activity_battleInformationSheet_caToque_br">Toque</string>
+    <string name="sheet_activity_battleInformationSheet_deslocamento_br">Deslocamento Total</string>
+    <string name="sheet_activity_battleInformationSheet_iniciativa_br">Iniciativa</string>
+    <string name="sheet_activity_battleInformationSheet_bba_br">BBA</string>
+    <string name="sheet_activity_battleInformationSheet_attacks_br">Tipos de Ataque</string>
+    <string name="sheet_activity_battleInformationSheet_attack_br">Ataque</string>
+    <string name="sheet_activity_battleInformationSheet_weapon_br">Arma</string>
+    <string name="sheet_activity_battleInformationSheet_damage_br">Dano</string>
+    <string name="sheet_activity_battleInformationSheet_addAttack_br">Adicionar Ataque</string>
 
     <!-- Textos Relativos ao Idioma American English (EN) -->
 

@@ -21,7 +21,8 @@
         <activity android:name=".SheetActivity" />
         <activity android:name=".SheetAppearanceActivityDF" />
         <activity android:name=".SheetFeatsSkillsActivityDF" />
-        <activity android:name=".SheetEquipmentItensActivityDF"></activity>
+        <activity android:name=".SheetEquipmentItensActivityDF" />
+        <activity android:name=".SheetBattleInformationActivityDF"></activity>
     </application>
 
 </manifest>
