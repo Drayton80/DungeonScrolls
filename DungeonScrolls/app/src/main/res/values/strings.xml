@@ -38,7 +38,28 @@
     <string name="sheet_activity_featSkillSheet_title_br">Talentos e Perícias</string>
     <string name="sheet_activity_featSkillSheet_feats_br">Talentos</string>
 
-    <string name="sheet_activity_equipmentItensSheet_pc_br">M. de Cobre</string>
+    <string name="sheet_activity_equipmentItensSheet_title_br">Itens e Equipamentos</string>
+    <string name="sheet_activity_equipmentItensSheet_titleItens_br">Itens e Moedas</string>
+    <string name="sheet_activity_equipmentItensSheet_pc_br">Cobre</string>
+    <string name="sheet_activity_equipmentItensSheet_pp_br">Prata</string>
+    <string name="sheet_activity_equipmentItensSheet_po_br">Ouro</string>
+    <string name="sheet_activity_equipmentItensSheet_pl_br">Platina</string>
+    <string name="sheet_activity_equipmentItensSheet_anotherItens_br">Inventário</string>
+    <string name="sheet_activity_equipmentItensSheet_maxWeight_br">Peso Max.</string>
+    <string name="sheet_activity_equipmentItensSheet_carriedWeight_br">Peso Total Carregado</string>
+    <string name="sheet_activity_equipmentItensSheet_titleEquipment_br">Equipamento de Defesa</string>
+    <string name="sheet_activity_equipmentItensSheet_armor_br">Armadura</string>
+    <string name="sheet_activity_equipmentItensSheet_armorBonus_br">Defesa</string>
+    <string name="sheet_activity_equipmentItensSheet_armorName_br">Nome</string>
+    <string name="sheet_activity_equipmentItensSheet_armorInformation_br">Informações</string>
+    <string name="sheet_activity_equipmentItensSheet_armorEspecial_br">Qualidades Especiais</string>
+    <string name="sheet_activity_equipmentItensSheet_protectionIten_br">Item de Proteção</string>
+    <string name="sheet_activity_equipmentItensSheet_protectionItenBonus_br">Defesa</string>
+    <string name="sheet_activity_equipmentItensSheet_protectionItenName_br">Nome</string>
+    <string name="sheet_activity_equipmentItensSheet_protectionItenInformation_br">Informações</string>
+    <string name="sheet_activity_equipmentItensSheet_protectionItenEspecial_br">Qualidades Especiais</string>
+    <string name="sheet_activity_equipmentItensSheet_addProtectionIten_br">Adicionar Item de Proteção</string>
+
 
     <!-- Textos Relativos ao Idioma American English (EN) -->
 
