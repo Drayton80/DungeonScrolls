@@ -1,10 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+
+
+
+    </data>
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="door.opposite.grupo2.dungeonscrolls.LoginActivity">
+    tools:context="door.opposite.grupo2.dungeonscrolls.Telas.LoginActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -15,7 +24,7 @@
             android:layout_height="match_parent">
 
             <TextView
-                android:id="@+id/signup_username_textView"
+                android:id="@+id/login_username_textView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -29,19 +38,19 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <EditText
-                android:id="@+id/signup_username_plainText"
+                android:id="@+id/login_username_plainText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:textSize="16dp"
-                app:layout_constraintEnd_toEndOf="@+id/signup_username_textView"
-                app:layout_constraintStart_toStartOf="@+id/signup_username_textView"
-                app:layout_constraintTop_toBottomOf="@+id/signup_username_textView" />
+                app:layout_constraintEnd_toEndOf="@+id/login_username_textView"
+                app:layout_constraintStart_toStartOf="@+id/login_username_textView"
+                app:layout_constraintTop_toBottomOf="@+id/login_username_textView" />
 
             <TextView
-                android:id="@+id/signup_password_textView"
+                android:id="@+id/login_password_textView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -51,21 +60,21 @@
                 android:textSize="16dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signup_username_plainText" />
+                app:layout_constraintTop_toBottomOf="@+id/login_username_plainText" />
 
             <EditText
-                android:id="@+id/signup_password_password"
+                android:id="@+id/login_password_password"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="textPassword"
-                app:layout_constraintEnd_toEndOf="@+id/signup_password_textView"
-                app:layout_constraintStart_toStartOf="@+id/signup_password_textView"
-                app:layout_constraintTop_toBottomOf="@+id/signup_password_textView" />
+                app:layout_constraintEnd_toEndOf="@+id/login_password_textView"
+                app:layout_constraintStart_toStartOf="@+id/login_password_textView"
+                app:layout_constraintTop_toBottomOf="@+id/login_password_textView" />
 
             <RadioButton
-                android:id="@+id/signup_english_radioButton"
+                android:id="@+id/login_english_radioButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
@@ -74,17 +83,17 @@
                 android:text="@string/choose_language_english"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signup_password_password" />
+                app:layout_constraintTop_toBottomOf="@+id/login_password_password" />
 
             <RadioButton
-                android:id="@+id/signup_portuguese_radioButton"
+                android:id="@+id/login_portuguese_radioButton"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/choose_language_portuguese"
-                app:layout_constraintEnd_toEndOf="@+id/signup_english_radioButton"
-                app:layout_constraintStart_toStartOf="@+id/signup_english_radioButton"
-                app:layout_constraintTop_toBottomOf="@+id/signup_english_radioButton" />
+                app:layout_constraintEnd_toEndOf="@+id/login_english_radioButton"
+                app:layout_constraintStart_toStartOf="@+id/login_english_radioButton"
+                app:layout_constraintTop_toBottomOf="@+id/login_english_radioButton" />
 
             <Button
                 android:id="@+id/login_button"
@@ -98,8 +107,9 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signup_portuguese_radioButton" />
+                app:layout_constraintTop_toBottomOf="@+id/login_portuguese_radioButton" />
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>
+</layout>

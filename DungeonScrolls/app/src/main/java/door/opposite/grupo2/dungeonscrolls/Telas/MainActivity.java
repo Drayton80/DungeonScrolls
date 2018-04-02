@@ -1,10 +1,12 @@
-package door.opposite.grupo2.dungeonscrolls;
+package door.opposite.grupo2.dungeonscrolls.Telas;
 
 import android.app.TabActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TabHost;
+
+import door.opposite.grupo2.dungeonscrolls.R;
 
 @SuppressWarnings("deprecation")
 public class MainActivity extends TabActivity {

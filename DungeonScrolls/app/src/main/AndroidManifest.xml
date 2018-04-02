@@ -9,20 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Telas.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".SheetActivity" />
-        <activity android:name=".SheetAppearanceActivityDF" />
-        <activity android:name=".SheetFeatsSkillsActivityDF" />
-        <activity android:name=".SheetEquipmentItensActivityDF" />
-        <activity android:name=".SheetBattleInformationActivityDF"></activity>
+        <activity android:name=".Telas.LoginActivity" />
+        <activity android:name=".Telas.SignUpActivity" />
+        <activity android:name=".Telas.SheetActivity" />
+        <activity android:name=".Telas.SheetAppearanceActivityDF" />
+        <activity android:name=".Telas.SheetFeatsSkillsActivityDF" />
+        <activity android:name=".Telas.SheetEquipmentItensActivityDF" />
+        <activity android:name=".Telas.SheetBattleInformationActivityDF"></activity>
     </application>
 
 </manifest>

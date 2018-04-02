@@ -1,7 +1,9 @@
-package door.opposite.grupo2.dungeonscrolls;
+package door.opposite.grupo2.dungeonscrolls.Telas;
 
 import android.app.Activity;
 import android.os.Bundle;
+
+import door.opposite.grupo2.dungeonscrolls.R;
 
 public class LoginActivity extends Activity {
 
