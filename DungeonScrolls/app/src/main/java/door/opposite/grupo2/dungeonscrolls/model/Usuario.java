@@ -5,7 +5,7 @@ package door.opposite.grupo2.dungeonscrolls.model;
  */
 
 public class Usuario {
-
+    private Usuario prox;
     int ID;
     String nick;
     String senha;
@@ -14,6 +14,7 @@ public class Usuario {
     int[] salasID;
 
     public Usuario(int ID, String nick, String senha, String email){
+        prox = null;
         this.ID = ID;
         this.nick = nick;
         this.senha = senha;
@@ -21,6 +22,7 @@ public class Usuario {
     }
 
     public Usuario(int ID, String nick, String senha, String email, int[] fichasID, int[] salasID) {
+        prox = null;
         this.ID = ID;
         this.nick = nick;
         this.senha = senha;
@@ -75,5 +77,13 @@ public class Usuario {
 
     public void setSalasID(int[] salasID) {
         this.salasID = salasID;
+    }
+
+    public Usuario getProx(){
+        return prox;
+    }
+
+    public void setProx(Usuario prox){
+        this.prox = prox;
     }
 }
