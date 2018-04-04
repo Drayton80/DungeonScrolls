@@ -54,11 +54,15 @@
 
     <string name="sheet_activity_battleInformationSheet_title_br">Características de Combate</string>
     <string name="sheet_activity_battleInformationSheet_details_br">Detalhes</string>
-    <string name="sheet_activity_battleInformationSheet_caTitulo_br">Defesa e Pontos de Vida</string>
+    <string name="sheet_activity_battleInformationSheet_caTitulo_br">Armadura e Defesa</string>
     <string name="sheet_activity_battleInformationSheet_caNormal_br">CA Total</string>
     <string name="sheet_activity_battleInformationSheet_caToque_br">CA Toque</string>
     <string name="sheet_activity_battleInformationSheet_caSurpresa_br">CA Surp.</string>
+    <string name="sheet_activity_battleInformationSheet_caArmadura_br">Armadura</string>
+    <string name="sheet_activity_battleInformationSheet_caArmaduraNatural_br">A. Natural</string>
     <string name="sheet_activity_battleInformationSheet_caOutros_br">Outros</string>
+    <string name="sheet_activity_battleInformationSheet_resistenciasNaturais_br">Resistências Naturais</string>
+    <string name="sheet_activity_battleInformationSheet_resistenciaMagica_br">Resistência Mágica</string>
     <string name="sheet_activity_battleInformationSheet_pvTitulo_br">Pontos de Vida</string>
     <string name="sheet_activity_battleInformationSheet_pvAtual_br">PV Atual</string>
     <string name="sheet_activity_battleInformationSheet_pvTotal_br">PV Total</string>
