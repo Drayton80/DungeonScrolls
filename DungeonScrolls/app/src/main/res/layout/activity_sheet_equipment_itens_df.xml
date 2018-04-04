@@ -1,525 +1,330 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
 
 
     </data>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="door.opposite.grupo2.dungeonscrolls.Telas.SheetEquipmentItensActivityDF">
-
-    <ScrollView
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context="door.opposite.grupo2.dungeonscrolls.Telas.SheetEquipmentItensActivityDF">
 
-        <android.support.constraint.ConstraintLayout
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="25dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="25dp"
-            android:background="#f0f0f0">
+            android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/sheetBI_textView_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="24dp"
-                android:text="@string/sheet_activity_equipmentItensSheet_title_br"
-                android:textSize="20dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="25dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="25dp"
+                android:background="#f0f0f0">
 
-            <TextView
-                android:id="@+id/sheetBI_textView_details"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/sheet_activity_equipmentItensSheet_titleItens_br"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_title"
-                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_title"
-                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_title" />
+                <TextView
+                    android:id="@+id/sheetEI_textView_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/sheet_activity_equipmentItensSheet_title_br"
+                    android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/sheetBI_textView_pvAtual"
-                android:layout_width="0dp"
-                android:layout_height="18dp"
-                android:layout_marginRight="6dp"
-                android:layout_marginLeft="16dp"
-                android:text="@string/sheet_activity_equipmentItensSheet_pc_br"
-                android:textAlignment="center"
-                app:layout_constraintBottom_toBottomOf="@+id/white_space"
-                app:layout_constraintEnd_toStartOf="@+id/white_space"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/white_space" />
+                <TextView
+                    android:id="@+id/sheetEI_textView_details"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sheet_activity_equipmentItensSheet_titleItens_br"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_title"
+                    app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_title"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_title" />
 
-            <EditText
-                android:id="@+id/sheetBI_editText_pvAtual"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="number"
-                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_pvAtual"
-                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_pvAtual"
-                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_pvAtual" />
+                <TextView
+                    android:id="@+id/sheetEI_textView_pvAtual"
+                    android:layout_width="0dp"
+                    android:layout_height="18dp"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginLeft="16dp"
+                    android:text="@string/sheet_activity_equipmentItensSheet_pc_br"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/white_space"
+                    app:layout_constraintEnd_toStartOf="@+id/white_space"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/white_space" />
 
-            <TextView
-                android:id="@+id/sheetEI_textView_pp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="6dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/sheet_activity_equipmentItensSheet_pp_br"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toStartOf="@+id/white_space"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sheetBI_editText_pvAtual" />
+                <EditText
+                    android:id="@+id/sheetEI_editText_pvAtual"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="number"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_pvAtual"
+                    app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_pvAtual"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_pvAtual" />
 
-            <EditText
-                android:id="@+id/sheetEI_editText_pp"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="number"
-                app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_pp"
-                app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_pp"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_pp" />
+                <TextView
+                    android:id="@+id/sheetEI_textView_pp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sheet_activity_equipmentItensSheet_pp_br"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toStartOf="@+id/white_space"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_editText_pvAtual" />
 
-            <TextView
-                android:id="@+id/sheetEI_textView_po"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="6dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/sheet_activity_equipmentItensSheet_po_br"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toStartOf="@+id/white_space"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_editText_pp" />
+                <EditText
+                    android:id="@+id/sheetEI_editText_pp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="number"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_pp"
+                    app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_pp"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_pp" />
 
-            <EditText
-                android:id="@+id/sheetEI_editText_po"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="number"
-                app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_po"
-                app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_po"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_po" />
+                <TextView
+                    android:id="@+id/sheetEI_textView_po"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sheet_activity_equipmentItensSheet_po_br"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toStartOf="@+id/white_space"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_editText_pp" />
 
-            <TextView
-                android:id="@+id/sheetEI_textView_pl"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="6dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/sheet_activity_equipmentItensSheet_pl_br"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toStartOf="@+id/white_space"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_editText_po" />
+                <EditText
+                    android:id="@+id/sheetEI_editText_po"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="number"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_po"
+                    app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_po"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_po" />
 
-            <EditText
-                android:id="@+id/sheetEI_editText_pl"
-                android:layout_width="0dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="number"
-                app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_pl"
-                app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_pl"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_pl" />
+                <TextView
+                    android:id="@+id/sheetEI_textView_pl"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sheet_activity_equipmentItensSheet_pl_br"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toStartOf="@+id/white_space"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_editText_po" />
 
-            <TextView
-                android:id="@+id/white_space"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="16dp"
-                android:text="   "
-                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_title"
-                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_details" />
+                <EditText
+                    android:id="@+id/sheetEI_editText_pl"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="number"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_pl"
+                    app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_pl"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_pl" />
 
-            <TextView
-                android:id="@+id/sheetEI_textView_itens"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="6dp"
-                android:text="@string/sheet_activity_equipmentItensSheet_anotherItens_br"
-                android:textAlignment="center"
-                app:layout_constraintBottom_toBottomOf="@+id/white_space"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/white_space"
-                app:layout_constraintTop_toTopOf="@+id/white_space" />
+                <TextView
+                    android:id="@+id/white_space"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginTop="16dp"
+                    android:text="   "
+                    app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_title"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_details" />
 
-            <EditText
-                android:id="@+id/sheetEI_editText_itens"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="textMultiLine"
-                app:layout_constraintBottom_toBottomOf="@+id/sheetEI_editText_pl"
-                app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_itens"
-                app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_itens"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_itens" />
+                <TextView
+                    android:id="@+id/sheetEI_textView_itens"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginLeft="6dp"
+                    android:text="@string/sheet_activity_equipmentItensSheet_anotherItens_br"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/white_space"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/white_space"
+                    app:layout_constraintTop_toTopOf="@+id/white_space" />
 
-            <TextView
-                android:id="@+id/sheetEI_textView_maxWeight"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/sheet_activity_equipmentItensSheet_maxWeight_br"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="@+id/sheetEI_editText_pl"
-                app:layout_constraintStart_toStartOf="@+id/sheetEI_editText_pl"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_editText_pl" />
+                <EditText
+                    android:id="@+id/sheetEI_editText_itens"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    app:layout_constraintBottom_toBottomOf="@+id/sheetEI_editText_pl"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_itens"
+                    app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_itens"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_itens" />
 
-            <EditText
-                android:id="@+id/sheetEI_editText_maxWeight"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_maxWeight"
-                app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_maxWeight"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_maxWeight" />
+                <TextView
+                    android:id="@+id/sheetEI_textView_maxWeight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sheet_activity_equipmentItensSheet_maxWeight_br"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetEI_editText_pl"
+                    app:layout_constraintStart_toStartOf="@+id/sheetEI_editText_pl"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_editText_pl" />
 
-            <TextView
-                android:id="@+id/sheetEI_textView_carriedWeight"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/sheet_activity_equipmentItensSheet_carriedWeight_br"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="@+id/sheetEI_editText_itens"
-                app:layout_constraintStart_toStartOf="@+id/sheetEI_editText_itens"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_editText_itens" />
+                <EditText
+                    android:id="@+id/sheetEI_editText_maxWeight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_maxWeight"
+                    app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_maxWeight"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_maxWeight" />
 
-            <EditText
-                android:id="@+id/sheetEI_editText_carriedWeight"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_carriedWeight"
-                app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_carriedWeight"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_carriedWeight" />
+                <TextView
+                    android:id="@+id/sheetEI_textView_carriedWeight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sheet_activity_equipmentItensSheet_carriedWeight_br"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="@+id/sheetEI_textView_maxWeight"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetEI_editText_itens"
+                    app:layout_constraintStart_toStartOf="@+id/sheetEI_editText_itens"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_editText_itens" />
 
-            <TextView
-                android:id="@+id/sheetEI_textView_equipmentArmor"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:text="@string/sheet_activity_equipmentItensSheet_titleEquipment_br"
-                android:textAlignment="center"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_editText_maxWeight" />
+                <EditText
+                    android:id="@+id/sheetEI_editText_carriedWeight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    app:layout_constraintBottom_toBottomOf="@+id/sheetEI_editText_maxWeight"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_carriedWeight"
+                    app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_carriedWeight"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_carriedWeight" />
 
-            <TextView
-                android:id="@+id/sheetEI_textView_armor"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/sheet_activity_equipmentItensSheet_armor_br"
-                android:textAlignment="center"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_equipmentArmor" />
+                <TextView
+                    android:id="@+id/sheetEI_textView_equipmentArmor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/sheet_activity_equipmentItensSheet_titleEquipment_br"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_editText_maxWeight" />
 
-            <TextView
-                android:id="@+id/sheetEi_textView_armorBonus"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="6dp"
-                android:layout_marginLeft="16dp"
-                android:text="@string/sheet_activity_equipmentItensSheet_armorBonus_br"
-                android:textAlignment="center"
-                app:layout_constraintBottom_toBottomOf="@+id/white_space2"
-                app:layout_constraintEnd_toStartOf="@+id/white_space2"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/white_space2" />
+                <TextView
+                    android:id="@+id/sheetEI_textView_armor"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sheet_activity_equipmentItensSheet_armor_br"
+                    android:textAlignment="center"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_equipmentArmor" />
 
-            <EditText
-                android:id="@+id/sheetEi_editText_armorBonus"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="number"
-                app:layout_constraintEnd_toEndOf="@+id/sheetEi_textView_armorBonus"
-                app:layout_constraintStart_toStartOf="@+id/sheetEi_textView_armorBonus"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEi_textView_armorBonus" />
+                <EditText
+                    android:id="@+id/sheetEI_editText_armor"
+                    android:layout_width="0dp"
+                    android:layout_height="170dp"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_armor"
+                    app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_armor"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_armor" />
 
-            <TextView
-                android:id="@+id/sheetEi_textView_armorName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="6dp"
-                android:text="@string/sheet_activity_equipmentItensSheet_armorName_br"
-                android:textAlignment="center"
-                app:layout_constraintBottom_toBottomOf="@+id/white_space2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/white_space2"
-                app:layout_constraintTop_toTopOf="@+id/white_space2" />
+                <TextView
+                    android:id="@+id/sheetEI_textView_protectionItem"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sheet_activity_equipmentItensSheet_protectionIten_br"
+                    android:textAlignment="center"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_editText_armor" />
 
-            <TextView
-                android:id="@+id/white_space2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="16dp"
-                android:text="   "
-                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_details"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_armor" />
+                <EditText
+                    android:id="@+id/sheetEI_editText_protectionItem"
+                    android:layout_width="0dp"
+                    android:layout_height="170dp"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_protectionItem"
+                    app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_protectionItem"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_protectionItem" />
 
-            <EditText
-                android:id="@+id/sheetEI_editText_armorName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                app:layout_constraintEnd_toEndOf="@+id/sheetEi_textView_armorName"
-                app:layout_constraintStart_toStartOf="@+id/sheetEi_textView_armorName"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEi_textView_armorName" />
+                <TextView
+                    android:id="@+id/sheetEI_textView_weapons"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sheet_activity_equipmentItensSheet_weapons_br"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_editText_protectionItem" />
 
-            <TextView
-                android:id="@+id/sheetEI_textView_armorInformation"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="6dp"
-                android:layout_marginLeft="16dp"
-                android:text="@string/sheet_activity_equipmentItensSheet_armorInformation_br"
-                android:textAlignment="center"
-                app:layout_constraintBottom_toBottomOf="@+id/white_space3"
-                app:layout_constraintEnd_toStartOf="@+id/white_space3"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/white_space3" />
-
-            <EditText
-                android:id="@+id/sheetEI_editText_armorInformation"
-                android:layout_width="0dp"
-                android:layout_height="93dp"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="textMultiLine"
-                app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_armorInformation"
-                app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_armorInformation"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_armorInformation" />
-
-            <TextView
-                android:id="@+id/white_space3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="   "
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEi_editText_armorBonus" />
-
-            <TextView
-                android:id="@+id/sheetEI_textView_armorEspecial"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="6dp"
-                android:text="@string/sheet_activity_equipmentItensSheet_armorEspecial_br"
-                android:textAlignment="center"
-                app:layout_constraintBottom_toBottomOf="@+id/white_space3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/white_space3"
-                app:layout_constraintTop_toTopOf="@+id/white_space3" />
-
-            <EditText
-                android:id="@+id/sheetEI_editText_armorEspecial"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="textMultiLine"
-                app:layout_constraintBottom_toBottomOf="@+id/sheetEI_editText_armorInformation"
-                app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_armorEspecial"
-                app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_armorEspecial"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_armorEspecial" />
-
-            <TextView
-                android:id="@+id/sheetEI_textView_protectionItem"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:text="@string/sheet_activity_equipmentItensSheet_protectionIten_br"
-                android:textAlignment="center"
-                android:textSize="16sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_editText_armorInformation" />
-
-            <TextView
-                android:id="@+id/sheetEi_textView_protectionItemBonus"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="6dp"
-                android:layout_marginLeft="16dp"
-                android:text="@string/sheet_activity_equipmentItensSheet_protectionItenBonus_br"
-                android:textAlignment="center"
-                app:layout_constraintBottom_toBottomOf="@+id/white_space4"
-                app:layout_constraintEnd_toStartOf="@+id/white_space4"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/white_space4" />
-
-            <EditText
-                android:id="@+id/sheetEi_editText_protectionItemBonus"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="number"
-                app:layout_constraintEnd_toEndOf="@+id/sheetEi_textView_protectionItemBonus"
-                app:layout_constraintStart_toStartOf="@+id/sheetEi_textView_protectionItemBonus"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEi_textView_protectionItemBonus" />
-
-            <TextView
-                android:id="@+id/white_space4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="24dp"
-                android:layout_marginTop="16dp"
-                android:text="   "
-                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_details"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_protectionItem" />
-
-            <TextView
-                android:id="@+id/sheetEi_textView_protectionItemName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="6dp"
-                android:text="@string/sheet_activity_equipmentItensSheet_protectionItenName_br"
-                android:textAlignment="center"
-                app:layout_constraintBottom_toBottomOf="@+id/white_space4"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/white_space4"
-                app:layout_constraintTop_toTopOf="@+id/white_space4" />
-
-            <EditText
-                android:id="@+id/sheetEI_editText_protectionItemName"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                app:layout_constraintEnd_toEndOf="@+id/sheetEi_textView_protectionItemName"
-                app:layout_constraintStart_toEndOf="@+id/white_space4"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEi_textView_protectionItemName" />
-
-            <TextView
-                android:id="@+id/sheetEI_textView_protectionItemInformation"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="6dp"
-                android:layout_marginLeft="16dp"
-                android:text="@string/sheet_activity_equipmentItensSheet_protectionItenInformation_br"
-                android:textAlignment="center"
-                app:layout_constraintBottom_toBottomOf="@+id/white_space5"
-                app:layout_constraintEnd_toStartOf="@+id/white_space5"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/white_space5" />
-
-            <EditText
-                android:id="@+id/sheetEI_editText_protectionItemInformation"
-                android:layout_width="0dp"
-                android:layout_height="93dp"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="textMultiLine"
-                app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_protectionItemInformation"
-                app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_protectionItemInformation"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_protectionItemInformation" />
-
-            <TextView
-                android:id="@+id/white_space5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="   "
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEi_editText_protectionItemBonus" />
-
-            <TextView
-                android:id="@+id/sheetEI_textView_protectionItemEspecial"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="6dp"
-                android:text="@string/sheet_activity_equipmentItensSheet_protectionItenEspecial_br"
-                android:textAlignment="center"
-                app:layout_constraintBottom_toBottomOf="@+id/white_space5"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/white_space5"
-                app:layout_constraintTop_toTopOf="@+id/white_space5" />
-
-            <EditText
-                android:id="@+id/sheetEI_editText_protectionItemEspecial"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="textMultiLine"
-                app:layout_constraintBottom_toBottomOf="@+id/sheetEI_editText_protectionItemInformation"
-                app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_armorEspecial"
-                app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_protectionItemEspecial"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_protectionItemEspecial" />
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/sheet_activity_equipmentItensSheet_addProtectionIten_br"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/sheetEI_editText_protectionItemEspecial"
-                app:layout_constraintHorizontal_bias="0.513"
-                app:layout_constraintStart_toStartOf="@+id/sheetEI_editText_protectionItemInformation"
-                app:layout_constraintTop_toBottomOf="@+id/sheetEI_editText_protectionItemInformation" />
+                <EditText
+                    android:id="@+id/sheetEI_editText_weapons"
+                    android:layout_width="0dp"
+                    android:layout_height="170dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_weapons"
+                    app:layout_constraintStart_toStartOf="@+id/sheetEI_textView_weapons"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_textView_weapons" />
 
 
-        </android.support.constraint.ConstraintLayout>
+            </android.support.constraint.ConstraintLayout>
 
-    </ScrollView>
+        </ScrollView>
 
-</android.support.constraint.ConstraintLayout>
-    </layout>
+    </android.support.constraint.ConstraintLayout>
+</layout>

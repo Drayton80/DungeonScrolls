@@ -47,18 +47,10 @@
     <string name="sheet_activity_equipmentItensSheet_anotherItens_br">Inventário</string>
     <string name="sheet_activity_equipmentItensSheet_maxWeight_br">Peso Max.</string>
     <string name="sheet_activity_equipmentItensSheet_carriedWeight_br">Peso Total Carregado</string>
-    <string name="sheet_activity_equipmentItensSheet_titleEquipment_br">Equipamento de Defesa</string>
-    <string name="sheet_activity_equipmentItensSheet_armor_br">Armadura</string>
-    <string name="sheet_activity_equipmentItensSheet_armorBonus_br">Defesa</string>
-    <string name="sheet_activity_equipmentItensSheet_armorName_br">Nome</string>
-    <string name="sheet_activity_equipmentItensSheet_armorInformation_br">Informações</string>
-    <string name="sheet_activity_equipmentItensSheet_armorEspecial_br">Qualidades Especiais</string>
-    <string name="sheet_activity_equipmentItensSheet_protectionIten_br">Item de Proteção</string>
-    <string name="sheet_activity_equipmentItensSheet_protectionItenBonus_br">Defesa</string>
-    <string name="sheet_activity_equipmentItensSheet_protectionItenName_br">Nome</string>
-    <string name="sheet_activity_equipmentItensSheet_protectionItenInformation_br">Informações</string>
-    <string name="sheet_activity_equipmentItensSheet_protectionItenEspecial_br">Qualidades Especiais</string>
-    <string name="sheet_activity_equipmentItensSheet_addProtectionIten_br">Adicionar Item de Proteção</string>
+    <string name="sheet_activity_equipmentItensSheet_titleEquipment_br">Equipamentos de Combate</string>
+    <string name="sheet_activity_equipmentItensSheet_armor_br">Armadura Equipada</string>
+    <string name="sheet_activity_equipmentItensSheet_protectionIten_br">Itens de Proteção</string>
+    <string name="sheet_activity_equipmentItensSheet_weapons_br">Armas Equipadas</string>
 
     <string name="sheet_activity_battleInformationSheet_title_br">Características de Combate</string>
     <string name="sheet_activity_battleInformationSheet_details_br">Detalhes</string>
