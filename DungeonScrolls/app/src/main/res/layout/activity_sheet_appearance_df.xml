@@ -191,7 +191,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_size" />
 
             <TextView
-                android:id="@+id/sheetBI_textView_pvAtual"
+                android:id="@+id/sheetBI_textView_iniciativa"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -207,9 +207,9 @@
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="textMultiLine"
-                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_pvAtual"
-                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_pvAtual"
-                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_pvAtual" />
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_iniciativa"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_iniciativa"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_iniciativa" />
 
             <TextView
                 android:id="@+id/sheetAp_textView_languages"
