@@ -4,12 +4,12 @@ package door.opposite.grupo2.dungeonscrolls.model;
  * Created by ci on 04/04/18.
  */
 
-public class ListaUsuario {
+public class ListaSala {
 
-    private Usuario cabeca;
+    private Sala cabeca;
     private int nElemento;
 
-    public ListaUsuario(){
+    public ListaSala(){
         cabeca = null;
         nElemento = 0;
     }
@@ -22,7 +22,7 @@ public class ListaUsuario {
     }
 
     public int tamanho(){
-        Usuario aux = cabeca;
+        Sala aux = cabeca;
         int count = 0;
         while(aux != null){
             count++;
@@ -31,28 +31,28 @@ public class ListaUsuario {
         return count;
     }
 
-    private void insereInicioLista(Usuario NovoNo){
-        Usuario aux = cabeca;
+    private void insereInicioLista(Sala NovoNo){
+        Sala aux = cabeca;
         NovoNo.setProx(aux);
         cabeca = NovoNo;
         nElemento++;
     }
 
-    private void insereMeioLista(Usuario NovoNo, int pos){
-        Usuario aux = cabeca;
+    private void insereMeioLista(Sala NovoNo, int pos){
+        Sala aux = cabeca;
         for(int i = 0; i < pos - 1; i++){
             aux = aux.getProx();
         }
 
-        Usuario p = aux.getProx();
+        Sala p = aux.getProx();
         NovoNo.setProx(p);
         aux.setProx(NovoNo);
 
         nElemento++;
     }
 
-    private void insereFimLista(Usuario NovoNo){
-        Usuario aux = cabeca;
+    private void insereFimLista(Sala NovoNo){
+        Sala aux = cabeca;
 
         while(aux.getProx() != null){
             aux = aux.getProx();
@@ -61,7 +61,7 @@ public class ListaUsuario {
         nElemento++;
     }
 
-    public void insere(Usuario NovoNo){
+    public void insere(Sala NovoNo){
 
         if(NovoNo.getID() == 0){
             insereInicioLista(NovoNo);
@@ -79,7 +79,7 @@ public class ListaUsuario {
     }
 
     private void removeInicio(){
-        Usuario aux = cabeca;
+        Sala aux = cabeca;
 
         if(aux.getProx() == null) cabeca = null;
         else aux.setProx(aux.getProx());
@@ -89,7 +89,7 @@ public class ListaUsuario {
 
 
     private void removeMeio(int pos){
-        Usuario atual = null, antecessor = null;
+        Sala atual = null, antecessor = null;
         int dado = -1;
         int cont = 1;
 
@@ -110,7 +110,7 @@ public class ListaUsuario {
 
     }
 
-    public void remove(Usuario morto){
+    public void remove(Sala morto){
         if(vazia()){
             return;
         }
@@ -123,8 +123,8 @@ public class ListaUsuario {
         }
     }
 
-    public Usuario pesquisaId(int id){
-        Usuario aux = cabeca;
+    public Sala pesquisaId(int id){
+        Sala aux = cabeca;
 
         if(aux == null){
             System.out.println("Id inválido");
@@ -143,15 +143,15 @@ public class ListaUsuario {
         return aux;
     }
 
-    public Usuario pesquisaNome(String nome){
-        Usuario aux = cabeca;
+    public Sala pesquisaNome(String nome){
+        Sala aux = cabeca;
 
         if(aux == null){
             System.out.println("Id inválido");
             return null;
         }
 
-        while(aux.getNick().equalsIgnoreCase(nome)) {
+        while(aux.getNome().equalsIgnoreCase(nome)) {
             aux = aux.getProx();
             if(aux == null) {
                 System.out.println("Id inválido");
@@ -161,5 +161,4 @@ public class ListaUsuario {
 
         return aux;
     }
-
 }

@@ -151,7 +151,7 @@ public class ListaFicha {
             return null;
         }
 
-        while(aux.nomePersonagem.equalsIgnoreCase(nome)) {
+        while(aux.getNomeJogador().equalsIgnoreCase(nome)) {
             aux = aux.getProx();
             if(aux == null) {
                 System.out.println("Id inválido");
