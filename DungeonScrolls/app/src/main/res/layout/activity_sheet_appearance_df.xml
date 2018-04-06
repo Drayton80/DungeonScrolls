@@ -43,10 +43,9 @@
                 android:id="@+id/sheetAp_textView_height"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="4dp"
-                android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/sheet_activity_appearanceSheet_height_br"
+                android:textAlignment="center"
                 app:layout_constraintEnd_toStartOf="@+id/blank_space"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_title" />
@@ -59,6 +58,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text=""
+                android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_height"
                 app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_height"
                 app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_height" />
@@ -79,10 +79,10 @@
                 android:id="@+id/sheetAp_textView_weight"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="16dp"
-                android:layout_marginLeft="4dp"
+                android:layout_marginEnd="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/sheet_activity_appearanceSheet_weight_br"
+                android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/blank_space"
                 app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_title" />
@@ -95,6 +95,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text=""
+                android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_weight"
                 app:layout_constraintHorizontal_bias="0.47"
                 app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_weight"
@@ -106,6 +107,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/sheet_activity_appearanceSheet_inclination_br"
+                android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="@+id/sheetAp_editText_height"
                 app:layout_constraintStart_toStartOf="@+id/sheetAp_editText_height"
                 app:layout_constraintTop_toBottomOf="@+id/sheetAp_editText_height" />
@@ -118,6 +120,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text=""
+                android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_inclination"
                 app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_inclination"
                 app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_inclination" />
@@ -128,6 +131,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/sheet_activity_appearanceSheet_divinity_br"
+                android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="@+id/sheetAp_editText_weight"
                 app:layout_constraintStart_toStartOf="@+id/sheetAp_editText_weight"
                 app:layout_constraintTop_toBottomOf="@+id/sheetAp_editText_weight" />
@@ -140,6 +144,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text=""
+                android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_divinity"
                 app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_divinity"
                 app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_divinity" />
@@ -152,6 +157,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/sheet_activity_appearanceSheet_gender_br"
+                android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sheetAp_editText_inclination" />
@@ -164,6 +170,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:text=""
+                android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_gender"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_gender"
@@ -177,6 +184,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/sheet_activity_appearanceSheet_size_br"
+                android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sheetAp_editText_gender" />
@@ -196,6 +204,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/sheet_activity_appearanceSheet_appearange_br"
+                android:textAlignment="viewStart"
                 app:layout_constraintEnd_toEndOf="@+id/sheetAp_spinner_size"
                 app:layout_constraintStart_toStartOf="@+id/sheetAp_spinner_size"
                 app:layout_constraintTop_toBottomOf="@+id/sheetAp_spinner_size" />
@@ -207,6 +216,7 @@
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="textMultiLine"
+                android:textAlignment="textStart"
                 app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_iniciativa"
                 app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_iniciativa"
                 app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_iniciativa" />
@@ -219,6 +229,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/sheet_activity_appearanceSheet_languages_br"
+                android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sheetAp_editText_appearance" />
@@ -231,6 +242,7 @@
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="textMultiLine"
+                android:textAlignment="textStart"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_languages"
                 app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_languages"

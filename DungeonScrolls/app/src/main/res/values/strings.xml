@@ -29,7 +29,7 @@
     <string name="sheet_activity_appearanceSheet_height_br">Altura</string>
     <string name="sheet_activity_appearanceSheet_weight_br">Peso</string>
     <string name="sheet_activity_appearanceSheet_inclination_br">Tendência</string>
-    <string name="sheet_activity_appearanceSheet_divinity_br">Divindade</string>
+    <string name="sheet_activity_appearanceSheet_divinity_br">Divindade(s)</string>
     <string name="sheet_activity_appearanceSheet_gender_br">Sexo</string>
     <string name="sheet_activity_appearanceSheet_size_br">Categoria de Tamanho</string>
     <string name="sheet_activity_appearanceSheet_appearange_br">Descrição da Aparência</string>
@@ -69,8 +69,20 @@
     <string name="sheet_activity_battleInformationSheet_reducaoDeDano_br">Redução de Dano</string>
     <string name="sheet_activity_battleInformationSheet_iniciativaTitulo_br">Iniciativa</string>
     <string name="sheet_activity_battleInformationSheet_iniciativa_br">Total</string>
-    <string name="sheet_activity_battleInformationSheet_iniciativaOutros_br">Outros Mod.</string>
+    <string name="sheet_activity_battleInformationSheet_iniciativaDestreza_br">Destreza</string>
+    <string name="sheet_activity_battleInformationSheet_iniciativaOutros_br">Outros</string>
     <string name="sheet_activity_battleInformationSheet_deslocamento_br">Deslocamento Total</string>
+    <string name="sheet_activity_battleInformationSheet_agarrarTitulo_br">Agarrar</string>
+    <string name="sheet_activity_battleInformationSheet_agarrar_br">Total</string>
+    <string name="sheet_activity_battleInformationSheet_agarrarForca_br">Força</string>
+    <string name="sheet_activity_battleInformationSheet_agarrarOutros_br">Outros</string>
+    <string name="sheet_activity_battleInformationSheet_bba_br">Bônus Base de Ataque</string>
+    <string name="sheet_activity_battleInformationSheet_attacks_br">Ataques</string>
+
+
+    <string name="sheet_activity_specialProperties_title_br">Propriedades Especiais</string>
+    <string name="sheet_activity_specialProperties_qualidadesEspeciais_br">Qualidades Especiais</string>
+    <string name="sheet_activity_specialProperties_habilidadesEspeciais_br">Habilidades Especiais</string>
 
 
     <!-- Textos Relativos ao Idioma American English (EN) -->

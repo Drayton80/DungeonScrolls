@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+    <data>
+
+
+
+    </data>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="door.opposite.grupo2.dungeonscrolls.Telas.SheetBattleInformationActivityDF">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="25dp"
+            android:background="#f0f0f0">
+
+            <TextView
+                android:id="@+id/sheetBI_textView_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/sheet_activity_battleInformationSheet_title_br"
+                android:textAlignment="center"
+                android:textSize="20dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_caTitulo"
+                android:layout_width="0dp"
+                android:layout_height="18dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/sheet_activity_battleInformationSheet_caTitulo_br"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_editText_pvAtual" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_caNormal"
+                android:layout_width="45dp"
+                android:layout_height="13dp"
+                android:text="@string/sheet_activity_battleInformationSheet_caNormal_br"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/white_space2"
+                app:layout_constraintEnd_toStartOf="@+id/white_space2"
+                app:layout_constraintTop_toTopOf="@+id/white_space2" />
+
+            <EditText
+                android:id="@+id/sheetBI_editText_caNormal"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="none"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_reducaoDeDano"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_caNormal"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_caNormal"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_caNormal" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_caToque"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sheet_activity_battleInformationSheet_caToque_br"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/white_space8"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_editText_caNormal"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_editText_caNormal"
+                app:layout_constraintTop_toTopOf="@+id/white_space8" />
+
+            <EditText
+                android:id="@+id/sheetBI_editText_caToque"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="none"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_resistenciasElementais"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_caToque"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_caToque"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_caToque" />
+
+            <TextView
+                android:id="@+id/white_space8"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:text="   "
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_textView_resistenciasElementais"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/sheetBI_textView_resistenciasElementais" />
+
+            <TextView
+                android:id="@+id/white_space2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="8dp"
+                android:text="   "
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_textView_reducaoDeDano"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/sheetBI_textView_reducaoDeDano" />
+
+            <TextView
+                android:id="@+id/sinal_igual"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="="
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_caNormal"
+                app:layout_constraintEnd_toStartOf="@+id/sheetBI_editText_caArmadura"
+                app:layout_constraintStart_toEndOf="@+id/sheetBI_editText_caNormal"
+                app:layout_constraintTop_toTopOf="@+id/sheetBI_editText_caNormal" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_caArmadura"
+                android:layout_width="45dp"
+                android:layout_height="13dp"
+                android:text="@string/sheet_activity_battleInformationSheet_caArmadura_br"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/white_space2"
+                app:layout_constraintStart_toEndOf="@+id/white_space2"
+                app:layout_constraintTop_toTopOf="@+id/white_space2" />
+
+            <EditText
+                android:id="@+id/sheetBI_editText_caArmadura"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="numberSigned"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_caNormal"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_caArmadura"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_caArmadura"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_caArmadura" />
+
+            <TextView
+                android:id="@+id/white_space4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="   "
+                app:layout_constraintStart_toEndOf="@+id/sheetBI_textView_caArmadura"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_caTitulo" />
+
+            <TextView
+                android:id="@+id/sinal_mais"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="+"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_caNormal"
+                app:layout_constraintEnd_toStartOf="@+id/sheetBI_editText_caNatural"
+                app:layout_constraintStart_toEndOf="@+id/sheetBI_editText_caArmadura"
+                app:layout_constraintTop_toTopOf="@+id/sheetBI_editText_caNormal" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_caNatural"
+                android:layout_width="45dp"
+                android:layout_height="13dp"
+                android:text="@string/sheet_activity_battleInformationSheet_caArmaduraNatural_br"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/white_space2"
+                app:layout_constraintStart_toEndOf="@+id/white_space4"
+                app:layout_constraintTop_toTopOf="@+id/white_space2" />
+
+            <EditText
+                android:id="@+id/sheetBI_editText_caNatural"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="numberSigned"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_caNormal"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_caNatural"
+                app:layout_constraintStart_toEndOf="@+id/white_space4"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_caArmadura" />
+
+            <TextView
+                android:id="@+id/white_space6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="   "
+                app:layout_constraintStart_toEndOf="@+id/sheetBI_textView_caNatural"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_caTitulo" />
+
+            <TextView
+                android:id="@+id/sinal_mais2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="+"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_caNormal"
+                app:layout_constraintEnd_toStartOf="@+id/sheetBI_editText_caOutros"
+                app:layout_constraintStart_toEndOf="@+id/sheetBI_editText_caNatural"
+                app:layout_constraintTop_toTopOf="@+id/sheetBI_editText_caNormal" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_caOutros"
+                android:layout_width="45dp"
+                android:layout_height="13dp"
+                android:text="@string/sheet_activity_battleInformationSheet_caOutros_br"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/white_space2"
+                app:layout_constraintStart_toEndOf="@+id/white_space6"
+                app:layout_constraintTop_toTopOf="@+id/white_space2" />
+
+            <EditText
+                android:id="@+id/sheetBI_editText_caOutros"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="numberSigned"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_caNormal"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_caOutros"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/white_space6"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_caOutros"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_caSurpresa"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sheet_activity_battleInformationSheet_caSurpresa_br"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/white_space8"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_editText_caArmadura"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_editText_caArmadura"
+                app:layout_constraintTop_toTopOf="@+id/white_space8" />
+
+            <EditText
+                android:id="@+id/sheetBI_editText_caSurpresa"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="none"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_caToque"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_caSurpresa"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_caSurpresa"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_caSurpresa" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_resistenciaMagica"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="16dp"
+                android:text="@string/sheet_activity_battleInformationSheet_resistenciaMagica_br"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_textView_resistenciasElementais"
+                app:layout_constraintEnd_toStartOf="@+id/sheetBI_textView_resistenciasElementais"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_editText_caNatural"
+                app:layout_constraintTop_toTopOf="@+id/sheetBI_textView_resistenciasElementais" />
+
+            <EditText
+                android:id="@+id/sheetBI_editText_resistenciaMagica"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_resistenciasElementais"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_resistenciaMagica"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_resistenciaMagica"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_resistenciaMagica" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_pvTitulo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/sheet_activity_battleInformationSheet_pvTitulo_br"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.51"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_title" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_pvAtual"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sheet_activity_battleInformationSheet_pvAtual_br"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/white_space3"
+                app:layout_constraintEnd_toStartOf="@+id/white_space3"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_pvTitulo"
+                app:layout_constraintTop_toTopOf="@+id/white_space3" />
+
+            <EditText
+                android:id="@+id/sheetBI_editText_pvAtual"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="number"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_pvAtual"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_pvAtual"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_pvAtual" />
+
+            <TextView
+                android:id="@+id/white_space3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="   "
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_pvTitulo"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_pvTitulo"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_pvTitulo" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_pvTotal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sheet_activity_battleInformationSheet_pvTotal_br"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/white_space3"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_pvTitulo"
+                app:layout_constraintStart_toEndOf="@+id/white_space3"
+                app:layout_constraintTop_toTopOf="@+id/white_space3" />
+
+            <EditText
+                android:id="@+id/sheetBI_editText_pvTotal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="number"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_pvTotal"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_pvTotal"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_pvAtual" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_reducaoDeDano"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/sheet_activity_battleInformationSheet_reducaoDeDano_br"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sheetBI_editText_caOutros"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_caTitulo" />
+
+            <EditText
+                android:id="@+id/sheetBI_editText_reducaoDeDano"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="none|textPersonName"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_reducaoDeDano"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_reducaoDeDano"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_reducaoDeDano" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_resistenciasElementais"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/sheet_activity_battleInformationSheet_resistenciasNaturais_br"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sheetBI_editText_caOutros"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_editText_reducaoDeDano" />
+
+            <EditText
+                android:id="@+id/sheetBI_editText_resistenciasElementais"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_reducaoDeDano"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_reducaoDeDano"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_resistenciasElementais" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_iniciativaTitulo"
+                android:layout_width="0dp"
+                android:layout_height="18dp"
+                android:text="@string/sheet_activity_battleInformationSheet_iniciativaTitulo_br"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_textView_deslocamento"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_iniciativaOutros"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_iniciativa"
+                app:layout_constraintTop_toTopOf="@+id/sheetBI_textView_deslocamento" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_iniciativa"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sheet_activity_battleInformationSheet_iniciativa_br"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/white_space5"
+                app:layout_constraintEnd_toStartOf="@+id/white_space5"
+                app:layout_constraintTop_toTopOf="@+id/white_space5" />
+
+            <EditText
+                android:id="@+id/sheetBI_editText_iniciativa"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="none"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toStartOf="@+id/white_space5"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_iniciativa"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_iniciativa" />
+
+            <TextView
+                android:id="@+id/white_space5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="60dp"
+                android:layout_marginTop="8dp"
+                android:text="   "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_iniciativaTitulo" />
+
+            <TextView
+                android:id="@+id/sinal_igual2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="="
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_iniciativa"
+                app:layout_constraintEnd_toStartOf="@+id/sheetBI_editText_iniciativaDestreza"
+                app:layout_constraintStart_toEndOf="@+id/sheetBI_editText_iniciativa"
+                app:layout_constraintTop_toBottomOf="@+id/white_space5" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_iniciativaDestreza"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sheet_activity_battleInformationSheet_iniciativaDestreza_br"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/white_space5"
+                app:layout_constraintStart_toEndOf="@+id/white_space5"
+                app:layout_constraintTop_toTopOf="@+id/white_space5" />
+
+            <EditText
+                android:id="@+id/sheetBI_editText_iniciativaDestreza"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="none"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_iniciativaDestreza"
+                app:layout_constraintStart_toEndOf="@+id/white_space5"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_iniciativaDestreza" />
+
+            <TextView
+                android:id="@+id/white_space7"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="   "
+                app:layout_constraintBottom_toBottomOf="@+id/white_space5"
+                app:layout_constraintStart_toEndOf="@+id/sheetBI_textView_iniciativaDestreza"
+                app:layout_constraintTop_toTopOf="@+id/white_space5" />
+
+            <TextView
+                android:id="@+id/sinal_mais3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="+"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_iniciativaDestreza"
+                app:layout_constraintEnd_toStartOf="@+id/sheetBI_editText_iniciativaOutros"
+                app:layout_constraintStart_toEndOf="@+id/sheetBI_editText_iniciativaDestreza"
+                app:layout_constraintTop_toBottomOf="@+id/white_space7"
+                app:layout_constraintVertical_bias="0.55" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_iniciativaOutros"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sheet_activity_battleInformationSheet_iniciativaOutros_br"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/white_space7"
+                app:layout_constraintStart_toEndOf="@+id/white_space7"
+                app:layout_constraintTop_toTopOf="@+id/white_space7" />
+
+            <EditText
+                android:id="@+id/sheetBI_editText_iniciativaOutros"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="numberSigned"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_iniciativa"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_iniciativaOutros"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_iniciativaOutros"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_iniciativaOutros" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_deslocamento"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/sheet_activity_battleInformationSheet_deslocamento_br"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sheetBI_textView_iniciativaTitulo"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_editText_caToque" />
+
+            <EditText
+                android:id="@+id/sheetBI_editText_deslocamento"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_iniciativa"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_deslocamento"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_deslocamento"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_deslocamento" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_agarrarTitulo"
+                android:layout_width="0dp"
+                android:layout_height="18dp"
+                android:text="@string/sheet_activity_battleInformationSheet_agarrarTitulo_br"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_textView_bba"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_agarrarOutros"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_agarrar"
+                app:layout_constraintTop_toTopOf="@+id/sheetBI_textView_bba" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_agarrar"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sheet_activity_battleInformationSheet_agarrar_br"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/white_space9"
+                app:layout_constraintEnd_toStartOf="@+id/white_space9"
+                app:layout_constraintTop_toTopOf="@+id/white_space9" />
+
+            <EditText
+                android:id="@+id/sheetBI_editText_agarrar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="none"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toStartOf="@+id/white_space9"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_agarrar"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_agarrar" />
+
+            <TextView
+                android:id="@+id/white_space9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="60dp"
+                android:layout_marginTop="8dp"
+                android:text="   "
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_agarrarTitulo" />
+
+            <TextView
+                android:id="@+id/sinal_igual3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="="
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_agarrar"
+                app:layout_constraintEnd_toStartOf="@+id/sheetBI_editText_agarrarForca"
+                app:layout_constraintStart_toEndOf="@+id/sheetBI_editText_agarrar"
+                app:layout_constraintTop_toBottomOf="@+id/white_space9" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_agarrarForca"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sheet_activity_battleInformationSheet_agarrarForca_br"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/white_space9"
+                app:layout_constraintStart_toEndOf="@+id/white_space9"
+                app:layout_constraintTop_toTopOf="@+id/white_space9" />
+
+            <EditText
+                android:id="@+id/sheetBI_editText_agarrarForca"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="none"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_agarrar"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_agarrarForca"
+                app:layout_constraintStart_toEndOf="@+id/white_space9"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_agarrarForca" />
+
+            <TextView
+                android:id="@+id/white_space10"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="   "
+                app:layout_constraintStart_toEndOf="@+id/sheetBI_textView_agarrarForca"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_agarrarTitulo" />
+
+            <TextView
+                android:id="@+id/sinal_mais4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:text="+"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_agarrarForca"
+                app:layout_constraintStart_toEndOf="@+id/sheetBI_editText_agarrarForca"
+                app:layout_constraintTop_toBottomOf="@+id/white_space10"
+                app:layout_constraintVertical_bias="0.55" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_agarrarOutros"
+                android:layout_width="45dp"
+                android:layout_height="wrap_content"
+                android:text="@string/sheet_activity_battleInformationSheet_agarrarOutros_br"
+                android:textAlignment="center"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@+id/white_space9"
+                app:layout_constraintStart_toEndOf="@+id/white_space10"
+                app:layout_constraintTop_toTopOf="@+id/white_space9" />
+
+            <EditText
+                android:id="@+id/sheetBI_editText_agarrarOutros"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="none"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_agarrar"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_agarrarOutros"
+                app:layout_constraintStart_toEndOf="@+id/white_space10"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_agarrarForca" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_bba"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/sheet_activity_battleInformationSheet_bba_br"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/sheetBI_textView_agarrarTitulo"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_editText_iniciativa" />
+
+            <EditText
+                android:id="@+id/sheetBI_editText_bba"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="number"
+                android:textAlignment="center"
+                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_agarrar"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_bba"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_bba"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_bba" />
+
+            <TextView
+                android:id="@+id/sheetBI_textView_attacks"
+                android:layout_width="0dp"
+                android:layout_height="18dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/sheet_activity_battleInformationSheet_attacks_br"
+                android:textAlignment="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_editText_agarrar" />
+
+            <EditText
+                android:id="@+id/sheetBI_editText_attacks"
+                android:layout_width="0dp"
+                android:layout_height="170dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_attacks"
+                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_attacks"
+                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_attacks" />
+
+
+        </android.support.constraint.ConstraintLayout>
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>
+</layout>

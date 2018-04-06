@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="door.opposite.grupo2.dungeonscrolls.Telas.SheetSpecialPropertiesActivityDF">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="25dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="25dp"
+                android:background="#f0f0f0">
+
+                <TextView
+                    android:id="@+id/sheetSP_textView_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/sheet_activity_specialProperties_title_br"
+                    android:textAlignment="center"
+                    android:textSize="20dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/sheetSP_textView_qualidadesEspeciais"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sheet_activity_specialProperties_qualidadesEspeciais_br"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetSP_textView_title" />
+
+                <EditText
+                    android:id="@+id/sheetSP_editText_qualidadesEspeciais"
+                    android:layout_width="0dp"
+                    android:layout_height="270dp"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetSP_textView_qualidadesEspeciais"
+                    app:layout_constraintStart_toStartOf="@+id/sheetSP_textView_qualidadesEspeciais"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetSP_textView_qualidadesEspeciais" />
+
+                <TextView
+                    android:id="@+id/sheetSP_textView_habilidadesEspeciais"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sheet_activity_specialProperties_habilidadesEspeciais_br"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetSP_editText_qualidadesEspeciais" />
+
+                <EditText
+                    android:id="@+id/sheetSP_editText_habilidadesEspeciais"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+
+                    android:inputType="textMultiLine"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetSP_textView_habilidadesEspeciais"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/sheetSP_textView_habilidadesEspeciais"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetSP_textView_habilidadesEspeciais" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+        </ScrollView>
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
