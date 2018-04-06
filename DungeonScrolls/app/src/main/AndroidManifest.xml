@@ -21,8 +21,6 @@
         <activity android:name=".Telas.SheetActivity" />
         <activity android:name=".Telas.SheetAppearanceActivityDF" />
         <activity android:name=".Telas.SheetFeatsSkillsActivityDF" />
-        <activity android:name=".Telas.SheetEquipmentItensActivityDF" />
-        <activity android:name=".Telas.SheetBattleInformationActivityDF"></activity>
     </application>
 
 </manifest>

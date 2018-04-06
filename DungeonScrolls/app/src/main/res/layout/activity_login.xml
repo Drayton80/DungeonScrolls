@@ -3,7 +3,13 @@
 <layout>
 
     <data>
+        <variable
+            name="cadevent"
+            type="door.opposite.grupo2.dungeonscrolls.commands.Eventos"/>
 
+        <variable
+            name="usuariomodel"
+            type="door.opposite.grupo2.dungeonscrolls.viewmodel.UsuarioModel"/>
 
 
     </data>
@@ -44,6 +50,7 @@
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="textPersonName"
+                android:text="@={usuariomodel.nick}"
                 android:textSize="16dp"
                 app:layout_constraintEnd_toEndOf="@+id/login_username_textView"
                 app:layout_constraintStart_toStartOf="@+id/login_username_textView"
@@ -69,6 +76,7 @@
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="textPassword"
+                android:text="@={usuariomodel.senha}"
                 app:layout_constraintEnd_toEndOf="@+id/login_password_textView"
                 app:layout_constraintStart_toStartOf="@+id/login_password_textView"
                 app:layout_constraintTop_toBottomOf="@+id/login_password_textView" />
@@ -105,6 +113,7 @@
                 android:layout_marginTop="32dp"
                 android:text="@string/login_activity_tabLogin_button_br"
                 app:layout_constraintBottom_toBottomOf="parent"
+                android:onClick="@{(v)->cadevent.onClickLogin()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/login_portuguese_radioButton" />

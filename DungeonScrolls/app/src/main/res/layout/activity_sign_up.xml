@@ -3,7 +3,13 @@
 <layout>
 
     <data>
+        <variable
+            name="cadevent"
+            type="door.opposite.grupo2.dungeonscrolls.commands.Eventos"/>
 
+        <variable
+            name="usuariomodel"
+            type="door.opposite.grupo2.dungeonscrolls.viewmodel.UsuarioModel"/>
 
 
     </data>
@@ -44,6 +50,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:textSize="16dp"
+                android:text="@={usuariomodel.nick}"
                 app:layout_constraintEnd_toEndOf="@+id/login_username_textView"
                 app:layout_constraintStart_toStartOf="@+id/login_username_textView"
                 app:layout_constraintTop_toBottomOf="@+id/login_username_textView" />
@@ -54,6 +61,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
+                android:text="@={usuariomodel.email}"
                 android:inputType="textEmailAddress"
                 app:layout_constraintEnd_toEndOf="@+id/signup_email_plainTextEmail"
                 app:layout_constraintStart_toStartOf="@+id/signup_email_plainTextEmail"
@@ -91,6 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
+                android:text="@={usuariomodel.senha}"
                 android:inputType="textPassword"
                 app:layout_constraintEnd_toEndOf="@+id/login_password_textView"
                 app:layout_constraintStart_toStartOf="@+id/login_password_textView"
@@ -127,6 +136,7 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="32dp"
                 android:text="@string/login_activity_tabSignUp_button_br"
+                android:onClick="@{(v)->cadevent.onClickCad()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

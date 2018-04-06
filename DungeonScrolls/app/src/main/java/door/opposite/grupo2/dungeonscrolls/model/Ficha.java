@@ -6,7 +6,6 @@ package door.opposite.grupo2.dungeonscrolls.model;
 
 public class Ficha {
 
-    private Ficha prox;
 
     int id;
     String nomePersonagem;
@@ -14,7 +13,7 @@ public class Ficha {
     String classeNivel;
     String raca;
     String tendencia;
-    String dinvindade;
+    String divindade;
     String sexo;
     String tamanho;
     float altura;
@@ -71,6 +70,7 @@ public class Ficha {
     String carctClasse;
     String talentos;
     String magias;
+    byte[] imagem;
     //Pericias pericias;
 
 
@@ -84,7 +84,6 @@ public class Ficha {
                  int reflexoOutros, int reflexoBase, int vontadeOutros, int vontadeBase,
                  int bba, int resMagica, int deslocamento, int agarrarOutros, int xp,
                  int xpNecessario, String idiomas, String ataques, String carctClasse, String talentos) {
-        prox = null;
         this.id = id;
         this.nomePersonagem = nomePersonagem;
         this.nomeJogador = nomeJogador;
@@ -127,7 +126,7 @@ public class Ficha {
     }
 
     public Ficha(int id, String nomePersonagem, String nomeJogador, String classeNivel,
-                 String raca, String tendencia, String dinvindade, String sexo, String tamanho,
+                 String raca, String tendencia, String divindade, String sexo, String tamanho,
                  float altura, float peso, int idade, int forca, int constituicao, int destreza,
                  int inteligencia, int sabedoria, int carisma, int forcaMod, int constituicaoMod,
                  int destrezaMod, int inteligenciaMod, int sabedoriaMod, int carismaMod, int ca,
@@ -139,14 +138,13 @@ public class Ficha {
                  int pp, int po, int pl, int xp, int xpNecessario, String idiomas,
                  String inventario, String ataques, String armaEquip, String armaduraEquip,
                  String outrosEquip, String carctClasse, String talentos, String magias) {
-        prox = null;
         this.id = id;
         this.nomePersonagem = nomePersonagem;
         this.nomeJogador = nomeJogador;
         this.classeNivel = classeNivel;
         this.raca = raca;
         this.tendencia = tendencia;
-        this.dinvindade = dinvindade;
+        this.divindade = divindade;
         this.sexo = sexo;
         this.tamanho = tamanho;
         this.altura = altura;
@@ -205,6 +203,85 @@ public class Ficha {
         this.magias = magias;
     }
 
+    public Ficha(int id, String nomePersonagem, String nomeJogador, String classeNivel,
+                 String raca, String tendencia, String divindade, String sexo, String tamanho,
+                 float altura, float peso, int idade, int forca, int constituicao, int destreza,
+                 int inteligencia, int sabedoria, int carisma, int forcaMod, int constituicaoMod,
+                 int destrezaMod, int inteligenciaMod, int sabedoriaMod, int carismaMod, int ca,
+                 int caOutros, int caToque, int caSurpresa, int armadura, int armaduraNatural,
+                 int pv, int reducaoDeDano, int iniciativa, int iniciativaOutros, int fortitude,
+                 int fortitudeOutros, int fortitudeBase, int reflexo, int reflexoOutros,
+                 int reflexoBase, int vontade, int vontadeOutros, int vontadeBase, int bba,
+                 int resMagica, int deslocamento, int agarrar, int agarrarOutros, int pc,
+                 int pp, int po, int pl, int xp, int xpNecessario, String idiomas,
+                 String inventario, String ataques, String armaEquip, String armaduraEquip,
+                 String outrosEquip, String carctClasse, String talentos, String magias, byte[] imagem) {
+        this.id = id;
+        this.nomePersonagem = nomePersonagem;
+        this.nomeJogador = nomeJogador;
+        this.classeNivel = classeNivel;
+        this.raca = raca;
+        this.tendencia = tendencia;
+        this.divindade = divindade;
+        this.sexo = sexo;
+        this.tamanho = tamanho;
+        this.altura = altura;
+        this.peso = peso;
+        this.idade = idade;
+        this.forca = forca;
+        this.constituicao = constituicao;
+        this.destreza = destreza;
+        this.inteligencia = inteligencia;
+        this.sabedoria = sabedoria;
+        this.carisma = carisma;
+        this.forcaMod = forcaMod;
+        this.constituicaoMod = constituicaoMod;
+        this.destrezaMod = destrezaMod;
+        this.inteligenciaMod = inteligenciaMod;
+        this.sabedoriaMod = sabedoriaMod;
+        this.carismaMod = carismaMod;
+        this.ca = ca;
+        this.caOutros = caOutros;
+        this.caToque = caToque;
+        this.caSurpresa = caSurpresa;
+        this.armadura = armadura;
+        this.armaduraNatural = armaduraNatural;
+        this.pv = pv;
+        this.reducaoDeDano = reducaoDeDano;
+        this.iniciativa = iniciativa;
+        this.iniciativaOutros = iniciativaOutros;
+        this.fortitude = fortitude;
+        this.fortitudeOutros = fortitudeOutros;
+        this.fortitudeBase = fortitudeBase;
+        this.reflexo = reflexo;
+        this.reflexoOutros = reflexoOutros;
+        this.reflexoBase = reflexoBase;
+        this.vontade = vontade;
+        this.vontadeOutros = vontadeOutros;
+        this.vontadeBase = vontadeBase;
+        this.bba = bba;
+        this.resMagica = resMagica;
+        this.deslocamento = deslocamento;
+        this.agarrar = agarrar;
+        this.agarrarOutros = agarrarOutros;
+        this.pc = pc;
+        this.pp = pp;
+        this.po = po;
+        this.pl = pl;
+        this.xp = xp;
+        this.xpNecessario = xpNecessario;
+        this.idiomas = idiomas;
+        this.inventario = inventario;
+        this.ataques = ataques;
+        this.armaEquip = armaEquip;
+        this.armaduraEquip = armaduraEquip;
+        this.outrosEquip = outrosEquip;
+        this.carctClasse = carctClasse;
+        this.talentos = talentos;
+        this.magias = magias;
+        this.imagem = imagem;
+    }
+
     public int getId() {
         return id;
     }
@@ -253,12 +330,12 @@ public class Ficha {
         this.tendencia = tendencia;
     }
 
-    public String getDinvindade() {
-        return dinvindade;
+    public String getDivindade() {
+        return divindade;
     }
 
-    public void setDinvindade(String dinvindade) {
-        this.dinvindade = dinvindade;
+    public void setDivindade(String divindade) {
+        this.divindade = divindade;
     }
 
     public String getSexo() {
@@ -709,14 +786,11 @@ public class Ficha {
         this.magias = magias;
     }
 
-    //---------------------Coisas da Lista
-
-    public Ficha getProx(){
-        return prox;
+    public byte[] getImagem() {
+        return imagem;
     }
 
-    public void setProx(Ficha prox){
-        this.prox = prox;
+    public void setImagem(byte[] imagem) {
+        this.imagem = imagem;
     }
-
 }

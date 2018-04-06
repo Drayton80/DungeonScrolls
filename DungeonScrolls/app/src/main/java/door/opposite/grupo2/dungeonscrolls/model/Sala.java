@@ -5,9 +5,9 @@ package door.opposite.grupo2.dungeonscrolls.model;
  */
 
 public class Sala {
-    private Sala prox;
-    private String nome;
+
     int ID;
+    private String nome;
     String senha;
     String mestre;
     int[] jogadoresID;
@@ -15,9 +15,8 @@ public class Sala {
     int[] FichasID;
     byte[] imagem;
 
-    public Sala(String nome, int ID, String senha, String mestre, String historia, byte[] imagem){
+    public Sala(int ID, String nome, String senha, String mestre, String historia, byte[] imagem){
         this.nome = nome;
-        prox = null;
         this.ID = ID;
         this.senha = senha;
         this.mestre = mestre;
@@ -25,9 +24,16 @@ public class Sala {
         this.imagem = imagem;
     }
 
+    public Sala(int ID, String nome, String senha, String mestre, String historia){
+        this.nome = nome;
+        this.ID = ID;
+        this.senha = senha;
+        this.mestre = mestre;
+        this.historia = historia;
+    }
+
     public Sala(int ID, String senha, String mestre, int[] jogadoresID, String historia, int[] fichasID, byte[] imagem) {
         this.nome = nome;
-        prox = null;
         this.ID = ID;
         this.senha = senha;
         this.mestre = mestre;
@@ -91,14 +97,6 @@ public class Sala {
 
     public void setImagem(byte[] imagem) {
         this.imagem = imagem;
-    }
-
-    public Sala getProx() {
-        return prox;
-    }
-
-    public void setProx(Sala prox) {
-        this.prox = prox;
     }
 
     public String getNome() {
