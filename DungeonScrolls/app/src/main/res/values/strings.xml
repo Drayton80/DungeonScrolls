@@ -13,6 +13,10 @@
     <string name="sheet_activity_recordSheet_tituloPrincipal">Ficha de Personagem</string>
     <string name="sheet_activity_recordSheet_title_br">Ficha de Personagem</string>
     <string name="sheet_activity_recordSheet_name_br">Nome Completo</string>
+    <string name="sheet_activity_recordSheet_idade">Idade</string>
+    <string name="sheet_activity_recordSheet_experiencia">Experiência</string>
+    <string name="sheet_activity_recordSheet_raca">Raça</string>
+    <string name="sheet_activity_recordSheet_classes">Classe(s)</string>
     <string name="sheet_activity_recordSheet_habilidadesTitulo">Habilidades</string>
     <string name="sheet_activity_recordSheet_habilidadesNome">Nome</string>
     <string name="sheet_activity_recordSheet_habilidadesValor">Valor Base</string>

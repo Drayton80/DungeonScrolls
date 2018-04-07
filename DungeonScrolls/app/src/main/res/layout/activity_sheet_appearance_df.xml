@@ -43,6 +43,7 @@
                 android:id="@+id/sheetAp_textView_height"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/sheet_activity_appearanceSheet_height_br"
                 android:textAlignment="center"
