@@ -10,8 +10,33 @@
     <string name="login_activity_username_textView_br">Nome de Usuário</string>
     <string name="login_activity_password_textView_br">Senha</string>
 
+    <string name="sheet_activity_recordSheet_tituloPrincipal">Ficha de Personagem</string>
     <string name="sheet_activity_recordSheet_title_br">Ficha de Personagem</string>
     <string name="sheet_activity_recordSheet_name_br">Nome Completo</string>
+    <string name="sheet_activity_recordSheet_habilidadesTitulo">Habilidades</string>
+    <string name="sheet_activity_recordSheet_habilidadesNome">Nome</string>
+    <string name="sheet_activity_recordSheet_habilidadesValor">Valor Base</string>
+    <string name="sheet_activity_recordSheet_habilidadesModificador">Modificador</string>
+    <string name="sheet_activity_recordSheet_habilidadesForcaSigla">FOR</string>
+    <string name="sheet_activity_recordSheet_habilidadesForca">Força</string>
+    <string name="sheet_activity_recordSheet_habilidadesDestrezaSigla">DES</string>
+    <string name="sheet_activity_recordSheet_habilidadesDestreza">Destreza</string>
+    <string name="sheet_activity_recordSheet_habilidadesConstituicaoSigla">CON</string>
+    <string name="sheet_activity_recordSheet_habilidadesConstituicao">Constituição</string>
+    <string name="sheet_activity_recordSheet_habilidadesSabedoriaSigla">SAB</string>
+    <string name="sheet_activity_recordSheet_habilidadesSabedoria">Sabedoria</string>
+    <string name="sheet_activity_recordSheet_habilidadesInteligenciaSigla">INT</string>
+    <string name="sheet_activity_recordSheet_habilidadesInteligencia">Inteligência</string>
+    <string name="sheet_activity_recordSheet_habilidadesCarismaSigla">CAR</string>
+    <string name="sheet_activity_recordSheet_habilidadesCarisma">Carisma</string>
+    <string name="sheet_activity_recordSheet_resistenciasTitulo">Testes de Resistências</string>
+    <string name="sheet_activity_recordSheet_resistenciasNome">Nome</string>
+    <string name="sheet_activity_recordSheet_resistenciasTotal">Total</string>
+    <string name="sheet_activity_recordSheet_resistenciasBase">Base</string>
+    <string name="sheet_activity_recordSheet_resistenciasOutros">Outros</string>
+    <string name="sheet_activity_recordSheet_resistenciasFortitude">Fortitude</string>
+    <string name="sheet_activity_recordSheet_resistenciasReflexos">Reflexos</string>
+    <string name="sheet_activity_recordSheet_resistenciasVontade">Vontade</string>
     <string name="sheet_activity_recordSheet_age_br">Idade</string>
     <string name="sheet_activity_recordSheet_race_br">Raça</string>
     <string name="sheet_activity_recordSheet_pv_br">Vida</string>
@@ -80,9 +105,17 @@
     <string name="sheet_activity_battleInformationSheet_attacks_br">Ataques</string>
 
 
-    <string name="sheet_activity_specialProperties_title_br">Propriedades Especiais</string>
-    <string name="sheet_activity_specialProperties_qualidadesEspeciais_br">Qualidades Especiais</string>
-    <string name="sheet_activity_specialProperties_habilidadesEspeciais_br">Habilidades Especiais</string>
+    <string name="sheet_activity_magicInformationSheet_titulo">Informações de Magia</string>
+    <string name="sheet_activity_magicInformationSheet_testeDeResistencia">Teste de Resistência</string>
+    <string name="sheet_activity_magicInformationSheet_chanceDeFalhaArcana">Chance de Falha</string>
+    <string name="sheet_activity_magicInformationSheet_numeroDeMagiasPorDia">Número de Magias por Dia</string>
+    <string name="sheet_activity_magicInformationSheet_dominioEscola">Domínios/Escola Especializada</string>
+    <string name="sheet_activity_magicInformationSheet_magias">Magias Conhecidas</string>
+
+
+    <string name="sheet_activity_specialProperties_title">Propriedades Especiais</string>
+    <string name="sheet_activity_specialProperties_qualidadesEspeciais">Qualidades Especiais</string>
+    <string name="sheet_activity_specialProperties_habilidadesEspeciais">Habilidades Especiais</string>
 
 
     <!-- Textos Relativos ao Idioma American English (EN) -->
