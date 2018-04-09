@@ -10,6 +10,14 @@
     <string name="login_activity_username_textView_br">Nome de Usuário</string>
     <string name="login_activity_password_textView_br">Senha</string>
 
+    <string name="allRooms_activity_tabAllRooms_title">Todas as salas</string>
+    <string name="userRooms_activity_tabUserRooms_title">Suas salas</string>
+    <string name="userRooms_activity_btn_criarSala">criar sala</string>
+    <string name="room_activity_creation_nomeDaSala">Nome*</string>
+    <string name="room_activity_creation_senha">Senha</string>
+    <string name="room_activity_creation_btnCriar">Criar</string>
+    <string name="room_activity_creation_resumoDaHistoria">Historia</string>
+
     <string name="sheet_activity_recordSheet_tituloPrincipal">Ficha de Personagem</string>
     <string name="sheet_activity_recordSheet_title_br">Ficha de Personagem</string>
     <string name="sheet_activity_recordSheet_name_br">Nome Completo</string>
