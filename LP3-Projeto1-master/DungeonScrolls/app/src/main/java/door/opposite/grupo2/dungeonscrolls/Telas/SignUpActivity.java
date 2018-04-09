@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.widget.Toast;
 
 import door.opposite.grupo2.dungeonscrolls.R;
-import door.opposite.grupo2.dungeonscrolls.SQLite;
 import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
 import door.opposite.grupo2.dungeonscrolls.databinding.ActivitySignUpBinding;
+import door.opposite.grupo2.dungeonscrolls.model.SQLite;
 import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.UsuarioModel;
 

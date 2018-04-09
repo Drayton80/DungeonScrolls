@@ -1,4 +1,4 @@
-package door.opposite.grupo2.dungeonscrolls;
+package door.opposite.grupo2.dungeonscrolls.model;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import door.opposite.grupo2.dungeonscrolls.model.Ficha;
@@ -26,6 +27,9 @@ public class SQLite extends SQLiteOpenHelper{
     public static final  String T1_COL_2 = "NICK";
     public static final  String T1_COL_3 = "SENHA";
     public static final  String T1_COL_4 = "EMAIL";
+    public static final  String T1_COL_5 = "SALASID";
+    public static final  String T1_COL_6 = "FICHASID";
+
 
     public static final  String T2_TABLE_NAME = "sala_table";
     public static final  String T2_COL_1 = "ID";
@@ -34,6 +38,8 @@ public class SQLite extends SQLiteOpenHelper{
     public static final  String T2_COL_4 = "MESTRE";
     public static final  String T2_COL_5 = "HISTORIA";
     public static final  String T2_COL_6 = "IMAGEM";
+    public static final  String T2_COL_7 = "JOGADORESID";
+    public static final  String T2_COL_8 = "FICHASID";
 
 
     public static final  String T3_TABLE_NAME = "ficha_table";
@@ -112,8 +118,8 @@ public class SQLite extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
         // String SQL_String = "CREATE TABLE " + TABLE_NAME + "(" + COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_2 + " TEXT," + COL_3 + " TEXT," + COL_4 +"INTEGER"+ ")";
         //db.execSQL(SQL_String);
-        db.execSQL("CREATE TABLE " + T1_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NICK TEXT, SENHA TEXT, EMAIL TEXT)");
-        db.execSQL("CREATE TABLE " + T2_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NOME TEXT, SENHA TEXT, MESTRE TEXT, HISTORIA TEXT, IMAGEM BLOB)");
+        db.execSQL("CREATE TABLE " + T1_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NICK TEXT, SENHA TEXT, EMAIL TEXT, SALASID TEXT, FICHASID TEXT)");
+        db.execSQL("CREATE TABLE " + T2_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NOME TEXT, SENHA TEXT, MESTRE TEXT, HISTORIA TEXT, IMAGEM BLOB, JOGADORESID TEXT, FICHASID TEXT)");
         db.execSQL("CREATE TABLE " + T3_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NOMEPERSONAGEM TEXT, NOMEJOGADOR TEXT, CLASSENIVEL TEXT, RACA TEXT," +
                 " TENDENCIA TEXT, DIVINDADE TEXT, SEXO TEXT, TAMANHO TEXT, ALTURA REAL, PESO REAL, IDADE INTEGER, FORCA INTEGER, CONSTITUICAO INTEGER, DESTREZA INTEGER, " +
                 "INTELIGENCIA INTEGER, SABEDORIA INTEGER, CARISMA INTEGER, FORCAMOD INTEGER, CONSTITUICAOMOD INTEGER, DESTREZAMOD INTEGER, INTELIGENCIAMOD INTEGER, " +
@@ -141,6 +147,8 @@ public class SQLite extends SQLiteOpenHelper{
         contentValues.put(T1_COL_2, usuario.getNick());
         contentValues.put(T1_COL_3, usuario.getSenha());
         contentValues.put(T1_COL_4, usuario.getEmail());
+        contentValues.put(T1_COL_5, Arrays.toString(usuario.getSalasID()));
+        contentValues.put(T1_COL_6, Arrays.toString(usuario.getFichasID()));
 
         long result = db.insert(T1_TABLE_NAME, null, contentValues);
         if(result == -1){
@@ -163,6 +171,9 @@ public class SQLite extends SQLiteOpenHelper{
         contentValues.put(T1_COL_2, usuario.getNick());
         contentValues.put(T1_COL_3, usuario.getSenha());
         contentValues.put(T1_COL_4, usuario.getEmail());
+        contentValues.put(T1_COL_5, Arrays.toString(usuario.getSalasID()));
+        contentValues.put(T1_COL_6, Arrays.toString(usuario.getFichasID()));
+
         db.update(T1_TABLE_NAME, contentValues, "ID = ?", new String[]{String.valueOf(usuario.getID())});
         return true;
     }
@@ -179,7 +190,7 @@ public class SQLite extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(T1_TABLE_NAME, new String[]{T1_COL_1, T1_COL_2,
-                        T1_COL_3, T1_COL_4}, "ID = ?", new String[]{String.valueOf(ID)},
+                        T1_COL_3, T1_COL_4, T1_COL_5, T1_COL_6}, "ID = ?", new String[]{String.valueOf(ID)},
                 null, null, null,null);
 
         if(cursor != null){
@@ -187,6 +198,21 @@ public class SQLite extends SQLiteOpenHelper{
         }
 
         Usuario usuario = new Usuario(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3));
+        String[] idSalas = cursor.getString(4).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+        String[] idFichas = cursor.getString(5).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+        int[] results1 = new int[idSalas.length];
+        int[] results2 = new int[idFichas.length];
+
+        for (int i = 0; i < idSalas.length; i++){
+            results1[i] = Integer.parseInt(idSalas[i]);
+        }
+
+        for (int j = 0; j < idFichas.length; j++){
+            results2[j] = Integer.parseInt(idFichas[j]);
+        }
+
+        usuario.setSalasID(results1);
+        usuario.setFichasID(results2);
 
         return usuario;
     }
@@ -196,7 +222,7 @@ public class SQLite extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(T1_TABLE_NAME, new String[]{T1_COL_1, T1_COL_2,
-                        T1_COL_3, T1_COL_4}, "NICK = ?", new String[]{nick},
+                        T1_COL_3, T1_COL_4, T1_COL_5, T1_COL_6}, "NICK = ?", new String[]{nick},
                 null, null, null,null);
 
         if(cursor != null){
@@ -205,8 +231,31 @@ public class SQLite extends SQLiteOpenHelper{
         if (cursor == null){
             return null;
         }
-        //Da erro se não achar um dado igual ao procurado //Fui um falho e não consegui ajeitar
-        Usuario usuario =  selecionarUsuario(Integer.parseInt(cursor.getString(0)));//new Usuario(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3));
+
+        Usuario usuario = new Usuario(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3));
+        String[] idSalas = cursor.getString(4).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+        String[] idFichas = cursor.getString(5).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+        int[] results1 = new int[idSalas.length];
+        int[] results2 = new int[idFichas.length];
+
+        for (int i = 0; i < idSalas.length; i++){
+            try {
+                results1[i] = Integer.parseInt(idSalas[i]);
+            }catch(Exception e){
+
+            }
+        }
+
+        for (int j = 0; j < idFichas.length; j++){
+            try {
+                results2[j] = Integer.parseInt(idFichas[j]);
+            }catch(Exception e){
+
+            }
+        }
+
+        usuario.setSalasID(results1);
+        usuario.setFichasID(results2);
 
         return usuario;
     }
@@ -223,8 +272,31 @@ public class SQLite extends SQLiteOpenHelper{
 
         if(c.moveToFirst()){
             do{
-                Usuario usuario = new Usuario(Integer.valueOf(c.getString(0)), c.getString(1), c.getString(2), c.getString(3));
+                Usuario usuario = new Usuario(Integer.parseInt(c.getString(0)), c.getString(1), c.getString(2), c.getString(3));
+                String[] idSalas = c.getString(4).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+                String[] idFichas = c.getString(5).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+                int[] results1 = new int[idSalas.length];
+                int[] results2 = new int[idFichas.length];
 
+                for (int i = 0; i < idSalas.length; i++){
+
+                    try{
+                       results1[i] = Integer.parseInt(idSalas[i]);
+                    }catch(Exception e){
+
+                    }
+                }
+
+                for (int j = 0; j < idFichas.length; j++){
+                    try{
+                        results2[j] = Integer.parseInt(idFichas[j]);
+                    }catch(Exception e){
+
+                    }
+                }
+
+                usuario.setSalasID(results1);
+                usuario.setFichasID(results2);
                // carro.setPlaca(c.getString(1));
                // carro.setNome(c.getString(2));
                // carro.setAno(Integer.valueOf(c.getString(3)));
@@ -243,6 +315,8 @@ public class SQLite extends SQLiteOpenHelper{
         contentValues.put(T2_COL_4, sala.getMestre());
         contentValues.put(T2_COL_5, sala.getHistoria());
         contentValues.put(T2_COL_6, sala.getImagem());
+        contentValues.put(T2_COL_7, Arrays.toString(sala.getJogadoresID()));
+        contentValues.put(T2_COL_8, Arrays.toString(sala.getFichasID()));
 
         long result = db.insert(T2_TABLE_NAME, null, contentValues);
         if(result == -1){
@@ -267,6 +341,8 @@ public class SQLite extends SQLiteOpenHelper{
         contentValues.put(T2_COL_4, sala.getMestre());
         contentValues.put(T2_COL_5, sala.getHistoria());
         contentValues.put(T2_COL_6, sala.getImagem());
+        contentValues.put(T2_COL_7, Arrays.toString(sala.getJogadoresID()));
+        contentValues.put(T2_COL_8, Arrays.toString(sala.getFichasID()));
         db.update(T2_TABLE_NAME, contentValues, "ID = ?", new String[]{String.valueOf(sala.getID())});
         return true;
     }
@@ -283,7 +359,7 @@ public class SQLite extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(T2_TABLE_NAME, new String[]{T2_COL_1, T2_COL_2,
-                        T2_COL_3, T2_COL_4, T2_COL_5, T2_COL_6}, "ID = ?", new String[]{String.valueOf(ID)},
+                        T2_COL_3, T2_COL_4, T2_COL_5, T2_COL_6, T2_COL_7, T2_COL_8}, "ID = ?", new String[]{String.valueOf(ID)},
                 null, null, null,null);
 
         if(cursor != null){
@@ -293,6 +369,22 @@ public class SQLite extends SQLiteOpenHelper{
         Sala sala = new Sala(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
         byte[] img = cursor.getBlob(5);
         sala.setImagem(img);
+        String[] idJogadores = cursor.getString(6).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+        String[] idFichas = cursor.getString(7).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+        int[] results1 = new int[idJogadores.length];
+        int[] results2 = new int[idFichas.length];
+
+        for (int i = 0; i < idJogadores.length; i++){
+            results1[i] = Integer.parseInt(idJogadores[i]);
+        }
+
+        for (int j = 0; j < idFichas.length; j++){
+            results2[j] = Integer.parseInt(idFichas[j]);
+        }
+
+        sala.setJogadoresID(results1);
+        sala.setFichasID(results2);
+
         return sala;
     }
 
@@ -314,6 +406,30 @@ public class SQLite extends SQLiteOpenHelper{
         Sala sala = new Sala(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
         byte[] img = cursor.getBlob(5);
         sala.setImagem(img);
+        String[] idJogadores = cursor.getString(6).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+        String[] idFichas = cursor.getString(7).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+        int[] results1 = new int[idJogadores.length];
+        int[] results2 = new int[idFichas.length];
+
+        for (int i = 0; i < idJogadores.length; i++){
+            try{
+                results1[i] = Integer.parseInt(idJogadores[i]);
+             }catch(Exception e){
+
+             }
+        }
+
+        for (int j = 0; j < idFichas.length; j++){
+            try{
+                results2[j] = Integer.parseInt(idFichas[j]);
+            }catch(Exception e){
+
+            }
+        }
+
+        sala.setJogadoresID(results1);
+        sala.setFichasID(results2);
+
         return sala;
     }
 
@@ -332,10 +448,29 @@ public class SQLite extends SQLiteOpenHelper{
                 Sala sala = new Sala(Integer.valueOf(c.getString(0)), c.getString(1), c.getString(2), c.getString(3), c.getString(4));
                 byte[] img = c.getBlob(5);
                 sala.setImagem(img);
+                String[] idJogadores = c.getString(6).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+                String[] idFichas = c.getString(7).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+                int[] results1 = new int[idJogadores.length];
+                int[] results2 = new int[idFichas.length];
 
-                // carro.setPlaca(c.getString(1));
-                // carro.setNome(c.getString(2));
-                // carro.setAno(Integer.valueOf(c.getString(3)));
+                for (int i = 0; i < idJogadores.length; i++){
+                    try{
+                        results1[i] = Integer.parseInt(idJogadores[i]);
+                    }catch(Exception e){
+
+                    }
+                }
+
+                for (int j = 0; j < idFichas.length; j++){
+                    try{
+                        results2[j] = Integer.parseInt(idFichas[j]);
+                    }catch(Exception e){
+
+                    }
+                }
+
+                sala.setJogadoresID(results1);
+                sala.setFichasID(results2);
 
                 lista.add(sala);
             }while(c.moveToNext());

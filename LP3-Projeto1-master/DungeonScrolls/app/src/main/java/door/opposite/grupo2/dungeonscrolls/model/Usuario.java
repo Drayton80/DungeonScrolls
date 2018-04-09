@@ -1,10 +1,12 @@
 package door.opposite.grupo2.dungeonscrolls.model;
 
+import java.io.Serializable;
+
 /**
  * Created by ci on 02/04/18.
  */
 
-public class Usuario {
+public class Usuario implements Serializable{
     int ID;
     String nick;
     String senha;

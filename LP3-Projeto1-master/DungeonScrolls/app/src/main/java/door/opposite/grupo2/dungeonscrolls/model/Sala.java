@@ -1,10 +1,12 @@
 package door.opposite.grupo2.dungeonscrolls.model;
 
+import java.io.Serializable;
+
 /**
  * Created by ci on 02/04/18.
  */
 
-public class Sala {
+public class Sala implements Serializable{
 
     int ID;
     private String nome;
