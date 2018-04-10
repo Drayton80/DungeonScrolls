@@ -18,9 +18,10 @@
     <string name="room_activity_creation_btnCriar">Criar</string>
     <string name="room_activity_creation_resumoDaHistoria">Historia</string>
 
-    <string name="room_activity_creation_fichas">Suas Fichas</string>
-    <string name="room_activity_creation_resumoHistoria">Resumo da História</string>
-    <string name="room_activity_creation_anotacoes">Outras Anotações</string>
+    <string name="room_activity_fichas">Suas Fichas</string>
+    <string name="room_activity_resumoHistoria">Resumo da História</string>
+    <string name="room_activity_anotacoes">Outras Anotações</string>
+    <string name="room_activity_adicionar">Adicionar Ficha</string>
 
     <string name="sheet_activity_recordSheet_tituloPrincipal">Ficha de Personagem</string>
     <string name="sheet_activity_recordSheet_title_br">Ficha de Personagem</string>

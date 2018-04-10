@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/room_activity_creation_fichas"
+        android:text="@string/room_activity_fichas"
         android:textAlignment="center"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,7 +23,7 @@
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toTopOf="@+id/room_textView_expandir"
+        app:layout_constraintBottom_toTopOf="@+id/room_button_adicionar"
         app:layout_constraintEnd_toEndOf="@+id/room_textView_fichasTitulo"
         app:layout_constraintStart_toStartOf="@+id/room_textView_fichasTitulo"
         app:layout_constraintTop_toBottomOf="@+id/room_textView_fichasTitulo" />
@@ -35,7 +35,7 @@
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:text="@string/room_activity_creation_resumoHistoria"
+        android:text="@string/room_activity_resumoHistoria"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@+id/room_textView_fichasTitulo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -61,7 +61,7 @@
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         android:text="  "
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/room_button_adicionar"
         app:layout_constraintEnd_toEndOf="@+id/room_editText_resumo"
         app:layout_constraintStart_toStartOf="@+id/room_editText_resumo"
         app:layout_constraintTop_toTopOf="parent" />
@@ -72,7 +72,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
-        android:text="@string/room_activity_creation_anotacoes"
+        android:text="@string/room_activity_anotacoes"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/room_textView_fichasTitulo"
@@ -82,25 +82,22 @@
         android:id="@+id/room_editText_outrasAnotacoes"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="16dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textMultiLine"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/room_listView_fichas"
         app:layout_constraintEnd_toEndOf="@+id/room_textView_outrasAnotacoes"
         app:layout_constraintStart_toStartOf="@+id/room_textView_outrasAnotacoes"
         app:layout_constraintTop_toBottomOf="@+id/room_textView_outrasAnotacoes" />
 
-    <TextView
-        android:id="@+id/room_textView_expandir"
+    <Button
+        android:id="@+id/room_button_adicionar"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="@string/expandir"
-        android:textAlignment="center"
-        android:textColor="@color/colorExpandirText"
-        android:textSize="12sp"
+        android:text="@string/room_activity_adicionar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/room_listView_fichas"
+        app:layout_constraintEnd_toEndOf="@+id/room_editText_outrasAnotacoes"
         app:layout_constraintStart_toStartOf="@+id/room_listView_fichas" />
+
 </android.support.constraint.ConstraintLayout>
