@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/dialogFragmentSenha_button_cancelar"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/roomsMenu_dialogFragment_senha_cancelar"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/dialogFragmentSenha_whiteSpace"
+        app:layout_constraintEnd_toStartOf="@+id/dialogFragmentSenha_whiteSpace"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dialogFragmentSenha_whiteSpace" />
+
+    <TextView
+        android:id="@+id/dialogFragmentSenha_whiteSpace"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dialogFragmentSenha_editText_senha" />
+
+    <Button
+        android:id="@+id/dialogFragmentSenha_button_prosseguir"
+        android:layout_width="140dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="2dp"
+        android:text="@string/roomsMenu_dialogFragment_senha_prosseguir"
+        app:layout_constraintBottom_toBottomOf="@+id/dialogFragmentSenha_whiteSpace"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/dialogFragmentSenha_whiteSpace"
+        app:layout_constraintTop_toTopOf="@+id/dialogFragmentSenha_whiteSpace" />
+
+    <EditText
+        android:id="@+id/dialogFragmentSenha_editText_senha"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:ems="10"
+        android:hint="@string/roomsMenu_dialogFragment_senha_senhaDica"
+        android:inputType="textPersonName"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="@+id/dialogFragmentSenha_button_prosseguir"
+        app:layout_constraintStart_toStartOf="@+id/dialogFragmentSenha_button_cancelar"
+        app:layout_constraintTop_toTopOf="parent" />
+</android.support.constraint.ConstraintLayout>

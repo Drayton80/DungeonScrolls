@@ -23,6 +23,10 @@
     <string name="room_activity_anotacoes">Outras Anotações</string>
     <string name="room_activity_adicionar">Adicionar Ficha</string>
 
+    <string name="roomsMenu_dialogFragment_senha_senhaDica">Digite a senha da sala aqui</string>
+    <string name="roomsMenu_dialogFragment_senha_prosseguir">Prosseguir</string>
+    <string name="roomsMenu_dialogFragment_senha_cancelar">Cancelar</string>
+
     <string name="sheet_activity_recordSheet_tituloPrincipal">Ficha de Personagem</string>
     <string name="sheet_activity_recordSheet_title_br">Ficha de Personagem</string>
     <string name="sheet_activity_recordSheet_name_br">Nome Completo</string>
