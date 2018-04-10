@@ -15,7 +15,7 @@ public class Sala implements Serializable{
     int ID;
     private String nome;
     String senha;
-    String mestre;
+    int mestre;
     int[] jogadoresID;
     String historia;
     int[] FichasID;
@@ -23,7 +23,7 @@ public class Sala implements Serializable{
     Bitmap imagemTest;
 
 
-    public Sala(int ID, String nome, String senha, String mestre, String historia, byte[] imagem){
+    public Sala(int ID, String nome, String senha, int mestre, String historia, byte[] imagem){
         this.nome = nome;
         this.ID = ID;
         this.senha = senha;
@@ -32,7 +32,7 @@ public class Sala implements Serializable{
         this.imagem = imagem;
     }
 
-    public Sala(int ID, String nome, String senha, String mestre, String historia){
+    public Sala(int ID, String nome, String senha, int mestre, String historia){
         this.nome = nome;
         this.ID = ID;
         this.senha = senha;
@@ -40,7 +40,14 @@ public class Sala implements Serializable{
         this.historia = historia;
     }
 
-    public Sala(int ID, String senha, String mestre, int[] jogadoresID, String historia, int[] fichasID, byte[] imagem) {
+    public Sala( String nome, String senha, int mestre, String historia){
+        this.nome = nome;
+        this.senha = senha;
+        this.mestre = mestre;
+        this.historia = historia;
+    }
+
+    public Sala(int ID, String senha, int mestre, int[] jogadoresID, String historia, int[] fichasID, byte[] imagem) {
         this.nome = nome;
         this.ID = ID;
         this.senha = senha;
@@ -67,11 +74,11 @@ public class Sala implements Serializable{
         this.senha = senha;
     }
 
-    public String getMestre() {
+    public int getMestre() {
         return mestre;
     }
 
-    public void setMestre(String mestre) {
+    public void setMestre(int mestre) {
         this.mestre = mestre;
     }
 

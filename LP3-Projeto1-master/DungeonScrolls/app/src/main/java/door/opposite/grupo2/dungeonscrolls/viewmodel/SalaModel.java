@@ -19,7 +19,7 @@ public class SalaModel extends BaseObservable{
     public String nome;
     public int ID;
     public String senha;
-    public String mestre;
+    public int mestre;
     //public int[] jogadoresID;
     public String historia;
     //public int[] FichasID;
@@ -29,6 +29,10 @@ public class SalaModel extends BaseObservable{
 
 
     public SalaModel(){
+    }
+
+    public SalaModel(byte[] imagem){
+        this.imagem = imagem;
     }
 
     public SalaModel(Sala sala){
@@ -66,11 +70,11 @@ public class SalaModel extends BaseObservable{
         notifyPropertyChanged(R.id.roomPassword_plainText);
     }
 
-    public String getMestre() {
+    public int getMestre() {
         return mestre;
     }
 
-    public void setMestre(String mestre) {
+    public void setMestre(int mestre) {
         this.mestre = mestre;
     }
 

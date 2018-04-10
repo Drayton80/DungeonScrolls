@@ -6,6 +6,8 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import java.util.Arrays;
+
 import door.opposite.grupo2.dungeonscrolls.R;
 import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
 import door.opposite.grupo2.dungeonscrolls.databinding.ActivityLoginBinding;
@@ -38,6 +40,8 @@ public class LoginActivity extends Activity {
             public void onClickLogin() {
                 Usuario usuario1;
                 usuario1 = sqLite.selecionarUsuario(binding.getUsuariomodel().getNick());
+                System.out.println(usuario1.getID());
+                System.out.println(Arrays.toString(usuario1.getSalasID()));
                 System.out.println(usuario1.getSenha() + " ======================================================================================");
                 System.out.println(binding.getUsuariomodel().getSenha() + " ========================================================================================");
                 if (usuario1.getSenha().equals(binding.getUsuariomodel().getSenha())){

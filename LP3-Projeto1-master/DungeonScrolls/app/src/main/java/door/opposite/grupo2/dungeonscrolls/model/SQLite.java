@@ -119,7 +119,7 @@ public class SQLite extends SQLiteOpenHelper{
         // String SQL_String = "CREATE TABLE " + TABLE_NAME + "(" + COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_2 + " TEXT," + COL_3 + " TEXT," + COL_4 +"INTEGER"+ ")";
         //db.execSQL(SQL_String);
         db.execSQL("CREATE TABLE " + T1_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NICK TEXT, SENHA TEXT, EMAIL TEXT, SALASID TEXT, FICHASID TEXT)");
-        db.execSQL("CREATE TABLE " + T2_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NOME TEXT, SENHA TEXT, MESTRE TEXT, HISTORIA TEXT, IMAGEM BLOB, JOGADORESID TEXT, FICHASID TEXT)");
+        db.execSQL("CREATE TABLE " + T2_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NOME TEXT, SENHA TEXT, MESTRE INTEGER, HISTORIA TEXT, IMAGEM BLOB, JOGADORESID TEXT, FICHASID TEXT)");
         db.execSQL("CREATE TABLE " + T3_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NOMEPERSONAGEM TEXT, NOMEJOGADOR TEXT, CLASSENIVEL TEXT, RACA TEXT," +
                 " TENDENCIA TEXT, DIVINDADE TEXT, SEXO TEXT, TAMANHO TEXT, ALTURA REAL, PESO REAL, IDADE INTEGER, FORCA INTEGER, CONSTITUICAO INTEGER, DESTREZA INTEGER, " +
                 "INTELIGENCIA INTEGER, SABEDORIA INTEGER, CARISMA INTEGER, FORCAMOD INTEGER, CONSTITUICAOMOD INTEGER, DESTREZAMOD INTEGER, INTELIGENCIAMOD INTEGER, " +
@@ -366,7 +366,7 @@ public class SQLite extends SQLiteOpenHelper{
             cursor.moveToFirst();
         }
 
-        Sala sala = new Sala(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+        Sala sala = new Sala(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), Integer.parseInt(cursor.getString(3)), cursor.getString(4));
         byte[] img = cursor.getBlob(5);
         sala.setImagem(img);
         String[] idJogadores = cursor.getString(6).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
@@ -403,32 +403,35 @@ public class SQLite extends SQLiteOpenHelper{
             return null;
         }
         //Da erro se não achar um dado igual ao procurado //Fui um falho e não consegui ajeitar
-        Sala sala = new Sala(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
+        Sala sala = new Sala(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), Integer.parseInt(cursor.getString(3)), cursor.getString(4));
         byte[] img = cursor.getBlob(5);
         sala.setImagem(img);
-        String[] idJogadores = cursor.getString(6).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
-        String[] idFichas = cursor.getString(7).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
-        int[] results1 = new int[idJogadores.length];
-        int[] results2 = new int[idFichas.length];
+        try {
+            String[] idJogadores = cursor.getString(6).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+            String[] idFichas = cursor.getString(7).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+            int[] results1 = new int[idJogadores.length];
+            int[] results2 = new int[idFichas.length];
+            for (int i = 0; i < idJogadores.length; i++) {
+                try {
+                    results1[i] = Integer.parseInt(idJogadores[i]);
+                } catch (Exception e) {
 
-        for (int i = 0; i < idJogadores.length; i++){
-            try{
-                results1[i] = Integer.parseInt(idJogadores[i]);
-             }catch(Exception e){
-
-             }
-        }
-
-        for (int j = 0; j < idFichas.length; j++){
-            try{
-                results2[j] = Integer.parseInt(idFichas[j]);
-            }catch(Exception e){
-
+                }
             }
-        }
 
-        sala.setJogadoresID(results1);
-        sala.setFichasID(results2);
+            for (int j = 0; j < idFichas.length; j++) {
+                try {
+                    results2[j] = Integer.parseInt(idFichas[j]);
+                } catch (Exception e) {
+
+                }
+            }
+
+            sala.setJogadoresID(results1);
+            sala.setFichasID(results2);
+        }catch (Exception e){
+
+        }
 
         return sala;
     }
@@ -445,7 +448,7 @@ public class SQLite extends SQLiteOpenHelper{
 
         if(c.moveToFirst()){
             do{
-                Sala sala = new Sala(Integer.valueOf(c.getString(0)), c.getString(1), c.getString(2), c.getString(3), c.getString(4));
+                Sala sala = new Sala(Integer.valueOf(c.getString(0)), c.getString(1), c.getString(2), Integer.parseInt(c.getString(3)), c.getString(4));
                 byte[] img = c.getBlob(5);
                 sala.setImagem(img);
                 String[] idJogadores = c.getString(6).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
