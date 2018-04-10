@@ -1,6 +1,8 @@
 package door.opposite.grupo2.dungeonscrolls.viewmodel;
 
 import android.databinding.BaseObservable;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import door.opposite.grupo2.dungeonscrolls.model.Ficha;
 
@@ -73,6 +75,8 @@ public class FichaModel extends BaseObservable{
     public String carctClasse;
     public String talentos;
     public String magias;
+    public byte[] imagem;
+    Bitmap imagemTest;
     
     //Pericias pericias;
 
@@ -141,6 +145,7 @@ public class FichaModel extends BaseObservable{
         this.carctClasse = ficha.getCarctClasse();
         this.talentos = ficha.getTalentos();
         this.magias = ficha.getMagias();
+        this.imagem = ficha.getImagem();
     }
 
     //Métodos Getter and Setter
@@ -646,5 +651,30 @@ public class FichaModel extends BaseObservable{
 
     public void setMagias(String magias) {
         this.magias = magias;
+    }
+
+    public byte[] getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(byte[] imagem) {
+        this.imagem = imagem;
+    }
+
+    public Bitmap getBitmap() {
+        if(imagem == null){
+            return null;
+        }
+        // Cria o Bitmap necess�rio para exibir no ImageView
+        Bitmap bitmap = BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
+        return bitmap;
+    }
+
+    public Bitmap getImagemTest() {
+        return imagemTest;
+    }
+
+    public void setImagemTest(Bitmap imagemTest) {
+        this.imagemTest = imagemTest;
     }
 }

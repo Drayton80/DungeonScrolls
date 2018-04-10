@@ -56,4 +56,6 @@ public class UsuarioModel extends BaseObservable{
     }
 
 
+
+
 }

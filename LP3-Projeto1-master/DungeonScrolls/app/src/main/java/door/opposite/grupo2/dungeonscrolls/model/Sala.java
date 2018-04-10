@@ -1,5 +1,9 @@
 package door.opposite.grupo2.dungeonscrolls.model;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
+
 import java.io.Serializable;
 
 /**
@@ -16,6 +20,8 @@ public class Sala implements Serializable{
     String historia;
     int[] FichasID;
     byte[] imagem;
+    Bitmap imagemTest;
+
 
     public Sala(int ID, String nome, String senha, String mestre, String historia, byte[] imagem){
         this.nome = nome;
@@ -109,4 +115,20 @@ public class Sala implements Serializable{
         this.nome = nome;
     }
 
+    public Bitmap getBitmap() {
+        if(imagem == null){
+            return null;
+        }
+        // Cria o Bitmap necess�rio para exibir no ImageView
+        Bitmap bitmap = BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
+        return bitmap;
+    }
+
+    public Bitmap getImagemTest() {
+        return imagemTest;
+    }
+
+    public void setImagemTest(Bitmap imagemTest) {
+        this.imagemTest = imagemTest;
+    }
 }

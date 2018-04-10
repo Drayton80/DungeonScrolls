@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout >
+
+    <data>
+        <variable
+            name="cadevent"
+            type="door.opposite.grupo2.dungeonscrolls.commands.Eventos"/>
+
+        <variable
+            name="salamodel"
+            type="door.opposite.grupo2.dungeonscrolls.viewmodel.SalaModel"/>
+
+
+    </data>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -18,7 +33,7 @@
             <TextView
                 android:id="@+id/roomName_textView"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="20dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
@@ -38,6 +53,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:textSize="16sp"
+                android:text="@={salamodel.nome}"
                 app:layout_constraintEnd_toEndOf="@+id/roomName_textView"
                 app:layout_constraintStart_toStartOf="@+id/roomName_textView"
                 app:layout_constraintTop_toTopOf="@+id/roomName_textView" />
@@ -60,6 +76,7 @@
                 android:layout_marginTop="16dp"
                 android:ems="10"
                 android:inputType="textPassword"
+                android:text="@={salamodel.senha}"
                 app:layout_constraintEnd_toEndOf="@+id/roomPassword_textView"
                 app:layout_constraintStart_toStartOf="@+id/roomPassword_textView"
                 app:layout_constraintTop_toTopOf="@+id/roomPassword_textView" />
@@ -82,6 +99,7 @@
                 android:layout_marginTop="16dp"
                 android:ems="10"
                 android:inputType="textPassword"
+                android:text="@={salamodel.historia}"
                 app:layout_constraintEnd_toEndOf="@+id/history_TextView"
                 app:layout_constraintStart_toStartOf="@+id/history_TextView"
                 app:layout_constraintTop_toTopOf="@+id/history_TextView"/>
@@ -92,6 +110,7 @@
                 android:layout_width="89dp"
                 android:layout_height="85dp"
                 android:layout_marginTop="36dp"
+                android:onClick="@{(v)->cadevent.onClickLogin()}"
                 android:text="Imagem"
                 app:layout_constraintEnd_toEndOf="@+id/history_plainText"
                 app:layout_constraintHorizontal_bias="0.211"
@@ -122,6 +141,7 @@
                 android:layout_marginTop="8dp"
                 android:text="@string/room_activity_creation_btnCriar"
                 app:layout_constraintBottom_toBottomOf="@+id/btn_imagem"
+                android:onClick="@{(v)->cadevent.onClickCad()}"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/sala_imageView"
                 app:layout_constraintTop_toTopOf="@+id/btn_imagem" />
@@ -133,3 +153,4 @@
     </ScrollView>
 
 </android.support.constraint.ConstraintLayout>
+</layout>
