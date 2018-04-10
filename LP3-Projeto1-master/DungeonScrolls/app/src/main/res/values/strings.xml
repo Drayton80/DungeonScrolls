@@ -18,6 +18,10 @@
     <string name="room_activity_creation_btnCriar">Criar</string>
     <string name="room_activity_creation_resumoDaHistoria">Historia</string>
 
+    <string name="room_activity_creation_fichas">Suas Fichas</string>
+    <string name="room_activity_creation_resumoHistoria">Resumo da História</string>
+    <string name="room_activity_creation_anotacoes">Outras Anotações</string>
+
     <string name="sheet_activity_recordSheet_tituloPrincipal">Ficha de Personagem</string>
     <string name="sheet_activity_recordSheet_title_br">Ficha de Personagem</string>
     <string name="sheet_activity_recordSheet_name_br">Nome Completo</string>
@@ -135,6 +139,8 @@
     <!-- Textos Gerais -->
     <string name="choose_language_english">American English</string>
     <string name="choose_language_portuguese">Português Brasileiro</string>
+
+    <string name="expandir">Expandir</string>
 
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_main2">Main2Activity</string>

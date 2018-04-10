@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="door.opposite.grupo2.dungeonscrolls.Telas.RoomActivity">
+
+    <TextView
+        android:id="@+id/room_textView_fichasTitulo"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/room_activity_creation_fichas"
+        android:textAlignment="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ListView
+        android:id="@+id/room_listView_fichas"
+        android:layout_width="119dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/room_textView_expandir"
+        app:layout_constraintEnd_toEndOf="@+id/room_textView_fichasTitulo"
+        app:layout_constraintStart_toStartOf="@+id/room_textView_fichasTitulo"
+        app:layout_constraintTop_toBottomOf="@+id/room_textView_fichasTitulo" />
+
+    <TextView
+        android:id="@+id/room_textView_resumo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/room_activity_creation_resumoHistoria"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@+id/room_textView_fichasTitulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/room_textView_fichasTitulo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/room_editText_resumo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toTopOf="@+id/white_space"
+        app:layout_constraintEnd_toEndOf="@+id/room_textView_resumo"
+        app:layout_constraintStart_toStartOf="@+id/room_textView_resumo"
+        app:layout_constraintTop_toBottomOf="@+id/room_textView_resumo" />
+
+    <TextView
+        android:id="@+id/white_space"
+        android:layout_width="wrap_content"
+        android:layout_height="16dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:text="  "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/room_editText_resumo"
+        app:layout_constraintStart_toStartOf="@+id/room_editText_resumo"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/room_textView_outrasAnotacoes"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/room_activity_creation_anotacoes"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/room_textView_fichasTitulo"
+        app:layout_constraintTop_toBottomOf="@+id/white_space" />
+
+    <EditText
+        android:id="@+id/room_editText_outrasAnotacoes"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/room_textView_outrasAnotacoes"
+        app:layout_constraintStart_toStartOf="@+id/room_textView_outrasAnotacoes"
+        app:layout_constraintTop_toBottomOf="@+id/room_textView_outrasAnotacoes" />
+
+    <TextView
+        android:id="@+id/room_textView_expandir"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/expandir"
+        android:textAlignment="center"
+        android:textColor="@color/colorExpandirText"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/room_listView_fichas"
+        app:layout_constraintStart_toStartOf="@+id/room_listView_fichas" />
+</android.support.constraint.ConstraintLayout>

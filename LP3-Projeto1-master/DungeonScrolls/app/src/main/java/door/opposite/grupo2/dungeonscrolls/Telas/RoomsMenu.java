@@ -17,7 +17,7 @@ public class RoomsMenu extends TabActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rooms_menu);
 
-        TabHost host = (TabHost) findViewById(android.R.id.tabhost);
+        TabHost host = (TabHost) findViewById(R.id.rooms_tabHost);
 
         // Nota: getResources().getString() é usado pois os parametros de saída do R.string.* são números
         //       que referenciam as palavras no XML string

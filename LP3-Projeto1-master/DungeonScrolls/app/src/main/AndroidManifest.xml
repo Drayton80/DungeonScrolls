@@ -31,6 +31,7 @@
         <activity android:name=".Telas.RoomsMenu" />
         <activity android:name=".Telas.AllRooms" />
         <activity android:name=".Telas.UserRooms" />
+        <activity android:name=".Telas.RoomActivity"></activity>
     </application>
 
 </manifest>
