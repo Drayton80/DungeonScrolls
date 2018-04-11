@@ -19,6 +19,8 @@ public class RoomActivity extends AppCompatActivity {
         ListView listViewFichas = (ListView) findViewById(R.id.room_listView_fichas);
         ArrayAdapter adapter = new RoomListViewFichaAdapter(this, adicionaFichas());
         listViewFichas.setAdapter(adapter);
+
+        //listViewFichas.setOnItemSelectedListener();
     }
 
     // Método que efetivamente adiciona as fichas ao ListView:
