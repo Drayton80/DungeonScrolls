@@ -40,6 +40,7 @@ public class RoomCreationActivity extends AppCompatActivity {
 
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
+        extra = new Intent(this, UserRooms.class);
 
         binding.setCadevent(new Eventos() {
             @Override
@@ -60,6 +61,8 @@ public class RoomCreationActivity extends AppCompatActivity {
                 sqLite.updateDataUsuario(usuarioLogado);
                 if(foiInserido == true){
                     Toast.makeText(RoomCreationActivity.this, "Salvo", Toast.LENGTH_LONG).show();
+                    extra.putExtra("usuarioLogado", usuarioLogado);
+                    startActivity(extra);
                 }else{
                     Toast.makeText(RoomCreationActivity.this, "Não Salvo", Toast.LENGTH_LONG).show();
                 }

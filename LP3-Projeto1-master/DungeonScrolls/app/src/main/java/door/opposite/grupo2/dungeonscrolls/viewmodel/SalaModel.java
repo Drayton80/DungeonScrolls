@@ -8,7 +8,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+
 import door.opposite.grupo2.dungeonscrolls.R;
+import door.opposite.grupo2.dungeonscrolls.model.SQLite;
 import door.opposite.grupo2.dungeonscrolls.model.Sala;
 
 /**
@@ -114,5 +117,21 @@ public class SalaModel extends BaseObservable{
 
     }
 
+    public ArrayList<SalaModel> getArrayListSala(int[] salasID, SQLite sqLite){
+
+        ArrayList<SalaModel> salaModelArrayList = new ArrayList<>();
+
+        for (int i = 0; i < salasID.length; i++){
+            if(salasID[i] == 0){}
+            else {
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + i);
+                SalaModel salaModel = new SalaModel(sqLite.selecionarSala(salasID[i]));
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + salaModel.getNome());
+                salaModelArrayList.add(salaModel);
+            }
+        }
+
+        return salaModelArrayList;
+    }
 
 }

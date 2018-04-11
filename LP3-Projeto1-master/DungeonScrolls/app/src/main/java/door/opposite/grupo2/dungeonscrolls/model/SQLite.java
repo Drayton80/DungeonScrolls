@@ -375,11 +375,15 @@ public class SQLite extends SQLiteOpenHelper{
         int[] results2 = new int[idFichas.length];
 
         for (int i = 0; i < idJogadores.length; i++){
-            results1[i] = Integer.parseInt(idJogadores[i]);
+            try {
+                results1[i] = Integer.parseInt(idJogadores[i]);
+            }catch (Exception e){}
         }
 
         for (int j = 0; j < idFichas.length; j++){
-            results2[j] = Integer.parseInt(idFichas[j]);
+            try{
+                results2[j] = Integer.parseInt(idFichas[j]);
+                }catch (Exception e){}
         }
 
         sala.setJogadoresID(results1);
