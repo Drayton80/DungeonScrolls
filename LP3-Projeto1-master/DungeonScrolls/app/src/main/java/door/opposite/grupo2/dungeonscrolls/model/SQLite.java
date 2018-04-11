@@ -40,6 +40,7 @@ public class SQLite extends SQLiteOpenHelper{
     public static final  String T2_COL_6 = "IMAGEM";
     public static final  String T2_COL_7 = "JOGADORESID";
     public static final  String T2_COL_8 = "FICHASID";
+    public static final  String T2_COL_9 = "NOMEMESTRE";
 
 
     public static final  String T3_TABLE_NAME = "ficha_table";
@@ -119,7 +120,7 @@ public class SQLite extends SQLiteOpenHelper{
         // String SQL_String = "CREATE TABLE " + TABLE_NAME + "(" + COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_2 + " TEXT," + COL_3 + " TEXT," + COL_4 +"INTEGER"+ ")";
         //db.execSQL(SQL_String);
         db.execSQL("CREATE TABLE " + T1_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NICK TEXT, SENHA TEXT, EMAIL TEXT, SALASID TEXT, FICHASID TEXT)");
-        db.execSQL("CREATE TABLE " + T2_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NOME TEXT, SENHA TEXT, MESTRE INTEGER, HISTORIA TEXT, IMAGEM BLOB, JOGADORESID TEXT, FICHASID TEXT)");
+        db.execSQL("CREATE TABLE " + T2_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NOME TEXT, SENHA TEXT, MESTRE INTEGER, HISTORIA TEXT, IMAGEM BLOB, JOGADORESID TEXT, FICHASID TEXT, NOMEMESTRE TEXT)");
         db.execSQL("CREATE TABLE " + T3_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NOMEPERSONAGEM TEXT, NOMEJOGADOR TEXT, CLASSENIVEL TEXT, RACA TEXT," +
                 " TENDENCIA TEXT, DIVINDADE TEXT, SEXO TEXT, TAMANHO TEXT, ALTURA REAL, PESO REAL, IDADE INTEGER, FORCA INTEGER, CONSTITUICAO INTEGER, DESTREZA INTEGER, " +
                 "INTELIGENCIA INTEGER, SABEDORIA INTEGER, CARISMA INTEGER, FORCAMOD INTEGER, CONSTITUICAOMOD INTEGER, DESTREZAMOD INTEGER, INTELIGENCIAMOD INTEGER, " +
@@ -317,6 +318,7 @@ public class SQLite extends SQLiteOpenHelper{
         contentValues.put(T2_COL_6, sala.getImagem());
         contentValues.put(T2_COL_7, Arrays.toString(sala.getJogadoresID()));
         contentValues.put(T2_COL_8, Arrays.toString(sala.getFichasID()));
+        contentValues.put(T2_COL_9, sala.getNomeMestre());
 
         long result = db.insert(T2_TABLE_NAME, null, contentValues);
         if(result == -1){
@@ -343,6 +345,7 @@ public class SQLite extends SQLiteOpenHelper{
         contentValues.put(T2_COL_6, sala.getImagem());
         contentValues.put(T2_COL_7, Arrays.toString(sala.getJogadoresID()));
         contentValues.put(T2_COL_8, Arrays.toString(sala.getFichasID()));
+        contentValues.put(T2_COL_9, sala.getNomeMestre());
         db.update(T2_TABLE_NAME, contentValues, "ID = ?", new String[]{String.valueOf(sala.getID())});
         return true;
     }
@@ -359,14 +362,14 @@ public class SQLite extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(T2_TABLE_NAME, new String[]{T2_COL_1, T2_COL_2,
-                        T2_COL_3, T2_COL_4, T2_COL_5, T2_COL_6, T2_COL_7, T2_COL_8}, "ID = ?", new String[]{String.valueOf(ID)},
+                        T2_COL_3, T2_COL_4, T2_COL_5, T2_COL_6, T2_COL_7, T2_COL_8, T2_COL_9}, "ID = ?", new String[]{String.valueOf(ID)},
                 null, null, null,null);
 
         if(cursor != null){
             cursor.moveToFirst();
         }
 
-        Sala sala = new Sala(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), Integer.parseInt(cursor.getString(3)), cursor.getString(4));
+        Sala sala = new Sala(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), Integer.parseInt(cursor.getString(3)), cursor.getString(4), cursor.getString(8));
         byte[] img = cursor.getBlob(5);
         sala.setImagem(img);
         String[] idJogadores = cursor.getString(6).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
@@ -397,7 +400,7 @@ public class SQLite extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(T2_TABLE_NAME, new String[]{T2_COL_1, T2_COL_2,
-                        T2_COL_3, T2_COL_4, T2_COL_5, T2_COL_6}, "NOME = ?", new String[]{nome},
+                        T2_COL_3, T2_COL_4, T2_COL_5, T2_COL_6, T2_COL_7, T2_COL_8, T2_COL_9}, "NOME = ?", new String[]{nome},
                 null, null, null,null);
 
         if(cursor != null){
@@ -407,7 +410,7 @@ public class SQLite extends SQLiteOpenHelper{
             return null;
         }
         //Da erro se não achar um dado igual ao procurado //Fui um falho e não consegui ajeitar
-        Sala sala = new Sala(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), Integer.parseInt(cursor.getString(3)), cursor.getString(4));
+        Sala sala = new Sala(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), Integer.parseInt(cursor.getString(3)), cursor.getString(4), cursor.getString(8));
         byte[] img = cursor.getBlob(5);
         sala.setImagem(img);
         try {
@@ -452,7 +455,7 @@ public class SQLite extends SQLiteOpenHelper{
 
         if(c.moveToFirst()){
             do{
-                Sala sala = new Sala(Integer.valueOf(c.getString(0)), c.getString(1), c.getString(2), Integer.parseInt(c.getString(3)), c.getString(4));
+                Sala sala = new Sala(Integer.valueOf(c.getString(0)), c.getString(1), c.getString(2), Integer.parseInt(c.getString(3)), c.getString(4), c.getString(8));
                 byte[] img = c.getBlob(5);
                 sala.setImagem(img);
                 String[] idJogadores = c.getString(6).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");

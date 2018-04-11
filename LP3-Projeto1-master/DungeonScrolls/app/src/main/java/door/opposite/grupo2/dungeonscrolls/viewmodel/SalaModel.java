@@ -28,6 +28,7 @@ public class SalaModel extends BaseObservable{
     //public int[] FichasID;
     public byte[] imagem;
     Bitmap imagemTest;
+    String nomeMestre;
 
 
 
@@ -44,6 +45,7 @@ public class SalaModel extends BaseObservable{
         this.senha = sala.getSenha();
         this.historia = sala.getHistoria();
         this.imagem = sala.getImagem();
+        this.nomeMestre = sala.getNomeMestre();
     }
 
     public String getNome() {
@@ -134,4 +136,11 @@ public class SalaModel extends BaseObservable{
         return salaModelArrayList;
     }
 
+    public String getNomeMestre() {
+        return nomeMestre;
+    }
+
+    public void setNomeMestre(String nomeMestre) {
+        this.nomeMestre = nomeMestre;
+    }
 }

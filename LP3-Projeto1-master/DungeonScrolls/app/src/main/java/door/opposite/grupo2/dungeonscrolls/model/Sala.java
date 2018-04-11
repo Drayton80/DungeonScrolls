@@ -21,33 +21,37 @@ public class Sala implements Serializable{
     int[] FichasID;
     byte[] imagem;
     Bitmap imagemTest;
+    String nomeMestre;
 
 
-    public Sala(int ID, String nome, String senha, int mestre, String historia, byte[] imagem){
+    public Sala(int ID, String nome, String senha, int mestre, String historia, byte[] imagem, String nomeMestre){
         this.nome = nome;
         this.ID = ID;
         this.senha = senha;
         this.mestre = mestre;
         this.historia = historia;
         this.imagem = imagem;
+        this.nomeMestre = nomeMestre;
     }
 
-    public Sala(int ID, String nome, String senha, int mestre, String historia){
+    public Sala(int ID, String nome, String senha, int mestre, String historia, String nomeMestre){
         this.nome = nome;
         this.ID = ID;
         this.senha = senha;
         this.mestre = mestre;
         this.historia = historia;
+        this.nomeMestre = nomeMestre;
     }
 
-    public Sala( String nome, String senha, int mestre, String historia){
+    public Sala( String nome, String senha, int mestre, String historia, String nomeMestre){
         this.nome = nome;
         this.senha = senha;
         this.mestre = mestre;
         this.historia = historia;
+        this.nomeMestre = nomeMestre;
     }
 
-    public Sala(int ID, String senha, int mestre, int[] jogadoresID, String historia, int[] fichasID, byte[] imagem) {
+    public Sala(int ID, String senha, int mestre, int[] jogadoresID, String historia, int[] fichasID, byte[] imagem, String nomeMestre) {
         this.nome = nome;
         this.ID = ID;
         this.senha = senha;
@@ -56,6 +60,7 @@ public class Sala implements Serializable{
         this.historia = historia;
         FichasID = fichasID;
         this.imagem = imagem;
+        this.nomeMestre = nomeMestre;
     }
 
     public int getID() {
@@ -137,5 +142,13 @@ public class Sala implements Serializable{
 
     public void setImagemTest(Bitmap imagemTest) {
         this.imagemTest = imagemTest;
+    }
+
+    public String getNomeMestre() {
+        return nomeMestre;
+    }
+
+    public void setNomeMestre(String nomeMestre) {
+        this.nomeMestre = nomeMestre;
     }
 }

@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.util.Arrays;
 
 import door.opposite.grupo2.dungeonscrolls.R;
 import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
@@ -47,7 +48,7 @@ public class RoomCreationActivity extends AppCompatActivity {
             public void onClickCad() {
                 boolean foiInserido = false;
                 Sala sala = new Sala(binding.getSalamodel().getNome(),binding.getSalamodel().getSenha(), usuarioLogado.getID(),
-                        binding.getSalamodel().getHistoria());
+                        binding.getSalamodel().getHistoria(), usuarioLogado.getNick());
                 if (byteArray != null) {
                     sala.setImagem(byteArray);
                 }
@@ -56,8 +57,12 @@ public class RoomCreationActivity extends AppCompatActivity {
                 sala1 = sqLite.selecionarSala(binding.getSalamodel().getNome());
                 int[] aux = new int[usuarioLogado.getSalasID().length +1];
 
+                for (int i = 0; i < usuarioLogado.getSalasID().length; i++){
+                    aux[i] = usuarioLogado.getSalasID()[i];
+                }
                 aux[usuarioLogado.getSalasID().length] = sala1.getID();
                 usuarioLogado.setSalasID(aux);
+                
                 sqLite.updateDataUsuario(usuarioLogado);
                 if(foiInserido == true){
                     Toast.makeText(RoomCreationActivity.this, "Salvo", Toast.LENGTH_LONG).show();
