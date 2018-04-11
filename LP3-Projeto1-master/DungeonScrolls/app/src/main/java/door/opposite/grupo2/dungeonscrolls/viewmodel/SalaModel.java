@@ -119,6 +119,14 @@ public class SalaModel extends BaseObservable{
 
     }
 
+    public String getNomeMestre() {
+        return nomeMestre;
+    }
+
+    public void setNomeMestre(String nomeMestre) {
+        this.nomeMestre = nomeMestre;
+    }
+
     public ArrayList<SalaModel> getArrayListSala(int[] salasID, SQLite sqLite){
 
         ArrayList<SalaModel> salaModelArrayList = new ArrayList<>();
@@ -136,11 +144,5 @@ public class SalaModel extends BaseObservable{
         return salaModelArrayList;
     }
 
-    public String getNomeMestre() {
-        return nomeMestre;
-    }
 
-    public void setNomeMestre(String nomeMestre) {
-        this.nomeMestre = nomeMestre;
-    }
 }

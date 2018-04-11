@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="itemSalaCompleta"
+            type="door.opposite.grupo2.dungeonscrolls.viewmodel.SalaModel"/>
+        <variable
+            name="adicionaFicha"
+            type="door.opposite.grupo2.dungeonscrolls.commands.Eventos"/>
+        <variable
+            name="changeText"
+            type="door.opposite.grupo2.dungeonscrolls.commands.Eventos"/>
+    </data>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -48,6 +60,8 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:text="@{itemSalaCompleta.historia}"
+        android:onTextChanged="@={itemSalaCompleta.historia}"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toTopOf="@+id/white_space"
         app:layout_constraintEnd_toEndOf="@+id/room_textView_resumo"
@@ -98,6 +112,8 @@
         android:text="@string/room_activity_adicionar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/room_editText_outrasAnotacoes"
-        app:layout_constraintStart_toStartOf="@+id/room_listView_fichas" />
+        app:layout_constraintStart_toStartOf="@+id/room_listView_fichas"
+        android:onClick="@{()-> adicionaFicha.onClickCad()}"/>
 
 </android.support.constraint.ConstraintLayout>
+</layout>

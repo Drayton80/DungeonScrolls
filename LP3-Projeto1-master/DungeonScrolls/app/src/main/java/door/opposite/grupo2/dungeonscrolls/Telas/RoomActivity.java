@@ -1,20 +1,77 @@
 package door.opposite.grupo2.dungeonscrolls.Telas;
 
+import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import door.opposite.grupo2.dungeonscrolls.R;
+import door.opposite.grupo2.dungeonscrolls.adapter.FichaAdapter;
+import door.opposite.grupo2.dungeonscrolls.adapter.SalaAdapter;
+import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
+import door.opposite.grupo2.dungeonscrolls.databinding.ActivityRoomBinding;
+import door.opposite.grupo2.dungeonscrolls.model.SQLite;
+import door.opposite.grupo2.dungeonscrolls.model.Sala;
+import door.opposite.grupo2.dungeonscrolls.model.Usuario;
+import door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel;
+import door.opposite.grupo2.dungeonscrolls.viewmodel.SalaModel;
 
 public class RoomActivity extends AppCompatActivity {
+    ActivityRoomBinding binding;
+    SQLite sqLite;
+    Intent extra;
+    Usuario usuarioLogado;
+    Sala salaUsada;
+    SalaModel salaModel;
+    FichaModel fichaModel;
+    ArrayList<FichaModel> fichaModelArrayList;
+    FichaAdapter fichaAdapter;
+    int[] fichasID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_room);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_room);
+
+        extra = getIntent();
+        usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
+        salaUsada = (Sala) extra.getSerializableExtra("salaUsada");
+
+        binding.setItemSalaCompleta(new SalaModel(salaUsada));
+
+        fichasID = usuarioLogado.getFichasID();
+        fichaModel = new FichaModel();
+        fichaModelArrayList = fichaModel.getArrayListaFicha(usuarioLogado.getFichasID(), sqLite);
+        fichaAdapter = new FichaAdapter(this, fichaModelArrayList);
+        binding.roomListViewFichas.setAdapter(fichaAdapter);
+
+
+        binding.roomEditTextResumo.addTextChangedListener(new TextWatcher(){
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                salaUsada.setHistoria(binding.getItemSalaCompleta().historia);
+                System.out.println("==============Texto: " + binding.roomEditTextResumo.getText().toString());
+                sqLite.updateDataSala(salaUsada);
+            }
+        });
+
+
 
         ListView listViewFichas = (ListView) findViewById(R.id.room_listView_fichas);
         ArrayAdapter adapter = new RoomListViewFichaAdapter(this, adicionaFichas());
@@ -42,4 +99,5 @@ public class RoomActivity extends AppCompatActivity {
         // Retorna a lista toda já montada com cada elemento:
         return listaDeFichas;
     }
+
 }

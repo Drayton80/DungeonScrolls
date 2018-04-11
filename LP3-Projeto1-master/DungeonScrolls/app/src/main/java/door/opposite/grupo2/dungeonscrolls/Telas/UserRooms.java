@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -27,7 +29,7 @@ public class UserRooms extends AppCompatActivity {
     ArrayList<SalaModel> salaModelArrayList;
     SalaAdapter salaAdapter;
     int[] salasID;
-    Sala salaUsuario;
+    Sala salaUsada;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,10 +47,25 @@ public class UserRooms extends AppCompatActivity {
         salaAdapter = new SalaAdapter(this, salaModelArrayList);
         binding.lvUserRooms.setAdapter(salaAdapter);
 
-
-        //ListView lista = (ListView) findViewById(R.id.lvUserRooms);
-        //ArrayAdapter adapter = new RoomAdapter(this, addRooms());
-        //lista.setAdapter(adapter);
+        binding.lvUserRooms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                int salaPosicao = position;
+                for(int i = 0; i < usuarioLogado.getSalasID().length; i++){
+                    if(i == salaPosicao){
+                        if (salasID[i+1] == 0){
+                         }else{
+                           // System.out.println("=================Entrou aqui, eu achei a sala!");
+                            salaUsada = sqLite.selecionarSala(salasID[i+1]);
+                            extra = new Intent(UserRooms.this, RoomActivity.class);
+                            extra.putExtra("usuarioLogado", usuarioLogado);
+                            extra.putExtra("salaUsada", salaUsada);
+                            startActivity(extra);
+                        }
+                    }
+                }
+            }
+        });
 
         binding.setCriaSala(new Eventos() {
             @Override
