@@ -22,7 +22,7 @@ public class Sala implements Serializable{
     byte[] imagem;
     Bitmap imagemTest;
     String nomeMestre;
-
+    String notas;
 
     public Sala(int ID, String nome, String senha, int mestre, String historia, byte[] imagem, String nomeMestre){
         this.nome = nome;
@@ -150,5 +150,13 @@ public class Sala implements Serializable{
 
     public void setNomeMestre(String nomeMestre) {
         this.nomeMestre = nomeMestre;
+    }
+
+    public String getNotas() {
+        return notas;
+    }
+
+    public void setNotas(String notas) {
+        this.notas = notas;
     }
 }

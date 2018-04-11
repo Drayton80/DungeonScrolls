@@ -7,9 +7,6 @@
         <variable
             name="adicionaFicha"
             type="door.opposite.grupo2.dungeonscrolls.commands.Eventos"/>
-        <variable
-            name="changeText"
-            type="door.opposite.grupo2.dungeonscrolls.commands.Eventos"/>
     </data>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -61,7 +58,6 @@
         android:layout_marginTop="8dp"
         android:ems="10"
         android:text="@{itemSalaCompleta.historia}"
-        android:onTextChanged="@={itemSalaCompleta.historia}"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toTopOf="@+id/white_space"
         app:layout_constraintEnd_toEndOf="@+id/room_textView_resumo"
@@ -98,6 +94,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:ems="10"
+        android:text="@{itemSalaCompleta.notas}"
         android:inputType="textMultiLine"
         app:layout_constraintBottom_toBottomOf="@+id/room_listView_fichas"
         app:layout_constraintEnd_toEndOf="@+id/room_textView_outrasAnotacoes"

@@ -5,6 +5,7 @@ import android.databinding.BaseObservable;
 import android.databinding.BindingAdapter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
@@ -29,6 +30,8 @@ public class SalaModel extends BaseObservable{
     public byte[] imagem;
     Bitmap imagemTest;
     String nomeMestre;
+    Drawable imageView;
+    String notas;
 
 
 
@@ -46,6 +49,7 @@ public class SalaModel extends BaseObservable{
         this.historia = sala.getHistoria();
         this.imagem = sala.getImagem();
         this.nomeMestre = sala.getNomeMestre();
+        this.notas = sala.getNotas();
     }
 
     public String getNome() {
@@ -119,12 +123,33 @@ public class SalaModel extends BaseObservable{
 
     }
 
+    public Drawable getImageView() {
+        if(imagem == null){
+            return null;
+        }
+        imageView = new BitmapDrawable(BitmapFactory.decodeByteArray(imagem, 0, imagem.length));
+
+        return imageView;
+    }
+
+    public void setImageView(Drawable imageView) {
+        this.imageView = imageView;
+    }
+
     public String getNomeMestre() {
         return nomeMestre;
     }
 
     public void setNomeMestre(String nomeMestre) {
         this.nomeMestre = nomeMestre;
+    }
+
+    public String getNotas() {
+        return notas;
+    }
+
+    public void setNotas(String notas) {
+        this.notas = notas;
     }
 
     public ArrayList<SalaModel> getArrayListSala(int[] salasID, SQLite sqLite){

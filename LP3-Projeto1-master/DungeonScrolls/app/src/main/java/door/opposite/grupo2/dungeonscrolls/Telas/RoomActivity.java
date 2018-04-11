@@ -43,6 +43,7 @@ public class RoomActivity extends AppCompatActivity {
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
         salaUsada = (Sala) extra.getSerializableExtra("salaUsada");
+        sqLite = new SQLite(this);
 
         binding.setItemSalaCompleta(new SalaModel(salaUsada));
 
@@ -65,13 +66,28 @@ public class RoomActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                salaUsada.setHistoria(binding.getItemSalaCompleta().historia);
-                System.out.println("==============Texto: " + binding.roomEditTextResumo.getText().toString());
+                salaUsada.setHistoria(binding.roomEditTextResumo.getText().toString());
                 sqLite.updateDataSala(salaUsada);
             }
         });
 
+        binding.roomEditTextOutrasAnotacoes.addTextChangedListener(new TextWatcher(){
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
 
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                salaUsada.setNotas(binding.roomEditTextOutrasAnotacoes.getText().toString());
+                System.out.println("==============Texto: " + salaUsada.getNotas());
+                sqLite.updateDataSala(salaUsada);
+            }
+        });
 
         ListView listViewFichas = (ListView) findViewById(R.id.room_listView_fichas);
         ArrayAdapter adapter = new RoomListViewFichaAdapter(this, adicionaFichas());

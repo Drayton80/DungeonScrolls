@@ -3,6 +3,8 @@ package door.opposite.grupo2.dungeonscrolls.Telas;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -50,6 +52,13 @@ public class RoomCreationActivity extends AppCompatActivity {
                 Sala sala = new Sala(binding.getSalamodel().getNome(),binding.getSalamodel().getSenha(), usuarioLogado.getID(),
                         binding.getSalamodel().getHistoria(), usuarioLogado.getNick());
                 if (byteArray != null) {
+                    sala.setImagem(byteArray);
+                }else{
+                    Drawable d = campoImagem.getDrawable();
+                    Bitmap bitmap = ((BitmapDrawable) d).getBitmap();
+                    ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+                    byteArray = stream.toByteArray();
                     sala.setImagem(byteArray);
                 }
                 foiInserido = sqLite.insereDataSala(sala);

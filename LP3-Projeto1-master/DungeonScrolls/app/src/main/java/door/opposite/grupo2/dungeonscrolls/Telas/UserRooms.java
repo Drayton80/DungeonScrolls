@@ -39,7 +39,6 @@ public class UserRooms extends AppCompatActivity {
 
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
-        extra = new Intent(this, RoomCreationActivity.class);
 
         salasID = usuarioLogado.getSalasID();
         salaModel = new SalaModel();
@@ -60,6 +59,7 @@ public class UserRooms extends AppCompatActivity {
                             extra = new Intent(UserRooms.this, RoomActivity.class);
                             extra.putExtra("usuarioLogado", usuarioLogado);
                             extra.putExtra("salaUsada", salaUsada);
+                            System.out.println("=================Entrou aqui, eu achei a sala!" + salaUsada.getNotas());
                             startActivity(extra);
                         }
                     }
@@ -70,6 +70,7 @@ public class UserRooms extends AppCompatActivity {
         binding.setCriaSala(new Eventos() {
             @Override
             public void onClickCad() {
+                extra = new Intent(UserRooms.this, RoomCreationActivity.class);
                 extra.putExtra("usuarioLogado", usuarioLogado);
                 startActivity(extra);
             }
