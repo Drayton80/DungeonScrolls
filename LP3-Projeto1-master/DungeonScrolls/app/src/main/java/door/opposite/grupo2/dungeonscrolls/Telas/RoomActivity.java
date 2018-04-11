@@ -96,7 +96,7 @@ public class RoomActivity extends AppCompatActivity {
         //listViewFichas.setOnItemSelectedListener();
     }
 
-    // Método que efetivamente adiciona as fichas ao ListView:
+    // Método que efetivamente adiciona as fichas ao ListView::
     private ArrayList<RoomListViewFicha> adicionaFichas(){
         // Cria um ArrayLista para introduzir os elementos
         ArrayList<RoomListViewFicha> listaDeFichas = new ArrayList<RoomListViewFicha>();
