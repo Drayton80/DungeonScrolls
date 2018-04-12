@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
 
@@ -14,18 +16,28 @@
     android:layout_height="match_parent"
     tools:context="door.opposite.grupo2.dungeonscrolls.Telas.SheetFeatsSkillsActivityDF">
 
+    <Button
+        android:id="@+id/sheetFS_button_salvar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:layout_marginStart="24dp"
+        android:background="@drawable/button_layout"
+        android:text="@string/gerais_salvar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="25dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="25dp"
-            android:background="#f0f0f0">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/sheetFS_textView_title"
@@ -67,40 +79,31 @@
                 app:layout_constraintTop_toBottomOf="@+id/sheetFS_textView_talentos" />
 
             <TextView
-                android:id="@+id/sheetFS_textView_talentos2"
+                android:id="@+id/sheetFS_textView_pericias"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
-                android:text="@string/sheet_activity_featSkillSheet_feats"
+                android:text="@string/sheet_activity_featSkillSheet_skills"
                 android:textAlignment="center"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/sheetFS_editText_telentos" />
 
-            <Button
-                android:id="@+id/sheetFS_button_addPericia"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Adicionar Perícia"
-                app:layout_constraintEnd_toEndOf="@+id/sheetFS_listView_pericias"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/sheetFS_listView_pericias"
-                app:layout_constraintTop_toBottomOf="@+id/sheetFS_listView_pericias" />
-
-            <ListView
-                android:id="@+id/sheetFS_listView_pericias"
+            <EditText
+                android:id="@+id/sheetFS_editText_pericias"
                 android:layout_width="0dp"
                 android:layout_height="270dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sheetFS_textView_talentos2" />
+                android:layout_marginBottom="72dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/sheetFS_textView_pericias"
+                app:layout_constraintStart_toStartOf="@+id/sheetFS_textView_pericias"
+                app:layout_constraintTop_toBottomOf="@+id/sheetFS_textView_pericias" />
 
 
         </android.support.constraint.ConstraintLayout>

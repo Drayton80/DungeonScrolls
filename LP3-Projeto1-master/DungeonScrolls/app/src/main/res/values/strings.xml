@@ -83,6 +83,7 @@
 
     <string name="sheet_activity_featSkillSheet_title">Talentos e Perícias</string>
     <string name="sheet_activity_featSkillSheet_feats">Talentos</string>
+    <string name="sheet_activity_featSkillSheet_skills">Perícias</string>
 
     <string name="sheet_activity_equipmentItensSheet_title">Itens e Equipamentos</string>
     <string name="sheet_activity_equipmentItensSheet_titleItens">Itens e Moedas</string>
@@ -145,7 +146,8 @@
     <string name="choose_language_english">American English</string>
     <string name="choose_language_portuguese">Português Brasileiro</string>
 
-    <string name="expandir">Expandir</string>
+    <string name="gerais_expandir">Expandir</string>
+    <string name="gerais_salvar">Salvar</string>
 
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_main2">Main2Activity</string>

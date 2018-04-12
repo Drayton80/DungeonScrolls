@@ -1,258 +1,284 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
 
-
     </data>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="door.opposite.grupo2.dungeonscrolls.Telas.SheetAppearanceActivityDF">
 
-    <ScrollView
+    <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:context="door.opposite.grupo2.dungeonscrolls.Telas.SheetAppearanceActivityDF">
 
-        <android.support.constraint.ConstraintLayout
+        <Button
+            android:id="@+id/sheetAp_button_salvar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginStart="24dp"
+            android:background="@drawable/button_layout"
+            android:text="@string/gerais_salvar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ScrollView
+            android:id="@+id/scrollView2"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="25dp"
-            android:layout_marginBottom="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginTop="25dp"
-            android:background="#f0f0f0">
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/sheetBI_textView_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/sheet_activity_appearanceSheet_title"
-                android:textSize="18dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-            <TextView
-                android:id="@+id/sheetAp_textView_height"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/sheet_activity_appearanceSheet_height"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toStartOf="@+id/blank_space"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_title" />
+                <TextView
+                    android:id="@+id/sheetBI_textView_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sheet_activity_appearanceSheet_title"
+                    android:textSize="18dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/sheetAp_editText_height"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text=""
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_height"
-                app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_height"
-                app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_height" />
+                <TextView
+                    android:id="@+id/sheetAp_textView_height"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sheet_activity_appearanceSheet_height"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toStartOf="@+id/blank_space"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_title" />
 
-            <TextView
-                android:id="@+id/blank_space"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:text="  "
-                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_title"
-                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_title"
-                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_title" />
+                <EditText
+                    android:id="@+id/sheetAp_editText_height"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text=""
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_height"
+                    app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_height"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_height" />
 
-            <TextView
-                android:id="@+id/sheetAp_textView_weight"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/sheet_activity_appearanceSheet_weight"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/blank_space"
-                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_title" />
+                <TextView
+                    android:id="@+id/blank_space"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="16dp"
+                    android:text="  "
+                    app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_title"
+                    app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_title"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_title" />
 
-            <EditText
-                android:id="@+id/sheetAp_editText_weight"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text=""
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_weight"
-                app:layout_constraintHorizontal_bias="0.47"
-                app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_weight"
-                app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_weight" />
+                <TextView
+                    android:id="@+id/sheetAp_textView_weight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sheet_activity_appearanceSheet_weight"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/blank_space"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_title" />
 
-            <TextView
-                android:id="@+id/sheetAp_textView_inclination"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/sheet_activity_appearanceSheet_inclination"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="@+id/sheetAp_editText_height"
-                app:layout_constraintStart_toStartOf="@+id/sheetAp_editText_height"
-                app:layout_constraintTop_toBottomOf="@+id/sheetAp_editText_height" />
+                <EditText
+                    android:id="@+id/sheetAp_editText_weight"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text=""
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_weight"
+                    app:layout_constraintHorizontal_bias="0.47"
+                    app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_weight"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_weight" />
 
-            <EditText
-                android:id="@+id/sheetAp_editText_inclination"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text=""
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_inclination"
-                app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_inclination"
-                app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_inclination" />
+                <TextView
+                    android:id="@+id/sheetAp_textView_inclination"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sheet_activity_appearanceSheet_inclination"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetAp_editText_height"
+                    app:layout_constraintStart_toStartOf="@+id/sheetAp_editText_height"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetAp_editText_height" />
 
-            <TextView
-                android:id="@+id/sheetAp_textView_divinity"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/sheet_activity_appearanceSheet_divinity"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="@+id/sheetAp_editText_weight"
-                app:layout_constraintStart_toStartOf="@+id/sheetAp_editText_weight"
-                app:layout_constraintTop_toBottomOf="@+id/sheetAp_editText_weight" />
+                <EditText
+                    android:id="@+id/sheetAp_editText_inclination"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text=""
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_inclination"
+                    app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_inclination"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_inclination" />
 
-            <EditText
-                android:id="@+id/sheetAp_editText_divinity"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text=""
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_divinity"
-                app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_divinity"
-                app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_divinity" />
+                <TextView
+                    android:id="@+id/sheetAp_textView_divinity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sheet_activity_appearanceSheet_divinity"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetAp_editText_weight"
+                    app:layout_constraintStart_toStartOf="@+id/sheetAp_editText_weight"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetAp_editText_weight" />
 
-            <TextView
-                android:id="@+id/sheetAp_textView_gender"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/sheet_activity_appearanceSheet_gender"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sheetAp_editText_inclination" />
+                <EditText
+                    android:id="@+id/sheetAp_editText_divinity"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text=""
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_divinity"
+                    app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_divinity"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_divinity" />
 
-            <EditText
-                android:id="@+id/sheetAp_editText_gender"
-                android:layout_width="0dp"
-                android:layout_height="49dp"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="textPersonName"
-                android:text=""
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_gender"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_gender"
-                app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_gender" />
+                <TextView
+                    android:id="@+id/sheetAp_textView_gender"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sheet_activity_appearanceSheet_gender"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetAp_editText_inclination" />
 
-            <TextView
-                android:id="@+id/sheetAp_textView_size"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/sheet_activity_appearanceSheet_size"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sheetAp_editText_gender" />
+                <EditText
+                    android:id="@+id/sheetAp_editText_gender"
+                    android:layout_width="0dp"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text=""
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_gender"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_gender"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_gender" />
 
-            <Spinner
-                android:id="@+id/sheetAp_spinner_size"
-                android:layout_width="0dp"
-                android:layout_height="47dp"
-                android:layout_marginTop="8dp"
-                app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_size"
-                app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_size"
-                app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_size" />
+                <TextView
+                    android:id="@+id/sheetAp_textView_size"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sheet_activity_appearanceSheet_size"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetAp_editText_gender" />
 
-            <TextView
-                android:id="@+id/sheetBI_textView_iniciativa"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/sheet_activity_appearanceSheet_appearange"
-                android:textAlignment="viewStart"
-                app:layout_constraintEnd_toEndOf="@+id/sheetAp_spinner_size"
-                app:layout_constraintStart_toStartOf="@+id/sheetAp_spinner_size"
-                app:layout_constraintTop_toBottomOf="@+id/sheetAp_spinner_size" />
+                <EditText
+                    android:id="@+id/sheetAp_editText_size"
+                    android:layout_width="0dp"
+                    android:layout_height="49dp"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text=""
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_size"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_size"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_size" />
 
-            <EditText
-                android:id="@+id/sheetAp_editText_appearance"
-                android:layout_width="0dp"
-                android:layout_height="121dp"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="textMultiLine"
-                android:textAlignment="textStart"
-                app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_iniciativa"
-                app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_iniciativa"
-                app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_iniciativa" />
+                <TextView
+                    android:id="@+id/sheetBI_textView_iniciativa"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginRight="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sheet_activity_appearanceSheet_appearange"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetAp_editText_size" />
 
-            <TextView
-                android:id="@+id/sheetAp_textView_languages"
-                android:layout_width="0dp"
-                android:layout_height="18dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
-                android:text="@string/sheet_activity_appearanceSheet_languages"
-                android:textAlignment="center"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/sheetAp_editText_appearance" />
+                <EditText
+                    android:id="@+id/sheetAp_editText_appearance"
+                    android:layout_width="0dp"
+                    android:layout_height="121dp"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_iniciativa"
+                    app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_iniciativa"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_iniciativa" />
 
-            <EditText
-                android:id="@+id/sheetAp_editText_languages"
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-                android:layout_marginBottom="16dp"
-                android:layout_marginTop="8dp"
-                android:ems="10"
-                android:inputType="textMultiLine"
-                android:textAlignment="textStart"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_languages"
-                app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_languages"
-                app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_languages" />
+                <TextView
+                    android:id="@+id/sheetAp_textView_languages"
+                    android:layout_width="0dp"
+                    android:layout_height="18dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/sheet_activity_appearanceSheet_languages"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetAp_editText_appearance" />
+
+                <EditText
+                    android:id="@+id/sheetAp_editText_languages"
+                    android:layout_width="0dp"
+                    android:layout_height="121dp"
+                    android:layout_marginBottom="72dp"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="textMultiLine"
+                    android:textAlignment="center"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_languages"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_languages"
+                    app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_languages"
+                    app:layout_constraintVertical_bias="1.0" />
 
 
-        </android.support.constraint.ConstraintLayout>
+            </android.support.constraint.ConstraintLayout>
 
-    </ScrollView>
+        </ScrollView>
 
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
 </layout>
