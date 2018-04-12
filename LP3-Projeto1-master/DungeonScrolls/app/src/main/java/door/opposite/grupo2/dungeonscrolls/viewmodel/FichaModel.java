@@ -690,7 +690,7 @@ public class FichaModel extends BaseObservable{
         ArrayList<FichaModel> fichaModelArrayList = new ArrayList<>();
         System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + Arrays.toString(fichasID));
 
-        for (int i = 0; i < fichasID.length -1; i++){
+        for (int i = 0; i < fichasID.length; i++){
             if(fichasID[i] == 0){}
             else {
                 System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + i);

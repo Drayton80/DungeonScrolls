@@ -120,7 +120,7 @@ public class RoomActivity extends AppCompatActivity {
                 for (int i = 0; i < salaUsada.getFichasID().length; i++){
                     aux[i] = salaUsada.getFichasID()[i];
                 }
-                aux[salaUsada.getFichasID().length] = sqLite.ultimaFicha() + 1;
+                aux[salaUsada.getFichasID().length] = sqLite.ultimaFicha();
                 salaUsada.setFichasID(aux);
                 sqLite.updateDataSala(salaUsada);
                 fichasID = salaUsada.getFichasID();

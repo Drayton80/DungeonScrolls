@@ -695,7 +695,9 @@ public class SQLite extends SQLiteOpenHelper{
         if(cursor != null){
             cursor.moveToFirst();
         }
+        System.out.println(cursor.getString(1));
 
+        System.out.println(cursor.getString(0));
         Ficha ficha = new Ficha(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4),
                 cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8), Float.parseFloat(cursor.getString(9)), Float.parseFloat(cursor.getString(10)),
                 Integer.parseInt(cursor.getString(11)), Integer.parseInt(cursor.getString(12)), Integer.parseInt(cursor.getString(13)), Integer.parseInt(cursor.getString(14)),
