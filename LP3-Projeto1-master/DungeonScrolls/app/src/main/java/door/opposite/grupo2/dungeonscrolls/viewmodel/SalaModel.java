@@ -10,6 +10,7 @@ import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import door.opposite.grupo2.dungeonscrolls.R;
 import door.opposite.grupo2.dungeonscrolls.model.SQLite;
@@ -150,6 +151,24 @@ public class SalaModel extends BaseObservable{
 
     public void setNotas(String notas) {
         this.notas = notas;
+    }
+
+    public ArrayList<SalaModel> getArrayListSala(List<Sala> salas, SQLite sqLite){
+
+        ArrayList<Sala> salasArray = new ArrayList<>(salas);
+        ArrayList<SalaModel> salaModelArrayList = new ArrayList<>();
+
+        for (int i = 0; i < salasArray.size(); i++){
+            if(salasArray.get(i).getID() == 0){}
+            else {
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + i);
+                SalaModel salaModel = new SalaModel(salasArray.get(i));
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + salaModel.getNome());
+                salaModelArrayList.add(salaModel);
+            }
+        }
+
+        return salaModelArrayList;
     }
 
     public ArrayList<SalaModel> getArrayListSala(int[] salasID, SQLite sqLite){

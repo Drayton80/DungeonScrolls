@@ -1,5 +1,7 @@
 package door.opposite.grupo2.dungeonscrolls.Telas;
 
+import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -8,6 +10,13 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import door.opposite.grupo2.dungeonscrolls.R;
+import door.opposite.grupo2.dungeonscrolls.adapter.SalaAdapter;
+import door.opposite.grupo2.dungeonscrolls.databinding.ActivityAllRoomsBinding;
+import door.opposite.grupo2.dungeonscrolls.databinding.ActivityUserRoomsBinding;
+import door.opposite.grupo2.dungeonscrolls.model.SQLite;
+import door.opposite.grupo2.dungeonscrolls.model.Sala;
+import door.opposite.grupo2.dungeonscrolls.model.Usuario;
+import door.opposite.grupo2.dungeonscrolls.viewmodel.SalaModel;
 
 /**
  * Created by FHILIPE on 08/04/2018.
@@ -15,10 +24,31 @@ import door.opposite.grupo2.dungeonscrolls.R;
 
 public class AllRooms extends AppCompatActivity {
 
+    ActivityAllRoomsBinding binding;
+    SQLite sqLite;
+    Intent extra;
+    Usuario usuarioLogado;
+    SalaModel salaModel;
+    ArrayList<SalaModel> salaModelArrayList;
+    SalaAdapter salaAdapter;
+    int[] salasID;
+    Sala salaUsada;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_all_rooms);
+        sqLite = new SQLite(this);
+
+        extra = getIntent();
+        usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
+
+        salasID = usuarioLogado.getSalasID();
+        salaModel = new SalaModel();
+        salaModelArrayList = salaModel.getArrayListSala(sqLite.listaSala(), sqLite);
+        salaAdapter = new SalaAdapter(this, salaModelArrayList);
+        binding.lvRooms.setAdapter(salaAdapter);
+
 /*
         ListView lista = (ListView) findViewById(R.id.lvRooms);
         ArrayAdapter adapter = new RoomAdapter(this, addRooms());
