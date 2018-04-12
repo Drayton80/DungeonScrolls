@@ -20,8 +20,8 @@ public class MainActivity extends TabActivity {
 
         // Nota: getResources().getString() é usado pois os parametros de saída do R.string.* são números
         //       que referenciam as palavras no XML string
-        createTab(this, host, "tabLogin", getResources().getString(R.string.login_activity_tabLogin_title_br), LoginActivity.class);
-        createTab(this, host, "tabSignUp", getResources().getString(R.string.login_activity_tabSignUp_title_br), SignUpActivity.class);
+        createTab(this, host, "tabLogin", getResources().getString(R.string.login_activity_tabLogin_title), LoginActivity.class);
+        createTab(this, host, "tabSignUp", getResources().getString(R.string.login_activity_tabSignUp_title), SignUpActivity.class);
 
 
     }
