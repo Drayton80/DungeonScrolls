@@ -5,6 +5,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import door.opposite.grupo2.dungeonscrolls.model.Ficha;
 import door.opposite.grupo2.dungeonscrolls.model.SQLite;
@@ -687,11 +688,13 @@ public class FichaModel extends BaseObservable{
     public ArrayList<FichaModel> getArrayListaFicha(int[] fichasID, SQLite sqLite){
 
         ArrayList<FichaModel> fichaModelArrayList = new ArrayList<>();
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + Arrays.toString(fichasID));
 
-        for (int i = 0; i < fichasID.length; i++){
+        for (int i = 0; i < fichasID.length -1; i++){
             if(fichasID[i] == 0){}
             else {
                 System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + i);
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + fichasID[i]);
                 FichaModel fichaModel = new FichaModel(sqLite.selecionarFicha(fichasID[i]));
                 fichaModelArrayList.add(fichaModel);
             }

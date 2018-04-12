@@ -43,7 +43,7 @@ public class RoomCreationActivity extends AppCompatActivity {
 
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
-        extra = new Intent(this, UserRooms.class);
+        extra = new Intent(this, RoomsMenu.class);
 
         binding.setCadevent(new Eventos() {
             @Override

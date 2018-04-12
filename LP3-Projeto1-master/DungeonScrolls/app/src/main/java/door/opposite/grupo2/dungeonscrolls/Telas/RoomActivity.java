@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -31,6 +33,7 @@ public class RoomActivity extends AppCompatActivity {
     Intent extra;
     Usuario usuarioLogado;
     Sala salaUsada;
+    Ficha fichaUsada;
     SalaModel salaModel;
     FichaModel fichaModel;
     ArrayList<FichaModel> fichaModelArrayList;
@@ -49,12 +52,33 @@ public class RoomActivity extends AppCompatActivity {
 
         binding.setItemSalaCompleta(new SalaModel(salaUsada));
 
-        fichasID = usuarioLogado.getFichasID();
+        fichasID = salaUsada.getFichasID();
         fichaModel = new FichaModel();
-        fichaModelArrayList = fichaModel.getArrayListaFicha(usuarioLogado.getFichasID(), sqLite);
+        fichaModelArrayList = fichaModel.getArrayListaFicha(salaUsada.getFichasID(), sqLite);
         fichaAdapter = new FichaAdapter(this, fichaModelArrayList);
         binding.roomListViewFichas.setAdapter(fichaAdapter);
 
+        binding.roomListViewFichas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                int fichaPosicao = position;
+                for(int i = 0; i < salaUsada.getFichasID().length; i++){
+                    if(i == fichaPosicao){
+                        if (fichasID[i+1] == 0){
+                        }else{
+                            // System.out.println("=================Entrou aqui, eu achei a sala!");
+                            fichaUsada = sqLite.selecionarFicha(fichasID[i+1]);
+                            extra = new Intent(RoomActivity.this, SheetActivity.class);
+                            extra.putExtra("usuarioLogado", usuarioLogado);
+                            extra.putExtra("salaUsada", salaUsada);
+                            extra.putExtra("fichaUsada", fichaUsada);
+                            System.out.println("=================Entrou aqui, eu achei a sala!" + salaUsada.getNotas());
+                            startActivity(extra);
+                        }
+                    }
+                }
+            }
+        });
 
         binding.roomEditTextResumo.addTextChangedListener(new TextWatcher(){
             @Override
@@ -80,10 +104,11 @@ public class RoomActivity extends AppCompatActivity {
                 sqLite.updateDataSala(salaUsada);
             }
         });
-
+        /*
         ListView listViewFichas = (ListView) findViewById(R.id.room_listView_fichas);
         ArrayAdapter adapter = new RoomListViewFichaAdapter(this, adicionaFichas());
         listViewFichas.setAdapter(adapter);
+        */
 
         //listViewFichas.setOnItemSelectedListener();
         binding.setAdicionaFicha(new Eventos() {
@@ -98,6 +123,11 @@ public class RoomActivity extends AppCompatActivity {
                 aux[salaUsada.getFichasID().length] = sqLite.ultimaFicha() + 1;
                 salaUsada.setFichasID(aux);
                 sqLite.updateDataSala(salaUsada);
+                fichasID = salaUsada.getFichasID();
+                fichaModel = new FichaModel();
+                fichaModelArrayList = fichaModel.getArrayListaFicha(salaUsada.getFichasID(), sqLite);
+                fichaAdapter = new FichaAdapter(RoomActivity.this, fichaModelArrayList);
+                binding.roomListViewFichas.setAdapter(fichaAdapter);
             }
 
             @Override
@@ -106,7 +136,7 @@ public class RoomActivity extends AppCompatActivity {
         });
 
     }
-
+    /*
     // Método que efetivamente adiciona as fichas ao ListView::
     private ArrayList<RoomListViewFicha> adicionaFichas(){
         // Cria um ArrayLista para introduzir os elementos
@@ -126,5 +156,5 @@ public class RoomActivity extends AppCompatActivity {
         // Retorna a lista toda já montada com cada elemento:
         return listaDeFichas;
     }
-
+    */
 }
