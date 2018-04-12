@@ -32,7 +32,7 @@ public class LoginActivity extends Activity {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_login);
         binding.setUsuariomodel(new UsuarioModel());
         sqLite = new SQLite(this);
-        it = new Intent(this, UserRooms.class);
+        it = new Intent(this, RoomsMenu.class);
         //listaUsuario = sqLite.listaUsuario();
 
         binding.setCadevent(new Eventos() {

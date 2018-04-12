@@ -80,6 +80,10 @@ public class Ficha implements Serializable{
     //Pericias pericias;
 
 
+    public Ficha( String nomePersonagem) {
+        this.nomePersonagem = nomePersonagem;
+    }
+
     public Ficha(int id, String nomePersonagem, String nomeJogador,
                  String classeNivel, String raca, String tendencia, String sexo,
                  String tamanho, float altura, float peso, int idade, int forca,

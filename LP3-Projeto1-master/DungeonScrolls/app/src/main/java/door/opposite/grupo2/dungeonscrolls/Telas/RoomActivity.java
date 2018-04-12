@@ -11,12 +11,14 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import door.opposite.grupo2.dungeonscrolls.R;
 import door.opposite.grupo2.dungeonscrolls.adapter.FichaAdapter;
 import door.opposite.grupo2.dungeonscrolls.adapter.SalaAdapter;
 import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
 import door.opposite.grupo2.dungeonscrolls.databinding.ActivityRoomBinding;
+import door.opposite.grupo2.dungeonscrolls.model.Ficha;
 import door.opposite.grupo2.dungeonscrolls.model.SQLite;
 import door.opposite.grupo2.dungeonscrolls.model.Sala;
 import door.opposite.grupo2.dungeonscrolls.model.Usuario;
@@ -56,14 +58,9 @@ public class RoomActivity extends AppCompatActivity {
 
         binding.roomEditTextResumo.addTextChangedListener(new TextWatcher(){
             @Override
-            public void afterTextChanged(Editable s) {
-            }
-
+            public void afterTextChanged(Editable s){}
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 salaUsada.setHistoria(binding.roomEditTextResumo.getText().toString());
@@ -73,14 +70,9 @@ public class RoomActivity extends AppCompatActivity {
 
         binding.roomEditTextOutrasAnotacoes.addTextChangedListener(new TextWatcher(){
             @Override
-            public void afterTextChanged(Editable s) {
-            }
-
+            public void afterTextChanged(Editable s) {}
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 salaUsada.setNotas(binding.roomEditTextOutrasAnotacoes.getText().toString());
@@ -94,6 +86,25 @@ public class RoomActivity extends AppCompatActivity {
         listViewFichas.setAdapter(adapter);
 
         //listViewFichas.setOnItemSelectedListener();
+        binding.setAdicionaFicha(new Eventos() {
+            @Override
+            public void onClickCad() {
+                sqLite.insereDataFicha(new Ficha("Nova Ficha"));
+                int[] aux = new int[salaUsada.getFichasID().length +1];
+
+                for (int i = 0; i < salaUsada.getFichasID().length; i++){
+                    aux[i] = salaUsada.getFichasID()[i];
+                }
+                aux[salaUsada.getFichasID().length] = sqLite.ultimaFicha() + 1;
+                salaUsada.setFichasID(aux);
+                sqLite.updateDataSala(salaUsada);
+            }
+
+            @Override
+            public void onClickLogin() {
+            }
+        });
+
     }
 
     // Método que efetivamente adiciona as fichas ao ListView::

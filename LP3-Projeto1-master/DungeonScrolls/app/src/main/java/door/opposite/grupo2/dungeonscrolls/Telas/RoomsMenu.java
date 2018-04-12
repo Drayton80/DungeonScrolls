@@ -7,17 +7,23 @@ import android.os.Bundle;
 import android.widget.TabHost;
 
 import door.opposite.grupo2.dungeonscrolls.R;
+import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 
 @SuppressWarnings("deprecation")
 
 public class RoomsMenu extends TabActivity{
 
+    Intent extra;
+    Usuario usuarioLogado;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rooms_menu);
 
-        TabHost host = (TabHost) findViewById(R.id.rooms_tabHost);
+        TabHost host = (TabHost) findViewById(android.R.id.tabhost);
+
+        extra = getIntent();
+        usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
 
         // Nota: getResources().getString() é usado pois os parametros de saída do R.string.* são números
         //       que referenciam as palavras no XML string
@@ -34,7 +40,7 @@ public class RoomsMenu extends TabActivity{
         // que representará a Activity que será chamada na exibição da Tab
         TabHost.TabSpec specifications = tabhost.newTabSpec(tag);
         Intent intent = new Intent(context, tabView);
-
+        intent.putExtra("usuarioLogado", usuarioLogado);
         // Define as especificações da Tab
         specifications.setIndicator(title)
                 .setContent(intent);

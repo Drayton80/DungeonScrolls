@@ -38,6 +38,7 @@ public class SignUpActivity extends Activity {
                 boolean foiInserido = false;
                 foiInserido = sqLite.insereDataUsuario(new Usuario(binding.getUsuariomodel().getNick(),
                         binding.getUsuariomodel().getSenha(), binding.getUsuariomodel().getEmail()));
+
                 if(foiInserido == true){
                     Toast.makeText(SignUpActivity.this, "Salvo", Toast.LENGTH_LONG).show();
                 }else{

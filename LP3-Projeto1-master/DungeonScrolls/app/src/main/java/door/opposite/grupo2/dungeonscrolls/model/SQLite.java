@@ -263,7 +263,17 @@ public class SQLite extends SQLiteOpenHelper{
         return usuario;
     }
 
+    public int ultimoUsuario(){
+        int saida = 0;
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + T1_TABLE_NAME  + " ORDER BY " + T1_COL_1 + " DESC LIMIT " + 1;
+        Cursor c = db.rawQuery(query, null);;
+        if(c.moveToFirst())
+            saida = Integer.parseInt(c.getString(0));
+        c.close();
 
+        return saida;
+    }
 
     public List<Usuario> listaUsuario(){
         List<Usuario> lista = new ArrayList<Usuario>();
@@ -336,6 +346,7 @@ public class SQLite extends SQLiteOpenHelper{
         Cursor res = db.rawQuery("select * from " + T2_TABLE_NAME, null ); // "*" represental ALL, esse metedo ta mandando selecionar tudo quem tem na tabela.
         return res;
     }
+
 
     public boolean updateDataSala(Sala sala){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -454,6 +465,17 @@ public class SQLite extends SQLiteOpenHelper{
     }
 
 
+    public int ultimaSala(){
+        int saida = 0;
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + T2_TABLE_NAME  + " ORDER BY " + T2_COL_1 + " DESC LIMIT " + 1;
+        Cursor c = db.rawQuery(query, null);;
+        if(c.moveToFirst())
+            saida = Integer.parseInt(c.getString(0));
+        c.close();
+
+        return saida;
+    }
 
     public List<Sala> listaSala(){
         List<Sala> lista = new ArrayList<Sala>();
@@ -736,6 +758,17 @@ public class SQLite extends SQLiteOpenHelper{
         return ficha;
     }
 
+    public int ultimaFicha(){
+        int saida = 0;
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT * FROM " + T3_TABLE_NAME  + " ORDER BY " + T3_COL_1 + " DESC LIMIT " + 1;
+        Cursor c = db.rawQuery(query, null);;
+        if(c.moveToFirst())
+            saida = Integer.parseInt(c.getString(0));
+        c.close();
+
+        return saida;
+    }
 
 
     public List<Ficha> listaFicha(){
