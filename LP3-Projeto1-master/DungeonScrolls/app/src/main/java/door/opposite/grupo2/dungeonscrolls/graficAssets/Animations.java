@@ -1,17 +1,13 @@
 package door.opposite.grupo2.dungeonscrolls.graficAssets;
 
-import android.content.Context;
 import android.graphics.drawable.AnimationDrawable;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.widget.ImageView;
 
 import door.opposite.grupo2.dungeonscrolls.R;
 
 /**
- * Classe que possuí todas as animações do programa
+ * Classe que possuí todas as animações do programa: sua criação, inicio e parada.
  *
  * Created by drayton on 11/04/18.
  */
@@ -19,20 +15,21 @@ import door.opposite.grupo2.dungeonscrolls.R;
 public class Animations {
     AnimationDrawable loadingAnimation;
 
-    // Circular Loading em formato de Círculo Mágico que constantemente pulsa do
-    // transparente para o preto e vice-versa
-    public void loadingMagicCircle(Context contexto){
-        // Cria um LayoutInflater inflater que serve para inflar, ou seja, adaptar algo em XML para uma Classe em Java
-        LayoutInflater inflater = (LayoutInflater) contexto.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        // Cria uma View que recebe a activity em XML para que seus atributos possam ser usados
-        View dialogFragmentLoadingCircle = inflater.inflate(R.layout.dialogfragment_loadingcircle, null, false);
-
+    /** Animação Circular Loading referente ao carregamento de telas, sendo ela no formato de um Círculo Mágico que constantemente pulsa do
+     *  transparente para o preto e vice-versa
+     *      Parâmetros de Entrada:
+     *          View dialogFragmentLoadingCircle: Como o Widget do Image View está presente apenas na dialogfragment_loadingcircle é necessário
+     *           receber a View que referência esse layout
+     */
+    public void loadingMagicCircle(View dialogFragmentLoadingCircle){
         // Pega a referência para o ID do ImageView que está no dialog_fragment_magigcircle e cria
         // um objeto dessa classe no Java
-        ImageView loadingCircle = (ImageView) dialogFragmentLoadingCircle.findViewById(R.id.dialogFragmentLoading_imageView_loadingCircle);
+        ImageView loadingCircleImage = (ImageView) dialogFragmentLoadingCircle.findViewById(R.id.dialogFragmentLoading_imageView_loadingCircle);
+        // Define o recurso da imagem como o arquivo .xml referente a animação
+        loadingCircleImage.setImageResource(R.drawable.loading_magic_circle);
 
-        // Cria um objeto da classe AnimationDrawable que
-        loadingAnimation = (AnimationDrawable) loadingCircle.getDrawable();
+        // Instancia o objeto da classe AnimationDrawable que servirá para pdoer manipular o inicio e fim da animação
+        loadingAnimation = (AnimationDrawable) loadingCircleImage.getDrawable();
     }
 
     // Inicia a animação de Loading

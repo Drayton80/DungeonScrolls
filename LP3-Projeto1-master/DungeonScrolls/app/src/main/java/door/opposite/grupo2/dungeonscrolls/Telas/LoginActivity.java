@@ -1,10 +1,13 @@
 package door.opposite.grupo2.dungeonscrolls.Telas;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Toast;
 
@@ -19,7 +22,8 @@ import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.UsuarioModel;
 
 public class LoginActivity extends Activity {
-    Animations animacoes = new Animations();
+    AnimationDrawable loadingAnimation;         // Objeto da classe AnimationDrawable para poder gerar as animações
+    Animations animacoes = new Animations();    // Objeto da classe Animations aonde estão todas as animações do projeto
     Intent it;
     Bundle bundle = new Bundle();
     ActivityLoginBinding binding;
@@ -54,18 +58,26 @@ public class LoginActivity extends Activity {
                     it.putExtra("usuarioLogado", usuario1);
 
                     // Construção e exibição do Dialago Fragment:
-                    /*
-                    android.support.v7.app.AlertDialog.Builder mBuilder = new android.support.v7.app.AlertDialog.Builder(LoginActivity.this);
 
+                    // Cria um Builder para poder manipular o Dialog
+                    AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(LoginActivity.this);
+
+                    // Cria uma referência para o dialogfragment_loadingcircle para poder gerar seu layout e referenciar aquilo que tem dentro dele
                     View loadingCircleDialog = getLayoutInflater().inflate(R.layout.dialogfragment_loadingcircle, null);
-                    mBuilder.setView(loadingCircleDialog);
-                    android.support.v7.app.AlertDialog dialog = mBuilder.create();
+
+                    // Serve para referenciar a tela (layout) ao qual o Dialog Fragment será exibido em forma de pop-up
+                    dialogBuilder.setView(loadingCircleDialog);
+                    // Cria efetivamente o dialog
+                    AlertDialog dialog = dialogBuilder.create();
+                    // Definindo a cor do fundo do Dialog Fragment para transparente:
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    // Exibe o dialog
                     dialog.show();
 
-                    animacoes.loadingMagicCircle(LoginActivity.this);
+                    // Chama o método que gera a animação do loading
+                    animacoes.loadingMagicCircle(loadingCircleDialog);
+                    // Método que inicia a animação
                     animacoes.startLoadingAnimation();
-                    */
-
 
                     startActivity(it);
 
@@ -75,6 +87,5 @@ public class LoginActivity extends Activity {
             }
         });
     }
-
 
 }
