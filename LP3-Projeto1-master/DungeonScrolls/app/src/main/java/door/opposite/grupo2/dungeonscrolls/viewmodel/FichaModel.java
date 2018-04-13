@@ -113,10 +113,10 @@ public class FichaModel extends BaseObservable{
         this.inteligenciaMod = ((ficha.getInteligencia()-10)/2);
         this.sabedoriaMod = ((ficha.getSabedoria()-10)/2);
         this.carismaMod = ((ficha.getCarisma()-10)/2);
-        this.ca = (ficha.getArmadura() + ficha.getArmaduraNatural() + ficha.getCaOutros());
+        this.ca = (10 + ficha.getArmadura() + ficha.getArmaduraNatural() + ficha.getCaOutros() + ficha.getDestrezaMod());
         this.caOutros = ficha.getCaOutros();
-        this.caToque = (ficha.getCa() - ficha.getArmadura() - ficha.getArmaduraNatural());
-        this.caSurpresa = (ficha.getCa() - ficha.getDestrezaMod());
+        this.caToque = (10 + ficha.getDestrezaMod());
+        this.caSurpresa = (10 + ficha.getArmadura() + ficha.getArmaduraNatural());
         this.armadura = ficha.getArmadura();
         this.armaduraNatural = ficha.getArmaduraNatural();
         this.pv = ficha.getPv();
@@ -135,7 +135,7 @@ public class FichaModel extends BaseObservable{
         this.bba = ficha.getBba();
         this.resMagica = ficha.getResMagica();
         this.deslocamento = ficha.getDeslocamento();
-        this.agarrar = (ficha.getForcaMod() + ficha.getAgarrarOutros());
+        this.agarrar = (ficha.getForcaMod() + ficha.getAgarrarOutros() + ficha.getBba());
         this.agarrarOutros = ficha.getAgarrarOutros();
         this.pc = ficha.getPc();
         this.pp = ficha.getPp();
@@ -424,12 +424,12 @@ public class FichaModel extends BaseObservable{
     }
 
     public String getCa() {
-        return String.valueOf((armadura + armaduraNatural + caOutros));
+        return String.valueOf(10 + (armadura + armaduraNatural + caOutros + destrezaMod));
     }
 
     public void setCa(String ca) {
         if(ca.equals("")){
-            this.ca = 0;
+            this.ca = 10;
         }else{
             this.ca = Integer.parseInt(ca);
         }
@@ -451,7 +451,7 @@ public class FichaModel extends BaseObservable{
 
     public String getCaToque() {
 
-        return String.valueOf((ca - armadura - armaduraNatural));
+        return String.valueOf(10 + destrezaMod);
     }
 
     public void setCaToque(String caToque) {
@@ -465,8 +465,7 @@ public class FichaModel extends BaseObservable{
     }
 
     public String getCaSurpresa() {
-
-        return String.valueOf((ca - destrezaMod));
+        return String.valueOf(10 + armadura + armaduraNatural);
     }
 
     public void setCaSurpresa(String caSurpresa) {
@@ -671,6 +670,7 @@ public class FichaModel extends BaseObservable{
     }
 
     public String getBba() {
+
         return String.valueOf(bba);
     }
 
@@ -688,10 +688,10 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setResMagica(String resMagica) {
-        if(bba.equals("")){
-            this.bba = 0;
+        if(resMagica.equals("")){
+            this.resMagica = 0;
         }else{
-            this.bba = Integer.parseInt(bba);
+            this.resMagica = Integer.parseInt(resMagica);
         }
         notifyPropertyChanged(R.id.sheetBI_editText_resistenciaMagica);
     }
@@ -701,18 +701,25 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setDeslocamento(String deslocamento) {
-        this.deslocamento = Integer.parseInt(deslocamento);
+        if(deslocamento.equals("")){
+            this.deslocamento = 0;
+        }else{
+            this.deslocamento = Integer.parseInt(deslocamento);
+        }
         notifyPropertyChanged(R.id.sheetBI_editText_deslocamento);
     }
 
     public String getAgarrar() {
 
-        return String.valueOf((forcaMod + agarrarOutros));
+        return String.valueOf((forcaMod + agarrarOutros + bba));
     }
 
     public void setAgarrar(String agarrar) {
-
-        this.agarrar = Integer.parseInt(agarrar);
+        if(agarrar.equals("")){
+            this.agarrar = 0;
+        }else{
+            this.agarrar = Integer.parseInt(agarrar);
+        }
         notifyPropertyChanged(R.id.sheetBI_editText_agarrar);
     }
 
@@ -721,7 +728,11 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setAgarrarOutros(String agarrarOutros) {
-        this.agarrarOutros = Integer.parseInt(agarrarOutros);
+        if(agarrarOutros.equals("")){
+            this.agarrarOutros = 0;
+        }else{
+            this.agarrarOutros = Integer.parseInt(agarrarOutros);
+        }
         notifyPropertyChanged(R.id.sheetBI_editText_agarrarOutros);
     }
 

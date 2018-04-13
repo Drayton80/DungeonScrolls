@@ -169,12 +169,13 @@
                 app:layout_constraintStart_toEndOf="@+id/white_space2"
                 app:layout_constraintTop_toTopOf="@+id/white_space2" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheetBI_editText_caArmadura"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
+                app:met_mask="###"
                 android:inputType="numberSigned"
                 android:textAlignment="center"
                 android:text="@={fichaElementos.armadura}"
@@ -215,12 +216,13 @@
                 app:layout_constraintStart_toEndOf="@+id/white_space4"
                 app:layout_constraintTop_toTopOf="@+id/white_space2" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheetBI_editText_caNatural"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
+                app:met_mask="###"
                 android:inputType="numberSigned"
                 android:textAlignment="center"
                 android:text="@={fichaElementos.armaduraNatural}"
@@ -261,12 +263,13 @@
                 app:layout_constraintStart_toEndOf="@+id/white_space6"
                 app:layout_constraintTop_toTopOf="@+id/white_space2" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheetBI_editText_caOutros"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
+                app:met_mask="###"
                 android:inputType="numberSigned"
                 android:textAlignment="center"
                 android:text="@={fichaElementos.caOutros}"
@@ -289,7 +292,7 @@
                 app:layout_constraintStart_toStartOf="@+id/sheetBI_editText_caArmadura"
                 app:layout_constraintTop_toTopOf="@+id/white_space8" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheetBI_editText_caSurpresa"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
@@ -317,13 +320,14 @@
                 app:layout_constraintStart_toStartOf="@+id/sheetBI_editText_caNatural"
                 app:layout_constraintTop_toTopOf="@+id/sheetBI_textView_resistenciasElementais" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheetBI_editText_resistenciaMagica"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="textPersonName"
+                app:met_mask="###"
+                android:inputType="number"
                 android:textAlignment="center"
                 android:text="@={fichaElementos.resMagica}"
                 app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_resistenciasElementais"
@@ -418,12 +422,13 @@
                 app:layout_constraintStart_toEndOf="@+id/sheetBI_editText_caOutros"
                 app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_caTitulo" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheetBI_editText_reducaoDeDano"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
+                app:met_mask="######"
                 android:inputType="none|textPersonName"
                 android:textAlignment="center"
                 android:text="@={fichaElementos.reducaoDeDano}"
@@ -445,13 +450,14 @@
                 app:layout_constraintStart_toEndOf="@+id/sheetBI_editText_caOutros"
                 app:layout_constraintTop_toBottomOf="@+id/sheetBI_editText_reducaoDeDano" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheetBI_editText_resistenciasElementais"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="textPersonName"
+                app:met_mask="###"
+                android:inputType="number"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_reducaoDeDano"
                 app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_reducaoDeDano"
@@ -572,12 +578,13 @@
                 app:layout_constraintStart_toEndOf="@+id/white_space7"
                 app:layout_constraintTop_toTopOf="@+id/white_space7" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheetBI_editText_iniciativaOutros"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
+                app:met_mask="###"
                 android:inputType="numberSigned"
                 android:textAlignment="center"
                 android:text="@={fichaElementos.iniciativaOutros}"
@@ -599,13 +606,14 @@
                 app:layout_constraintStart_toEndOf="@+id/sheetBI_textView_iniciativaTitulo"
                 app:layout_constraintTop_toBottomOf="@+id/sheetBI_editText_caToque" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheetBI_editText_deslocamento"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="textPersonName"
+                app:met_mask="###"
+                android:inputType="number"
                 android:textAlignment="center"
                 android:text="@={fichaElementos.deslocamento}"
                 app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_iniciativa"
@@ -728,12 +736,13 @@
                 app:layout_constraintStart_toEndOf="@+id/white_space10"
                 app:layout_constraintTop_toTopOf="@+id/white_space9" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheetBI_editText_agarrarOutros"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
+                app:met_mask="###"
                 android:inputType="none"
                 android:textAlignment="center"
                 android:text="@={fichaElementos.agarrarOutros}"
@@ -755,12 +764,13 @@
                 app:layout_constraintStart_toEndOf="@+id/sheetBI_textView_agarrarTitulo"
                 app:layout_constraintTop_toBottomOf="@+id/sheetBI_editText_iniciativa" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheetBI_editText_bba"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
+                app:met_mask="###"
                 android:inputType="number"
                 android:textAlignment="center"
                 android:text="@={fichaElementos.bba}"
@@ -789,6 +799,7 @@
                 android:layout_height="170dp"
                 android:layout_marginBottom="72dp"
                 android:layout_marginTop="8dp"
+                android:text="@={fichaElementos.ataques}"
                 android:ems="10"
                 android:inputType="textMultiLine"
                 app:layout_constraintBottom_toBottomOf="parent"
