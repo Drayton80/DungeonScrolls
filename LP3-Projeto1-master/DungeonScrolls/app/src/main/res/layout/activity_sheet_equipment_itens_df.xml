@@ -3,9 +3,12 @@
 <layout>
 
     <data>
-
-
-
+        <variable
+            name="salvarFicha"
+            type="door.opposite.grupo2.dungeonscrolls.commands.EventoSalvar"/>
+        <variable
+            name="fichaElementos"
+            type="door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel"/>
     </data>
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -25,6 +28,7 @@
             android:layout_marginStart="24dp"
             android:background="@drawable/button_layout"
             android:text="@string/gerais_salvar"
+            android:onClick="@{()->salvarFicha.onClickSalvar()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -76,11 +80,12 @@
                     app:layout_constraintTop_toTopOf="@+id/white_space" />
 
                 <EditText
-                    android:id="@+id/sheetEI_editText_pvAtual"
+                    android:id="@+id/sheetEI_editText_pc"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:ems="10"
+                    android:text="@={fichaElementos.pc}"
                     android:inputType="number"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_pvAtual"
@@ -98,7 +103,7 @@
                     android:textAlignment="center"
                     app:layout_constraintEnd_toStartOf="@+id/white_space"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_editText_pvAtual" />
+                    app:layout_constraintTop_toBottomOf="@+id/sheetEI_editText_pc" />
 
                 <EditText
                     android:id="@+id/sheetEI_editText_pp"
@@ -106,6 +111,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:ems="10"
+                    android:text="@={fichaElementos.pp}"
                     android:inputType="number"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_pp"
@@ -131,6 +137,7 @@
                     android:layout_height="48dp"
                     android:layout_marginTop="8dp"
                     android:ems="10"
+                    android:text="@={fichaElementos.po}"
                     android:inputType="number"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_po"
@@ -156,6 +163,7 @@
                     android:layout_height="48dp"
                     android:layout_marginTop="8dp"
                     android:ems="10"
+                    android:text="@={fichaElementos.pl}"
                     android:inputType="number"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_pl"
@@ -191,6 +199,7 @@
                     android:layout_height="0dp"
                     android:layout_marginTop="8dp"
                     android:ems="10"
+                    android:text="@={fichaElementos.inventario}"
                     android:inputType="textMultiLine"
                     android:textAlignment="textStart"
                     app:layout_constraintBottom_toBottomOf="@+id/sheetEI_editText_pl"
@@ -280,6 +289,7 @@
                     android:layout_height="170dp"
                     android:layout_marginTop="8dp"
                     android:ems="10"
+                    android:text="@={fichaElementos.armaduraEquip}"
                     android:inputType="textMultiLine"
                     android:textAlignment="textStart"
                     app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_armor"
@@ -306,6 +316,7 @@
                     android:layout_height="170dp"
                     android:layout_marginTop="8dp"
                     android:ems="10"
+                    android:text="@={fichaElementos.outrosEquip}"
                     android:inputType="textMultiLine"
                     android:textAlignment="textStart"
                     app:layout_constraintEnd_toEndOf="@+id/sheetEI_textView_protectionItem"
@@ -332,6 +343,7 @@
                     android:layout_marginBottom="72dp"
                     android:layout_marginTop="8dp"
                     android:ems="10"
+                    android:text="@={fichaElementos.armaEquip}"
                     android:gravity="start"
                     android:inputType="textMultiLine"
                     android:textAlignment="textStart"

@@ -45,30 +45,30 @@ public class LoginActivity extends Activity {
             @Override
             public void onClickLogin() {
                 Usuario usuario1;
-                usuario1 = sqLite.selecionarUsuario(binding.getUsuariomodel().getNick());
-                System.out.println(usuario1.getID());
-                System.out.println(Arrays.toString(usuario1.getSalasID()));
-                System.out.println(usuario1.getSenha() + " ======================================================================================");
-                System.out.println(binding.getUsuariomodel().getSenha() + " ========================================================================================");
-                if (usuario1.getSenha().equals(binding.getUsuariomodel().getSenha())){
-                    Toast.makeText(LoginActivity.this, "Logou", Toast.LENGTH_LONG).show();
-                    it.putExtra("usuarioLogado", usuario1);
+                try {
+                    usuario1 = sqLite.selecionarUsuario(binding.getUsuariomodel().getNick());
+                    if ((usuario1.getSenha().equals(binding.getUsuariomodel().getSenha()))) {
+                        Toast.makeText(LoginActivity.this, "Logou", Toast.LENGTH_LONG).show();
+                        it.putExtra("usuarioLogado", usuario1);
 
 
-                    // Cria uma referência para o dialogfragment_loadingcircle para poder gerar seu layout e referenciar aquilo que tem dentro dele
-                    View loadingCircleDialog = getLayoutInflater().inflate(R.layout.dialogfragment_loadingcircle, null);
+                        // Cria uma referência para o dialogfragment_loadingcircle para poder gerar seu layout e referenciar aquilo que tem dentro dele
+                        View loadingCircleDialog = getLayoutInflater().inflate(R.layout.dialogfragment_loadingcircle, null);
 
-                    // Cria o Dialog Fragment através de um dos métodos da classe DialogFragmentCreator
-                    geraDialog.criaFragmentDialogLoadingCircle(LoginActivity.this, loadingCircleDialog);
-                    // Chama o método que gera a animação do loading
-                    animacoes.loadingMagicCircle(loadingCircleDialog);
-                    // Método que inicia a animação
-                    animacoes.startLoadingAnimation();
+                        // Cria o Dialog Fragment através de um dos métodos da classe DialogFragmentCreator
+                        geraDialog.criaFragmentDialogLoadingCircle(LoginActivity.this, loadingCircleDialog);
+                        // Chama o método que gera a animação do loading
+                        animacoes.loadingMagicCircle(loadingCircleDialog);
+                        // Método que inicia a animação
+                        animacoes.startLoadingAnimation();
 
-                    startActivity(it);
+                        startActivity(it);
 
-                }else{
-                    Toast.makeText(LoginActivity.this, "Senha incorreta", Toast.LENGTH_LONG).show();
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Senha incorreta", Toast.LENGTH_LONG).show();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(LoginActivity.this, "Usuário Inválido", Toast.LENGTH_LONG).show();
                 }
             }
         });

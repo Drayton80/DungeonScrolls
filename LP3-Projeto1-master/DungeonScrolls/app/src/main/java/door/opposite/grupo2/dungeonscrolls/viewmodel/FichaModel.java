@@ -741,7 +741,12 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setPc(String pc) {
-        this.pc = Integer.parseInt(pc);
+        if(pc.equals("")){
+            this.pc = 0;
+        }else {
+            this.pc = Integer.parseInt(pc);
+        }
+        notifyPropertyChanged(R.id.sheetEI_editText_pc);
     }
 
     public String getPp() {
@@ -749,7 +754,12 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setPp(String pp) {
-        this.pp = Integer.parseInt(pp);
+        if(pp.equals("")){
+            this.pp = 0;
+        }else {
+            this.pp = Integer.parseInt(pp);
+        }
+        notifyPropertyChanged(R.id.sheetEI_editText_pp);
     }
 
     public String getPo() {
@@ -757,7 +767,12 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setPo(String po) {
-        this.po = Integer.parseInt(po);
+        if(po.equals("")){
+            this.po = 0;
+        }else {
+            this.po = Integer.parseInt(po);
+        }
+        notifyPropertyChanged(R.id.sheetEI_editText_po);
     }
 
     public String getPl() {
@@ -765,7 +780,12 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setPl(String pl) {
-        this.pl = Integer.parseInt(pl);
+        if(pl.equals("")){
+            this.pl = 0;
+        }else {
+            this.pl = Integer.parseInt(pl);
+        }
+        notifyPropertyChanged(R.id.sheetEI_editText_pl);
     }
 
     public String getXp() {
@@ -805,6 +825,7 @@ public class FichaModel extends BaseObservable{
 
     public void setInventario(String inventario) {
         this.inventario = inventario;
+        notifyPropertyChanged(R.id.sheetEI_editText_itens);
     }
 
     public String getAtaques() {
@@ -822,7 +843,9 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setArmaEquip(String armaEquip) {
+
         this.armaEquip = armaEquip;
+        notifyPropertyChanged(R.id.sheetEI_editText_weapons);
     }
 
     public String getArmaduraEquip() {
@@ -830,7 +853,9 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setArmaduraEquip(String armaduraEquip) {
+
         this.armaduraEquip = armaduraEquip;
+        notifyPropertyChanged(R.id.sheetEI_editText_armor);
     }
 
     public String getOutrosEquip() {
@@ -838,7 +863,9 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setOutrosEquip(String outrosEquip) {
+
         this.outrosEquip = outrosEquip;
+        notifyPropertyChanged(R.id.sheetEI_editText_protectionItem);
     }
 
     public String getCarctClasse() {
