@@ -79,6 +79,9 @@ public class Ficha implements Serializable{
     Bitmap imagemTest;
     //Pericias pericias;
 
+    public Ficha(){
+
+    }
 
     public Ficha( String nomePersonagem) {
         this.nomePersonagem = nomePersonagem;
@@ -149,6 +152,83 @@ public class Ficha implements Serializable{
                  String inventario, String ataques, String armaEquip, String armaduraEquip,
                  String outrosEquip, String carctClasse, String talentos, String magias) {
         this.id = id;
+        this.nomePersonagem = nomePersonagem;
+        this.nomeJogador = nomeJogador;
+        this.classeNivel = classeNivel;
+        this.raca = raca;
+        this.tendencia = tendencia;
+        this.divindade = divindade;
+        this.sexo = sexo;
+        this.tamanho = tamanho;
+        this.altura = altura;
+        this.peso = peso;
+        this.idade = idade;
+        this.forca = forca;
+        this.constituicao = constituicao;
+        this.destreza = destreza;
+        this.inteligencia = inteligencia;
+        this.sabedoria = sabedoria;
+        this.carisma = carisma;
+        this.forcaMod = forcaMod;
+        this.constituicaoMod = constituicaoMod;
+        this.destrezaMod = destrezaMod;
+        this.inteligenciaMod = inteligenciaMod;
+        this.sabedoriaMod = sabedoriaMod;
+        this.carismaMod = carismaMod;
+        this.ca = ca;
+        this.caOutros = caOutros;
+        this.caToque = caToque;
+        this.caSurpresa = caSurpresa;
+        this.armadura = armadura;
+        this.armaduraNatural = armaduraNatural;
+        this.pv = pv;
+        this.reducaoDeDano = reducaoDeDano;
+        this.iniciativa = iniciativa;
+        this.iniciativaOutros = iniciativaOutros;
+        this.fortitude = fortitude;
+        this.fortitudeOutros = fortitudeOutros;
+        this.fortitudeBase = fortitudeBase;
+        this.reflexo = reflexo;
+        this.reflexoOutros = reflexoOutros;
+        this.reflexoBase = reflexoBase;
+        this.vontade = vontade;
+        this.vontadeOutros = vontadeOutros;
+        this.vontadeBase = vontadeBase;
+        this.bba = bba;
+        this.resMagica = resMagica;
+        this.deslocamento = deslocamento;
+        this.agarrar = agarrar;
+        this.agarrarOutros = agarrarOutros;
+        this.pc = pc;
+        this.pp = pp;
+        this.po = po;
+        this.pl = pl;
+        this.xp = xp;
+        this.xpNecessario = xpNecessario;
+        this.idiomas = idiomas;
+        this.inventario = inventario;
+        this.ataques = ataques;
+        this.armaEquip = armaEquip;
+        this.armaduraEquip = armaduraEquip;
+        this.outrosEquip = outrosEquip;
+        this.carctClasse = carctClasse;
+        this.talentos = talentos;
+        this.magias = magias;
+    }
+
+    public Ficha(String nomePersonagem, String nomeJogador, String classeNivel,
+                 String raca, String tendencia, String divindade, String sexo, String tamanho,
+                 float altura, float peso, int idade, int forca, int constituicao, int destreza,
+                 int inteligencia, int sabedoria, int carisma, int forcaMod, int constituicaoMod,
+                 int destrezaMod, int inteligenciaMod, int sabedoriaMod, int carismaMod, int ca,
+                 int caOutros, int caToque, int caSurpresa, int armadura, int armaduraNatural,
+                 int pv, int reducaoDeDano, int iniciativa, int iniciativaOutros, int fortitude,
+                 int fortitudeOutros, int fortitudeBase, int reflexo, int reflexoOutros,
+                 int reflexoBase, int vontade, int vontadeOutros, int vontadeBase, int bba,
+                 int resMagica, int deslocamento, int agarrar, int agarrarOutros, int pc,
+                 int pp, int po, int pl, int xp, int xpNecessario, String idiomas,
+                 String inventario, String ataques, String armaEquip, String armaduraEquip,
+                 String outrosEquip, String carctClasse, String talentos, String magias) {
         this.nomePersonagem = nomePersonagem;
         this.nomeJogador = nomeJogador;
         this.classeNivel = classeNivel;

@@ -3,7 +3,11 @@ package door.opposite.grupo2.dungeonscrolls.Telas;
 import android.app.Activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.graphics.Color;
+import android.graphics.drawable.AnimationDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Toast;
 
@@ -13,14 +17,13 @@ import door.opposite.grupo2.dungeonscrolls.R;
 import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
 import door.opposite.grupo2.dungeonscrolls.databinding.ActivityLoginBinding;
 import door.opposite.grupo2.dungeonscrolls.graficAssets.Animations;
-import door.opposite.grupo2.dungeonscrolls.graficAssets.DialogFragmentCreator;
 import door.opposite.grupo2.dungeonscrolls.model.SQLite;
 import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.UsuarioModel;
 
 public class LoginActivity extends Activity {
-    Animations animacoes = new Animations();                            // Objeto da classe Animations aonde estão todas as animações do projeto
-    DialogFragmentCreator geraDialog = new DialogFragmentCreator();     // Objeto da classe DialogFragmentCreator aonde estão ferramentas para criar Dialog Fragments
+    AnimationDrawable loadingAnimation;         // Objeto da classe AnimationDrawable para poder gerar as animações
+    Animations animacoes = new Animations();    // Objeto da classe Animations aonde estão todas as animações do projeto
     Intent it;
     Bundle bundle = new Bundle();
     ActivityLoginBinding binding;
@@ -54,12 +57,23 @@ public class LoginActivity extends Activity {
                     Toast.makeText(LoginActivity.this, "Logou", Toast.LENGTH_LONG).show();
                     it.putExtra("usuarioLogado", usuario1);
 
+                    // Construção e exibição do Dialago Fragment:
+
+                    // Cria um Builder para poder manipular o Dialog
+                    AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(LoginActivity.this);
 
                     // Cria uma referência para o dialogfragment_loadingcircle para poder gerar seu layout e referenciar aquilo que tem dentro dele
                     View loadingCircleDialog = getLayoutInflater().inflate(R.layout.dialogfragment_loadingcircle, null);
 
-                    // Cria o Dialog Fragment através de um dos métodos da classe DialogFragmentCreator
-                    geraDialog.criaFragmentDialogLoadingCircle(LoginActivity.this, loadingCircleDialog);
+                    // Serve para referenciar a tela (layout) ao qual o Dialog Fragment será exibido em forma de pop-up
+                    dialogBuilder.setView(loadingCircleDialog);
+                    // Cria efetivamente o dialog
+                    AlertDialog dialog = dialogBuilder.create();
+                    // Definindo a cor do fundo do Dialog Fragment para transparente:
+                    dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    // Exibe o dialog
+                    dialog.show();
+
                     // Chama o método que gera a animação do loading
                     animacoes.loadingMagicCircle(loadingCircleDialog);
                     // Método que inicia a animação

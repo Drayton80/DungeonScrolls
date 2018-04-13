@@ -114,7 +114,18 @@ public class RoomActivity extends AppCompatActivity {
         binding.setAdicionaFicha(new Eventos() {
             @Override
             public void onClickCad() {
-                sqLite.insereDataFicha(new Ficha("Nova Ficha"));
+                sqLite.insereDataFicha(new Ficha("Nova Ficha", "",
+                        "", "", "", "", "", "",
+                        0, 0, 0, 20, 16, 0, 0,
+                        0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0,
+                        0, 0, 5, 12, 0,
+                        0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, "", "", "", "",
+                        "", "", "", "", "" ));
+
                 int[] aux = new int[salaUsada.getFichasID().length +1];
 
                 for (int i = 0; i < salaUsada.getFichasID().length; i++){
