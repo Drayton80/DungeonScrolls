@@ -3,6 +3,9 @@
 <layout>
     <data>
         <variable
+            name="salvarFicha"
+            type="door.opposite.grupo2.dungeonscrolls.commands.EventoSalvar"/>
+        <variable
             name="fichaElementos"
             type="door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel"/>
     </data>

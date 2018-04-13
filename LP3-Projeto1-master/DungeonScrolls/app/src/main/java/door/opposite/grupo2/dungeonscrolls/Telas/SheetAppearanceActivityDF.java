@@ -51,6 +51,5 @@ public class SheetAppearanceActivityDF extends AppCompatActivity {
                 startActivity(getIntent());
             }
         });
-
     }
 }

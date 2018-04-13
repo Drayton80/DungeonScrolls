@@ -125,4 +125,13 @@ public class SheetActivity extends FragmentActivity {
             }
         });
     }
+
+    @Override
+    public void onBackPressed() {
+        extra = new Intent(SheetActivity.this, RoomActivity.class);
+        extra.putExtra("usuarioLogado", usuarioLogado);
+        extra.putExtra("salaUsada", salaUsada);
+        startActivity(extra);
+    }
+
 }
