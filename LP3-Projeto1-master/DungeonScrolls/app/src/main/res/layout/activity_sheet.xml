@@ -217,7 +217,6 @@
                 android:inputType="textMultiLine"
                 android:text="@={fichaElementos.classeNivel}"
                 android:textAlignment="center"
-
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_classes"
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_classes"
                 app:layout_constraintTop_toBottomOf="@+id/sheet_textView_classes" />

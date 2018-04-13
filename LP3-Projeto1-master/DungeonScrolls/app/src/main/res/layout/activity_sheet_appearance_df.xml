@@ -4,7 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
+        <variable
+            name="fichaElementos"
+            type="door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel"/>
+        <variable
+            name="salvarFicha"
+            type="door.opposite.grupo2.dungeonscrolls.commands.EventoSalvar"/>
 
     </data>
 
@@ -24,6 +29,7 @@
             android:layout_marginStart="24dp"
             android:background="@drawable/button_layout"
             android:text="@string/gerais_salvar"
+            android:onClick="@{()-> salvarFicha.onClickSalvar()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -66,14 +72,15 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_title" />
 
-                <EditText
+                <com.santalu.maskedittext.MaskEditText
                     android:id="@+id/sheetAp_editText_height"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text=""
+                    app:met_mask="#######"
+                    android:inputType="numberDecimal"
+                    android:text="@={fichaElementos.altura}"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_height"
                     app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_height"
@@ -103,14 +110,15 @@
                     app:layout_constraintStart_toEndOf="@+id/blank_space"
                     app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_title" />
 
-                <EditText
+                <com.santalu.maskedittext.MaskEditText
                     android:id="@+id/sheetAp_editText_weight"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:ems="10"
-                    android:inputType="textPersonName"
-                    android:text=""
+                    app:met_mask="#######"
+                    android:inputType="numberDecimal"
+                    android:text="@={fichaElementos.peso}"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_weight"
                     app:layout_constraintHorizontal_bias="0.47"
@@ -135,7 +143,7 @@
                     android:layout_marginTop="8dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text=""
+                    android:text="@={fichaElementos.tendencia}"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_inclination"
                     app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_inclination"
@@ -159,7 +167,7 @@
                     android:layout_marginTop="8dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text=""
+                    android:text="@={fichaElementos.divindade}"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_divinity"
                     app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_divinity"
@@ -178,14 +186,15 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/sheetAp_editText_inclination" />
 
-                <EditText
+                <com.santalu.maskedittext.MaskEditText
                     android:id="@+id/sheetAp_editText_gender"
                     android:layout_width="0dp"
                     android:layout_height="49dp"
                     android:layout_marginTop="8dp"
                     android:ems="10"
+                    app:met_mask="#########################"
                     android:inputType="textPersonName"
-                    android:text=""
+                    android:text="@={fichaElementos.sexo}"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_gender"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -212,7 +221,7 @@
                     android:layout_marginTop="8dp"
                     android:ems="10"
                     android:inputType="textPersonName"
-                    android:text=""
+                    android:text="@={fichaElementos.tamanho}"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_size"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -268,6 +277,7 @@
                     android:ems="10"
                     android:inputType="textMultiLine"
                     android:textAlignment="center"
+                    android:text="@={fichaElementos.idiomas}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_languages"
                     app:layout_constraintHorizontal_bias="1.0"

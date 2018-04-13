@@ -29,7 +29,7 @@ public class SheetActivity extends FragmentActivity {
     int[] salasID, fichasID;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sheet);
         sqLite = new SQLite(this);
@@ -40,6 +40,7 @@ public class SheetActivity extends FragmentActivity {
         fichaUsada = (Ficha) extra.getSerializableExtra("fichaUsada");
 
         binding.setFichaElementos(new FichaModel(fichaUsada));
+
 
         binding.setFichaButtons(new EventosFicha(){
             @Override
@@ -109,10 +110,13 @@ public class SheetActivity extends FragmentActivity {
                 fichaUsada.setSabedoria(binding.getFichaElementos().sabedoria);
                 fichaUsada.setInteligencia(binding.getFichaElementos().inteligencia);
                 fichaUsada.setCarisma(binding.getFichaElementos().carisma);
+                fichaUsada.setFortitude(binding.getFichaElementos().fortitude);
                 fichaUsada.setFortitudeBase(binding.getFichaElementos().fortitudeBase);
                 fichaUsada.setFortitudeOutros(binding.getFichaElementos().fortitudeOutros);
+                fichaUsada.setReflexo(binding.getFichaElementos().reflexo);
                 fichaUsada.setReflexoBase(binding.getFichaElementos().reflexoBase);
                 fichaUsada.setReflexoOutros(binding.getFichaElementos().reflexoOutros);
+                fichaUsada.setVontade(binding.getFichaElementos().vontade);
                 fichaUsada.setVontadeBase(binding.getFichaElementos().vontadeBase);
                 fichaUsada.setVontadeOutros(binding.getFichaElementos().vontadeOutros);
                 sqLite.updateDataFicha(fichaUsada);

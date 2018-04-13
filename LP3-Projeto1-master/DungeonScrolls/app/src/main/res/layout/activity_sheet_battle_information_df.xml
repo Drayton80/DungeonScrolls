@@ -2,9 +2,12 @@
 
 <layout>
     <data>
-
-
-
+        <variable
+            name="fichaElementos"
+            type="door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel"/>
+        <variable
+            name="salvarficha"
+            type="door.opposite.grupo2.dungeonscrolls.commands.EventoSalvar"/>
     </data>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -24,6 +27,7 @@
         android:layout_marginStart="24dp"
         android:background="@drawable/button_layout"
         android:text="@string/gerais_salvar"
+        android:onClick="@{()-> salvarficha.onClickSalvar()}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -87,6 +91,8 @@
                 android:ems="10"
                 android:inputType="none"
                 android:textAlignment="center"
+                android:text="@={fichaElementos.ca}"
+                android:editable="false"
                 app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_reducaoDeDano"
                 app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_caNormal"
                 app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_caNormal"
@@ -112,6 +118,8 @@
                 android:ems="10"
                 android:inputType="none"
                 android:textAlignment="center"
+                android:text="@={fichaElementos.caToque}"
+                android:editable="false"
                 app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_resistenciasElementais"
                 app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_caToque"
                 app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_caToque"
@@ -169,6 +177,7 @@
                 android:ems="10"
                 android:inputType="numberSigned"
                 android:textAlignment="center"
+                android:text="@={fichaElementos.armadura}"
                 app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_caNormal"
                 app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_caArmadura"
                 app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_caArmadura"
@@ -214,6 +223,7 @@
                 android:ems="10"
                 android:inputType="numberSigned"
                 android:textAlignment="center"
+                android:text="@={fichaElementos.armaduraNatural}"
                 app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_caNormal"
                 app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_caNatural"
                 app:layout_constraintStart_toEndOf="@+id/white_space4"
@@ -259,6 +269,7 @@
                 android:ems="10"
                 android:inputType="numberSigned"
                 android:textAlignment="center"
+                android:text="@={fichaElementos.caOutros}"
                 app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_caNormal"
                 app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_caOutros"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -286,6 +297,8 @@
                 android:ems="10"
                 android:inputType="none"
                 android:textAlignment="center"
+                android:text="@={fichaElementos.caSurpresa}"
+                android:editable="false"
                 app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_caToque"
                 app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_caSurpresa"
                 app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_caSurpresa"
@@ -312,6 +325,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:textAlignment="center"
+                android:text="@={fichaElementos.resMagica}"
                 app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_resistenciasElementais"
                 app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_resistenciaMagica"
                 app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_resistenciaMagica"
@@ -385,6 +399,7 @@
                 android:ems="10"
                 android:inputType="number"
                 android:textAlignment="center"
+                android:text="@={fichaElementos.pv}"
                 app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_pvTotal"
                 app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_pvTotal"
                 app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_pvAtual" />
@@ -411,6 +426,7 @@
                 android:ems="10"
                 android:inputType="none|textPersonName"
                 android:textAlignment="center"
+                android:text="@={fichaElementos.reducaoDeDano}"
                 app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_reducaoDeDano"
                 app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_reducaoDeDano"
                 app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_reducaoDeDano" />
@@ -471,6 +487,8 @@
                 android:ems="10"
                 android:inputType="none"
                 android:textAlignment="center"
+                android:text="@={fichaElementos.iniciativa}"
+                android:editable="false"
                 app:layout_constraintEnd_toStartOf="@+id/white_space5"
                 app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_iniciativa"
                 app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_iniciativa" />
@@ -516,6 +534,7 @@
                 android:ems="10"
                 android:inputType="none"
                 android:textAlignment="center"
+                android:text="@={fichaElementos.destrezaMod}"
                 app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_iniciativaDestreza"
                 app:layout_constraintStart_toEndOf="@+id/white_space5"
                 app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_iniciativaDestreza" />
@@ -561,6 +580,7 @@
                 android:ems="10"
                 android:inputType="numberSigned"
                 android:textAlignment="center"
+                android:text="@={fichaElementos.iniciativaOutros}"
                 app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_iniciativa"
                 app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_iniciativaOutros"
                 app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_iniciativaOutros"
@@ -587,6 +607,7 @@
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:textAlignment="center"
+                android:text="@={fichaElementos.deslocamento}"
                 app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_iniciativa"
                 app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_deslocamento"
                 app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_deslocamento"
@@ -622,6 +643,8 @@
                 android:ems="10"
                 android:inputType="none"
                 android:textAlignment="center"
+                android:text="@={fichaElementos.agarrar}"
+                android:editable="false"
                 app:layout_constraintEnd_toStartOf="@+id/white_space9"
                 app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_agarrar"
                 app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_agarrar" />
@@ -667,6 +690,7 @@
                 android:ems="10"
                 android:inputType="none"
                 android:textAlignment="center"
+                android:text="@={fichaElementos.forcaMod}"
                 app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_agarrar"
                 app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_agarrarForca"
                 app:layout_constraintStart_toEndOf="@+id/white_space9"
@@ -712,6 +736,7 @@
                 android:ems="10"
                 android:inputType="none"
                 android:textAlignment="center"
+                android:text="@={fichaElementos.agarrarOutros}"
                 app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_agarrar"
                 app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_agarrarOutros"
                 app:layout_constraintStart_toEndOf="@+id/white_space10"
@@ -738,6 +763,7 @@
                 android:ems="10"
                 android:inputType="number"
                 android:textAlignment="center"
+                android:text="@={fichaElementos.bba}"
                 app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_agarrar"
                 app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_bba"
                 app:layout_constraintHorizontal_bias="0.0"

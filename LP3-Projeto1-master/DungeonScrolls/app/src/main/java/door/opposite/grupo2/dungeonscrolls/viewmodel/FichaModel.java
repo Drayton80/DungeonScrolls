@@ -113,29 +113,29 @@ public class FichaModel extends BaseObservable{
         this.inteligenciaMod = ((ficha.getInteligencia()-10)/2);
         this.sabedoriaMod = ((ficha.getSabedoria()-10)/2);
         this.carismaMod = ((ficha.getCarisma()-10)/2);
-        this.ca = ficha.getCa();
+        this.ca = (ficha.getArmadura() + ficha.getArmaduraNatural() + ficha.getCaOutros());
         this.caOutros = ficha.getCaOutros();
-        this.caToque = ficha.getCaToque();
-        this.caSurpresa = ficha.getCaSurpresa();
+        this.caToque = (ficha.getCa() - ficha.getArmadura() - ficha.getArmaduraNatural());
+        this.caSurpresa = (ficha.getCa() - ficha.getDestrezaMod());
         this.armadura = ficha.getArmadura();
         this.armaduraNatural = ficha.getArmaduraNatural();
         this.pv = ficha.getPv();
         this.reducaoDeDano = ficha.getReducaoDeDano();
-        this.iniciativa = ficha.getIniciativa();
+        this.iniciativa = (ficha.getDestrezaMod() + ficha.getIniciativaOutros());
         this.iniciativaOutros = ficha.getIniciativaOutros();
-        this.fortitude = (ficha.getFortitudeBase() + ficha.getFortitudeOutros());
+        this.fortitude = (ficha.getFortitudeBase() + ficha.getFortitudeOutros() + ficha.getConstituicaoMod());
         this.fortitudeOutros = ficha.getFortitudeOutros();
         this.fortitudeBase = ficha.getFortitudeBase();
-        this.reflexo = (ficha.getReflexoBase() + ficha.getReflexoOutros());
+        this.reflexo = (ficha.getReflexoBase() + ficha.getReflexoOutros() + ficha.getDestrezaMod());
         this.reflexoOutros = ficha.getReflexoOutros();
         this.reflexoBase = ficha.getReflexoBase();
-        this.vontade = (ficha.getVontadeBase() + ficha.getVontadeOutros());
+        this.vontade = (ficha.getVontadeBase() + ficha.getVontadeOutros() + ficha.getSabedoriaMod());
         this.vontadeOutros = ficha.getVontadeOutros();
         this.vontadeBase = ficha.getVontadeBase();
         this.bba = ficha.getBba();
         this.resMagica = ficha.getResMagica();
         this.deslocamento = ficha.getDeslocamento();
-        this.agarrar = ficha.getAgarrar();
+        this.agarrar = (ficha.getForcaMod() + ficha.getAgarrarOutros());
         this.agarrarOutros = ficha.getAgarrarOutros();
         this.pc = ficha.getPc();
         this.pp = ficha.getPp();
@@ -188,7 +188,6 @@ public class FichaModel extends BaseObservable{
     public void setClasseNivel(String classeNivel) {
         this.classeNivel = classeNivel;
         notifyPropertyChanged(R.id.sheet_editText_classes);
-
     }
 
     public String getRaca() {
@@ -196,10 +195,8 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setRaca(String raca) {
-
         this.raca = raca;
         notifyPropertyChanged(R.id.sheet_editText_raca);
-
     }
 
     public String getTendencia() {
@@ -207,8 +204,8 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setTendencia(String tendencia) {
-
         this.tendencia = tendencia;
+        notifyPropertyChanged(R.id.sheetAp_editText_inclination);
     }
 
     public String getDivindade() {
@@ -217,6 +214,7 @@ public class FichaModel extends BaseObservable{
 
     public void setDivindade(String divindade) {
         this.divindade = divindade;
+        notifyPropertyChanged(R.id.sheetAp_editText_divinity);
     }
 
     public String getSexo() {
@@ -225,6 +223,7 @@ public class FichaModel extends BaseObservable{
 
     public void setSexo(String sexo) {
         this.sexo = sexo;
+        notifyPropertyChanged(R.id.sheetAp_editText_gender);
     }
 
     public String getTamanho() {
@@ -233,6 +232,7 @@ public class FichaModel extends BaseObservable{
 
     public void setTamanho(String tamanho) {
         this.tamanho = tamanho;
+        notifyPropertyChanged(R.id.sheetAp_editText_size);
     }
 
     public String getAltura() {
@@ -241,7 +241,14 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setAltura(String altura) {
-        this.altura = Float.parseFloat(altura);
+        if(altura.equals("")){
+            this.altura = 0;
+        }else if(altura.equals(".")){
+            this.altura = 0;
+        }else{
+            this.altura = Float.parseFloat(altura);
+        }
+        notifyPropertyChanged(R.id.sheetAp_editText_height);
     }
 
     public String getPeso() {
@@ -249,7 +256,14 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setPeso(String peso) {
-        this.peso = Float.parseFloat(peso);
+        if(peso.equals("")){
+            this.peso = 0;
+        }else if(peso.equals(".")){
+            this.peso = 0;
+        }else{
+            this.peso = Float.parseFloat(peso);
+        }
+        notifyPropertyChanged(R.id.sheetAp_editText_weight);
     }
 
     public String getIdade() {
@@ -344,17 +358,19 @@ public class FichaModel extends BaseObservable{
 
     public String getForcaMod() {
 
-        return String.valueOf((forca -10)/2);
+        return String.valueOf((forca - 10)/2);
     }
 
     public void setForcaMod(String forcaMod) {
 
         this.forcaMod = Integer.parseInt(forcaMod);
         notifyPropertyChanged(R.id.sheet_editText_habilidadesForcaModificador);
+        notifyPropertyChanged(R.id.sheetBI_editText_agarrarForca);
     }
 
     public String getConstituicaoMod() {
-        return String.valueOf((constituicao-10)/2);
+
+        return String.valueOf((constituicao - 10)/2);
     }
 
     public void setConstituicaoMod(String constituicaoMod) {
@@ -364,17 +380,20 @@ public class FichaModel extends BaseObservable{
     }
 
     public String getDestrezaMod() {
-        return String.valueOf(destrezaMod);
+
+        return String.valueOf((destreza - 10)/2);
     }
 
     public void setDestrezaMod(String destrezaMod) {
 
         this.destrezaMod = Integer.parseInt(destrezaMod);
         notifyPropertyChanged(R.id.sheet_editText_habilidadesDestrezaModificador);
+        notifyPropertyChanged(R.id.sheetBI_editText_iniciativaDestreza);
     }
 
     public String getInteligenciaMod() {
-        return String.valueOf(inteligenciaMod);
+
+        return String.valueOf((inteligencia - 10)/2);
     }
 
     public void setInteligenciaMod(String inteligenciaMod) {
@@ -384,7 +403,8 @@ public class FichaModel extends BaseObservable{
     }
 
     public String getSabedoriaMod() {
-        return String.valueOf(sabedoriaMod);
+
+        return String.valueOf((sabedoria - 10)/2);
     }
 
     public void setSabedoriaMod(String sabedoriaMod) {
@@ -394,21 +414,26 @@ public class FichaModel extends BaseObservable{
     }
 
     public String getCarismaMod() {
-        return String.valueOf(carismaMod);
+
+        return String.valueOf((carisma - 10)/2);
     }
 
     public void setCarismaMod(String carismaMod) {
-
         this.carismaMod = Integer.parseInt(carismaMod);
         notifyPropertyChanged(R.id.sheet_editText_habilidadesCarismaModificador);
     }
 
     public String getCa() {
-        return String.valueOf(ca);
+        return String.valueOf((armadura + armaduraNatural + caOutros));
     }
 
     public void setCa(String ca) {
-        this.ca = Integer.parseInt(ca);
+        if(ca.equals("")){
+            this.ca = 0;
+        }else{
+            this.ca = Integer.parseInt(ca);
+        }
+        notifyPropertyChanged(R.id.sheetBI_editText_caNormal);
     }
 
     public String getCaOutros() {
@@ -416,23 +441,41 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setCaOutros(String caOutros) {
-        this.caOutros = Integer.parseInt(caOutros);
+        if(caOutros.equals("")){
+            this.caOutros = 0;
+        }else{
+            this.caOutros = Integer.parseInt(caOutros);
+        }
+        notifyPropertyChanged(R.id.sheetBI_editText_caOutros);
     }
 
     public String getCaToque() {
-        return String.valueOf(caToque);
+
+        return String.valueOf((ca - armadura - armaduraNatural));
     }
 
     public void setCaToque(String caToque) {
-        this.caToque = Integer.parseInt(caToque);
+        if(caToque.equals("")){
+            this.caToque = 0;
+        }else{
+            this.caToque = Integer.parseInt(caToque);
+        }
+        notifyPropertyChanged(R.id.sheetBI_editText_caToque);
+
     }
 
     public String getCaSurpresa() {
-        return String.valueOf(caSurpresa);
+
+        return String.valueOf((ca - destrezaMod));
     }
 
     public void setCaSurpresa(String caSurpresa) {
-        this.caSurpresa = Integer.parseInt(caSurpresa);
+        if(caSurpresa.equals("")){
+            this.caSurpresa = 0;
+        }else{
+            this.caSurpresa = Integer.parseInt(caSurpresa);
+        }
+        notifyPropertyChanged(R.id.sheetBI_editText_caSurpresa);
     }
 
     public String getArmadura() {
@@ -440,7 +483,12 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setArmadura(String armadura) {
-        this.armadura = Integer.parseInt(armadura);
+        if(armadura.equals("")){
+            this.armadura = 0;
+        }else{
+            this.armadura = Integer.parseInt(armadura);
+        }
+        notifyPropertyChanged(R.id.sheetBI_editText_caArmadura);
     }
 
     public String getArmaduraNatural() {
@@ -448,7 +496,12 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setArmaduraNatural(String armaduraNatural) {
-        this.armaduraNatural = Integer.parseInt(armaduraNatural);
+        if(armaduraNatural.equals("")){
+            this.armaduraNatural = 0;
+        }else{
+            this.armaduraNatural = Integer.parseInt(armaduraNatural);
+        }
+        notifyPropertyChanged(R.id.sheetBI_editText_caNatural);
     }
 
     public String getPv() {
@@ -456,7 +509,12 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setPv(String pv) {
-        this.pv = Integer.parseInt(pv);
+        if(pv.equals("")){
+            this.pv = 0;
+        }else{
+            this.pv = Integer.parseInt(pv);
+        }
+        notifyPropertyChanged(R.id.sheetBI_editText_pvTotal);
     }
 
     public String getReducaoDeDano() {
@@ -464,15 +522,27 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setReducaoDeDano(String reducaoDeDano) {
-        this.reducaoDeDano = Integer.parseInt(reducaoDeDano);
+        if(reducaoDeDano.equals("")){
+            this.reducaoDeDano = 0;
+        }else{
+            this.reducaoDeDano = Integer.parseInt(reducaoDeDano);
+        }
+        notifyPropertyChanged(R.id.sheetBI_editText_reducaoDeDano);
+
     }
 
     public String getIniciativa() {
-        return String.valueOf(iniciativa);
+
+        return String.valueOf((destrezaMod + iniciativaOutros));
     }
 
     public void setIniciativa(String iniciativa) {
-        this.iniciativa = Integer.parseInt(iniciativa);
+        if(iniciativa.equals("")){
+            this.iniciativa = 0;
+        }else{
+            this.iniciativa = Integer.parseInt(iniciativa);
+        }
+        notifyPropertyChanged(R.id.sheetBI_editText_iniciativa);
     }
 
     public String getIniciativaOutros() {
@@ -480,11 +550,17 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setIniciativaOutros(String iniciativaOutros) {
-        this.iniciativaOutros = Integer.parseInt(iniciativaOutros);
+        if(iniciativaOutros.equals("")){
+            this.iniciativaOutros = 0;
+        }else{
+            this.iniciativaOutros = Integer.parseInt(iniciativaOutros);
+        }
+        notifyPropertyChanged(R.id.sheetBI_editText_iniciativaOutros);
     }
 
     public String getFortitude() {
-        return String.valueOf(fortitude);
+
+        return String.valueOf((fortitudeBase + fortitudeOutros + constituicaoMod));
     }
 
     public void setFortitude(String fortitude) {
@@ -520,7 +596,8 @@ public class FichaModel extends BaseObservable{
     }
 
     public String getReflexo() {
-        return String.valueOf(reflexo);
+
+        return String.valueOf((reflexoBase + reflexoOutros + destrezaMod));
     }
 
     public void setReflexo(String reflexo) {
@@ -555,8 +632,9 @@ public class FichaModel extends BaseObservable{
         notifyPropertyChanged(R.id.sheet_editText_resistenciasReflexosOutros);
     }
 
-    public String getVontade() {
-        return String.valueOf(vontade);
+    public String getVontade()
+    {
+        return String.valueOf((vontadeBase + vontadeOutros + sabedoriaMod));
     }
 
     public void setVontade(String vontade) {
@@ -597,7 +675,12 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setBba(String bba) {
-        this.bba = Integer.parseInt(bba);
+        if(bba.equals("")){
+            this.bba = 0;
+        }else{
+            this.bba = Integer.parseInt(bba);
+        }
+        notifyPropertyChanged(R.id.sheetBI_editText_bba);
     }
 
     public String getResMagica() {
@@ -605,7 +688,12 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setResMagica(String resMagica) {
-        this.resMagica = Integer.parseInt(resMagica);
+        if(bba.equals("")){
+            this.bba = 0;
+        }else{
+            this.bba = Integer.parseInt(bba);
+        }
+        notifyPropertyChanged(R.id.sheetBI_editText_resistenciaMagica);
     }
 
     public String getDeslocamento() {
@@ -614,14 +702,18 @@ public class FichaModel extends BaseObservable{
 
     public void setDeslocamento(String deslocamento) {
         this.deslocamento = Integer.parseInt(deslocamento);
+        notifyPropertyChanged(R.id.sheetBI_editText_deslocamento);
     }
 
     public String getAgarrar() {
-        return String.valueOf(agarrar);
+
+        return String.valueOf((forcaMod + agarrarOutros));
     }
 
     public void setAgarrar(String agarrar) {
+
         this.agarrar = Integer.parseInt(agarrar);
+        notifyPropertyChanged(R.id.sheetBI_editText_agarrar);
     }
 
     public String getAgarrarOutros() {
@@ -630,6 +722,7 @@ public class FichaModel extends BaseObservable{
 
     public void setAgarrarOutros(String agarrarOutros) {
         this.agarrarOutros = Integer.parseInt(agarrarOutros);
+        notifyPropertyChanged(R.id.sheetBI_editText_agarrarOutros);
     }
 
     public String getPc() {
@@ -690,7 +783,9 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setIdiomas(String idiomas) {
+
         this.idiomas = idiomas;
+        notifyPropertyChanged(R.id.sheetAp_editText_languages);
     }
 
     public String getInventario() {
@@ -706,7 +801,9 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setAtaques(String ataques) {
+
         this.ataques = ataques;
+        notifyPropertyChanged(R.id.sheetBI_editText_attacks);
     }
 
     public String getArmaEquip() {

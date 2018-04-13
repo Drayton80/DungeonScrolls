@@ -72,8 +72,8 @@
     <string name="sheet_activity_recordSheet_magias">Magias</string>
 
     <string name="sheet_activity_appearanceSheet_title">Informações e Aparência</string>
-    <string name="sheet_activity_appearanceSheet_height">Altura</string>
-    <string name="sheet_activity_appearanceSheet_weight">Peso</string>
+    <string name="sheet_activity_appearanceSheet_height">Altura(m)</string>
+    <string name="sheet_activity_appearanceSheet_weight">Peso(kg)</string>
     <string name="sheet_activity_appearanceSheet_inclination">Tendência</string>
     <string name="sheet_activity_appearanceSheet_divinity">Divindade(s)</string>
     <string name="sheet_activity_appearanceSheet_gender">Sexo</string>
