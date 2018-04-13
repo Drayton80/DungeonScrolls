@@ -6,10 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.PopupMenu;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -27,7 +30,7 @@ import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.SalaModel;
 
-public class RoomActivity extends AppCompatActivity {
+public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
     ActivityRoomBinding binding;
     SQLite sqLite;
     Intent extra;
@@ -39,6 +42,7 @@ public class RoomActivity extends AppCompatActivity {
     ArrayList<FichaModel> fichaModelArrayList;
     FichaAdapter fichaAdapter;
     int[] fichasID;
+    int posicaoDelete = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +61,20 @@ public class RoomActivity extends AppCompatActivity {
         fichaModelArrayList = fichaModel.getArrayListaFicha(salaUsada.getFichasID(), sqLite);
         fichaAdapter = new FichaAdapter(this, fichaModelArrayList);
         binding.roomListViewFichas.setAdapter(fichaAdapter);
+
+        binding.roomListViewFichas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
+                PopupMenu menu = new PopupMenu(RoomActivity.this ,view);
+                menu.setOnMenuItemClickListener(RoomActivity.this);
+                menu.inflate(R.menu.menu_popup);
+                posicaoDelete = position;
+
+                menu.show();
+
+                return true;
+            }
+        });
 
         binding.roomListViewFichas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -104,13 +122,7 @@ public class RoomActivity extends AppCompatActivity {
                 sqLite.updateDataSala(salaUsada);
             }
         });
-        /*
-        ListView listViewFichas = (ListView) findViewById(R.id.room_listView_fichas);
-        ArrayAdapter adapter = new RoomListViewFichaAdapter(this, adicionaFichas());
-        listViewFichas.setAdapter(adapter);
-        */
 
-        //listViewFichas.setOnItemSelectedListener();
         binding.setAdicionaFicha(new Eventos() {
             @Override
             public void onClickCad() {
@@ -147,25 +159,66 @@ public class RoomActivity extends AppCompatActivity {
         });
 
     }
-    /*
-    // Método que efetivamente adiciona as fichas ao ListView::
-    private ArrayList<RoomListViewFicha> adicionaFichas(){
-        // Cria um ArrayLista para introduzir os elementos
-        ArrayList<RoomListViewFicha> listaDeFichas = new ArrayList<RoomListViewFicha>();
-
-        // Armando, é aqui que tu vai fazer o link com o banco de dados das fichas
-        // Esse aqui abaixo é só um exemplo para vc ter como base:
-        RoomListViewFicha ficha = new RoomListViewFicha("Nome 1", R.drawable.avatar);
-        listaDeFichas.add(ficha);
-
-        ficha.setNome("Nome 2");
-        ficha.setImagem(R.drawable.avatar);
-        listaDeFichas.add(ficha);
-        // Fim do Exemplo :v
 
 
-        // Retorna a lista toda já montada com cada elemento:
-        return listaDeFichas;
+
+    @Override
+    public boolean onMenuItemClick(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case R.id.item_vincular:
+                return true;
+            case R.id.item_deleta:
+                fichasID = salaUsada.getFichasID();
+                for(int i = 0; i < salaUsada.getFichasID().length; i++){
+                    if(i == posicaoDelete){
+                        if (fichasID[i+1] == 0){
+                            System.out.println("==========================================================");
+                        }else{
+                            // System.out.println("=================Entrou aqui, eu achei a sala!");
+                            Ficha ficha = sqLite.selecionarFicha(fichasID[i+1]);
+                            //----------comeca
+                            int array_auxiliar[] = salaUsada.getFichasID();
+                            array_auxiliar = achaElemento(array_auxiliar, ficha.getId());
+                            salaUsada.setFichasID(array_auxiliar);
+                            //-----------ternina
+                            sqLite.updateDataSala(salaUsada);
+                            sqLite.deleteDataFicha(ficha);
+                            finish();
+                            startActivity(getIntent());
+                        }
+                    }
+                }
+                return true;
+            default:
+                return false;
+
+        }
+
+
     }
-    */
+
+    public static int[] achaElemento(int array_original[], int numero){
+        int posicao = 0;
+        boolean encontrou = false;
+        for(int i = 0; i < array_original.length; i++){
+            if(array_original[i] == numero){
+                posicao = i;
+                break;
+            }
+        }
+
+        int array_novo[] = new int[array_original.length -1];
+        for(int i = 0; i < array_novo.length; i++){
+            if(i == posicao || encontrou == true) {
+                array_novo[i] = array_original[i+1];
+                encontrou = true;
+            }
+            else{
+                array_novo[i] = array_original[i];
+            }
+        }
+
+        return array_novo;
+    }
+
 }

@@ -34,12 +34,12 @@ public class AllRooms extends AppCompatActivity {
     int[] salasID;
     Sala salaUsada;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_all_rooms);
         sqLite = new SQLite(this);
-
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
 
