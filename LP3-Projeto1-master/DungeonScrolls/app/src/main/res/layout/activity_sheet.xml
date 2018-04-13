@@ -28,6 +28,7 @@
         android:layout_marginStart="24dp"
         android:background="@drawable/button_layout"
         android:text="@string/gerais_salvar"
+        android:onClick="@{()->fichaButtons.onClickSalvarFicha()}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -98,7 +99,7 @@
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="textPersonName"
-                android:text="@{fichaElementos.nomePersonagem}"
+                android:text="@={fichaElementos.nomePersonagem}"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_name"
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_name"
@@ -115,14 +116,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/sheet_textView_experiencia" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheet_editText_idade"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
+                app:met_mask="######"
                 android:inputType="number"
-                android:text="@{fichaElementos.idade}"
+                android:text="@={fichaElementos.idade}"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_idade"
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_idade"
@@ -141,14 +143,15 @@
                 app:layout_constraintStart_toEndOf="@+id/sheet_textView_idade"
                 app:layout_constraintTop_toBottomOf="@+id/sheet_plainText_name" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheet_editText_experiencia"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
+                app:met_mask="#######"
                 android:inputType="number"
-                android:text="@{fichaElementos.xp}"
+                android:text="@={fichaElementos.xp}"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_experiencia"
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_experiencia"
@@ -186,7 +189,7 @@
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="text"
-                android:text="@{fichaElementos.raca}"
+                android:text="@={fichaElementos.raca}"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_raca"
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_raca"
@@ -212,8 +215,9 @@
                 android:layout_marginTop="8dp"
                 android:ems="10"
                 android:inputType="textMultiLine"
-                android:text="@{fichaElementos.classeNivel}"
+                android:text="@={fichaElementos.classeNivel}"
                 android:textAlignment="center"
+
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_classes"
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_classes"
                 app:layout_constraintTop_toBottomOf="@+id/sheet_textView_classes" />
@@ -292,15 +296,16 @@
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesNome"
                 app:layout_constraintTop_toBottomOf="@+id/sheet_textView_habilidadesForcaSigla" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheet_editText_habilidadesForca"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:ems="10"
+                app:met_mask="###"
                 android:inputType="number"
                 android:textAlignment="center"
-                android:text="@{fichaElementos.forca}"
+                android:text="@={fichaElementos.forca}"
                 app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_reducaoDeDano"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesValor"
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesValor"
@@ -315,7 +320,7 @@
                 android:ems="10"
                 android:inputType="none"
                 android:textAlignment="center"
-                android:text="@{fichaElementos.forcaMod}"
+                android:text="@={fichaElementos.forcaMod}"
                 android:editable="false"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesModificador"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -350,15 +355,16 @@
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesNome"
                 app:layout_constraintTop_toBottomOf="@+id/sheet_textView_habilidadesDestrezaSigla" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheet_editText_habilidadesDestreza"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
+                app:met_mask="###"
                 android:inputType="number"
                 android:textAlignment="center"
-                android:text="@{fichaElementos.destreza}"
+                android:text="@={fichaElementos.destreza}"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesValor"
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesValor"
                 app:layout_constraintTop_toBottomOf="@+id/sheet_editText_habilidadesForca" />
@@ -371,7 +377,7 @@
                 android:ems="10"
                 android:inputType="none"
                 android:textAlignment="center"
-                android:text="@{fichaElementos.destrezaMod}"
+                android:text="@={fichaElementos.destrezaMod}"
                 android:editable="false"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesModificador"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -402,15 +408,16 @@
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesNome"
                 app:layout_constraintTop_toBottomOf="@+id/sheet_textView_habilidadesConstituicaoSigla" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheet_editText_habilidadesConstituicao"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
+                app:met_mask="###"
                 android:inputType="number"
                 android:textAlignment="center"
-                android:text="@{fichaElementos.constituicao}"
+                android:text="@={fichaElementos.constituicao}"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesValor"
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesValor"
                 app:layout_constraintTop_toBottomOf="@+id/sheet_editText_habilidadesDestreza" />
@@ -423,7 +430,7 @@
                 android:ems="10"
                 android:inputType="none"
                 android:textAlignment="center"
-                android:text="@{fichaElementos.constituicaoMod}"
+                android:text="@={fichaElementos.constituicaoMod}"
                 android:editable="false"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesModificador"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -456,15 +463,16 @@
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesNome"
                 app:layout_constraintTop_toBottomOf="@+id/sheet_textView_habilidadesSabedoriaSigla" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheet_editText_habilidadesSabedoria"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
+                app:met_mask="###"
                 android:inputType="number"
                 android:textAlignment="center"
-                android:text="@{fichaElementos.sabedoria}"
+                android:text="@={fichaElementos.sabedoria}"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesValor"
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesValor"
                 app:layout_constraintTop_toBottomOf="@+id/sheet_editText_habilidadesConstituicao" />
@@ -477,7 +485,7 @@
                 android:ems="10"
                 android:inputType="none"
                 android:textAlignment="center"
-                android:text="@{fichaElementos.sabedoriaMod}"
+                android:text="@={fichaElementos.sabedoriaMod}"
                 android:editable="false"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesModificador"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -510,15 +518,16 @@
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesNome"
                 app:layout_constraintTop_toBottomOf="@+id/sheet_textView_habilidadesInteligenciaSigla" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheet_editText_habilidadesInteligencia"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
+                app:met_mask="###"
                 android:inputType="number"
                 android:textAlignment="center"
-                android:text="@{fichaElementos.inteligencia}"
+                android:text="@={fichaElementos.inteligencia}"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesValor"
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesValor"
                 app:layout_constraintTop_toBottomOf="@+id/sheet_editText_habilidadesSabedoria" />
@@ -531,7 +540,7 @@
                 android:ems="10"
                 android:inputType="none"
                 android:textAlignment="center"
-                android:text="@{fichaElementos.inteligenciaMod}"
+                android:text="@={fichaElementos.inteligenciaMod}"
                 android:editable="false"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesModificador"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -562,15 +571,16 @@
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesNome"
                 app:layout_constraintTop_toBottomOf="@+id/sheet_textView_habilidadesCarismaSigla" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheet_editText_habilidadesCarisma"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
+                app:met_mask="###"
                 android:inputType="number"
                 android:textAlignment="center"
-                android:text="@{fichaElementos.carisma}"
+                android:text="@={fichaElementos.carisma}"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesValor"
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesValor"
                 app:layout_constraintTop_toBottomOf="@+id/sheet_editText_habilidadesInteligencia" />
@@ -583,7 +593,7 @@
                 android:ems="10"
                 android:inputType="none"
                 android:textAlignment="center"
-                android:text="@{fichaElementos.carismaMod}"
+                android:text="@={fichaElementos.carismaMod}"
                 android:editable="false"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesModificador"
                 app:layout_constraintHorizontal_bias="1.0"
@@ -684,7 +694,7 @@
                 android:ems="10"
                 android:inputType="none"
                 android:textAlignment="center"
-                android:text="@{fichaElementos.fortitude}"
+                android:text="@={fichaElementos.fortitude}"
                 android:editable="false"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasTotal"
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasTotal"
@@ -704,15 +714,16 @@
                 app:layout_constraintStart_toEndOf="@+id/sheet_editText_resistenciasFortitudeTotal"
                 app:layout_constraintTop_toTopOf="@+id/sheet_editText_resistenciasFortitudeTotal" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheet_editText_resistenciasFortitudeBase"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="none"
+                app:met_mask="###"
+                android:inputType="number"
                 android:textAlignment="center"
-                android:text="@{fichaElementos.fortitudeBase}"
+                android:text="@={fichaElementos.fortitudeBase}"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasBase"
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasBase"
                 app:layout_constraintTop_toBottomOf="@+id/sheet_textView_resistenciasBase" />
@@ -731,15 +742,16 @@
                 app:layout_constraintStart_toEndOf="@+id/sheet_editText_resistenciasFortitudeBase"
                 app:layout_constraintTop_toTopOf="@+id/sheet_editText_resistenciasFortitudeTotal" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheet_editText_resistenciasFortitudeOutros"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="none"
+                app:met_mask="###"
+                android:inputType="number"
                 android:textAlignment="center"
-                android:text="@{fichaElementos.fortitudeOutros}"
+                android:text="@={fichaElementos.fortitudeOutros}"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasOutros"
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasOutros"
                 app:layout_constraintTop_toBottomOf="@+id/sheet_textView_resistenciasOutros" />
@@ -779,7 +791,7 @@
                 android:ems="10"
                 android:inputType="none"
                 android:textAlignment="center"
-                android:text="@{fichaElementos.reflexo}"
+                android:text="@={fichaElementos.reflexo}"
                 android:editable="false"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasTotal"
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasTotal"
@@ -799,15 +811,16 @@
                 app:layout_constraintStart_toEndOf="@+id/sheet_editText_resistenciasFortitudeTotal"
                 app:layout_constraintTop_toTopOf="@+id/sheet_editText_resistenciasReflexosTotal" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheet_editText_resistenciasReflexosBase"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="none"
+                app:met_mask="###"
+                android:inputType="number"
                 android:textAlignment="center"
-                android:text="@{fichaElementos.reflexoBase}"
+                android:text="@={fichaElementos.reflexoBase}"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasBase"
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasBase"
                 app:layout_constraintTop_toBottomOf="@+id/sheet_editText_resistenciasFortitudeBase" />
@@ -826,15 +839,16 @@
                 app:layout_constraintStart_toEndOf="@+id/sheet_editText_resistenciasFortitudeBase"
                 app:layout_constraintTop_toTopOf="@+id/sheet_editText_resistenciasReflexosBase" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheet_editText_resistenciasReflexosOutros"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="none"
+                app:met_mask="###"
+                android:inputType="number"
                 android:textAlignment="center"
-                android:text="@{fichaElementos.reflexoOutros}"
+                android:text="@={fichaElementos.reflexoOutros}"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasOutros"
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasOutros"
                 app:layout_constraintTop_toBottomOf="@+id/sheet_editText_resistenciasFortitudeOutros" />
@@ -874,7 +888,7 @@
                 android:ems="10"
                 android:inputType="none"
                 android:textAlignment="center"
-                android:text="@{fichaElementos.vontade}"
+                android:text="@={fichaElementos.vontade}"
                 android:editable="false"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasTotal"
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasTotal"
@@ -894,15 +908,16 @@
                 app:layout_constraintStart_toEndOf="@+id/sheet_editText_resistenciasFortitudeTotal"
                 app:layout_constraintTop_toTopOf="@+id/sheet_editText_resistenciasVontadeTotal" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheet_editText_resistenciasVontadeBase"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="none"
+                app:met_mask="###"
+                android:inputType="number"
                 android:textAlignment="center"
-                android:text="@{fichaElementos.vontadeBase}"
+                android:text="@={fichaElementos.vontadeBase}"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasBase"
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasBase"
                 app:layout_constraintTop_toBottomOf="@+id/sheet_editText_resistenciasReflexosBase" />
@@ -921,15 +936,16 @@
                 app:layout_constraintStart_toEndOf="@+id/sheet_editText_resistenciasFortitudeBase"
                 app:layout_constraintTop_toTopOf="@+id/sheet_editText_resistenciasVontadeBase" />
 
-            <EditText
+            <com.santalu.maskedittext.MaskEditText
                 android:id="@+id/sheet_editText_resistenciasVontadeOutros"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="none"
+                app:met_mask="###"
+                android:inputType="number"
                 android:textAlignment="center"
-                android:text="@{fichaElementos.vontadeOutros}"
+                android:text="@={fichaElementos.vontadeOutros}"
                 app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasOutros"
                 app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasOutros"
                 app:layout_constraintTop_toBottomOf="@+id/sheet_editText_resistenciasReflexosOutros" />

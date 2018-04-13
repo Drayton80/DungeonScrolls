@@ -7,7 +7,6 @@ import android.os.Bundle;
 
 import door.opposite.grupo2.dungeonscrolls.R;
 import door.opposite.grupo2.dungeonscrolls.databinding.ActivitySheetBattleInformationDfBinding;
-import door.opposite.grupo2.dungeonscrolls.databinding.ActivitySheetBinding;
 import door.opposite.grupo2.dungeonscrolls.model.Ficha;
 import door.opposite.grupo2.dungeonscrolls.model.SQLite;
 import door.opposite.grupo2.dungeonscrolls.model.Sala;

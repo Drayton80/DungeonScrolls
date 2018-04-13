@@ -2,8 +2,11 @@ package door.opposite.grupo2.dungeonscrolls.Telas;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.databinding.Observable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 
 import door.opposite.grupo2.dungeonscrolls.R;
 import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
@@ -20,6 +23,7 @@ public class SheetActivity extends FragmentActivity {
     Usuario usuarioLogado;
     Sala salaUsada;
     Ficha fichaUsada;
+    FichaModel fichaModel;
     Intent extra;
     SQLite sqLite;
     int[] salasID, fichasID;
@@ -90,6 +94,30 @@ public class SheetActivity extends FragmentActivity {
                 extra.putExtra("salaUsada", salaUsada);
                 extra.putExtra("fichaUsada", fichaUsada);
                 startActivity(extra);
+            }
+
+            @Override
+            public void onClickSalvarFicha() {
+                fichaUsada.setNomePersonagem(binding.getFichaElementos().nomePersonagem);
+                fichaUsada.setIdade(binding.getFichaElementos().idade);
+                fichaUsada.setXp(binding.getFichaElementos().xp);
+                fichaUsada.setRaca(binding.getFichaElementos().raca);
+                fichaUsada.setClasseNivel(binding.getFichaElementos().classeNivel);
+                fichaUsada.setForca(binding.getFichaElementos().forca);
+                fichaUsada.setDestreza(binding.getFichaElementos().destreza);
+                fichaUsada.setConstituicao(binding.getFichaElementos().constituicao);
+                fichaUsada.setSabedoria(binding.getFichaElementos().sabedoria);
+                fichaUsada.setInteligencia(binding.getFichaElementos().inteligencia);
+                fichaUsada.setCarisma(binding.getFichaElementos().carisma);
+                fichaUsada.setFortitudeBase(binding.getFichaElementos().fortitudeBase);
+                fichaUsada.setFortitudeOutros(binding.getFichaElementos().fortitudeOutros);
+                fichaUsada.setReflexoBase(binding.getFichaElementos().reflexoBase);
+                fichaUsada.setReflexoOutros(binding.getFichaElementos().reflexoOutros);
+                fichaUsada.setVontadeBase(binding.getFichaElementos().vontadeBase);
+                fichaUsada.setVontadeOutros(binding.getFichaElementos().vontadeOutros);
+                sqLite.updateDataFicha(fichaUsada);
+                finish();
+                startActivity(getIntent());
             }
         });
     }

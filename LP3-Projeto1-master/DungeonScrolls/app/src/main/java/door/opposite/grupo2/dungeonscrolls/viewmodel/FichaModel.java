@@ -240,16 +240,16 @@ public class FichaModel extends BaseObservable{
         return String.valueOf(altura);
     }
 
-    public void setAltura(float altura) {
-        this.altura = altura;
+    public void setAltura(String altura) {
+        this.altura = Float.parseFloat(altura);
     }
 
     public String getPeso() {
         return String.valueOf(peso);
     }
 
-    public void setPeso(float peso) {
-        this.peso = peso;
+    public void setPeso(String peso) {
+        this.peso = Float.parseFloat(peso);
     }
 
     public String getIdade() {
@@ -257,8 +257,12 @@ public class FichaModel extends BaseObservable{
         return String.valueOf(idade);
     }
 
-    public void setIdade(int idade) {
-        this.idade = idade;
+    public void setIdade(String idade) {
+        if(idade.equals("")){
+            this.idade = 0;
+        }else {
+            this.idade = Integer.parseInt(idade);
+        }
         notifyPropertyChanged(R.id.sheet_editText_idade);
     }
 
@@ -266,8 +270,12 @@ public class FichaModel extends BaseObservable{
         return String.valueOf(forca);
     }
 
-    public void setForca(int forca) {
-        this.forca = forca;
+    public void setForca(String forca) {
+        if(forca.equals("")){
+            this.forca = 0;
+        }else {
+            this.forca = Integer.parseInt(forca);
+        }
         notifyPropertyChanged(R.id.sheet_editText_habilidadesForca);
     }
 
@@ -275,8 +283,12 @@ public class FichaModel extends BaseObservable{
         return String.valueOf(constituicao);
     }
 
-    public void setConstituicao(int constituicao) {
-        this.constituicao = constituicao;
+    public void setConstituicao(String constituicao) {
+        if(constituicao.equals("")){
+            this.constituicao = 0;
+        }else {
+            this.constituicao = Integer.parseInt(constituicao);
+        }
         notifyPropertyChanged(R.id.sheet_editText_habilidadesConstituicao);
     }
 
@@ -284,29 +296,36 @@ public class FichaModel extends BaseObservable{
         return String.valueOf(destreza);
     }
 
-    public void setDestreza(int destreza) {
-
-        this.destreza = destreza;
+    public void setDestreza(String destreza) {
+        if(destreza.equals("")){
+            this.destreza = 0;
+        }else {
+            this.destreza = Integer.parseInt(destreza);
+        }
         notifyPropertyChanged(R.id.sheet_editText_habilidadesDestreza);
     }
 
-    public String getInteligencia() {
-        return String.valueOf(inteligencia);
+    public String getInteligencia() {return String.valueOf(inteligencia);
     }
 
-    public void setInteligencia(int inteligencia) {
-
-        this.inteligencia = inteligencia;
+    public void setInteligencia(String inteligencia) {
+        if(inteligencia.equals("")){
+            this.inteligencia = 0;
+        }else {
+            this.inteligencia = Integer.parseInt(inteligencia);
+        }
         notifyPropertyChanged(R.id.sheet_editText_habilidadesInteligencia);
     }
 
-    public String getSabedoria() {
-        return String.valueOf(sabedoria);
+    public String getSabedoria() {return String.valueOf(sabedoria);
     }
 
-    public void setSabedoria(int sabedoria) {
-
-        this.sabedoria = sabedoria;
+    public void setSabedoria(String sabedoria) {
+        if(sabedoria.equals("")){
+            this.sabedoria = 0;
+        }else {
+            this.sabedoria = Integer.parseInt(sabedoria);
+        }
         notifyPropertyChanged(R.id.sheet_editText_habilidadesSabedoria);
     }
 
@@ -314,29 +333,33 @@ public class FichaModel extends BaseObservable{
         return String.valueOf(carisma);
     }
 
-    public void setCarisma(int carisma) {
-
-        this.carisma = carisma;
+    public void setCarisma(String carisma) {
+        if(carisma.equals("")){
+            this.carisma = 0;
+        }else {
+            this.carisma = Integer.parseInt(carisma);
+        }
         notifyPropertyChanged(R.id.sheet_editText_habilidadesCarisma);
     }
 
     public String getForcaMod() {
-        return String.valueOf(forcaMod);
+
+        return String.valueOf((forca -10)/2);
     }
 
-    public void setForcaMod(int forcaMod) {
+    public void setForcaMod(String forcaMod) {
 
-        this.forcaMod = forcaMod;
+        this.forcaMod = Integer.parseInt(forcaMod);
         notifyPropertyChanged(R.id.sheet_editText_habilidadesForcaModificador);
     }
 
     public String getConstituicaoMod() {
-        return String.valueOf(constituicaoMod);
+        return String.valueOf((constituicao-10)/2);
     }
 
-    public void setConstituicaoMod(int constituicaoMod) {
+    public void setConstituicaoMod(String constituicaoMod) {
 
-        this.constituicaoMod = constituicaoMod;
+        this.constituicaoMod = Integer.parseInt(constituicaoMod);
         notifyPropertyChanged(R.id.sheet_editText_habilidadesConstituicaoModificador);
     }
 
@@ -344,9 +367,9 @@ public class FichaModel extends BaseObservable{
         return String.valueOf(destrezaMod);
     }
 
-    public void setDestrezaMod(int destrezaMod) {
+    public void setDestrezaMod(String destrezaMod) {
 
-        this.destrezaMod = destrezaMod;
+        this.destrezaMod = Integer.parseInt(destrezaMod);
         notifyPropertyChanged(R.id.sheet_editText_habilidadesDestrezaModificador);
     }
 
@@ -354,9 +377,9 @@ public class FichaModel extends BaseObservable{
         return String.valueOf(inteligenciaMod);
     }
 
-    public void setInteligenciaMod(int inteligenciaMod) {
+    public void setInteligenciaMod(String inteligenciaMod) {
 
-        this.inteligenciaMod = inteligenciaMod;
+        this.inteligenciaMod = Integer.parseInt(inteligenciaMod);
         notifyPropertyChanged(R.id.sheet_editText_habilidadesInteligenciaModificador);
     }
 
@@ -364,9 +387,9 @@ public class FichaModel extends BaseObservable{
         return String.valueOf(sabedoriaMod);
     }
 
-    public void setSabedoriaMod(int sabedoriaMod) {
+    public void setSabedoriaMod(String sabedoriaMod) {
 
-        this.sabedoriaMod = sabedoriaMod;
+        this.sabedoriaMod = Integer.parseInt(sabedoriaMod);
         notifyPropertyChanged(R.id.sheet_editText_habilidadesSabedoriaModificador);
     }
 
@@ -374,9 +397,9 @@ public class FichaModel extends BaseObservable{
         return String.valueOf(carismaMod);
     }
 
-    public void setCarismaMod(int carismaMod) {
+    public void setCarismaMod(String carismaMod) {
 
-        this.carismaMod = carismaMod;
+        this.carismaMod = Integer.parseInt(carismaMod);
         notifyPropertyChanged(R.id.sheet_editText_habilidadesCarismaModificador);
     }
 
@@ -384,89 +407,89 @@ public class FichaModel extends BaseObservable{
         return String.valueOf(ca);
     }
 
-    public void setCa(int ca) {
-        this.ca = ca;
+    public void setCa(String ca) {
+        this.ca = Integer.parseInt(ca);
     }
 
     public String getCaOutros() {
         return String.valueOf(caOutros);
     }
 
-    public void setCaOutros(int caOutros) {
-        this.caOutros = caOutros;
+    public void setCaOutros(String caOutros) {
+        this.caOutros = Integer.parseInt(caOutros);
     }
 
     public String getCaToque() {
         return String.valueOf(caToque);
     }
 
-    public void setCaToque(int caToque) {
-        this.caToque = caToque;
+    public void setCaToque(String caToque) {
+        this.caToque = Integer.parseInt(caToque);
     }
 
     public String getCaSurpresa() {
         return String.valueOf(caSurpresa);
     }
 
-    public void setCaSurpresa(int caSurpresa) {
-        this.caSurpresa = caSurpresa;
+    public void setCaSurpresa(String caSurpresa) {
+        this.caSurpresa = Integer.parseInt(caSurpresa);
     }
 
     public String getArmadura() {
         return String.valueOf(armadura);
     }
 
-    public void setArmadura(int armadura) {
-        this.armadura = armadura;
+    public void setArmadura(String armadura) {
+        this.armadura = Integer.parseInt(armadura);
     }
 
     public String getArmaduraNatural() {
         return String.valueOf(armaduraNatural);
     }
 
-    public void setArmaduraNatural(int armaduraNatural) {
-        this.armaduraNatural = armaduraNatural;
+    public void setArmaduraNatural(String armaduraNatural) {
+        this.armaduraNatural = Integer.parseInt(armaduraNatural);
     }
 
     public String getPv() {
         return String.valueOf(pv);
     }
 
-    public void setPv(int pv) {
-        this.pv = pv;
+    public void setPv(String pv) {
+        this.pv = Integer.parseInt(pv);
     }
 
     public String getReducaoDeDano() {
         return String.valueOf(reducaoDeDano);
     }
 
-    public void setReducaoDeDano(int reducaoDeDano) {
-        this.reducaoDeDano = reducaoDeDano;
+    public void setReducaoDeDano(String reducaoDeDano) {
+        this.reducaoDeDano = Integer.parseInt(reducaoDeDano);
     }
 
     public String getIniciativa() {
         return String.valueOf(iniciativa);
     }
 
-    public void setIniciativa(int iniciativa) {
-        this.iniciativa = iniciativa;
+    public void setIniciativa(String iniciativa) {
+        this.iniciativa = Integer.parseInt(iniciativa);
     }
 
     public String getIniciativaOutros() {
         return String.valueOf(iniciativaOutros);
     }
 
-    public void setIniciativaOutros(int iniciativaOutros) {
-        this.iniciativaOutros = iniciativaOutros;
+    public void setIniciativaOutros(String iniciativaOutros) {
+        this.iniciativaOutros = Integer.parseInt(iniciativaOutros);
     }
 
     public String getFortitude() {
         return String.valueOf(fortitude);
     }
 
-    public void setFortitude(int fortitude) {
+    public void setFortitude(String fortitude) {
 
-        this.fortitude = fortitude;
+        this.fortitude = Integer.parseInt(fortitude);
         notifyPropertyChanged(R.id.sheet_editText_resistenciasFortitudeTotal);
     }
 
@@ -474,9 +497,12 @@ public class FichaModel extends BaseObservable{
         return String.valueOf(fortitudeOutros);
     }
 
-    public void setFortitudeOutros(int fortitudeOutros) {
-
-        this.fortitudeOutros = fortitudeOutros;
+    public void setFortitudeOutros(String fortitudeOutros) {
+        if(fortitudeOutros.equals("")){
+            this.fortitudeOutros = 0;
+        }else {
+            this.fortitudeOutros = Integer.parseInt(fortitudeOutros);
+        }
         notifyPropertyChanged(R.id.sheet_editText_resistenciasFortitudeOutros);
     }
 
@@ -484,9 +510,12 @@ public class FichaModel extends BaseObservable{
         return String.valueOf(fortitudeBase);
     }
 
-    public void setFortitudeBase(int fortitudeBase) {
-
-        this.fortitudeBase = fortitudeBase;
+    public void setFortitudeBase(String fortitudeBase) {
+        if(fortitudeBase.equals("")){
+            this.fortitudeBase = 0;
+        }else {
+            this.fortitudeBase = Integer.parseInt(fortitudeBase);
+        }
         notifyPropertyChanged(R.id.sheet_editText_resistenciasFortitudeBase);
     }
 
@@ -494,9 +523,9 @@ public class FichaModel extends BaseObservable{
         return String.valueOf(reflexo);
     }
 
-    public void setReflexo(int reflexo) {
+    public void setReflexo(String reflexo) {
 
-        this.reflexo = reflexo;
+        this.reflexo = Integer.parseInt(reflexo);
         notifyPropertyChanged(R.id.sheet_editText_resistenciasReflexosTotal);
     }
 
@@ -504,9 +533,12 @@ public class FichaModel extends BaseObservable{
         return String.valueOf(reflexoOutros);
     }
 
-    public void setReflexoOutros(int reflexoOutros) {
-
-        this.reflexoOutros = reflexoOutros;
+    public void setReflexoOutros(String reflexoOutros) {
+        if(reflexoOutros.equals("")){
+            this.reflexoOutros = 0;
+        }else {
+            this.reflexoOutros = Integer.parseInt(reflexoOutros);
+        }
         notifyPropertyChanged(R.id.sheet_editText_resistenciasReflexosOutros);
     }
 
@@ -514,9 +546,12 @@ public class FichaModel extends BaseObservable{
         return String.valueOf(reflexoBase);
     }
 
-    public void setReflexoBase(int reflexoBase) {
-
-        this.reflexoBase = reflexoBase;
+    public void setReflexoBase(String reflexoBase) {
+        if(reflexoBase.equals("")){
+            this.reflexoBase = 0;
+        }else {
+            this.reflexoBase = Integer.parseInt(reflexoBase);
+        }
         notifyPropertyChanged(R.id.sheet_editText_resistenciasReflexosOutros);
     }
 
@@ -524,9 +559,9 @@ public class FichaModel extends BaseObservable{
         return String.valueOf(vontade);
     }
 
-    public void setVontade(int vontade) {
+    public void setVontade(String vontade) {
 
-        this.vontade = vontade;
+        this.vontade = Integer.parseInt(vontade);
         notifyPropertyChanged(R.id.sheet_editText_resistenciasVontadeTotal);
 
     }
@@ -535,9 +570,12 @@ public class FichaModel extends BaseObservable{
         return String.valueOf(vontadeOutros);
     }
 
-    public void setVontadeOutros(int vontadeOutros) {
-
-        this.vontadeOutros = vontadeOutros;
+    public void setVontadeOutros(String vontadeOutros) {
+        if(vontadeOutros.equals("")){
+            this.vontadeOutros = 0;
+        }else {
+            this.vontadeOutros = Integer.parseInt(vontadeOutros);
+        }
         notifyPropertyChanged(R.id.sheet_editText_resistenciasVontadeOutros);
     }
 
@@ -545,9 +583,12 @@ public class FichaModel extends BaseObservable{
         return String.valueOf(vontadeBase);
     }
 
-    public void setVontadeBase(int vontadeBase) {
-
-        this.vontadeBase = vontadeBase;
+    public void setVontadeBase(String vontadeBase) {
+        if(vontadeBase.equals("")){
+            this.vontadeBase = 0;
+        }else {
+            this.vontadeBase = Integer.parseInt(vontadeBase);
+        }
         notifyPropertyChanged(R.id.sheet_editText_resistenciasVontadeBase);
     }
 
@@ -555,81 +596,84 @@ public class FichaModel extends BaseObservable{
         return String.valueOf(bba);
     }
 
-    public void setBba(int bba) {
-        this.bba = bba;
+    public void setBba(String bba) {
+        this.bba = Integer.parseInt(bba);
     }
 
     public String getResMagica() {
         return String.valueOf(resMagica);
     }
 
-    public void setResMagica(int resMagica) {
-        this.resMagica = resMagica;
+    public void setResMagica(String resMagica) {
+        this.resMagica = Integer.parseInt(resMagica);
     }
 
     public String getDeslocamento() {
         return String.valueOf(deslocamento);
     }
 
-    public void setDeslocamento(int deslocamento) {
-        this.deslocamento = deslocamento;
+    public void setDeslocamento(String deslocamento) {
+        this.deslocamento = Integer.parseInt(deslocamento);
     }
 
     public String getAgarrar() {
         return String.valueOf(agarrar);
     }
 
-    public void setAgarrar(int agarrar) {
-        this.agarrar = agarrar;
+    public void setAgarrar(String agarrar) {
+        this.agarrar = Integer.parseInt(agarrar);
     }
 
     public String getAgarrarOutros() {
         return String.valueOf(agarrarOutros);
     }
 
-    public void setAgarrarOutros(int agarrarOutros) {
-        this.agarrarOutros = agarrarOutros;
+    public void setAgarrarOutros(String agarrarOutros) {
+        this.agarrarOutros = Integer.parseInt(agarrarOutros);
     }
 
     public String getPc() {
         return String.valueOf(pc);
     }
 
-    public void setPc(int pc) {
-        this.pc = pc;
+    public void setPc(String pc) {
+        this.pc = Integer.parseInt(pc);
     }
 
     public String getPp() {
         return String.valueOf(pp);
     }
 
-    public void setPp(int pp) {
-        this.pp = pp;
+    public void setPp(String pp) {
+        this.pp = Integer.parseInt(pp);
     }
 
     public String getPo() {
         return String.valueOf(po);
     }
 
-    public void setPo(int po) {
-        this.po = po;
+    public void setPo(String po) {
+        this.po = Integer.parseInt(po);
     }
 
     public String getPl() {
         return String.valueOf(pl);
     }
 
-    public void setPl(int pl) {
-        this.pl = pl;
+    public void setPl(String pl) {
+        this.pl = Integer.parseInt(pl);
     }
 
     public String getXp() {
         return String.valueOf(xp);
     }
 
-    public void setXp(int xp) {
-
-        this.xp = xp;
+    public void setXp(String xp) {
+        if(xp.equals("")){
+            this.xp = 0;
+        }else {
+            this.xp = Integer.parseInt(xp);
+        }
         notifyPropertyChanged(R.id.sheet_editText_experiencia);
     }
 
@@ -637,8 +681,8 @@ public class FichaModel extends BaseObservable{
         return String.valueOf(xpNecessario);
     }
 
-    public void setXpNecessario(int xpNecessario) {
-        this.xpNecessario = xpNecessario;
+    public void setXpNecessario(String xpNecessario) {
+        this.xpNecessario = Integer.parseInt(xpNecessario);
     }
 
     public String getIdiomas() {
