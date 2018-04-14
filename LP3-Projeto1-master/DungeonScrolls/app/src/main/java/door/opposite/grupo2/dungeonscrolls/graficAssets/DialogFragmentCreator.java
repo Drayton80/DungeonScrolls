@@ -47,6 +47,29 @@ public class DialogFragmentCreator {
         return dialog;
     }
 
+    /** Descrição: esse método gera um Dialog Fragment customizado
+     *  Parâmetros:
+     *      Context contexto - Contexto da classe Java relativa a View em que será exibida o Dialog Fragment
+     *      View dialogView  - View a qual possuí a referência para o Dialog Fragment, basicamente o layout do próprio Dialog Fragment
+     *
+     * @param contexto
+     * @param dialogView
+     */
+    public AlertDialog criaDialogFragment(Context contexto, View dialogView){
+        // Cria um Builder para poder manipular o Dialog
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(contexto);
+        // Serve para referenciar a tela (layout) ao qual o Dialog Fragment será exibido em forma de pop-up
+        dialogBuilder.setView(dialogView);
+
+        // Cria efetivamente o dialog
+        AlertDialog dialog = dialogBuilder.create();
+        // Exibe o dialog
+        dialog.show();
+
+        // Retorna o dialog para que ele possa ser fechado, caso necessário, com o método fechaDialogFragment
+        return dialog;
+    }
+
     /** Descrição: esse método faz o cancelamento e, consquentemente, fecha qualquer dialog fragment que receber
      *  Parâmetros:
      *      AlertDialog dialog - dialog a ser cancelado

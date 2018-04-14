@@ -65,13 +65,14 @@
     <string name="sheet_activity_recordSheet_pv">Vida</string>
     <string name="sheet_activity_recordSheet_ca">Armadura</string>
     <string name="sheet_activity_recordSheet_attack">Modificador de Ataque</string>
-    <string name="sheet_activity_recordSheet_aparencia">Informações e Aparência</string>
+    <string name="sheet_activity_recordSheet_aparencia">Aparência</string>
     <string name="sheet_activity_recordSheet_gerais">Características Gerais</string>
-    <string name="sheet_activity_recordSheet_combate">Características de Combate</string>
-    <string name="sheet_activity_recordSheet_especiais">Características Especiais</string>
+    <string name="sheet_activity_recordSheet_combate">Combate</string>
+    <string name="sheet_activity_recordSheet_especiais">Especiais</string>
     <string name="sheet_activity_recordSheet_featsSkills">Talentos e Perícias</string>
     <string name="sheet_activity_recordSheet_equipamentos">Equipamentos</string>
-    <string name="sheet_activity_recordSheet_magias">Magias</string>
+    <string name="sheet_activity_recordSheet_magia">Magia</string>
+    <string name="sheet_activity_recordSheet_outrasCategorias">Outras Categorias</string>
 
     <string name="sheet_activity_appearanceSheet_title">Informações e Aparência</string>
     <string name="sheet_activity_appearanceSheet_height">Altura(m)</string>
