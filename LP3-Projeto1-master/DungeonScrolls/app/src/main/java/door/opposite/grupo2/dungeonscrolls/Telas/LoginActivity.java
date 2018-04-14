@@ -42,12 +42,15 @@ public class LoginActivity extends Activity {
 
             @Override
             public void onClickLogin() {
+                try {
                 // Cria uma referência para o dialogfragment_loadingcircle para poder gerar seu layout e referenciar aquilo que tem dentro dele
                 View loadingCircleDialog = getLayoutInflater().inflate(R.layout.dialogfragment_loadingcircle, null);
                 // Cria o Dialog Fragment através de um dos métodos da classe DialogFragmentCreator e pega a referência para ele, além de rodar a animação de Loading
                 dialog = geraDialog.criaDialogFragmentLoadingCircle(LoginActivity.this, loadingCircleDialog);
 
                 Usuario usuario1;
+
+
                 usuario1 = sqLite.selecionarUsuario(binding.getUsuariomodel().getNick());
 
                 if (usuario1.getSenha().equals(binding.getUsuariomodel().getSenha())){
@@ -79,6 +82,8 @@ public class LoginActivity extends Activity {
                     //geraDialog.fechaDialogFragment(loadingDialog);
                 }else{
                     Toast.makeText(LoginActivity.this, "Senha incorreta", Toast.LENGTH_LONG).show();
+                }}catch (Exception e){
+                    Toast.makeText(LoginActivity.this, "Usuario invalido", Toast.LENGTH_LONG).show();
                 }
             }
         });

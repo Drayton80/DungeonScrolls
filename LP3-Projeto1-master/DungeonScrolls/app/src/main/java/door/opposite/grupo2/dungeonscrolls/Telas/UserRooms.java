@@ -5,8 +5,10 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.PopupMenu;
 
 import java.util.ArrayList;
 
@@ -15,12 +17,13 @@ import door.opposite.grupo2.dungeonscrolls.adapter.SalaAdapter;
 import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
 import door.opposite.grupo2.dungeonscrolls.databinding.ActivityUserRoomsBinding;
 import door.opposite.grupo2.dungeonscrolls.graficAssets.DialogFragmentCreator;
+import door.opposite.grupo2.dungeonscrolls.model.Ficha;
 import door.opposite.grupo2.dungeonscrolls.model.SQLite;
 import door.opposite.grupo2.dungeonscrolls.model.Sala;
 import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.SalaModel;
 
-public class UserRooms extends AppCompatActivity {
+public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
     // Atributos relativos à parte visual do programa:
     AlertDialog dialog;     // Um referenciador para Dialog Fragments, é possível fechar ou mostrar dialogs com ele
     DialogFragmentCreator geradorDialog = new DialogFragmentCreator();  // Cria um manipulador de Dialog Fragments, objeto da classe DialogFragmentCreator
@@ -34,6 +37,7 @@ public class UserRooms extends AppCompatActivity {
     SalaAdapter salaAdapter;
     int[] salasID;
     Sala salaUsada;
+    int posicaoDelete = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +91,20 @@ public class UserRooms extends AppCompatActivity {
             }
         });
 
+        binding.lvUserRooms.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
+                PopupMenu menu = new PopupMenu(UserRooms.this ,view);
+                menu.setOnMenuItemClickListener(UserRooms.this);
+                menu.inflate(R.menu.menu_popup);
+                posicaoDelete = position;
+
+                menu.show();
+
+                return true;
+            }
+        });
+
         binding.setCriaSala(new Eventos() {
             @Override
             public void onClickCad() {
@@ -110,5 +128,62 @@ public class UserRooms extends AppCompatActivity {
             // e essa sai de visualização, logo após não estar mais visível.
             geradorDialog.fechaDialogFragment(dialog);
         }
+    }
+
+    @Override
+    public boolean onMenuItemClick(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case R.id.item_vincular:
+                return true;
+            case R.id.item_deleta:
+                salasID = usuarioLogado.getSalasID();
+                for(int i = 0; i < usuarioLogado.getSalasID().length; i++){
+                    if(i == posicaoDelete){
+                        if (salasID[i+1] == 0){
+                            System.out.println("==========================================================");
+                        }else{
+                            // System.out.println("=================Entrou aqui, eu achei a sala!");
+                            Sala sala = sqLite.selecionarSala(salasID[i+1]);
+                            //----------comeca
+                            int array_auxiliar[] = usuarioLogado.getSalasID();
+                            array_auxiliar = achaElemento(array_auxiliar, sala.getID());
+                            usuarioLogado.setSalasID(array_auxiliar);
+                            //-----------ternina
+                            sqLite.updateDataUsuario(usuarioLogado);
+                            sqLite.deleteDataSala(sala);
+                            finish();
+                            startActivity(getIntent());
+                        }
+                    }
+                }
+                return true;
+            default:
+                return false;
+
+        }    }
+
+
+    public static int[] achaElemento(int array_original[], int numero){
+        int posicao = 0;
+        boolean encontrou = false;
+        for(int i = 0; i < array_original.length; i++){
+            if(array_original[i] == numero){
+                posicao = i;
+                break;
+            }
+        }
+
+        int array_novo[] = new int[array_original.length -1];
+        for(int i = 0; i < array_novo.length; i++){
+            if(i == posicao || encontrou == true) {
+                array_novo[i] = array_original[i+1];
+                encontrou = true;
+            }
+            else{
+                array_novo[i] = array_original[i];
+            }
+        }
+
+        return array_novo;
     }
 }
