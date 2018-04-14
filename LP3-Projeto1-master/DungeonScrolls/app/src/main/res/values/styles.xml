@@ -7,10 +7,6 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="colorButtonNormal">@color/colorSecondary</item>
-        <item name="textColorHint">@color/colorSecondary</item>
-        <item name="textColorPrimary">@color/colorPrimaryText</item>
-        <item name="textColorSecondary">@color/colorSecondaryText</item>
-        <item name="editTextColor">@color/colorSecondaryDark</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
