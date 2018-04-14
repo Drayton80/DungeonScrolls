@@ -34,6 +34,7 @@
     <string name="sheet_activity_recordSheet_experiencia">Experiência</string>
     <string name="sheet_activity_recordSheet_raca">Raça</string>
     <string name="sheet_activity_recordSheet_classes">Classe(s)</string>
+    <string name="sheet_activity_recordSheet_nivel">Nível</string>
     <string name="sheet_activity_recordSheet_habilidadesTitulo">Habilidades</string>
     <string name="sheet_activity_recordSheet_habilidadesNome">Nome</string>
     <string name="sheet_activity_recordSheet_habilidadesValor">Valor Base</string>
@@ -55,6 +56,7 @@
     <string name="sheet_activity_recordSheet_resistenciasTotal">Total</string>
     <string name="sheet_activity_recordSheet_resistenciasBase">Base</string>
     <string name="sheet_activity_recordSheet_resistenciasOutros">Outros</string>
+    <string name="sheet_activity_recordSheet_resistenciasModificador">Modificador</string>
     <string name="sheet_activity_recordSheet_resistenciasFortitude">Fortitude</string>
     <string name="sheet_activity_recordSheet_resistenciasReflexos">Reflexos</string>
     <string name="sheet_activity_recordSheet_resistenciasVontade">Vontade</string>
