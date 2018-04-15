@@ -1,128 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
 
-    <TextView
-        android:id="@+id/sheetFS_lvs_textView_nome"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Nome da Perícia"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/sheetFS_lvs_spinner_habilidade"
-        app:layout_constraintEnd_toStartOf="@+id/sheetFS_lvs_editText_total"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/sheetFS_lvs_textView_nome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="Nome da Perícia"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/sheetFS_lvs_spinner_habilidade"
+            app:layout_constraintEnd_toStartOf="@+id/sheetFS_lvs_editText_total"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/sheetFS_lvs_spinner_habilidade"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/sheetFS_lvs_textView_nome"
-        app:layout_constraintStart_toStartOf="@+id/sheetFS_lvs_textView_nome" />
+        <Spinner
+            android:id="@+id/sheetFS_lvs_spinner_habilidade"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/sheetFS_lvs_textView_nome"
+            app:layout_constraintStart_toStartOf="@+id/sheetFS_lvs_textView_nome" />
 
-    <EditText
-        android:id="@+id/sheetFS_lvs_editText_total"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="none"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/sheetFS_lvs_editText_outros"
-        app:layout_constraintEnd_toStartOf="@+id/sinal_igual"
-        app:layout_constraintTop_toTopOf="@+id/sheetFS_lvs_editText_outros" />
+        <EditText
+            android:id="@+id/sheetFS_lvs_editText_total"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="none"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@+id/sheetFS_lvs_editText_outros"
+            app:layout_constraintEnd_toStartOf="@+id/sinal_igual"
+            app:layout_constraintTop_toTopOf="@+id/sheetFS_lvs_editText_outros" />
 
-    <TextView
-        android:id="@+id/sinal_igual"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:text="="
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/sheetFS_lvs_editText_outros"
-        app:layout_constraintEnd_toStartOf="@+id/sheetFS_lvs_editText_modificadorHabilidade"
-        app:layout_constraintTop_toTopOf="@+id/sheetFS_lvs_editText_outros" />
+        <TextView
+            android:id="@+id/sinal_igual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:text="="
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/sheetFS_lvs_editText_outros"
+            app:layout_constraintEnd_toStartOf="@+id/sheetFS_lvs_editText_modificadorHabilidade"
+            app:layout_constraintTop_toTopOf="@+id/sheetFS_lvs_editText_outros" />
 
-    <EditText
-        android:id="@+id/sheetFS_lvs_editText_modificadorHabilidade"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="none"
-        android:text="0"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/sheetFS_lvs_editText_outros"
-        app:layout_constraintEnd_toStartOf="@+id/sinal_mais1"
-        app:layout_constraintTop_toTopOf="@+id/sheetFS_lvs_editText_outros" />
+        <EditText
+            android:id="@+id/sheetFS_lvs_editText_modificadorHabilidade"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="none"
+            android:text="0"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@+id/sheetFS_lvs_editText_outros"
+            app:layout_constraintEnd_toStartOf="@+id/sinal_mais1"
+            app:layout_constraintTop_toTopOf="@+id/sheetFS_lvs_editText_outros" />
 
-    <TextView
-        android:id="@+id/sinal_mais1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginTop="8dp"
-        android:text="+"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/sheetFS_lvs_editText_outros"
-        app:layout_constraintEnd_toStartOf="@+id/sheetFS_lvs_editText_graduacoes"
-        app:layout_constraintTop_toTopOf="@+id/sheetFS_lvs_editText_outros" />
+        <TextView
+            android:id="@+id/sinal_mais1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:text="+"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/sheetFS_lvs_editText_outros"
+            app:layout_constraintEnd_toStartOf="@+id/sheetFS_lvs_editText_graduacoes"
+            app:layout_constraintTop_toTopOf="@+id/sheetFS_lvs_editText_outros" />
 
-    <EditText
-        android:id="@+id/sheetFS_lvs_editText_graduacoes"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="number"
-        android:text="0"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/sheetFS_lvs_editText_outros"
-        app:layout_constraintEnd_toStartOf="@+id/sinal_mais2"
-        app:layout_constraintTop_toTopOf="@+id/sheetFS_lvs_editText_outros" />
+        <EditText
+            android:id="@+id/sheetFS_lvs_editText_graduacoes"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="0"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@+id/sheetFS_lvs_editText_outros"
+            app:layout_constraintEnd_toStartOf="@+id/sinal_mais2"
+            app:layout_constraintTop_toTopOf="@+id/sheetFS_lvs_editText_outros" />
 
-    <TextView
-        android:id="@+id/sinal_mais2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginTop="8dp"
-        android:text="+"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/sheetFS_lvs_editText_outros"
-        app:layout_constraintEnd_toStartOf="@+id/sheetFS_lvs_editText_outros"
-        app:layout_constraintTop_toTopOf="@+id/sheetFS_lvs_editText_outros" />
+        <TextView
+            android:id="@+id/sinal_mais2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="4dp"
+            android:layout_marginTop="8dp"
+            android:text="+"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/sheetFS_lvs_editText_outros"
+            app:layout_constraintEnd_toStartOf="@+id/sheetFS_lvs_editText_outros"
+            app:layout_constraintTop_toTopOf="@+id/sheetFS_lvs_editText_outros" />
 
-    <EditText
-        android:id="@+id/sheetFS_lvs_editText_outros"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="number"
-        android:text="0"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="@+id/sheetFS_lvs_spinner_habilidade"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/sheetFS_lvs_textView_nome" />
-</android.support.constraint.ConstraintLayout>
+        <EditText
+            android:id="@+id/sheetFS_lvs_editText_outros"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:inputType="number"
+            android:text="0"
+            android:textAlignment="center"
+            app:layout_constraintBottom_toBottomOf="@+id/sheetFS_lvs_spinner_habilidade"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/sheetFS_lvs_textView_nome" />
+    </android.support.constraint.ConstraintLayout>
+</LinearLayout>

@@ -5,6 +5,8 @@ import android.databinding.DataBindingUtil;
 import android.databinding.Observable;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 
@@ -18,7 +20,7 @@ import door.opposite.grupo2.dungeonscrolls.model.Sala;
 import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel;
 
-public class SheetActivity extends FragmentActivity {
+public class SheetActivity extends AppCompatActivity {
     ActivitySheetBinding binding;
     Usuario usuarioLogado;
     Sala salaUsada;
@@ -31,6 +33,10 @@ public class SheetActivity extends FragmentActivity {
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sheet);
         sqLite = new SQLite(this);
 

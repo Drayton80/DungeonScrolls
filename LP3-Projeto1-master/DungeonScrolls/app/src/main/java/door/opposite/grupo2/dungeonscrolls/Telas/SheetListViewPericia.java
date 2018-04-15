@@ -1,10 +1,16 @@
 package door.opposite.grupo2.dungeonscrolls.Telas;
 
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+
+import door.opposite.grupo2.dungeonscrolls.R;
+
 /**
  * Created by drayton on 07/04/18.
  */
 
-public class SheetListViewPericia {
+public class SheetListViewPericia extends AppCompatActivity {
     private String nomePericia;
     private int habilidadeSpinner;
     private int total;
@@ -12,6 +18,12 @@ public class SheetListViewPericia {
     private int graduacoes;
     private int outros;
 
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+    }
     // Construtor:
     public SheetListViewPericia(String nomePericia, int habilidadeSpinner, int total,
                                 int modificadorHabilidade, int graduacoes, int outros) {

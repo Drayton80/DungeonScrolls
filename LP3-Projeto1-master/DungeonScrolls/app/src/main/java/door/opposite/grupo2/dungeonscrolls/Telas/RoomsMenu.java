@@ -4,6 +4,7 @@ import android.app.TabActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.widget.TabHost;
 
 import door.opposite.grupo2.dungeonscrolls.R;
@@ -20,6 +21,7 @@ public class RoomsMenu extends TabActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rooms_menu);
 
+        Toolbar toolbar = findViewById(R.id.toolbar);
         TabHost host = (TabHost) findViewById(android.R.id.tabhost);
 
         extra = getIntent();
