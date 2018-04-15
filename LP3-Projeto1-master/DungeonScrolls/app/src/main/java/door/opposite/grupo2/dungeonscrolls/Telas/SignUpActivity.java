@@ -19,8 +19,7 @@ public class SignUpActivity extends Activity {
 
     ActivitySignUpBinding binding;
     SQLite sqLite;
-    FirebaseDatabase database;
-    DatabaseReference reference;
+
 
 
 
@@ -32,8 +31,7 @@ public class SignUpActivity extends Activity {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_sign_up);
         sqLite = new SQLite(this);
         binding.setUsuariomodel(new UsuarioModel());
-        database = FirebaseDatabase.getInstance();
-        reference = database.getReference();
+
 
         binding.setCadevent(new Eventos() {
 
@@ -43,11 +41,11 @@ public class SignUpActivity extends Activity {
             @Override
             public void onClickCad() {
                 boolean foiInserido = false;
+                sqLite.atualizaDataUsuario();
                 foiInserido = sqLite.insereDataUsuario(new Usuario(binding.getUsuariomodel().getNick(),
                         binding.getUsuariomodel().getSenha(), binding.getUsuariomodel().getEmail()));
 
-                Usuario novoUsuario = sqLite.selecionarUsuario(binding.getUsuariomodel().getNick());
-                reference.child("usuario").child(String.valueOf(novoUsuario.getID())).setValue(novoUsuario);
+
 
                 if(foiInserido == true){
                     Toast.makeText(SignUpActivity.this, "Salvo", Toast.LENGTH_LONG).show();

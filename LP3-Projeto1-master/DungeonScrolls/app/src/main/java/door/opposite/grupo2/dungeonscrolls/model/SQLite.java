@@ -6,8 +6,12 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -152,10 +156,49 @@ public class SQLite extends SQLiteOpenHelper{
     }
 
 
+    public boolean atualizaDataUsuario(){
+        reference.child("usuario").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+            for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                Usuario user = new Usuario();
+                user.setID(snapshot.child("id").getValue(int.class));
+                user.setNick(snapshot.child("nick").getValue(String.class));
+                user.setSenha(snapshot.child("senha").getValue(String.class));
+                user.setEmail(snapshot.child("email").getValue(String.class));
+               // user.setSalasID((ArrayList<Integer>) snapshot.child("salasID").getValue(ArrayList.class));
+               // user.setFichasID((ArrayList<Integer>) snapshot.child("fichasID").getValue(ArrayList.class));
+                System.out.println("==========================================" + user.getID());
+
+                boolean existe = verSeTemEsseUsuario(user.getID());
+                if (existe == true){
+                    updateDataUsuario(user);
+                }
+                else{
+                    insereDataUsuario(user);
+                }
+            }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return true;
+    }
+
+
+
     public boolean insereDataUsuario(Usuario usuario){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
+        try {
+            contentValues.put(T1_COL_2, usuario.getID());
+        }catch (Exception e){
+
+        }
         contentValues.put(T1_COL_2, usuario.getNick());
         contentValues.put(T1_COL_3, usuario.getSenha());
         contentValues.put(T1_COL_4, usuario.getEmail());
@@ -168,6 +211,8 @@ public class SQLite extends SQLiteOpenHelper{
         if(result == -1){
             return  false;
         }else{
+            Usuario novoUsuario = selecionarUsuario(usuario.getNick());
+            reference.child("usuario").child(String.valueOf(novoUsuario.getID())).setValue(novoUsuario);
             return true;
         }
     }
@@ -178,7 +223,7 @@ public class SQLite extends SQLiteOpenHelper{
         return res;
     }
 
-    public boolean updateDataUsuario(Usuario usuario){
+    public int updateDataUsuario(Usuario usuario){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(T1_COL_1, usuario.getID());
@@ -188,8 +233,9 @@ public class SQLite extends SQLiteOpenHelper{
         contentValues.put(T1_COL_5, usuario.getSalasID().toString());
         contentValues.put(T1_COL_6,usuario.getFichasID().toString());
 
-        db.update(T1_TABLE_NAME, contentValues, "ID = ?", new String[]{String.valueOf(usuario.getID())});
-        return true;
+
+        int i = db.update(T1_TABLE_NAME, contentValues, "ID = ?", new String[]{String.valueOf(usuario.getID())});
+        return i;
     }
 
     public Integer deleteDataUsuario(Usuario usuario){
@@ -225,8 +271,8 @@ public class SQLite extends SQLiteOpenHelper{
             results2[j] = Integer.parseInt(idFichas[j]);
         }
 
-        List<Integer> intList1 = new ArrayList<>();
-        List<Integer> intList2 = new ArrayList<>();
+        ArrayList<Integer> intList1 = new ArrayList<>();
+        ArrayList<Integer> intList2 = new ArrayList<>();
         for (int i : results1)
         {
             intList1.add(i);
@@ -238,7 +284,7 @@ public class SQLite extends SQLiteOpenHelper{
         }
 
         usuario.setSalasID(intList1);
-        usuario.setFichasID(intList1);
+        usuario.setFichasID(intList2);
 
         return usuario;
     }
@@ -280,8 +326,8 @@ public class SQLite extends SQLiteOpenHelper{
             }
         }
 
-        List<Integer> intList1 = new ArrayList<>();
-        List<Integer> intList2 = new ArrayList<>();
+        ArrayList<Integer> intList1 = new ArrayList<>();
+        ArrayList<Integer> intList2 = new ArrayList<>();
         for (int i : results1)
         {
             intList1.add(i);
@@ -293,7 +339,7 @@ public class SQLite extends SQLiteOpenHelper{
         }
 
         usuario.setSalasID(intList1);
-        usuario.setFichasID(intList1);
+        usuario.setFichasID(intList2);
 
         return usuario;
     }
@@ -309,6 +355,29 @@ public class SQLite extends SQLiteOpenHelper{
 
         return saida;
     }
+
+
+    public boolean verSeTemEsseUsuario(int i){
+        List<Usuario> lista = new ArrayList<Usuario>();
+
+        String query = "SELECT * FROM " + T1_TABLE_NAME;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery(query, null);
+
+        if(c.moveToFirst()){
+            do{
+                Usuario usuario = new Usuario(Integer.parseInt(c.getString(0)), c.getString(1), c.getString(2), c.getString(3));
+                if (i == usuario.getID()){
+                    return true;
+                }
+
+            }while(c.moveToNext());
+        }
+        return false;
+    }
+
+
 
     public List<Usuario> listaUsuario(){
         List<Usuario> lista = new ArrayList<Usuario>();
@@ -343,8 +412,8 @@ public class SQLite extends SQLiteOpenHelper{
                     }
                 }
 
-                List<Integer> intList1 = new ArrayList<>();
-                List<Integer> intList2 = new ArrayList<>();
+                ArrayList<Integer> intList1 = new ArrayList<>();
+                ArrayList<Integer> intList2 = new ArrayList<>();
                 for (int i : results1)
                 {
                     intList1.add(i);
@@ -356,7 +425,7 @@ public class SQLite extends SQLiteOpenHelper{
                 }
 
                 usuario.setSalasID(intList1);
-                usuario.setFichasID(intList1);
+                usuario.setFichasID(intList2);
                // carro.setPlaca(c.getString(1));
                // carro.setNome(c.getString(2));
                // carro.setAno(Integer.valueOf(c.getString(3)));

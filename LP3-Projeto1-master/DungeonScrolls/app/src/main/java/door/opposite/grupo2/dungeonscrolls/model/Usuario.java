@@ -3,6 +3,7 @@ package door.opposite.grupo2.dungeonscrolls.model;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -14,9 +15,12 @@ public class Usuario implements Serializable{
     private String nick;
     private String senha;
     private String email;
-    private List<Integer> fichasID = new ArrayList<>(0);
-    private List<Integer> salasID = new ArrayList<>(0);
+    private ArrayList<Integer> fichasID = new ArrayList<Integer>();
+    private ArrayList<Integer> salasID = new ArrayList<Integer>();
 
+
+    public Usuario() {
+    }
 
     public Usuario(String nick, String senha, String email){
         this.nick = nick;
@@ -31,7 +35,7 @@ public class Usuario implements Serializable{
         this.email = email;
     }
 
-    public Usuario(int ID, String nick, String senha, String email, List<Integer> fichasID, List<Integer> salasID) {
+    public Usuario(int ID, String nick, String senha, String email, ArrayList<Integer> fichasID, ArrayList<Integer> salasID) {
         this.ID = ID;
         this.nick = nick;
         this.senha = senha;
@@ -72,38 +76,49 @@ public class Usuario implements Serializable{
         this.email = email;
     }
 
-    public List<Integer> getFichasID() {
+    public ArrayList<Integer> getFichasID() {
         return fichasID;
     }
 
-    public void setFichasID(List<Integer> fichasID) {
+    public void setFichasID(ArrayList<Integer> fichasID) {
         this.fichasID = fichasID;
     }
 
-    public List getSalasID() {
-        return Arrays.asList(salasID);
+    public ArrayList<Integer> getSalasID() {
+        return salasID;
     }
 
-    public void setSalasID(List<Integer> salasID) {
+    public void setSalasID(ArrayList<Integer> salasID) {
         this.salasID = salasID;
     }
 
 
     public int[] toIntArray(List<Integer> list)  {
         int[] ret = new int[list.size()];
-        int i = 0;
-        for (Integer e : list)
-            ret[i++] = e.intValue();
+
+        String[] aux = Arrays.toString(list.toArray()).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+
+        //System.out.println("Lista inicial = "+ list.toString());
+        //System.out.println("tamanho da lista = "+ list.size());
+        //System.out.println("Como a lista fica em Array = "+ list.toArray().toString());
+        for (int i=0; i < ret.length; i++)
+        {
+           // System.out.println("onde esta o I = " + i);
+            ret[i] = Integer.parseInt(aux[i]);
+           // System.out.println("String que fou botado no I = " + Integer.parseInt(aux[0]));
+        }
+
+        //System.out.println("Lista virou array e saiu assim = " + Arrays.toString(ret));
         return ret;
     }
 
-    public List<Integer> toIntList(int[] array)  {
+    public ArrayList<Integer> toIntList(final int[] array)  {
+       // System.out.println("Array chegou assim = " + Arrays.toString(array));
 
-        List<Integer> intList = new ArrayList<Integer>();
-        for (int i : array)
-        {
-            intList.add(i);
-        }
+        ArrayList<Integer> intList = new ArrayList<Integer>() {{ for (int i : array) add(i); }};
+
+       // System.out.println("array virou lista e saiu assim = " + intList.toString());
+
         return intList;
     }
 }

@@ -64,12 +64,15 @@ public class RoomCreationActivity extends AppCompatActivity {
                 foiInserido = sqLite.insereDataSala(sala);
                 Sala sala1;
                 sala1 = sqLite.selecionarSala(binding.getSalamodel().getNome());
+               // System.out.println(usuarioLogado.getSalasID().toString());
                 int[] aux = new int[usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length +1];
+               // System.out.println(Arrays.toString(usuarioLogado.toIntArray(usuarioLogado.getSalasID())));
 
                 for (int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length; i++){
                     aux[i] = usuarioLogado.toIntArray(usuarioLogado.getSalasID())[i];
                 }
                 aux[usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length] = sala1.getID();
+               // System.out.println(Arrays.toString(aux));
                 usuarioLogado.setSalasID(usuarioLogado.toIntList(aux));
                 
                 sqLite.updateDataUsuario(usuarioLogado);

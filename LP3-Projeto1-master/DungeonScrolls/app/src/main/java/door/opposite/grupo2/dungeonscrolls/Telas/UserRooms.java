@@ -56,7 +56,7 @@ public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItem
 
         salasID = usuarioLogado.toIntArray(usuarioLogado.getSalasID());
         salaModel = new SalaModel();
-        salaModelArrayList = salaModel.getArrayListSala(usuarioLogado.getSalasID(), sqLite);
+        salaModelArrayList = salaModel.getArrayListSala(usuarioLogado.toIntArray(usuarioLogado.getSalasID()), sqLite);
         salaAdapter = new SalaAdapter(this, salaModelArrayList);
         binding.lvUserRooms.setAdapter(salaAdapter);
 

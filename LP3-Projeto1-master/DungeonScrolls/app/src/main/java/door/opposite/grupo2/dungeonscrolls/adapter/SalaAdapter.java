@@ -29,7 +29,6 @@ public class SalaAdapter extends ArrayAdapter<SalaModel> {
         super(context, R.layout.sala_line, salaModelArrayList);
         this.context1 = context;
         this.salaModelArrayList = salaModelArrayList;
-        System.out.println("To aqui: =================" + Arrays.toString(salaModelArrayList.toArray()));
     }
 
     @NonNull
@@ -39,7 +38,6 @@ public class SalaAdapter extends ArrayAdapter<SalaModel> {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         SalaLineBinding salaLineBinding = DataBindingUtil.inflate(layoutInflater, R.layout.sala_line, parent, false);
         salaLineBinding.setListaSala(salaModelArrayList.get(position));
-        System.out.println("=====================Chegou!!");
         return salaLineBinding.getRoot();
     }
 }

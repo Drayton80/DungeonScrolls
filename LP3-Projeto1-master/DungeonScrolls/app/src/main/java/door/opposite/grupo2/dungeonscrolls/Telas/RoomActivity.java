@@ -90,7 +90,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                             extra.putExtra("usuarioLogado", usuarioLogado);
                             extra.putExtra("salaUsada", salaUsada);
                             extra.putExtra("fichaUsada", fichaUsada);
-                            System.out.println("=================Entrou aqui, eu achei a sala!" + salaUsada.getNotas());
+
                             startActivity(extra);
                         }
                     }
@@ -118,7 +118,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 salaUsada.setNotas(binding.roomEditTextOutrasAnotacoes.getText().toString());
-                System.out.println("==============Texto: " + salaUsada.getNotas());
+
                 sqLite.updateDataSala(salaUsada);
             }
         });
@@ -172,7 +172,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 for(int i = 0; i < salaUsada.getFichasID().length; i++){
                     if(i == posicaoDelete){
                         if (fichasID[i+1] == 0){
-                            System.out.println("==========================================================");
+
                         }else{
                             // System.out.println("=================Entrou aqui, eu achei a sala!");
                             Ficha ficha = sqLite.selecionarFicha(fichasID[i+1]);
