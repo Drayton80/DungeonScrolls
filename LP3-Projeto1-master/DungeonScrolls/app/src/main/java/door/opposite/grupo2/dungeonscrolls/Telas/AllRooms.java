@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import door.opposite.grupo2.dungeonscrolls.R;
 import door.opposite.grupo2.dungeonscrolls.adapter.SalaAdapter;
@@ -33,7 +34,7 @@ public class AllRooms extends AppCompatActivity {
     SalaModel salaModel;
     ArrayList<SalaModel> salaModelArrayList;
     SalaAdapter salaAdapter;
-    int[] salasID;
+    List<Integer> salasID;
     Sala salaUsada;
 
     @Override

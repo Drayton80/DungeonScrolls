@@ -3,6 +3,8 @@ package door.opposite.grupo2.dungeonscrolls.model;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.io.Serializable;
 
 /**

@@ -1,18 +1,21 @@
 package door.opposite.grupo2.dungeonscrolls.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by ci on 02/04/18.
  */
 
 public class Usuario implements Serializable{
-    int ID;
-    String nick;
-    String senha;
-    String email;
-    int[] fichasID;
-    int[] salasID;
+    private int ID;
+    private String nick;
+    private String senha;
+    private String email;
+    private List<Integer> fichasID = new ArrayList<>(0);
+    private List<Integer> salasID = new ArrayList<>(0);
 
 
     public Usuario(String nick, String senha, String email){
@@ -28,7 +31,7 @@ public class Usuario implements Serializable{
         this.email = email;
     }
 
-    public Usuario(int ID, String nick, String senha, String email, int[] fichasID, int[] salasID) {
+    public Usuario(int ID, String nick, String senha, String email, List<Integer> fichasID, List<Integer> salasID) {
         this.ID = ID;
         this.nick = nick;
         this.senha = senha;
@@ -69,19 +72,38 @@ public class Usuario implements Serializable{
         this.email = email;
     }
 
-    public int[] getFichasID() {
+    public List<Integer> getFichasID() {
         return fichasID;
     }
 
-    public void setFichasID(int[] fichasID) {
+    public void setFichasID(List<Integer> fichasID) {
         this.fichasID = fichasID;
     }
 
-    public int[] getSalasID() {
-        return salasID;
+    public List getSalasID() {
+        return Arrays.asList(salasID);
     }
 
-    public void setSalasID(int[] salasID) {
+    public void setSalasID(List<Integer> salasID) {
         this.salasID = salasID;
+    }
+
+
+    public int[] toIntArray(List<Integer> list)  {
+        int[] ret = new int[list.size()];
+        int i = 0;
+        for (Integer e : list)
+            ret[i++] = e.intValue();
+        return ret;
+    }
+
+    public List<Integer> toIntList(int[] array)  {
+
+        List<Integer> intList = new ArrayList<Integer>();
+        for (int i : array)
+        {
+            intList.add(i);
+        }
+        return intList;
     }
 }

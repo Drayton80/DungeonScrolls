@@ -8,6 +8,10 @@ import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import door.opposite.grupo2.dungeonscrolls.R;
 import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
 import door.opposite.grupo2.dungeonscrolls.databinding.ActivityLoginBinding;
@@ -25,6 +29,7 @@ public class LoginActivity extends Activity {
     //List<Usuario> listaUsuario;
     SQLite sqLite;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +38,8 @@ public class LoginActivity extends Activity {
         sqLite = new SQLite(this);
         it = new Intent(this, RoomsMenu.class);
         //listaUsuario = sqLite.listaUsuario();
+
+
 
         binding.setCadevent(new Eventos() {
             @Override

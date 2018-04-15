@@ -54,7 +54,7 @@ public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItem
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
 
-        salasID = usuarioLogado.getSalasID();
+        salasID = usuarioLogado.toIntArray(usuarioLogado.getSalasID());
         salaModel = new SalaModel();
         salaModelArrayList = salaModel.getArrayListSala(usuarioLogado.getSalasID(), sqLite);
         salaAdapter = new SalaAdapter(this, salaModelArrayList);
@@ -68,7 +68,7 @@ public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItem
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 int salaPosicao = position;
-                for(int i = 0; i < usuarioLogado.getSalasID().length; i++){
+                for(int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length; i++){
                     if(i == salaPosicao){
                         if (salasID[i+1] == 0){
                          }else{
@@ -136,8 +136,8 @@ public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItem
             case R.id.item_vincular:
                 return true;
             case R.id.item_deleta:
-                salasID = usuarioLogado.getSalasID();
-                for(int i = 0; i < usuarioLogado.getSalasID().length; i++){
+                salasID = usuarioLogado.toIntArray(usuarioLogado.getSalasID());
+                for(int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length; i++){
                     if(i == posicaoDelete){
                         if (salasID[i+1] == 0){
                             System.out.println("==========================================================");
@@ -145,9 +145,9 @@ public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItem
                             // System.out.println("=================Entrou aqui, eu achei a sala!");
                             Sala sala = sqLite.selecionarSala(salasID[i+1]);
                             //----------comeca
-                            int array_auxiliar[] = usuarioLogado.getSalasID();
+                            int array_auxiliar[] = usuarioLogado.toIntArray(usuarioLogado.getSalasID());
                             array_auxiliar = achaElemento(array_auxiliar, sala.getID());
-                            usuarioLogado.setSalasID(array_auxiliar);
+                            usuarioLogado.setSalasID(usuarioLogado.toIntList(array_auxiliar));
                             //-----------ternina
                             sqLite.updateDataUsuario(usuarioLogado);
                             sqLite.deleteDataSala(sala);

@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -19,6 +22,9 @@ import door.opposite.grupo2.dungeonscrolls.model.Usuario;
  */
 
 public class SQLite extends SQLiteOpenHelper{
+    FirebaseDatabase database;
+    DatabaseReference reference;
+
 
     public static final  String DATABASE_NAME = "dungeonscrolls.db";
 
@@ -113,6 +119,8 @@ public class SQLite extends SQLiteOpenHelper{
 
     public SQLite(Context context) {
         super(context, DATABASE_NAME, null, 1);
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference();
         //SQLiteDatabase db = this.getWritableDatabase();
     }
 
@@ -145,13 +153,16 @@ public class SQLite extends SQLiteOpenHelper{
 
 
     public boolean insereDataUsuario(Usuario usuario){
+
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(T1_COL_2, usuario.getNick());
         contentValues.put(T1_COL_3, usuario.getSenha());
         contentValues.put(T1_COL_4, usuario.getEmail());
-        contentValues.put(T1_COL_5, Arrays.toString(usuario.getSalasID()));
-        contentValues.put(T1_COL_6, Arrays.toString(usuario.getFichasID()));
+        contentValues.put(T1_COL_5, usuario.getSalasID().toString());
+        contentValues.put(T1_COL_6, usuario.getFichasID().toString());
+
+
 
         long result = db.insert(T1_TABLE_NAME, null, contentValues);
         if(result == -1){
@@ -174,8 +185,8 @@ public class SQLite extends SQLiteOpenHelper{
         contentValues.put(T1_COL_2, usuario.getNick());
         contentValues.put(T1_COL_3, usuario.getSenha());
         contentValues.put(T1_COL_4, usuario.getEmail());
-        contentValues.put(T1_COL_5, Arrays.toString(usuario.getSalasID()));
-        contentValues.put(T1_COL_6, Arrays.toString(usuario.getFichasID()));
+        contentValues.put(T1_COL_5, usuario.getSalasID().toString());
+        contentValues.put(T1_COL_6,usuario.getFichasID().toString());
 
         db.update(T1_TABLE_NAME, contentValues, "ID = ?", new String[]{String.valueOf(usuario.getID())});
         return true;
@@ -214,8 +225,20 @@ public class SQLite extends SQLiteOpenHelper{
             results2[j] = Integer.parseInt(idFichas[j]);
         }
 
-        usuario.setSalasID(results1);
-        usuario.setFichasID(results2);
+        List<Integer> intList1 = new ArrayList<>();
+        List<Integer> intList2 = new ArrayList<>();
+        for (int i : results1)
+        {
+            intList1.add(i);
+        }
+
+        for (int i : results2)
+        {
+            intList2.add(i);
+        }
+
+        usuario.setSalasID(intList1);
+        usuario.setFichasID(intList1);
 
         return usuario;
     }
@@ -257,8 +280,20 @@ public class SQLite extends SQLiteOpenHelper{
             }
         }
 
-        usuario.setSalasID(results1);
-        usuario.setFichasID(results2);
+        List<Integer> intList1 = new ArrayList<>();
+        List<Integer> intList2 = new ArrayList<>();
+        for (int i : results1)
+        {
+            intList1.add(i);
+        }
+
+        for (int i : results2)
+        {
+            intList2.add(i);
+        }
+
+        usuario.setSalasID(intList1);
+        usuario.setFichasID(intList1);
 
         return usuario;
     }
@@ -308,8 +343,20 @@ public class SQLite extends SQLiteOpenHelper{
                     }
                 }
 
-                usuario.setSalasID(results1);
-                usuario.setFichasID(results2);
+                List<Integer> intList1 = new ArrayList<>();
+                List<Integer> intList2 = new ArrayList<>();
+                for (int i : results1)
+                {
+                    intList1.add(i);
+                }
+
+                for (int i : results2)
+                {
+                    intList2.add(i);
+                }
+
+                usuario.setSalasID(intList1);
+                usuario.setFichasID(intList1);
                // carro.setPlaca(c.getString(1));
                // carro.setNome(c.getString(2));
                // carro.setAno(Integer.valueOf(c.getString(3)));

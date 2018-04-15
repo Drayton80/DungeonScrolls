@@ -5,6 +5,9 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import door.opposite.grupo2.dungeonscrolls.R;
 import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
 import door.opposite.grupo2.dungeonscrolls.databinding.ActivitySignUpBinding;
@@ -16,6 +19,8 @@ public class SignUpActivity extends Activity {
 
     ActivitySignUpBinding binding;
     SQLite sqLite;
+    FirebaseDatabase database;
+    DatabaseReference reference;
 
 
 
@@ -27,6 +32,8 @@ public class SignUpActivity extends Activity {
         binding = DataBindingUtil.setContentView(this,R.layout.activity_sign_up);
         sqLite = new SQLite(this);
         binding.setUsuariomodel(new UsuarioModel());
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference();
 
         binding.setCadevent(new Eventos() {
 
@@ -38,6 +45,9 @@ public class SignUpActivity extends Activity {
                 boolean foiInserido = false;
                 foiInserido = sqLite.insereDataUsuario(new Usuario(binding.getUsuariomodel().getNick(),
                         binding.getUsuariomodel().getSenha(), binding.getUsuariomodel().getEmail()));
+
+                Usuario novoUsuario = sqLite.selecionarUsuario(binding.getUsuariomodel().getNick());
+                reference.child("usuario").child(String.valueOf(novoUsuario.getID())).setValue(novoUsuario);
 
                 if(foiInserido == true){
                     Toast.makeText(SignUpActivity.this, "Salvo", Toast.LENGTH_LONG).show();
