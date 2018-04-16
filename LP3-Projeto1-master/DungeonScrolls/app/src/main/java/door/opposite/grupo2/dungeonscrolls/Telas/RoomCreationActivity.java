@@ -1,11 +1,13 @@
 package door.opposite.grupo2.dungeonscrolls.Telas;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -22,6 +24,7 @@ import java.io.IOException;
 import java.net.URL;
 
 import door.opposite.grupo2.dungeonscrolls.R;
+import door.opposite.grupo2.dungeonscrolls.adapter.MyFileContentProvider;
 import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
 import door.opposite.grupo2.dungeonscrolls.databinding.ActivityRoomCreationBinding;
 import door.opposite.grupo2.dungeonscrolls.model.SQLite;
@@ -37,6 +40,7 @@ public class RoomCreationActivity extends AppCompatActivity {
     ImageView campoImagem;
     private byte[] byteArray;
     StorageReference storage;
+    Uri buffer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +63,14 @@ public class RoomCreationActivity extends AppCompatActivity {
             @Override
             public void onClickCad() {
 
+                    Uri uri;
 
+                    if (byteArray != null){
+                        uri = buffer;
+                    }else {
 
-
-
-                    Uri uri = Uri.parse("android.resource://door.opposite.grupo2.dungeonscrolls/" + R.drawable.avatar);
+                        uri = Uri.parse("android.resource://door.opposite.grupo2.dungeonscrolls/" + R.drawable.avatar);
+                    }
                     StorageReference path = storage.child("FotosSala").child(uri.getLastPathSegment());
                     path.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -101,7 +108,8 @@ public class RoomCreationActivity extends AppCompatActivity {
             }
             @Override
             public void onClickLogin(){
-                Intent i = new Intent("android.media.action.IMAGE_CAPTURE");
+                Intent i = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                //i.putExtra(MediaStore.EXTRA_OUTPUT, MyFileContentProvider.CONTENT_URI);
                 startActivityForResult(i, 0);
             }
         });
@@ -117,10 +125,13 @@ public class RoomCreationActivity extends AppCompatActivity {
 
             if (data != null) {
                 Bundle bundle = data.getExtras();
+
                 // Recupera o Bitmap retornado pela c�mera
                 Bitmap bitmap = (Bitmap) bundle.get("data");
                 // Atualiza a imagem na tela
+                buffer = getImageUri(this, bitmap);
                 campoImagem.setImageBitmap(bitmap);
+
                 try {
                     // Salva o array de bytes
                     ByteArrayOutputStream bArray = new ByteArrayOutputStream();
@@ -133,4 +144,11 @@ public class RoomCreationActivity extends AppCompatActivity {
                 }
             }
         }
+
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
+    }
 }

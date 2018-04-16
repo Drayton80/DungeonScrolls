@@ -189,6 +189,64 @@ public class SQLite extends SQLiteOpenHelper{
         return true;
     }
 
+    public boolean verSeTemEsseSala(int i){
+        List<Sala> lista = new ArrayList<Sala>();
+
+        String query = "SELECT * FROM " + T2_TABLE_NAME;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery(query, null);
+
+        if(c.moveToFirst()){
+            do{
+                Sala sala = new Sala(Integer.valueOf(c.getString(0)), c.getString(1), c.getString(2), Integer.parseInt(c.getString(3)), c.getString(4), c.getString(8));
+                if (i == sala.getID()){
+                    return true;
+                }
+
+            }while(c.moveToNext());
+        }
+        return false;
+    }
+
+
+
+    public boolean atualizaDataSala(){
+        reference.child("sala").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    Sala sala = new Sala();
+                    GenericTypeIndicator<ArrayList<Integer>> t = new GenericTypeIndicator<ArrayList<Integer>>(){};
+                    sala.setID(snapshot.child("id").getValue(int.class));
+                    sala.setMestre(snapshot.child("mestre").getValue(int.class));
+                    sala.setNome(snapshot.child("nome").getValue(String.class));
+                    sala.setSenha(snapshot.child("senha").getValue(String.class));
+                    sala.setHistoria(snapshot.child("historia").getValue(String.class));
+                    sala.setJogadoresID(snapshot.child("salasID").getValue(t));
+                    sala.setFichasID(snapshot.child("fichasID").getValue(t));
+                    sala.setNomeMestre(snapshot.child("nomeMestre").getValue(String.class));
+                    sala.setNotas(snapshot.child("notas").getValue(String.class));
+                    sala.setUri(snapshot.child("uri").getValue(String.class));
+                    System.out.println("==========================================" + sala.getID());
+
+                    boolean existe = verSeTemEsseSala(sala.getID());
+                    if (existe == true){
+                        updateDataSala(sala);
+                    }
+                    else{
+                        insereDataSala(sala);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return true;
+    }
 
 
     public boolean insereDataUsuario(Usuario usuario){
@@ -358,6 +416,7 @@ public class SQLite extends SQLiteOpenHelper{
 
         return saida;
     }
+
 
 
     public boolean verSeTemEsseUsuario(int i){

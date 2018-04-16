@@ -6,7 +6,13 @@ import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.util.Log;
 
+import java.io.BufferedInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -48,6 +54,8 @@ public class SalaModel extends BaseObservable{
         this.imagem = Uri.parse(sala.getUri());
         this.nomeMestre = sala.getNomeMestre();
         this.notas = sala.getNotas();
+        //Bitmap bitmap = BitmapFactory.decodeFile(sala.getUri());
+        //this.imagemModel = new BitmapDrawable(bitmap);
     }
 
     public String getNome() {
@@ -162,6 +170,7 @@ public class SalaModel extends BaseObservable{
 
         return salaModelArrayList;
     }
+
 
 
 }
