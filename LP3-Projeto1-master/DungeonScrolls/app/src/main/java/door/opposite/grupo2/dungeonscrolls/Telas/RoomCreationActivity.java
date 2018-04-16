@@ -59,6 +59,10 @@ public class RoomCreationActivity extends AppCompatActivity {
             @Override
             public void onClickCad() {
 
+
+
+
+
                     Uri uri = Uri.parse("android.resource://door.opposite.grupo2.dungeonscrolls/" + R.drawable.avatar);
                     StorageReference path = storage.child("FotosSala").child(uri.getLastPathSegment());
                     path.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -109,6 +113,8 @@ public class RoomCreationActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         super.onActivityResult(requestCode, resultCode, data);
+
+
             if (data != null) {
                 Bundle bundle = data.getExtras();
                 // Recupera o Bitmap retornado pela c�mera
