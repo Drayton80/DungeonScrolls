@@ -1,10 +1,12 @@
 package door.opposite.grupo2.dungeonscrolls.Telas;
 
+import android.support.v7.app.AppCompatActivity;
+
 /**
  * Created by FHILIPE on 09/04/2018.
  */
 
-public class Room {
+public class Room{
     int ID;
     private String nome;
     String senha;
