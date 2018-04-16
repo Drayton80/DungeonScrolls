@@ -140,15 +140,17 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             public void onClickCad() {
                 sqLite.insereDataFicha(new Ficha("Nova Ficha", "",
                         "", "", "", "", "", "",
-                        0, 0, 0, 20, 16, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0,
                         0, 0, 0, 0, 0,
                         0, 0, 0, 0, 0, 0,
                         0, 0, 0, 0, 0, 0,
-                        0, 0, 5, 12, 0,
+                        0, 0, 0, 0, 0,
                         0, 0, 0, 0, 0, 0,
                         0, 0, 0, 0, 0, 0, 0,
                         0, 0, 0, "", "", "", "",
-                        "", "", "", "", "" ));
+                        "", "", "", "", "", "",
+                        0, 0, 0, 0, "", "",
+                        "", "","","", ""));
 
                 int[] aux = new int[salaUsada.toIntArray(salaUsada.getFichasID()).length +1];
 

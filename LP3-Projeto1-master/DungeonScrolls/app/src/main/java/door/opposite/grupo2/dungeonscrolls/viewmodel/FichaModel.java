@@ -1,8 +1,6 @@
 package door.opposite.grupo2.dungeonscrolls.viewmodel;
 
 import android.databinding.BaseObservable;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -80,10 +78,21 @@ public class FichaModel extends BaseObservable{
     public String carctClasse;
     public String talentos;
     public String magias;
-    public byte[] imagem;
-    Bitmap imagemTest;
+    public String imagem;
+    public String pericias;
+    public int pvAtual; //lembrar de botas em todo lugar;
+    public int resistenciaNatural;
+    public float pesoTotal;
+    public float pesoMax;
+    public String descricaoAparencia;
+    public String testeResistencia;
+    public String chanceFalha;
+    public String numeroMagias;
+    public String escolhaEspecializada;
+    public String qualiEspeciais;
+    public String habiEspeciais;
     
-    //Pericias pericias;
+
 
     public FichaModel(){
     }
@@ -153,6 +162,19 @@ public class FichaModel extends BaseObservable{
         this.talentos = ficha.getTalentos();
         this.magias = ficha.getMagias();
         this.imagem = ficha.getImagem();
+        this.pericias = ficha.getPericias();
+        this.pvAtual = ficha.getPvAtual();
+        this.resistenciaNatural = ficha.getResistenciaNatural();
+        this.pesoTotal = ficha.getPesoTotal();
+        this.pesoMax = ficha.getPesoMax();
+        this.descricaoAparencia = ficha.getDescricaoAparencia();
+        this.testeResistencia = ficha.getTesteResistencia();
+        this.chanceFalha = ficha.getChanceFalha();
+        this.numeroMagias = ficha.getNumeroMagias();
+        this.escolhaEspecializada = ficha.getEscolhaEspecializada();
+        this.qualiEspeciais = ficha.getQualiEspeciais();
+        this.habiEspeciais = ficha.getHabiEspeciais();
+
     }
 
     //Métodos Getter and Setter
@@ -892,31 +914,110 @@ public class FichaModel extends BaseObservable{
         this.magias = magias;
     }
 
-    public byte[] getImagem() {
+
+    public String getImagem() {
         return imagem;
     }
 
-    public void setImagem(byte[] imagem) {
+    public void setImagem(String imagem) {
         this.imagem = imagem;
     }
 
-    public Bitmap getBitmap() {
-        if(imagem == null){
-            return null;
-        }
-        // Cria o Bitmap necess�rio para exibir no ImageView
-        Bitmap bitmap = BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
-        return bitmap;
+    public String getPericias() {
+        return pericias;
     }
 
-    public Bitmap getImagemTest() {
-        return imagemTest;
+    public void setPericias(String pericias) {
+        this.pericias = pericias;
     }
 
-    public void setImagemTest(Bitmap imagemTest) {
-        this.imagemTest = imagemTest;
+    public int getPvAtual() {
+        return pvAtual;
     }
 
+    public void setPvAtual(int pvAtual) {
+        this.pvAtual = pvAtual;
+    }
+
+    public int getResistenciaNatural() {
+        return resistenciaNatural;
+    }
+
+    public void setResistenciaNatural(int resistenciaNatural) {
+        this.resistenciaNatural = resistenciaNatural;
+    }
+
+    public float getPesoTotal() {
+        return pesoTotal;
+    }
+
+    public void setPesoTotal(float pesoTotal) {
+        this.pesoTotal = pesoTotal;
+    }
+
+    public float getPesoMax() {
+        return pesoMax;
+    }
+
+    public void setPesoMax(float pesoMax) {
+        this.pesoMax = pesoMax;
+    }
+
+    public String getDescricaoAparencia() {
+        return descricaoAparencia;
+    }
+
+    public void setDescricaoAparencia(String descricaoAparencia) {
+        this.descricaoAparencia = descricaoAparencia;
+    }
+
+    public String getTesteResistencia() {
+        return testeResistencia;
+    }
+
+    public void setTesteResistencia(String testeResistencia) {
+        this.testeResistencia = testeResistencia;
+    }
+
+    public String getChanceFalha() {
+        return chanceFalha;
+    }
+
+    public void setChanceFalha(String chanceFalha) {
+        this.chanceFalha = chanceFalha;
+    }
+
+    public String getNumeroMagias() {
+        return numeroMagias;
+    }
+
+    public void setNumeroMagias(String numeroMagias) {
+        this.numeroMagias = numeroMagias;
+    }
+
+    public String getEscolhaEspecializada() {
+        return escolhaEspecializada;
+    }
+
+    public void setEscolhaEspecializada(String escolhaEspecializada) {
+        this.escolhaEspecializada = escolhaEspecializada;
+    }
+
+    public String getQualiEspeciais() {
+        return qualiEspeciais;
+    }
+
+    public void setQualiEspeciais(String qualiEspeciais) {
+        this.qualiEspeciais = qualiEspeciais;
+    }
+
+    public String getHabiEspeciais() {
+        return habiEspeciais;
+    }
+
+    public void setHabiEspeciais(String habiEspeciais) {
+        this.habiEspeciais = habiEspeciais;
+    }
 
     public ArrayList<FichaModel> getArrayListaFicha(int[] fichasID, SQLite sqLite){
 

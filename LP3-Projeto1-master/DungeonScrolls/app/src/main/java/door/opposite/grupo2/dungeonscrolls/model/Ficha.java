@@ -1,10 +1,5 @@
 package door.opposite.grupo2.dungeonscrolls.model;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-
-import com.google.firebase.database.FirebaseDatabase;
-
 import java.io.Serializable;
 
 /**
@@ -14,72 +9,82 @@ import java.io.Serializable;
 public class Ficha implements Serializable{
 
 
-    int id;
-    String nomePersonagem;
-    String nomeJogador;
-    String classeNivel;
-    String raca;
-    String tendencia;
-    String divindade;
-    String sexo;
-    String tamanho;
-    float altura;
-    float peso;
-    int idade;
-    int forca;
-    int constituicao;
-    int destreza;
-    int inteligencia;
-    int sabedoria;
-    int carisma;
-    int forcaMod;
-    int constituicaoMod;
-    int destrezaMod;
-    int inteligenciaMod;
-    int sabedoriaMod;
-    int carismaMod;
-    int ca;
-    int caOutros;
-    int caToque;
-    int caSurpresa;
-    int armadura;
-    int armaduraNatural;
-    int pv;
-    int reducaoDeDano;
-    int iniciativa;
-    int iniciativaOutros;
-    int fortitude;
-    int fortitudeOutros;
-    int fortitudeBase;
-    int reflexo;
-    int reflexoOutros;
-    int reflexoBase;
-    int vontade;
-    int vontadeOutros;
-    int vontadeBase;
-    int bba;
-    int resMagica;
-    int deslocamento;
-    int agarrar;
-    int agarrarOutros;
-    int pc;
-    int pp;
-    int po;
-    int pl;
-    int xp;
-    int xpNecessario;
-    String idiomas;
-    String inventario;
-    String ataques;
-    String armaEquip;
-    String armaduraEquip;
-    String outrosEquip;
-    String carctClasse;
-    String talentos;
-    String magias;
-    byte[] imagem;
-    Bitmap imagemTest;
-    //Pericias pericias;
+    private int id;
+    private String nomePersonagem;
+    private String nomeJogador;
+    private String classeNivel;
+    private String raca;
+    private String tendencia;
+    private String divindade;
+    private String sexo;
+    private String tamanho;
+    private float altura;
+    private float peso;
+    private int idade;
+    private int forca;
+    private int constituicao;
+    private int destreza;
+    private int inteligencia;
+    private int sabedoria;
+    private int carisma;
+    private int forcaMod;
+    private int constituicaoMod;
+    private int destrezaMod;
+    private int inteligenciaMod;
+    private int sabedoriaMod;
+    private int carismaMod;
+    private int ca;
+    private int caOutros;
+    private int caToque;
+    private int caSurpresa;
+    private int armadura;
+    private int armaduraNatural;
+    private int pv;
+    private int reducaoDeDano;
+    private int iniciativa;
+    private int iniciativaOutros;
+    private int fortitude;
+    private int fortitudeOutros;
+    private int fortitudeBase;
+    private int reflexo;
+    private int reflexoOutros;
+    private int reflexoBase;
+    private int vontade;
+    private int vontadeOutros;
+    private int vontadeBase;
+    private int bba;
+    private int resMagica;
+    private int deslocamento;
+    private int agarrar;
+    private int agarrarOutros;
+    private int pc;
+    private int pp;
+    private int po;
+    private int pl;
+    private int xp;
+    private int xpNecessario;
+    private String idiomas;
+    private String inventario;
+    private String ataques;
+    private String armaEquip;
+    private String armaduraEquip;
+    private String outrosEquip;
+    private String carctClasse;
+    private String talentos;
+    private String magias;
+    private String imagem;
+    private String pericias;
+    private int pvAtual; //lembrar de botas em todo lugar;
+    private int resistenciaNatural;
+    private float pesoTotal;
+    private float pesoMax;
+    private String descricaoAparencia;
+    private String testeResistencia;
+    private String chanceFalha;
+    private String numeroMagias;
+    private String escolhaEspecializada;
+    private String qualiEspeciais;
+    private String habiEspeciais;
 
     public Ficha(){
 
@@ -295,19 +300,21 @@ public class Ficha implements Serializable{
         this.magias = magias;
     }
 
-    public Ficha(int id, String nomePersonagem, String nomeJogador, String classeNivel,
-                 String raca, String tendencia, String divindade, String sexo, String tamanho,
-                 float altura, float peso, int idade, int forca, int constituicao, int destreza,
-                 int inteligencia, int sabedoria, int carisma, int forcaMod, int constituicaoMod,
-                 int destrezaMod, int inteligenciaMod, int sabedoriaMod, int carismaMod, int ca,
-                 int caOutros, int caToque, int caSurpresa, int armadura, int armaduraNatural,
-                 int pv, int reducaoDeDano, int iniciativa, int iniciativaOutros, int fortitude,
-                 int fortitudeOutros, int fortitudeBase, int reflexo, int reflexoOutros,
-                 int reflexoBase, int vontade, int vontadeOutros, int vontadeBase, int bba,
-                 int resMagica, int deslocamento, int agarrar, int agarrarOutros, int pc,
-                 int pp, int po, int pl, int xp, int xpNecessario, String idiomas,
-                 String inventario, String ataques, String armaEquip, String armaduraEquip,
-                 String outrosEquip, String carctClasse, String talentos, String magias, byte[] imagem) {
+    public Ficha(int id, String nomePersonagem, String nomeJogador, String classeNivel, String raca,
+                 String tendencia, String divindade, String sexo, String tamanho, float altura,
+                 float peso, int idade, int forca, int constituicao, int destreza, int inteligencia,
+                 int sabedoria, int carisma, int forcaMod, int constituicaoMod, int destrezaMod,
+                 int inteligenciaMod, int sabedoriaMod, int carismaMod, int ca, int caOutros,
+                 int caToque, int caSurpresa, int armadura, int armaduraNatural, int pv,
+                 int reducaoDeDano, int iniciativa, int iniciativaOutros, int fortitude, int fortitudeOutros,
+                 int fortitudeBase, int reflexo, int reflexoOutros, int reflexoBase, int vontade,
+                 int vontadeOutros, int vontadeBase, int bba, int resMagica, int deslocamento,
+                 int agarrar, int agarrarOutros, int pc, int pp, int po, int pl, int xp, int xpNecessario,
+                 String idiomas, String inventario, String ataques, String armaEquip, String armaduraEquip,
+                 String outrosEquip, String carctClasse, String talentos, String magias, String pericias,
+                 int pvAtual, int resistenciaNatural, float pesoTotal, float pesoMax,
+                 String descricaoAparencia, String testeResistencia, String chanceFalha, String numeroMagias,
+                 String escolhaEspecializada, String qualiEspeciais, String habiEspeciais) {
         this.id = id;
         this.nomePersonagem = nomePersonagem;
         this.nomeJogador = nomeJogador;
@@ -371,9 +378,112 @@ public class Ficha implements Serializable{
         this.carctClasse = carctClasse;
         this.talentos = talentos;
         this.magias = magias;
-        this.imagem = imagem;
-
+        this.pericias = pericias;
+        this.pvAtual = pvAtual;
+        this.resistenciaNatural = resistenciaNatural;
+        this.pesoTotal = pesoTotal;
+        this.pesoMax = pesoMax;
+        this.descricaoAparencia = descricaoAparencia;
+        this.testeResistencia = testeResistencia;
+        this.chanceFalha = chanceFalha;
+        this.numeroMagias = numeroMagias;
+        this.escolhaEspecializada = escolhaEspecializada;
+        this.qualiEspeciais = qualiEspeciais;
+        this.habiEspeciais = habiEspeciais;
     }
+
+    public Ficha(String nomePersonagem, String nomeJogador, String classeNivel, String raca,
+                 String tendencia, String divindade, String sexo, String tamanho, float altura,
+                 float peso, int idade, int forca, int constituicao, int destreza, int inteligencia,
+                 int sabedoria, int carisma, int forcaMod, int constituicaoMod, int destrezaMod,
+                 int inteligenciaMod, int sabedoriaMod, int carismaMod, int ca, int caOutros,
+                 int caToque, int caSurpresa, int armadura, int armaduraNatural, int pv,
+                 int reducaoDeDano, int iniciativa, int iniciativaOutros, int fortitude, int fortitudeOutros,
+                 int fortitudeBase, int reflexo, int reflexoOutros, int reflexoBase, int vontade,
+                 int vontadeOutros, int vontadeBase, int bba, int resMagica, int deslocamento,
+                 int agarrar, int agarrarOutros, int pc, int pp, int po, int pl, int xp, int xpNecessario,
+                 String idiomas, String inventario, String ataques, String armaEquip, String armaduraEquip,
+                 String outrosEquip, String carctClasse, String talentos, String magias, String pericias,
+                 int pvAtual, int resistenciaNatural, float pesoTotal, float pesoMax,
+                 String descricaoAparencia, String testeResistencia, String chanceFalha, String numeroMagias,
+                 String escolhaEspecializada, String qualiEspeciais, String habiEspeciais) {
+        this.id = id;
+        this.nomePersonagem = nomePersonagem;
+        this.nomeJogador = nomeJogador;
+        this.classeNivel = classeNivel;
+        this.raca = raca;
+        this.tendencia = tendencia;
+        this.divindade = divindade;
+        this.sexo = sexo;
+        this.tamanho = tamanho;
+        this.altura = altura;
+        this.peso = peso;
+        this.idade = idade;
+        this.forca = forca;
+        this.constituicao = constituicao;
+        this.destreza = destreza;
+        this.inteligencia = inteligencia;
+        this.sabedoria = sabedoria;
+        this.carisma = carisma;
+        this.forcaMod = forcaMod;
+        this.constituicaoMod = constituicaoMod;
+        this.destrezaMod = destrezaMod;
+        this.inteligenciaMod = inteligenciaMod;
+        this.sabedoriaMod = sabedoriaMod;
+        this.carismaMod = carismaMod;
+        this.ca = ca;
+        this.caOutros = caOutros;
+        this.caToque = caToque;
+        this.caSurpresa = caSurpresa;
+        this.armadura = armadura;
+        this.armaduraNatural = armaduraNatural;
+        this.pv = pv;
+        this.reducaoDeDano = reducaoDeDano;
+        this.iniciativa = iniciativa;
+        this.iniciativaOutros = iniciativaOutros;
+        this.fortitude = fortitude;
+        this.fortitudeOutros = fortitudeOutros;
+        this.fortitudeBase = fortitudeBase;
+        this.reflexo = reflexo;
+        this.reflexoOutros = reflexoOutros;
+        this.reflexoBase = reflexoBase;
+        this.vontade = vontade;
+        this.vontadeOutros = vontadeOutros;
+        this.vontadeBase = vontadeBase;
+        this.bba = bba;
+        this.resMagica = resMagica;
+        this.deslocamento = deslocamento;
+        this.agarrar = agarrar;
+        this.agarrarOutros = agarrarOutros;
+        this.pc = pc;
+        this.pp = pp;
+        this.po = po;
+        this.pl = pl;
+        this.xp = xp;
+        this.xpNecessario = xpNecessario;
+        this.idiomas = idiomas;
+        this.inventario = inventario;
+        this.ataques = ataques;
+        this.armaEquip = armaEquip;
+        this.armaduraEquip = armaduraEquip;
+        this.outrosEquip = outrosEquip;
+        this.carctClasse = carctClasse;
+        this.talentos = talentos;
+        this.magias = magias;
+        this.pericias = pericias;
+        this.pvAtual = pvAtual;
+        this.resistenciaNatural = resistenciaNatural;
+        this.pesoTotal = pesoTotal;
+        this.pesoMax = pesoMax;
+        this.descricaoAparencia = descricaoAparencia;
+        this.testeResistencia = testeResistencia;
+        this.chanceFalha = chanceFalha;
+        this.numeroMagias = numeroMagias;
+        this.escolhaEspecializada = escolhaEspecializada;
+        this.qualiEspeciais = qualiEspeciais;
+        this.habiEspeciais = habiEspeciais;
+    }
+
 
     public int getId() {
         return id;
@@ -879,28 +989,107 @@ public class Ficha implements Serializable{
         this.magias = magias;
     }
 
-    public byte[] getImagem() {
+    public String getImagem() {
         return imagem;
     }
 
-    public void setImagem(byte[] imagem) {
+    public void setImagem(String imagem) {
         this.imagem = imagem;
     }
 
-    public Bitmap getBitmap() {
-        if(imagem == null){
-            return null;
-        }
-        // Cria o Bitmap necess�rio para exibir no ImageView
-        Bitmap bitmap = BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
-        return bitmap;
+    public String getPericias() {
+        return pericias;
     }
 
-    public Bitmap getImagemTest() {
-        return imagemTest;
+    public void setPericias(String pericias) {
+        this.pericias = pericias;
     }
 
-    public void setImagemTest(Bitmap imagemTest) {
-        this.imagemTest = imagemTest;
+    public int getPvAtual() {
+        return pvAtual;
+    }
+
+    public void setPvAtual(int pvAtual) {
+        this.pvAtual = pvAtual;
+    }
+
+    public int getResistenciaNatural() {
+        return resistenciaNatural;
+    }
+
+    public void setResistenciaNatural(int resistenciaNatural) {
+        this.resistenciaNatural = resistenciaNatural;
+    }
+
+    public float getPesoTotal() {
+        return pesoTotal;
+    }
+
+    public void setPesoTotal(float pesoTotal) {
+        this.pesoTotal = pesoTotal;
+    }
+
+    public float getPesoMax() {
+        return pesoMax;
+    }
+
+    public void setPesoMax(float pesoMax) {
+        this.pesoMax = pesoMax;
+    }
+
+    public String getDescricaoAparencia() {
+        return descricaoAparencia;
+    }
+
+    public void setDescricaoAparencia(String descricaoAparencia) {
+        this.descricaoAparencia = descricaoAparencia;
+    }
+
+    public String getTesteResistencia() {
+        return testeResistencia;
+    }
+
+    public void setTesteResistencia(String testeResistencia) {
+        this.testeResistencia = testeResistencia;
+    }
+
+    public String getChanceFalha() {
+        return chanceFalha;
+    }
+
+    public void setChanceFalha(String chanceFalha) {
+        this.chanceFalha = chanceFalha;
+    }
+
+    public String getNumeroMagias() {
+        return numeroMagias;
+    }
+
+    public void setNumeroMagias(String numeroMagias) {
+        this.numeroMagias = numeroMagias;
+    }
+
+    public String getEscolhaEspecializada() {
+        return escolhaEspecializada;
+    }
+
+    public void setEscolhaEspecializada(String escolhaEspecializada) {
+        this.escolhaEspecializada = escolhaEspecializada;
+    }
+
+    public String getQualiEspeciais() {
+        return qualiEspeciais;
+    }
+
+    public void setQualiEspeciais(String qualiEspeciais) {
+        this.qualiEspeciais = qualiEspeciais;
+    }
+
+    public String getHabiEspeciais() {
+        return habiEspeciais;
+    }
+
+    public void setHabiEspeciais(String habiEspeciais) {
+        this.habiEspeciais = habiEspeciais;
     }
 }

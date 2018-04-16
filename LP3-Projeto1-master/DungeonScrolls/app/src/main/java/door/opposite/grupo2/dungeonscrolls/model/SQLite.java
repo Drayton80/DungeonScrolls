@@ -118,6 +118,19 @@ public class SQLite extends SQLiteOpenHelper{
     public static final  String T3_COL_62 = "TALENTOS";
     public static final  String T3_COL_63 = "MAGIAS";
     public static final  String T3_COL_64 = "IMAGEM";
+    public static final  String T3_COL_65 = "PERICIAS";
+    public static final  String T3_COL_66 = "PVATUAL";
+    public static final  String T3_COL_67 = "RESISTENCIANATURAL";
+    public static final  String T3_COL_68 = "PESOTOTAL";
+    public static final  String T3_COL_69 = "PESOMAX";
+    public static final  String T3_COL_70 = "DESCRICAOAPARENCIA";
+    public static final  String T3_COL_71 = "TESTERESISTENCIA";
+    public static final  String T3_COL_72 = "CHANCEFALHA";
+    public static final  String T3_COL_73 = "NUMEROMAGIAS";
+    public static final  String T3_COL_74 = "ESCOLAESPECIALIZADA";
+    public static final  String T3_COL_75 = "QUALIDADESESPECIAIS";
+    public static final  String T3_COL_76 = "HABILIDADESESPECIAIS";
+
 
 
     public SQLite(Context context) {
@@ -143,7 +156,8 @@ public class SQLite extends SQLiteOpenHelper{
                 "REFLEXO INTEGER, REFLEXOOUTROS INTEGER, REFLEXOBASE INTEGER, VONTADE INTEGER, VONTADEOUTROS INTEGER, VONTADEBASE INTEGER, BBA INTEGER, RESMAGICA INTEGER, " +
                 "DESLOCAMENTO INTEGER, AGARRAR INTEGER, AGARRAROUTROS INTEGER, PC INTEGER, PP INTEGER, PO INTEGER, PL INTEGER, XP INTEGER, XPNECESSARIO INTEGER, " +
                 "IDIOMAS TEXT, INVENTARIO TEXT, ATAQUES TEXT, ARMAEQUIP TEXT, ARMADURAEQUIP TEXT, OUTROSEQUIP TEXT, CARCTCLASSE TEXT, TALENTOS TEXT, MAGIAS TEXT, " +
-                "IMAGEM BLOB)");
+                "IMAGEM TEXT, PERICIAS TEXT, PVATUAL INTEGER, RESISTENCIANATURAL INTEGER, PESOTOTAL REAL, PESOMAX REAL, DESCRICAOAPARENCIA TEXT, TESTERESISTENCIA TEXT, " +
+                "CHANCEFALHA TEXT, NUMEROMAGIAS TEXT, ESCOLAESPECIALIZADA TEXT, QUALIDADESESPECIAIS TEXT, HABILIDADESESPECIAIS TEXT)");
     }
 
     @Override
@@ -809,6 +823,19 @@ public class SQLite extends SQLiteOpenHelper{
         contentValues.put(T3_COL_62, ficha.getTalentos());
         contentValues.put(T3_COL_63, ficha.getMagias());
         contentValues.put(T3_COL_64, ficha.getImagem());
+        contentValues.put(T3_COL_65, ficha.getPericias());
+        contentValues.put(T3_COL_66, ficha.getPvAtual());
+        contentValues.put(T3_COL_67, ficha.getResistenciaNatural());
+        contentValues.put(T3_COL_68, ficha.getPesoTotal());
+        contentValues.put(T3_COL_69, ficha.getPesoMax());
+        contentValues.put(T3_COL_70, ficha.getDescricaoAparencia());
+        contentValues.put(T3_COL_71, ficha.getTesteResistencia());
+        contentValues.put(T3_COL_72, ficha.getChanceFalha());
+        contentValues.put(T3_COL_73, ficha.getNumeroMagias());
+        contentValues.put(T3_COL_74, ficha.getEscolhaEspecializada());
+        contentValues.put(T3_COL_75, ficha.getQualiEspeciais());
+        contentValues.put(T3_COL_76, ficha.getHabiEspeciais());
+
 
         long result = db.insert(T3_TABLE_NAME, null, contentValues);
         if(result == -1){
@@ -891,6 +918,18 @@ public class SQLite extends SQLiteOpenHelper{
         contentValues.put(T3_COL_62, ficha.getTalentos());
         contentValues.put(T3_COL_63, ficha.getMagias());
         contentValues.put(T3_COL_64, ficha.getImagem());
+        contentValues.put(T3_COL_65, ficha.getPericias());
+        contentValues.put(T3_COL_66, ficha.getPvAtual());
+        contentValues.put(T3_COL_67, ficha.getResistenciaNatural());
+        contentValues.put(T3_COL_68, ficha.getPesoTotal());
+        contentValues.put(T3_COL_69, ficha.getPesoMax());
+        contentValues.put(T3_COL_70, ficha.getDescricaoAparencia());
+        contentValues.put(T3_COL_71, ficha.getTesteResistencia());
+        contentValues.put(T3_COL_72, ficha.getChanceFalha());
+        contentValues.put(T3_COL_73, ficha.getNumeroMagias());
+        contentValues.put(T3_COL_74, ficha.getEscolhaEspecializada());
+        contentValues.put(T3_COL_75, ficha.getQualiEspeciais());
+        contentValues.put(T3_COL_76, ficha.getHabiEspeciais());
         db.update(T3_TABLE_NAME, contentValues, "ID = ?", new String[]{String.valueOf(ficha.getId())});
         return true;
     }
@@ -911,7 +950,8 @@ public class SQLite extends SQLiteOpenHelper{
                         T3_COL_17, T3_COL_18, T3_COL_19, T3_COL_20, T3_COL_21, T3_COL_22, T3_COL_23, T3_COL_24, T3_COL_25, T3_COL_26, T3_COL_27, T3_COL_28, T3_COL_29, T3_COL_30,
                         T3_COL_31, T3_COL_32, T3_COL_33, T3_COL_34, T3_COL_35, T3_COL_36, T3_COL_37, T3_COL_38, T3_COL_39, T3_COL_40, T3_COL_41, T3_COL_42, T3_COL_43, T3_COL_44,
                         T3_COL_45, T3_COL_46, T3_COL_47, T3_COL_48, T3_COL_49, T3_COL_50, T3_COL_51, T3_COL_52, T3_COL_53, T3_COL_54, T3_COL_55, T3_COL_56, T3_COL_57, T3_COL_58,
-                        T3_COL_59, T3_COL_60, T3_COL_61, T3_COL_62, T3_COL_63, T3_COL_64}, "ID = ?", new String[]{String.valueOf(ID)},
+                        T3_COL_59, T3_COL_60, T3_COL_61, T3_COL_62, T3_COL_63, T3_COL_64, T3_COL_65, T3_COL_66, T3_COL_67, T3_COL_68, T3_COL_69, T3_COL_70, T3_COL_71, T3_COL_72,
+                        T3_COL_73, T3_COL_74, T3_COL_75, T3_COL_76}, "ID = ?", new String[]{String.valueOf(ID)},
                 null, null, null,null);
 
         if(cursor != null){
@@ -933,10 +973,13 @@ public class SQLite extends SQLiteOpenHelper{
                 Integer.parseInt(cursor.getString(43)), Integer.parseInt(cursor.getString(44)), Integer.parseInt(cursor.getString(45)), Integer.parseInt(cursor.getString(46)),
                 Integer.parseInt(cursor.getString(47)), Integer.parseInt(cursor.getString(48)), Integer.parseInt(cursor.getString(49)), Integer.parseInt(cursor.getString(50)),
                 Integer.parseInt(cursor.getString(51)), Integer.parseInt(cursor.getString(52)), Integer.parseInt(cursor.getString(53)), cursor.getString(54), cursor.getString(55),
-                cursor.getString(56), cursor.getString(57), cursor.getString(58), cursor.getString(59), cursor.getString(60), cursor.getString(61), cursor.getString(62));
+                cursor.getString(56), cursor.getString(57), cursor.getString(58), cursor.getString(59), cursor.getString(60), cursor.getString(61), cursor.getString(62),
+                cursor.getString(64), Integer.parseInt(cursor.getString(65)), Integer.parseInt(cursor.getString(66)), Float.parseFloat(cursor.getString(67)),
+                Float.parseFloat(cursor.getString(68)), cursor.getString(69), cursor.getString(70), cursor.getString(71), cursor.getString(72), cursor.getString(73),
+                cursor.getString(74), cursor.getString(75));
 
-        byte[] img = cursor.getBlob(63);
-        ficha.setImagem(img);
+
+        ficha.setImagem(cursor.getString(63));
 
         return ficha;
     }
@@ -950,7 +993,8 @@ public class SQLite extends SQLiteOpenHelper{
                         T3_COL_17, T3_COL_18, T3_COL_19, T3_COL_20, T3_COL_21, T3_COL_22, T3_COL_23, T3_COL_24, T3_COL_25, T3_COL_26, T3_COL_27, T3_COL_28, T3_COL_29, T3_COL_30,
                         T3_COL_31, T3_COL_32, T3_COL_33, T3_COL_34, T3_COL_35, T3_COL_36, T3_COL_37, T3_COL_38, T3_COL_39, T3_COL_40, T3_COL_41, T3_COL_42, T3_COL_43, T3_COL_44,
                         T3_COL_45, T3_COL_46, T3_COL_47, T3_COL_48, T3_COL_49, T3_COL_50, T3_COL_51, T3_COL_52, T3_COL_53, T3_COL_54, T3_COL_55, T3_COL_56, T3_COL_57, T3_COL_58,
-                        T3_COL_59, T3_COL_60, T3_COL_61, T3_COL_62, T3_COL_63, T3_COL_64}, "NOMEPERSONAGEM = ?", new String[]{nomepersonagem},
+                        T3_COL_59, T3_COL_60, T3_COL_61, T3_COL_62, T3_COL_63, T3_COL_64, T3_COL_65, T3_COL_66, T3_COL_67, T3_COL_68, T3_COL_69, T3_COL_70, T3_COL_71, T3_COL_72,
+                        T3_COL_73, T3_COL_74, T3_COL_75, T3_COL_76}, "NOMEPERSONAGEM = ?", new String[]{nomepersonagem},
                 null, null, null,null);
 
         if(cursor != null){
@@ -974,10 +1018,12 @@ public class SQLite extends SQLiteOpenHelper{
                 Integer.parseInt(cursor.getString(43)), Integer.parseInt(cursor.getString(44)), Integer.parseInt(cursor.getString(45)), Integer.parseInt(cursor.getString(46)),
                 Integer.parseInt(cursor.getString(47)), Integer.parseInt(cursor.getString(48)), Integer.parseInt(cursor.getString(49)), Integer.parseInt(cursor.getString(50)),
                 Integer.parseInt(cursor.getString(51)), Integer.parseInt(cursor.getString(52)), Integer.parseInt(cursor.getString(53)), cursor.getString(54), cursor.getString(55),
-                cursor.getString(56), cursor.getString(57), cursor.getString(58), cursor.getString(59), cursor.getString(60), cursor.getString(61), cursor.getString(62));
+                cursor.getString(56), cursor.getString(57), cursor.getString(58), cursor.getString(59), cursor.getString(60), cursor.getString(61), cursor.getString(62),
+                cursor.getString(64), Integer.parseInt(cursor.getString(65)), Integer.parseInt(cursor.getString(66)), Float.parseFloat(cursor.getString(67)),
+                Float.parseFloat(cursor.getString(68)), cursor.getString(69), cursor.getString(70), cursor.getString(71), cursor.getString(72), cursor.getString(73),
+                cursor.getString(74), cursor.getString(75));
 
-        byte[] img = cursor.getBlob(63);
-        ficha.setImagem(img);
+        ficha.setImagem(cursor.getString(63));
 
         return ficha;
     }
@@ -1018,10 +1064,12 @@ public class SQLite extends SQLiteOpenHelper{
                         Integer.parseInt(cursor.getString(43)), Integer.parseInt(cursor.getString(44)), Integer.parseInt(cursor.getString(45)), Integer.parseInt(cursor.getString(46)),
                         Integer.parseInt(cursor.getString(47)), Integer.parseInt(cursor.getString(48)), Integer.parseInt(cursor.getString(49)), Integer.parseInt(cursor.getString(50)),
                         Integer.parseInt(cursor.getString(51)), Integer.parseInt(cursor.getString(52)), Integer.parseInt(cursor.getString(53)), cursor.getString(54), cursor.getString(55),
-                        cursor.getString(56), cursor.getString(57), cursor.getString(58), cursor.getString(59), cursor.getString(60), cursor.getString(61), cursor.getString(62));
+                        cursor.getString(56), cursor.getString(57), cursor.getString(58), cursor.getString(59), cursor.getString(60), cursor.getString(61), cursor.getString(62),
+                        cursor.getString(64), Integer.parseInt(cursor.getString(65)), Integer.parseInt(cursor.getString(66)), Float.parseFloat(cursor.getString(67)),
+                        Float.parseFloat(cursor.getString(68)), cursor.getString(69), cursor.getString(70), cursor.getString(71), cursor.getString(72), cursor.getString(73),
+                        cursor.getString(74), cursor.getString(75));
 
-                byte[] img = cursor.getBlob(63);
-                ficha.setImagem(img);
+                ficha.setImagem(cursor.getString(63));
 
                 lista.add(ficha);
             }while(cursor.moveToNext());
