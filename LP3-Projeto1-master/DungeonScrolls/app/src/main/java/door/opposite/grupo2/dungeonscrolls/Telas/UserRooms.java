@@ -1,5 +1,6 @@
 package door.opposite.grupo2.dungeonscrolls.Telas;
 
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
@@ -17,13 +18,14 @@ import door.opposite.grupo2.dungeonscrolls.adapter.SalaAdapter;
 import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
 import door.opposite.grupo2.dungeonscrolls.databinding.ActivityUserRoomsBinding;
 import door.opposite.grupo2.dungeonscrolls.graficAssets.DialogFragmentCreator;
+import door.opposite.grupo2.dungeonscrolls.graficAssets.NoticeDialogFragment;
 import door.opposite.grupo2.dungeonscrolls.model.Ficha;
 import door.opposite.grupo2.dungeonscrolls.model.SQLite;
 import door.opposite.grupo2.dungeonscrolls.model.Sala;
 import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.SalaModel;
 
-public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener {
+public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener, NoticeDialogFragment.NoticeDialogListener{
     // Atributos relativos à parte visual do programa:
     AlertDialog dialog;     // Um referenciador para Dialog Fragments, é possível fechar ou mostrar dialogs com ele
     DialogFragmentCreator geradorDialog = new DialogFragmentCreator();  // Cria um manipulador de Dialog Fragments, objeto da classe DialogFragmentCreator
@@ -71,8 +73,8 @@ public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItem
                 for(int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length; i++){
                     if(i == salaPosicao){
                         if (salasID[i+1] == 0){
-                         }else{
-                           // System.out.println("=================Entrou aqui, eu achei a sala!");
+                        }else{
+                            // System.out.println("=================Entrou aqui, eu achei a sala!");
                             // Cria uma View que referencia o layout dialogfragment_loadingcircle
                             View loadingCircleDialog = getLayoutInflater().inflate(R.layout.dialogfragment_loadingcircle, null);
                             // Usa um dos métodos de DialogFragmentCreator para criar um dialog fragment do loading dialog e ao mesmo tempo passar sua
@@ -136,31 +138,54 @@ public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItem
             case R.id.item_vincular:
                 return true;
             case R.id.item_deleta:
-                salasID = usuarioLogado.toIntArray(usuarioLogado.getSalasID());
-                for(int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length; i++){
-                    if(i == posicaoDelete){
-                        if (salasID[i+1] == 0){
-                            System.out.println("==========================================================");
-                        }else{
-                            // System.out.println("=================Entrou aqui, eu achei a sala!");
-                            Sala sala = sqLite.selecionarSala(salasID[i+1]);
-                            //----------comeca
-                            int array_auxiliar[] = usuarioLogado.toIntArray(usuarioLogado.getSalasID());
-                            array_auxiliar = achaElemento(array_auxiliar, sala.getID());
-                            usuarioLogado.setSalasID(usuarioLogado.toIntList(array_auxiliar));
-                            //-----------ternina
-                            sqLite.updateDataUsuario(usuarioLogado);
-                            sqLite.deleteDataSala(sala);
-                            finish();
-                            startActivity(getIntent());
-                        }
-                    }
-                }
-                return true;
+                showNoticeDialog();
             default:
                 return false;
 
         }    }
+
+
+    public void showNoticeDialog() {
+        // Cria uma instância para o Notice Dialog Fragment
+        DialogFragment dialog = new NoticeDialogFragment();
+        dialog.show(getFragmentManager(), "NoticeDialogFragment");
+    }
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        salasID = usuarioLogado.toIntArray(usuarioLogado.getSalasID());
+        for(int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length; i++){
+            if(i == posicaoDelete){
+                if (salasID[i+1] == 0){
+                    System.out.println("==========================================================");
+                }else{
+                    // System.out.println("=================Entrou aqui, eu achei a sala!");
+                    Sala sala = sqLite.selecionarSala(salasID[i+1]);
+                    //----------comeca
+                    int array_auxiliar[] = usuarioLogado.toIntArray(usuarioLogado.getSalasID());
+                    array_auxiliar = achaElemento(array_auxiliar, sala.getID());
+                    usuarioLogado.setSalasID(usuarioLogado.toIntList(array_auxiliar));
+                    //-----------ternina
+                    sqLite.updateDataUsuario(usuarioLogado);
+                    sqLite.deleteDataSala(sala);
+                    extra = new Intent(UserRooms.this, RoomsMenu.class);
+                    extra.putExtra("usuarioLogado", usuarioLogado);
+                    finish();
+                    startActivity(extra);
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog, String senha) {
+
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+        dialog.dismiss();
+    }
 
 
     public static int[] achaElemento(int array_original[], int numero){

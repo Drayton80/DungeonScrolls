@@ -1,7 +1,9 @@
 package door.opposite.grupo2.dungeonscrolls.Telas;
 
+import android.app.DialogFragment;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -24,6 +26,8 @@ import door.opposite.grupo2.dungeonscrolls.adapter.FichaAdapter;
 import door.opposite.grupo2.dungeonscrolls.adapter.SalaAdapter;
 import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
 import door.opposite.grupo2.dungeonscrolls.databinding.ActivityRoomBinding;
+import door.opposite.grupo2.dungeonscrolls.graficAssets.DialogFragmentCreator;
+import door.opposite.grupo2.dungeonscrolls.graficAssets.NoticeDialogFragment;
 import door.opposite.grupo2.dungeonscrolls.model.Ficha;
 import door.opposite.grupo2.dungeonscrolls.model.SQLite;
 import door.opposite.grupo2.dungeonscrolls.model.Sala;
@@ -31,7 +35,7 @@ import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.SalaModel;
 
-public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
+public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener, NoticeDialogFragment.NoticeDialogListener{
     ActivityRoomBinding binding;
     SQLite sqLite;
     Intent extra;
@@ -44,6 +48,9 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     FichaAdapter fichaAdapter;
     int[] fichasID;
     int posicaoDelete = 0;
+    DialogFragmentCreator geraDialog = new DialogFragmentCreator();
+    AlertDialog dialog;
+    boolean deletar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,33 +180,68 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             case R.id.item_vincular:
                 return true;
             case R.id.item_deleta:
-                fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
-                for(int i = 0; i < salaUsada.toIntArray(salaUsada.getFichasID()).length; i++){
-                    if(i == posicaoDelete){
-                        if (fichasID[i+1] == 0){
-
-                        }else{
-                            // System.out.println("=================Entrou aqui, eu achei a sala!");
-                            Ficha ficha = sqLite.selecionarFicha(fichasID[i+1]);
-                            //----------comeca
-                            int array_auxiliar[] = salaUsada.toIntArray(salaUsada.getFichasID());
-                            array_auxiliar = achaElemento(array_auxiliar, ficha.getId());
-                            salaUsada.setFichasID(salaUsada.toIntList(array_auxiliar));
-                            //-----------ternina
-                            sqLite.updateDataSala(salaUsada);
-                            sqLite.deleteDataFicha(ficha);
-                            finish();
-                            startActivity(getIntent());
-                        }
-                    }
-                }
-                return true;
+                showNoticeDialog();
             default:
                 return false;
 
         }
 
 
+    }
+
+    public void onBackPressed(){
+        extra = new Intent(RoomActivity.this, RoomsMenu.class);
+        extra.putExtra("usuarioLogado", usuarioLogado);
+        startActivity(extra);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // dialog só é null antes de ser instanciado, apenas por garantia para não dar erros
+        if(deletar == true){
+            System.out.println("===========================Deletado!!!");
+        }
+    }
+
+    public void showNoticeDialog() {
+        // Cria uma instância para o Notice Dialog Fragment
+        DialogFragment dialog = new NoticeDialogFragment();
+        dialog.show(getFragmentManager(), "NoticeDialogFragment");
+    }
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog) {
+        fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
+        for(int i = 0; i < salaUsada.toIntArray(salaUsada.getFichasID()).length; i++){
+            if(i == posicaoDelete){
+                if (fichasID[i+1] == 0){
+
+                }else{
+                    // System.out.println("=================Entrou aqui, eu achei a sala!");
+                    Ficha ficha = sqLite.selecionarFicha(fichasID[i+1]);
+                    //----------comeca
+                    int array_auxiliar[] = salaUsada.toIntArray(salaUsada.getFichasID());
+                    array_auxiliar = achaElemento(array_auxiliar, ficha.getId());
+                    salaUsada.setFichasID(salaUsada.toIntList(array_auxiliar));
+                    //-----------ternina
+                    sqLite.updateDataSala(salaUsada);
+                    sqLite.deleteDataFicha(ficha);
+                    finish();
+                    startActivity(getIntent());
+                }
+            }
+        }
+    }
+
+    @Override
+    public void onDialogPositiveClick(DialogFragment dialog, String senha) {
+
+    }
+
+    @Override
+    public void onDialogNegativeClick(DialogFragment dialog) {
+        dialog.dismiss();
     }
 
     public static int[] achaElemento(int array_original[], int numero){
@@ -225,5 +267,4 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
         return array_novo;
     }
-
 }

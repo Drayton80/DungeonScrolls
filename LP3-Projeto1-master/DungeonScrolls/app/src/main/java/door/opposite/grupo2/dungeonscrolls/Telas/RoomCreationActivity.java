@@ -59,10 +59,6 @@ public class RoomCreationActivity extends AppCompatActivity {
             @Override
             public void onClickCad() {
 
-
-
-
-
                     Uri uri = Uri.parse("android.resource://door.opposite.grupo2.dungeonscrolls/" + R.drawable.avatar);
                     StorageReference path = storage.child("FotosSala").child(uri.getLastPathSegment());
                     path.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
