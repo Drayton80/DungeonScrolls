@@ -10,8 +10,9 @@
     <color name="colorSecondaryText">#000000</color>
     <color name="colorAccent">#a98274</color>
 
+    <color name="colorExternalButtonTexts">#fffffb</color>
+
     <color name="listViewRoom_FichasBackground">#604020</color>
     <color name="listViewRoom_FichasBackgroundInterno">#996633</color>
     <color name="ficha_atributoNaoAlteravel_texto">#e0e0e0</color>
-    <color name="colorExpandirText">#0000ff</color>
 </resources>
