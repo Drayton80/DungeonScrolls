@@ -109,8 +109,6 @@ public class RoomCreationActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data)
     {
         super.onActivityResult(requestCode, resultCode, data);
-
-
             if (data != null) {
                 Bundle bundle = data.getExtras();
                 // Recupera o Bitmap retornado pela c�mera

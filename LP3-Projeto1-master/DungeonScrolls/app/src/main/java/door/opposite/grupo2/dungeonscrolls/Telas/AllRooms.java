@@ -8,6 +8,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,7 +28,7 @@ import door.opposite.grupo2.dungeonscrolls.viewmodel.SalaModel;
  * Created by FHILIPE on 08/04/2018.
  */
 
-public class AllRooms extends AppCompatActivity implements NoticeDialogFragment.NoticeDialogListener{
+public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentID.NoticeDialogListenerID{
     // Atributos relativos à parte visual do programa:
     // Atributos relativos à parte visual do programa:
     AlertDialog dialog;     // Um referenciador para Dialog Fragments, é possível fechar ou mostrar dialogs com ele
@@ -43,7 +44,7 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragment.
     int[] salasID;
     List<Sala> allSalasID;
     Sala salaUsada, salaSelecionada;
-    Boolean salaUsuario = false;
+    Boolean salaUsuario = false, salaNulla = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,9 +77,7 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragment.
                 try {
                     salaModelSelecionada = salaModelArrayList.get(salaPosicao);
                     System.out.println("=================Sala Model Selecionada: " + salaModelSelecionada.getMestre());
-                }catch (Exception e){
-
-                }
+                }catch (Exception e){}
                 for (int i = 0; i < salasID.length; i++) {
                     try {
                         if (salasID[i + 1] == 0) {
@@ -103,9 +102,7 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragment.
                                 startActivity(extra);
                             }
                         }
-                    }catch(Exception e){
-
-                    }
+                    }catch(Exception e){}
                 }
                 if(salaUsuario == false) {
                     showNoticeDialog();
@@ -126,8 +123,27 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragment.
 
     @Override
     public void onDialogPositiveClick(DialogFragment dialog, String senha) {
-        System.out.println("=======================Senha da Sala: " + senha);
-        dialog.dismiss();
+        if(salaModelSelecionada.getSenha() == null){
+            salaModelSelecionada.setSenha(" ");
+            salaNulla = true;
+        }
+        if((senha == null) && salaNulla){
+            salaUsada = sqLite.selecionarSala(salaModelSelecionada.getNome());
+            extra = new Intent(AllRooms.this, RoomActivity.class);
+            extra.putExtra("usuarioLogado", usuarioLogado);
+            extra.putExtra("salaUsada", salaUsada);
+            startActivity(extra);
+        }
+        if(salaModelSelecionada.getSenha().equals(senha)){
+            salaUsada = sqLite.selecionarSala(salaModelSelecionada.getNome());
+            extra = new Intent(AllRooms.this, RoomActivity.class);
+            extra.putExtra("usuarioLogado", usuarioLogado);
+            extra.putExtra("salaUsada", salaUsada);
+            startActivity(extra);
+        }else{
+            Toast.makeText(AllRooms.this, "Senha incorreta", Toast.LENGTH_LONG).show();
+            dialog.dismiss();
+        }
     }
 
     @Override
@@ -137,7 +153,6 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragment.
 
     @Override
     public void onDialogNegativeClick(DialogFragment dialog) {
-
         dialog.dismiss();
     }
 }

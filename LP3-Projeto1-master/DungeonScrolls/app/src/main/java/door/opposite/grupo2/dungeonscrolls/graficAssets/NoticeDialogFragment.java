@@ -42,8 +42,6 @@ public class NoticeDialogFragment extends DialogFragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 
-        //final EditText input = new EditText (getActivity());
-        //builder.setView(input);
 
         builder.setMessage("Deseja continuar a exclusão?")
                 .setPositiveButton("Deletar", new DialogInterface.OnClickListener() {
