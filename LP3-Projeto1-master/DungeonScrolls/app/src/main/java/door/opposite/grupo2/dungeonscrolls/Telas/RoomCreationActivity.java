@@ -79,6 +79,9 @@ public class RoomCreationActivity extends AppCompatActivity {
                             Uri uriCerta = taskSnapshot.getDownloadUrl();
                             Sala sala = new Sala(binding.getSalamodel().getNome(),binding.getSalamodel().getSenha(), usuarioLogado.getID(),
                                     binding.getSalamodel().getHistoria(), usuarioLogado.getNick());
+                            if(binding.roomPasswordPlainText.getText().length() == 0){
+                                sala.setSenha(" ");
+                            }
                             sala.setUri(uriCerta.toString());
                             foiInserido = sqLite.insereDataSala(sala);
                             Sala sala1;

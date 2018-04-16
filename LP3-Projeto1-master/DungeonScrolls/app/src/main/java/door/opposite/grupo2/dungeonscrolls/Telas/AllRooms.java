@@ -74,18 +74,17 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 int salaPosicao = position;
+                int i = 0;
                 System.out.println("=================Sala Posição: " + salaPosicao);
                 try {
                     salaModelSelecionada = salaModelArrayList.get(salaPosicao);
-                    System.out.println("=================Sala Model Selecionada: " + salaModelSelecionada.getMestre());
                 }catch (Exception e){}
-                for (int i = 0; i < salasID.length; i++) {
+                for (i = 0; i < salasID.length; i++) {
                     try {
                         if (salasID[i + 1] == 0) {
                             System.out.println("=================Entrou aqui!!!!!!");
                         }else{
                             salaUsada = sqLite.selecionarSala(salasID[i + 1]);
-                            System.out.println("=================Sala Usada: " + salaUsada.getMestre());
                             if (salaUsada.getNomeMestre().equals(salaModelSelecionada.getNomeMestre())) {
                                 System.out.println("=================Mesmo Mestre: " + salaModel.getMestre() + " == " + salaUsada.getMestre());
                                 // Cria uma View que referencia o layout dialogfragment_loadingcircle
@@ -104,8 +103,23 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
                         }
                     }catch(Exception e){}
                 }
-                if(salaUsuario == false) {
-                    showNoticeDialog();
+                if(salaUsuario == false){
+                    if(salaModelSelecionada.getSenha().length() == 1){
+                        // Cria uma View que referencia o layout dialogfragment_loadingcircle
+                        View loadingCircleDialog = getLayoutInflater().inflate(R.layout.dialogfragment_loadingcircle, null);
+                        // Usa um dos métodos de DialogFragmentCreator para criar um dialog fragment do loading dialog e ao mesmo tempo passar sua
+                        // referência para um AlertDialog chamado dialog
+                        dialog = geradorDialog.criaDialogFragmentLoadingCircle(AllRooms.this, loadingCircleDialog);
+
+                        salaUsada = sqLite.selecionarSala(salaModelSelecionada.getNome());
+                        extra = new Intent(AllRooms.this, RoomActivity.class);
+                        extra.putExtra("usuarioLogado", usuarioLogado);
+                        extra.putExtra("salaUsada", salaUsada);
+                        salaUsuario = true;
+                        startActivity(extra);
+                    }else{
+                        showNoticeDialog();
+                    }
                 }
             }
         });
@@ -123,20 +137,6 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
 
     @Override
     public void onDialogPositiveClick(DialogFragment dialog, String senha) {
-        if(salaModelSelecionada.getSenha() == null){
-            salaModelSelecionada.setSenha("null");
-            System.out.println("==========================Entrei nas Senhaaaaasss!!!!!!!!!");
-        }
-        /*
-        if((senha == null) && (salaModelSelecionada.getSenha() == null)){
-            System.out.println("==========================Entrei nas Senhaaaaasss!!!!!!!!!");
-            salaUsada = sqLite.selecionarSala(salaModelSelecionada.getNome());
-            extra = new Intent(AllRooms.this, RoomActivity.class);
-            extra.putExtra("usuarioLogado", usuarioLogado);
-            extra.putExtra("salaUsada", salaUsada);
-            startActivity(extra);
-        }
-        */
         if(salaModelSelecionada.getSenha().equals(senha)){
             salaUsada = sqLite.selecionarSala(salaModelSelecionada.getNome());
             extra = new Intent(AllRooms.this, RoomActivity.class);
