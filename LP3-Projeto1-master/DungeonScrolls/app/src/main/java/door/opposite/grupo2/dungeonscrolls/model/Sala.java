@@ -2,9 +2,13 @@ package door.opposite.grupo2.dungeonscrolls.model;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
+import android.net.Uri;
 
 import java.io.Serializable;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by ci on 02/04/18.
@@ -12,27 +16,20 @@ import java.io.Serializable;
 
 public class Sala implements Serializable{
 
-    int ID;
+    private int ID;
     private String nome;
-    String senha;
-    int mestre;
-    int[] jogadoresID;
-    String historia;
-    int[] FichasID;
-    byte[] imagem;
-    Bitmap imagemTest;
-    String nomeMestre;
-    String notas;
+    private String senha;
+    private int mestre;
+    private ArrayList<Integer> jogadoresID = new ArrayList<Integer>();
+    private String historia;
+    private ArrayList<Integer> fichasID = new ArrayList<Integer>();
+    private String nomeMestre;
+    private String notas;
+    private String uri;
 
-    public Sala(int ID, String nome, String senha, int mestre, String historia, byte[] imagem, String nomeMestre){
-        this.nome = nome;
-        this.ID = ID;
-        this.senha = senha;
-        this.mestre = mestre;
-        this.historia = historia;
-        this.imagem = imagem;
-        this.nomeMestre = nomeMestre;
+    public Sala() {
     }
+
 
     public Sala(int ID, String nome, String senha, int mestre, String historia, String nomeMestre){
         this.nome = nome;
@@ -51,17 +48,6 @@ public class Sala implements Serializable{
         this.nomeMestre = nomeMestre;
     }
 
-    public Sala(int ID, String senha, int mestre, int[] jogadoresID, String historia, int[] fichasID, byte[] imagem, String nomeMestre) {
-        this.nome = nome;
-        this.ID = ID;
-        this.senha = senha;
-        this.mestre = mestre;
-        this.jogadoresID = jogadoresID;
-        this.historia = historia;
-        FichasID = fichasID;
-        this.imagem = imagem;
-        this.nomeMestre = nomeMestre;
-    }
 
     public int getID() {
         return ID;
@@ -87,11 +73,11 @@ public class Sala implements Serializable{
         this.mestre = mestre;
     }
 
-    public int[] getJogadoresID() {
+    public ArrayList<Integer> getJogadoresID() {
         return jogadoresID;
     }
 
-    public void setJogadoresID(int[] jogadoresID) {
+    public void setJogadoresID(ArrayList<Integer> jogadoresID) {
         this.jogadoresID = jogadoresID;
     }
 
@@ -103,21 +89,22 @@ public class Sala implements Serializable{
         this.historia = historia;
     }
 
-    public int[] getFichasID() {
-        return FichasID;
+    public ArrayList<Integer> getFichasID() {
+        return fichasID;
     }
 
-    public void setFichasID(int[] fichasID) {
-        FichasID = fichasID;
+    public void setFichasID(ArrayList<Integer> fichasID) {
+        this.fichasID = fichasID;
     }
 
-    public byte[] getImagem() {
-        return imagem;
-    }
+    //public byte[] pegaImagem() {
+    //    return toArrayByte(pegaImagemDb());
+   // }
 
-    public void setImagem(byte[] imagem) {
-        this.imagem = imagem;
-    }
+    //public void mudaImagem(byte[] imagem) {
+
+    //    this.mudaImagemDb(toListByte(imagem));
+   // }
 
     public String getNome() {
         return nome;
@@ -127,21 +114,22 @@ public class Sala implements Serializable{
         this.nome = nome;
     }
 
-    public Bitmap getBitmap() {
-        if(imagem == null){
-            return null;
-        }
-        // Cria o Bitmap necess�rio para exibir no ImageView
-        Bitmap bitmap = BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
-        return bitmap;
+   // public Bitmap getBitmap() {
+      //  if(pegaImagem() == null){
+      //      return null;
+      //  }
+      //  // Cria o Bitmap necess�rio para exibir no ImageView
+     //   Bitmap bitmap = BitmapFactory.decodeByteArray(pegaImagem(), 0, pegaImagem().length);
+     //   return bitmap;
+   // }
+
+
+    public String getUri() {
+        return uri;
     }
 
-    public Bitmap getImagemTest() {
-        return imagemTest;
-    }
-
-    public void setImagemTest(Bitmap imagemTest) {
-        this.imagemTest = imagemTest;
+    public void setUri(String uri) {
+        this.uri = uri;
     }
 
     public String getNomeMestre() {
@@ -159,4 +147,68 @@ public class Sala implements Serializable{
     public void setNotas(String notas) {
         this.notas = notas;
     }
+
+
+    public int[] toIntArray(List<Integer> list)  {
+        int[] ret = new int[list.size()];
+
+        String[] aux = Arrays.toString(list.toArray()).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
+
+        for (int i=0; i < ret.length; i++)
+        {
+            ret[i] = Integer.parseInt(aux[i]);
+        }
+
+        return ret;
+    }
+
+    public ArrayList<Integer> toIntList(final int[] array)  {
+
+        ArrayList<Integer> intList = new ArrayList<Integer>() {{ for (int i : array) add(i); }};
+
+
+        return intList;
+    }
+/*
+    public ArrayList<Byte> toListByte(byte[] imagem){
+        ArrayList<Byte> list = new ArrayList<>();
+        for (byte b : imagem) {
+            list.add(b);
+        }
+        return list;
+    }
+
+    public byte[] toArrayByte(ArrayList<Byte> imagem){
+
+        byte[] bytes = new byte[imagem.size()];
+        for (int i = 0; i <imagem.size(); i++) {
+            bytes[i] = imagem.get(i);
+        }
+
+        return bytes;
+    }
+
+
+    public ArrayList<Integer> imagemToListInt(ArrayList<Byte> bytes){
+        ArrayList<Integer> integers = new ArrayList<Integer>();
+        for (byte b : bytes) {
+            integers.add((int) b);
+        }
+        return integers;
+    }
+
+
+    public ArrayList<Byte> listIntToImagem(ArrayList<Integer> ints){
+
+        int[] data = toIntArray(ints);
+        ByteBuffer byteBuffer = ByteBuffer.allocate(data.length * 4);
+        IntBuffer intBuffer = byteBuffer.asIntBuffer();
+        intBuffer.put(data);
+
+        byte[] array = byteBuffer.array();
+        return toListByte(array);
+    }
+
+*/
+
 }

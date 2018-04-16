@@ -1,13 +1,11 @@
 package door.opposite.grupo2.dungeonscrolls.viewmodel;
 
-import android.content.res.Resources;
 import android.databinding.BaseObservable;
-import android.databinding.BindingAdapter;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
+import android.net.Uri;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,10 +26,9 @@ public class SalaModel extends BaseObservable{
     //public int[] jogadoresID;
     public String historia;
     //public int[] FichasID;
-    public byte[] imagem;
-    Bitmap imagemTest;
+    public Uri imagem;
+    Drawable imagemModel;
     String nomeMestre;
-    Drawable imageView;
     String notas;
 
 
@@ -39,7 +36,7 @@ public class SalaModel extends BaseObservable{
     public SalaModel(){
     }
 
-    public SalaModel(byte[] imagem){
+    public SalaModel(Uri imagem){
         this.imagem = imagem;
     }
 
@@ -48,7 +45,7 @@ public class SalaModel extends BaseObservable{
         this.ID = sala.getID();
         this.senha = sala.getSenha();
         this.historia = sala.getHistoria();
-        this.imagem = sala.getImagem();
+        this.imagem = Uri.parse(sala.getUri());
         this.nomeMestre = sala.getNomeMestre();
         this.notas = sala.getNotas();
     }
@@ -97,44 +94,22 @@ public class SalaModel extends BaseObservable{
         notifyPropertyChanged(R.id.history_plainText);
     }
 
-    public byte[] getImagem() {
+    public Uri getImagem() {
         return imagem;
     }
 
-    public void setImagem(byte[] imagem) {
+    public void setImagem(Uri imagem) {
         this.imagem = imagem;
         notifyPropertyChanged(R.id.sala_imageView);
     }
 
-    public Bitmap getBitmap() {
-        if(imagem == null){
-            return null;
-        }
-        // Cria o Bitmap necess�rio para exibir no ImageView
-        Bitmap bitmap = BitmapFactory.decodeByteArray(imagem, 0, imagem.length);
-        return bitmap;
+
+    public Drawable getImagemModel() {
+        return imagemModel;
     }
 
-    public Bitmap getImagemTest() {
-        return imagemTest;
-    }
-
-    public void setImagemTest(Bitmap imagemTest) {
-        this.imagemTest = imagemTest;
-
-    }
-
-    public Drawable getImageView() {
-        if(imagem == null){
-            return null;
-        }
-        imageView = new BitmapDrawable(BitmapFactory.decodeByteArray(imagem, 0, imagem.length));
-
-        return imageView;
-    }
-
-    public void setImageView(Drawable imageView) {
-        this.imageView = imageView;
+    public void setImagemModel(Drawable imagemModel) {
+        this.imagemModel = imagemModel;
     }
 
     public String getNomeMestre() {

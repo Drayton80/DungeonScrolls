@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -12,14 +13,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-
-import door.opposite.grupo2.dungeonscrolls.model.Ficha;
-import door.opposite.grupo2.dungeonscrolls.model.Sala;
-import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 
 /**
  * Created by ci on 05/04/18.
@@ -28,6 +26,7 @@ import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 public class SQLite extends SQLiteOpenHelper{
     FirebaseDatabase database;
     DatabaseReference reference;
+    StorageReference storageReference;
 
 
     public static final  String DATABASE_NAME = "dungeonscrolls.db";
@@ -125,6 +124,7 @@ public class SQLite extends SQLiteOpenHelper{
         super(context, DATABASE_NAME, null, 1);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
+        storageReference = FirebaseStorage.getInstance().getReference();
         //SQLiteDatabase db = this.getWritableDatabase();
     }
 
@@ -133,7 +133,7 @@ public class SQLite extends SQLiteOpenHelper{
         // String SQL_String = "CREATE TABLE " + TABLE_NAME + "(" + COL_1 + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_2 + " TEXT," + COL_3 + " TEXT," + COL_4 +"INTEGER"+ ")";
         //db.execSQL(SQL_String);
         db.execSQL("CREATE TABLE " + T1_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NICK TEXT, SENHA TEXT, EMAIL TEXT, SALASID TEXT, FICHASID TEXT)");
-        db.execSQL("CREATE TABLE " + T2_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NOME TEXT, SENHA TEXT, MESTRE INTEGER, HISTORIA TEXT, IMAGEM BLOB," +
+        db.execSQL("CREATE TABLE " + T2_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NOME TEXT, SENHA TEXT, MESTRE INTEGER, HISTORIA TEXT, IMAGEM TEXT," +
                 " JOGADORESID TEXT, FICHASID TEXT, NOMEMESTRE TEXT, NOTAS TEXT)");
         db.execSQL("CREATE TABLE " + T3_TABLE_NAME + " (ID INTEGER PRIMARY KEY AUTOINCREMENT, NOMEPERSONAGEM TEXT, NOMEJOGADOR TEXT, CLASSENIVEL TEXT, RACA TEXT," +
                 " TENDENCIA TEXT, DIVINDADE TEXT, SEXO TEXT, TAMANHO TEXT, ALTURA REAL, PESO REAL, IDADE INTEGER, FORCA INTEGER, CONSTITUICAO INTEGER, DESTREZA INTEGER, " +
@@ -162,12 +162,13 @@ public class SQLite extends SQLiteOpenHelper{
             public void onDataChange(DataSnapshot dataSnapshot) {
             for (DataSnapshot snapshot: dataSnapshot.getChildren()){
                 Usuario user = new Usuario();
+                GenericTypeIndicator<ArrayList<Integer>> t = new GenericTypeIndicator<ArrayList<Integer>>(){};
                 user.setID(snapshot.child("id").getValue(int.class));
                 user.setNick(snapshot.child("nick").getValue(String.class));
                 user.setSenha(snapshot.child("senha").getValue(String.class));
                 user.setEmail(snapshot.child("email").getValue(String.class));
-               // user.setSalasID((ArrayList<Integer>) snapshot.child("salasID").getValue(ArrayList.class));
-               // user.setFichasID((ArrayList<Integer>) snapshot.child("fichasID").getValue(ArrayList.class));
+                user.setSalasID(snapshot.child("salasID").getValue(t));
+                user.setFichasID(snapshot.child("fichasID").getValue(t));
                 System.out.println("==========================================" + user.getID());
 
                 boolean existe = verSeTemEsseUsuario(user.getID());
@@ -233,6 +234,7 @@ public class SQLite extends SQLiteOpenHelper{
         contentValues.put(T1_COL_5, usuario.getSalasID().toString());
         contentValues.put(T1_COL_6,usuario.getFichasID().toString());
 
+        reference.child("usuario").child(String.valueOf(usuario.getID())).setValue(usuario);
 
         int i = db.update(T1_TABLE_NAME, contentValues, "ID = ?", new String[]{String.valueOf(usuario.getID())});
         return i;
@@ -240,6 +242,7 @@ public class SQLite extends SQLiteOpenHelper{
 
     public Integer deleteDataUsuario(Usuario usuario){
         SQLiteDatabase db = this.getWritableDatabase();
+        reference.child("usuario").child(String.valueOf(usuario.getID())).removeValue();
         return db.delete(T1_TABLE_NAME, "ID = ?", new String[]{String.valueOf(usuario.getID())}); //esse metodo retorna um inteiro, se fori deletado é 1 se não foi é 0
 
     }
@@ -426,9 +429,7 @@ public class SQLite extends SQLiteOpenHelper{
 
                 usuario.setSalasID(intList1);
                 usuario.setFichasID(intList2);
-               // carro.setPlaca(c.getString(1));
-               // carro.setNome(c.getString(2));
-               // carro.setAno(Integer.valueOf(c.getString(3)));
+
 
                 lista.add(usuario);
             }while(c.moveToNext());
@@ -443,9 +444,9 @@ public class SQLite extends SQLiteOpenHelper{
         contentValues.put(T2_COL_3, sala.getSenha());
         contentValues.put(T2_COL_4, sala.getMestre());
         contentValues.put(T2_COL_5, sala.getHistoria());
-        contentValues.put(T2_COL_6, sala.getImagem());
-        contentValues.put(T2_COL_7, Arrays.toString(sala.getJogadoresID()));
-        contentValues.put(T2_COL_8, Arrays.toString(sala.getFichasID()));
+        contentValues.put(T2_COL_6, sala.getUri());
+        contentValues.put(T2_COL_7, sala.getJogadoresID().toString());
+        contentValues.put(T2_COL_8, sala.getFichasID().toString());
         contentValues.put(T2_COL_9, sala.getNomeMestre());
         contentValues.put(T2_COL_10, sala.getNotas());
 
@@ -453,6 +454,10 @@ public class SQLite extends SQLiteOpenHelper{
         if(result == -1){
             return  false;
         }else{
+            Sala novaSala = selecionarSala(sala.getNome());
+
+            reference.child("sala").child(String.valueOf(novaSala.getID())).setValue(novaSala);
+
             return true;
         }
     }
@@ -472,9 +477,9 @@ public class SQLite extends SQLiteOpenHelper{
         contentValues.put(T2_COL_3, sala.getSenha());
         contentValues.put(T2_COL_4, sala.getMestre());
         contentValues.put(T2_COL_5, sala.getHistoria());
-        contentValues.put(T2_COL_6, sala.getImagem());
-        contentValues.put(T2_COL_7, Arrays.toString(sala.getJogadoresID()));
-        contentValues.put(T2_COL_8, Arrays.toString(sala.getFichasID()));
+        contentValues.put(T2_COL_6, sala.getUri());
+        contentValues.put(T2_COL_7, sala.getJogadoresID().toString());
+        contentValues.put(T2_COL_8, sala.getFichasID().toString());
         contentValues.put(T2_COL_9, sala.getNomeMestre());
         contentValues.put(T2_COL_10, sala.getNotas());
         db.update(T2_TABLE_NAME, contentValues, "ID = ?", new String[]{String.valueOf(sala.getID())});
@@ -503,9 +508,8 @@ public class SQLite extends SQLiteOpenHelper{
         Sala sala = new Sala(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), Integer.parseInt(cursor.getString(3)), cursor.getString(4), cursor.getString(8));
 
         sala.setNotas(cursor.getString(9));
+        sala.setUri(cursor.getString(5));
 
-        byte[] img = cursor.getBlob(5);
-        sala.setImagem(img);
         String[] idJogadores = cursor.getString(6).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
         String[] idFichas = cursor.getString(7).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
         int[] results1 = new int[idJogadores.length];
@@ -523,8 +527,20 @@ public class SQLite extends SQLiteOpenHelper{
                 }catch (Exception e){}
         }
 
-        sala.setJogadoresID(results1);
-        sala.setFichasID(results2);
+        ArrayList<Integer> intList1 = new ArrayList<>();
+        ArrayList<Integer> intList2 = new ArrayList<>();
+        for (int i : results1)
+        {
+            intList1.add(i);
+        }
+
+        for (int i : results2)
+        {
+            intList2.add(i);
+        }
+
+        sala.setJogadoresID(intList1);
+        sala.setFichasID(intList2);
 
         return sala;
     }
@@ -548,8 +564,8 @@ public class SQLite extends SQLiteOpenHelper{
 
         sala.setNotas(cursor.getString(9));
 
-        byte[] img = cursor.getBlob(5);
-        sala.setImagem(img);
+        sala.setUri(cursor.getString(5));
+
         try {
             String[] idJogadores = cursor.getString(6).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
             String[] idFichas = cursor.getString(7).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
@@ -571,8 +587,20 @@ public class SQLite extends SQLiteOpenHelper{
                 }
             }
 
-            sala.setJogadoresID(results1);
-            sala.setFichasID(results2);
+            ArrayList<Integer> intList1 = new ArrayList<>();
+            ArrayList<Integer> intList2 = new ArrayList<>();
+            for (int i : results1)
+            {
+                intList1.add(i);
+            }
+
+            for (int i : results2)
+            {
+                intList2.add(i);
+            }
+
+            sala.setJogadoresID(intList1);
+            sala.setFichasID(intList2);
         }catch (Exception e){
 
         }
@@ -605,8 +633,8 @@ public class SQLite extends SQLiteOpenHelper{
             do{
                 Sala sala = new Sala(Integer.valueOf(c.getString(0)), c.getString(1), c.getString(2), Integer.parseInt(c.getString(3)), c.getString(4), c.getString(8));
                 sala.setNotas(c.getString(9));
-                byte[] img = c.getBlob(5);
-                sala.setImagem(img);
+                sala.setUri(c.getString(5));
+
                 String[] idJogadores = c.getString(6).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
                 String[] idFichas = c.getString(7).replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
                 int[] results1 = new int[idJogadores.length];
@@ -628,8 +656,20 @@ public class SQLite extends SQLiteOpenHelper{
                     }
                 }
 
-                sala.setJogadoresID(results1);
-                sala.setFichasID(results2);
+                ArrayList<Integer> intList1 = new ArrayList<>();
+                ArrayList<Integer> intList2 = new ArrayList<>();
+                for (int i : results1)
+                {
+                    intList1.add(i);
+                }
+
+                for (int i : results2)
+                {
+                    intList2.add(i);
+                }
+
+                sala.setJogadoresID(intList1);
+                sala.setFichasID(intList2);
 
                 lista.add(sala);
             }while(c.moveToNext());

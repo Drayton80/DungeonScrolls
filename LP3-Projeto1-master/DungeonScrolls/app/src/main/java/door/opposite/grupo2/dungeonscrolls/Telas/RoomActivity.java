@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
@@ -48,10 +47,6 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
         binding = DataBindingUtil.setContentView(this, R.layout.activity_room);
 
         extra = getIntent();
@@ -61,9 +56,9 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
         binding.setItemSalaCompleta(new SalaModel(salaUsada));
 
-        fichasID = salaUsada.getFichasID();
+        fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
         fichaModel = new FichaModel();
-        fichaModelArrayList = fichaModel.getArrayListaFicha(salaUsada.getFichasID(), sqLite);
+        fichaModelArrayList = fichaModel.getArrayListaFicha(salaUsada.toIntArray(salaUsada.getFichasID()), sqLite);
         fichaAdapter = new FichaAdapter(this, fichaModelArrayList);
         binding.roomListViewFichas.setAdapter(fichaAdapter);
 
@@ -85,7 +80,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 int fichaPosicao = position;
-                for(int i = 0; i < salaUsada.getFichasID().length; i++){
+                for(int i = 0; i < salaUsada.toIntArray(salaUsada.getFichasID()).length; i++){
                     if(i == fichaPosicao){
                         if (fichasID[i+1] == 0){
                         }else{
@@ -143,17 +138,17 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                         0, 0, 0, "", "", "", "",
                         "", "", "", "", "" ));
 
-                int[] aux = new int[salaUsada.getFichasID().length +1];
+                int[] aux = new int[salaUsada.toIntArray(salaUsada.getFichasID()).length +1];
 
-                for (int i = 0; i < salaUsada.getFichasID().length; i++){
-                    aux[i] = salaUsada.getFichasID()[i];
+                for (int i = 0; i < salaUsada.toIntArray(salaUsada.getFichasID()).length; i++){
+                    aux[i] = salaUsada.toIntArray(salaUsada.getFichasID())[i];
                 }
-                aux[salaUsada.getFichasID().length] = sqLite.ultimaFicha();
-                salaUsada.setFichasID(aux);
+                aux[salaUsada.toIntArray(salaUsada.getFichasID()).length] = sqLite.ultimaFicha();
+                salaUsada.setFichasID(salaUsada.toIntList(aux));
                 sqLite.updateDataSala(salaUsada);
-                fichasID = salaUsada.getFichasID();
+                fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
                 fichaModel = new FichaModel();
-                fichaModelArrayList = fichaModel.getArrayListaFicha(salaUsada.getFichasID(), sqLite);
+                fichaModelArrayList = fichaModel.getArrayListaFicha(salaUsada.toIntArray(salaUsada.getFichasID()), sqLite);
                 fichaAdapter = new FichaAdapter(RoomActivity.this, fichaModelArrayList);
                 binding.roomListViewFichas.setAdapter(fichaAdapter);
             }
@@ -173,8 +168,8 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             case R.id.item_vincular:
                 return true;
             case R.id.item_deleta:
-                fichasID = salaUsada.getFichasID();
-                for(int i = 0; i < salaUsada.getFichasID().length; i++){
+                fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
+                for(int i = 0; i < salaUsada.toIntArray(salaUsada.getFichasID()).length; i++){
                     if(i == posicaoDelete){
                         if (fichasID[i+1] == 0){
 
@@ -182,9 +177,9 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                             // System.out.println("=================Entrou aqui, eu achei a sala!");
                             Ficha ficha = sqLite.selecionarFicha(fichasID[i+1]);
                             //----------comeca
-                            int array_auxiliar[] = salaUsada.getFichasID();
+                            int array_auxiliar[] = salaUsada.toIntArray(salaUsada.getFichasID());
                             array_auxiliar = achaElemento(array_auxiliar, ficha.getId());
-                            salaUsada.setFichasID(array_auxiliar);
+                            salaUsada.setFichasID(salaUsada.toIntList(array_auxiliar));
                             //-----------ternina
                             sqLite.updateDataSala(salaUsada);
                             sqLite.deleteDataFicha(ficha);
