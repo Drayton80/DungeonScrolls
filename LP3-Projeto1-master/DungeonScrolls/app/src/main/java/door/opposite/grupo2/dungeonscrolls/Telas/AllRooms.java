@@ -57,6 +57,7 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_all_rooms);
         sqLite = new SQLite(this);
+        sqLite.atualizaDataSala();
 
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
@@ -97,7 +98,6 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
                                 extra = new Intent(AllRooms.this, RoomActivity.class);
                                 extra.putExtra("usuarioLogado", usuarioLogado);
                                 extra.putExtra("salaUsada", salaUsada);
-                                //System.out.println("=================Entrou aqui, eu achei a sala!" + salaUsada.getNotas());
                                 salaUsuario = true;
                                 startActivity(extra);
                             }
@@ -124,16 +124,19 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
     @Override
     public void onDialogPositiveClick(DialogFragment dialog, String senha) {
         if(salaModelSelecionada.getSenha() == null){
-            salaModelSelecionada.setSenha(" ");
-            salaNulla = true;
+            salaModelSelecionada.setSenha("null");
+            System.out.println("==========================Entrei nas Senhaaaaasss!!!!!!!!!");
         }
-        if((senha == null) && salaNulla){
+        /*
+        if((senha == null) && (salaModelSelecionada.getSenha() == null)){
+            System.out.println("==========================Entrei nas Senhaaaaasss!!!!!!!!!");
             salaUsada = sqLite.selecionarSala(salaModelSelecionada.getNome());
             extra = new Intent(AllRooms.this, RoomActivity.class);
             extra.putExtra("usuarioLogado", usuarioLogado);
             extra.putExtra("salaUsada", salaUsada);
             startActivity(extra);
         }
+        */
         if(salaModelSelecionada.getSenha().equals(senha)){
             salaUsada = sqLite.selecionarSala(salaModelSelecionada.getNome());
             extra = new Intent(AllRooms.this, RoomActivity.class);
@@ -144,11 +147,6 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
             Toast.makeText(AllRooms.this, "Senha incorreta", Toast.LENGTH_LONG).show();
             dialog.dismiss();
         }
-    }
-
-    @Override
-    public void onDialogPositiveClick(DialogFragment dialog) {
-
     }
 
     @Override

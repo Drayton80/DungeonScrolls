@@ -51,11 +51,11 @@ public class NoticeDialogFragmentID extends DialogFragment {
                     public void onClick(DialogInterface dialog, int id) {
                         // Envia o Click positivo de volta a Activity Host
                         System.out.println("==========Senha: " + input.getText().toString());
-                            if(input.getText() != null){
-                                mensagem.onDialogPositiveClick(NoticeDialogFragmentID.this, input.getText().toString());
-                            }else{
-                                mensagem.onDialogPositiveClick(NoticeDialogFragmentID.this, " ");
+                            if(input.getText() == null){
+                                input.setText("null");
                             }
+                            mensagem.onDialogPositiveClick(NoticeDialogFragmentID.this, input.getText().toString());
+
                     }
                 })
                 .setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {

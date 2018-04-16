@@ -223,7 +223,7 @@ public class SQLite extends SQLiteOpenHelper{
                     sala.setNome(snapshot.child("nome").getValue(String.class));
                     sala.setSenha(snapshot.child("senha").getValue(String.class));
                     sala.setHistoria(snapshot.child("historia").getValue(String.class));
-                    sala.setJogadoresID(snapshot.child("salasID").getValue(t));
+                    sala.setJogadoresID(snapshot.child("jogadoresID").getValue(t));
                     sala.setFichasID(snapshot.child("fichasID").getValue(t));
                     sala.setNomeMestre(snapshot.child("nomeMestre").getValue(String.class));
                     sala.setNotas(snapshot.child("notas").getValue(String.class));
