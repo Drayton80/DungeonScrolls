@@ -13,8 +13,8 @@
     <string name="allRooms_activity_tabAllRooms_title">Todas as salas</string>
     <string name="userRooms_activity_tabUserRooms_title">Suas salas</string>
     <string name="userRooms_activity_btn_criarSala">criar sala</string>
-    <string name="room_activity_creation_nomeDaSala">Nome*</string>
-    <string name="room_activity_creation_senha">Senha</string>
+    <string name="room_activity_creation_nomeDaSala">Nome da Sala</string>
+    <string name="room_activity_creation_senha">Senha (Opcional)</string>
     <string name="room_activity_creation_btnCriar">Criar</string>
     <string name="room_activity_creation_resumoDaHistoria">Historia</string>
 
@@ -129,7 +129,6 @@
     <string name="sheet_activity_battleInformationSheet_bba">Bônus Base de Ataque</string>
     <string name="sheet_activity_battleInformationSheet_attacks">Ataques</string>
 
-
     <string name="sheet_activity_magicInformationSheet_titulo">Informações de Magia</string>
     <string name="sheet_activity_magicInformationSheet_testeDeResistencia">Teste de Resistência</string>
     <string name="sheet_activity_magicInformationSheet_chanceDeFalhaArcana">Chance de Falha</string>
@@ -137,10 +136,15 @@
     <string name="sheet_activity_magicInformationSheet_dominioEscola">Domínios/Escola Especializada</string>
     <string name="sheet_activity_magicInformationSheet_magias">Magias Conhecidas</string>
 
-
     <string name="sheet_activity_specialProperties_title">Propriedades Especiais</string>
     <string name="sheet_activity_specialProperties_qualidadesEspeciais">Qualidades Especiais</string>
     <string name="sheet_activity_specialProperties_habilidadesEspeciais">Habilidades Especiais</string>
+
+    <string name="options_activity_opcoesDeUsuario">Características de Usuário</string>
+    <string name="options_activity_nome">Nome de Usuário</string>
+    <string name="options_activity_senha">Senha</string>
+    <string name="options_activity_email">Email</string>
+    <string name="options_activity_salvar">Salvar Alterações</string>
 
 
     <!-- Textos Relativos ao Idioma American English (EN) -->

@@ -1,18 +1,9 @@
 package door.opposite.grupo2.dungeonscrolls.viewmodel;
 
 import android.databinding.BaseObservable;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.util.Log;
 
-import java.io.BufferedInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,7 +55,7 @@ public class SalaModel extends BaseObservable{
 
     public void setNome(String nome) {
         this.nome = nome;
-        notifyPropertyChanged(R.id.roomName_plainText);
+        notifyPropertyChanged(R.id.options_editText_nome);
     }
 
     public int getID() {
@@ -99,7 +90,8 @@ public class SalaModel extends BaseObservable{
 
     public void setHistoria(String historia) {
         this.historia = historia;
-        notifyPropertyChanged(R.id.history_plainText);
+        // Xerxes/Armando, ajeitar isso aqui
+        //notifyPropertyChanged(R.id.history_plainText);
     }
 
     public Uri getImagem() {

@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
 
     <data>
         <variable
@@ -16,9 +17,6 @@
     </data>
 
     <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -74,13 +72,14 @@
                     app:layout_constraintTop_toBottomOf="@+id/sala_imageView" />
 
                 <EditText
-                    android:id="@+id/roomName_plainText"
+                    android:id="@+id/options_editText_nome"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:ems="10"
                     android:inputType="textPersonName"
                     android:text="@={salamodel.nome}"
+                    android:textAlignment="center"
                     android:textSize="16sp"
                     app:layout_constraintEnd_toEndOf="@+id/roomName_textView"
                     app:layout_constraintStart_toStartOf="@+id/roomName_textView"
@@ -97,7 +96,7 @@
                     app:layout_constraintEnd_toEndOf="@+id/roomName_textView"
                     app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="@+id/roomName_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/roomName_plainText" />
+                    app:layout_constraintTop_toBottomOf="@+id/options_editText_nome" />
 
                 <EditText
                     android:id="@+id/roomPassword_plainText"
@@ -107,6 +106,7 @@
                     android:ems="10"
                     android:inputType="textPassword"
                     android:text="@={salamodel.senha}"
+                    android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="@+id/roomPassword_textView"
                     app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="@+id/roomPassword_textView"
