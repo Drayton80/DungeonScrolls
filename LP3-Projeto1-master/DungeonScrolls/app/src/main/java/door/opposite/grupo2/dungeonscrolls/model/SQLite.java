@@ -189,64 +189,7 @@ public class SQLite extends SQLiteOpenHelper{
         return true;
     }
 
-    public boolean verSeTemEsseSala(int i){
-        List<Sala> lista = new ArrayList<Sala>();
 
-        String query = "SELECT * FROM " + T2_TABLE_NAME;
-
-        SQLiteDatabase db = this.getWritableDatabase();
-        Cursor c = db.rawQuery(query, null);
-
-        if(c.moveToFirst()){
-            do{
-                Sala sala = new Sala(Integer.valueOf(c.getString(0)), c.getString(1), c.getString(2), Integer.parseInt(c.getString(3)), c.getString(4), c.getString(8));
-                if (i == sala.getID()){
-                    return true;
-                }
-
-            }while(c.moveToNext());
-        }
-        return false;
-    }
-
-
-
-    public boolean atualizaDataSala(){
-        reference.child("sala").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
-                    Sala sala = new Sala();
-                    GenericTypeIndicator<ArrayList<Integer>> t = new GenericTypeIndicator<ArrayList<Integer>>(){};
-                    sala.setID(snapshot.child("id").getValue(int.class));
-                    sala.setMestre(snapshot.child("mestre").getValue(int.class));
-                    sala.setNome(snapshot.child("nome").getValue(String.class));
-                    sala.setSenha(snapshot.child("senha").getValue(String.class));
-                    sala.setHistoria(snapshot.child("historia").getValue(String.class));
-                    sala.setJogadoresID(snapshot.child("jogadoresID").getValue(t));
-                    sala.setFichasID(snapshot.child("fichasID").getValue(t));
-                    sala.setNomeMestre(snapshot.child("nomeMestre").getValue(String.class));
-                    sala.setNotas(snapshot.child("notas").getValue(String.class));
-                    sala.setUri(snapshot.child("uri").getValue(String.class));
-                    System.out.println("==========================================" + sala.getID());
-
-                    boolean existe = verSeTemEsseSala(sala.getID());
-                    if (existe == true){
-                        updateDataSala(sala);
-                    }
-                    else{
-                        insereDataSala(sala);
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
-        return true;
-    }
 
 
     public boolean insereDataUsuario(Usuario usuario){
@@ -282,7 +225,7 @@ public class SQLite extends SQLiteOpenHelper{
         return res;
     }
 
-    public int updateDataUsuario(Usuario usuario){
+    public boolean updateDataUsuario(Usuario usuario){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(T1_COL_1, usuario.getID());
@@ -294,8 +237,8 @@ public class SQLite extends SQLiteOpenHelper{
 
         reference.child("usuario").child(String.valueOf(usuario.getID())).setValue(usuario);
 
-        int i = db.update(T1_TABLE_NAME, contentValues, "ID = ?", new String[]{String.valueOf(usuario.getID())});
-        return i;
+        db.update(T1_TABLE_NAME, contentValues, "ID = ?", new String[]{String.valueOf(usuario.getID())});
+        return true;
     }
 
     public Integer deleteDataUsuario(Usuario usuario){
@@ -496,6 +439,66 @@ public class SQLite extends SQLiteOpenHelper{
         return lista;
     }
 
+
+    public boolean verSeTemEsseSala(int i){
+        List<Sala> lista = new ArrayList<Sala>();
+
+        String query = "SELECT * FROM " + T2_TABLE_NAME;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery(query, null);
+
+        if(c.moveToFirst()){
+            do{
+                Sala sala = new Sala(Integer.valueOf(c.getString(0)), c.getString(1), c.getString(2), Integer.parseInt(c.getString(3)), c.getString(4), c.getString(8));
+                if (i == sala.getID()){
+                    return true;
+                }
+
+            }while(c.moveToNext());
+        }
+        return false;
+    }
+
+
+
+    public boolean atualizaDataSala(){
+        reference.child("sala").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    Sala sala = new Sala();
+                    GenericTypeIndicator<ArrayList<Integer>> t = new GenericTypeIndicator<ArrayList<Integer>>(){};
+                    sala.setID(snapshot.child("id").getValue(int.class));
+                    sala.setMestre(snapshot.child("mestre").getValue(int.class));
+                    sala.setNome(snapshot.child("nome").getValue(String.class));
+                    sala.setSenha(snapshot.child("senha").getValue(String.class));
+                    sala.setHistoria(snapshot.child("historia").getValue(String.class));
+                    sala.setJogadoresID(snapshot.child("jogadoresID").getValue(t));
+                    sala.setFichasID(snapshot.child("fichasID").getValue(t));
+                    sala.setNomeMestre(snapshot.child("nomeMestre").getValue(String.class));
+                    sala.setNotas(snapshot.child("notas").getValue(String.class));
+                    sala.setUri(snapshot.child("uri").getValue(String.class));
+                    System.out.println("==========================================" + sala.getID());
+
+                    boolean existe = verSeTemEsseSala(sala.getID());
+                    if (existe == true){
+                        updateDataSala(sala);
+                    }
+                    else{
+                        insereDataSala(sala);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return true;
+    }
+
     public boolean insereDataSala(Sala sala){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -541,12 +544,16 @@ public class SQLite extends SQLiteOpenHelper{
         contentValues.put(T2_COL_8, sala.getFichasID().toString());
         contentValues.put(T2_COL_9, sala.getNomeMestre());
         contentValues.put(T2_COL_10, sala.getNotas());
+
+
+        reference.child("sala").child(String.valueOf(sala.getID())).setValue(sala);
         db.update(T2_TABLE_NAME, contentValues, "ID = ?", new String[]{String.valueOf(sala.getID())});
         return true;
     }
 
     public Integer deleteDataSala(Sala sala){
         SQLiteDatabase db = this.getWritableDatabase();
+        reference.child("sala").child(String.valueOf(sala.getID())).removeValue();
         return db.delete(T2_TABLE_NAME, "ID = ?", new String[]{String.valueOf(sala.getID())}); //esse metodo retorna um inteiro, se fori deletado é 1 se não foi é 0
 
     }
