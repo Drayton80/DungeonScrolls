@@ -211,6 +211,8 @@ public class SQLite extends SQLiteOpenHelper{
 
 
 
+
+
     public boolean insereDataUsuario(Usuario usuario){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -381,6 +383,37 @@ public class SQLite extends SQLiteOpenHelper{
 
 
 
+    public void verSeDeletouUsuario(){
+        List<Usuario> lista = new ArrayList<Usuario>();
+
+        String query = "SELECT * FROM " + T1_TABLE_NAME;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery(query, null);
+
+        if(c.moveToFirst()){
+            do{
+                final Usuario usuario = new Usuario(Integer.parseInt(c.getString(0)), c.getString(1), c.getString(2), c.getString(3));
+                reference.child("usuario").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        if (snapshot.child(String.valueOf(usuario.getID())).exists()) {
+
+                        }else{
+                            deleteDataUsuario(usuario);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+            }while(c.moveToNext());
+        }
+    }
+
     public boolean verSeTemEsseUsuario(int i){
         List<Usuario> lista = new ArrayList<Usuario>();
 
@@ -457,6 +490,41 @@ public class SQLite extends SQLiteOpenHelper{
         }
         return lista;
     }
+
+
+
+    public void verSeDeletouSala(){
+        List<Sala> lista = new ArrayList<Sala>();
+
+        String query = "SELECT * FROM " + T2_TABLE_NAME;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor c = db.rawQuery(query, null);
+
+        if(c.moveToFirst()){
+            do{
+                final Sala sala = new Sala(Integer.valueOf(c.getString(0)), c.getString(1), c.getString(2), Integer.parseInt(c.getString(3)), c.getString(4), c.getString(8));
+                reference.child("sala").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        if (snapshot.child(String.valueOf(sala.getID())).exists()) {
+
+                        }else{
+                            deleteDataSala(sala);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+            }while(c.moveToNext());
+        }
+
+    }
+
 
 
     public boolean verSeTemEsseSala(int i){
@@ -1365,6 +1433,43 @@ public class SQLite extends SQLiteOpenHelper{
         }
         return false;
     }
+
+
+
+    public void verSeDeletouFicha(){
+        List<Ficha> lista = new ArrayList<Ficha>();
+
+        String query = "SELECT * FROM " + T3_TABLE_NAME;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                final Ficha ficha = new Ficha(Integer.parseInt(cursor.getString(0)));
+
+                reference.child("ficha").addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        if (snapshot.child(String.valueOf(ficha.getId())).exists()) {
+
+                        }else{
+                            deleteDataFicha(ficha);
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+            }while(cursor.moveToNext());
+        }
+
+    }
+
+
 
 
 }
