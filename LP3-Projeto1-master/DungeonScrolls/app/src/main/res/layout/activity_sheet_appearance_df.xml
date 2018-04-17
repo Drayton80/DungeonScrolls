@@ -260,6 +260,7 @@
                         android:ems="10"
                         android:inputType="textMultiLine"
                         android:textAlignment="center"
+                        android:text="@={fichaElementos.descricaoAparencia}"
                         app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_iniciativa"
                         app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_iniciativa"
                         app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_iniciativa" />

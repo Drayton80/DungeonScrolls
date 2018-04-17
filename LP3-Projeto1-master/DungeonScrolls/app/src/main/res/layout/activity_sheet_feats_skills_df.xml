@@ -3,9 +3,12 @@
 <layout>
 
     <data>
-
-
-
+        <variable
+            name="fichaElementos"
+            type="door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel"/>
+        <variable
+            name="salvarFicha"
+            type="door.opposite.grupo2.dungeonscrolls.commands.EventoSalvar"/>
     </data>
 
     <LinearLayout
@@ -35,6 +38,7 @@
                 android:layout_marginStart="24dp"
                 android:background="@drawable/button_layout"
                 android:text="@string/gerais_salvar"
+                android:onClick="@{()-> salvarFicha.onClickSalvar()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -81,6 +85,7 @@
                         android:layout_marginTop="8dp"
                         android:ems="10"
                         android:inputType="textMultiLine"
+                        android:text="@={fichaElementos.talentos}"
                         app:layout_constraintEnd_toEndOf="@+id/sheetFS_textView_talentos"
                         app:layout_constraintHorizontal_bias="1.0"
                         app:layout_constraintStart_toStartOf="@+id/sheetFS_textView_talentos"
@@ -108,6 +113,7 @@
                         android:layout_marginTop="8dp"
                         android:ems="10"
                         android:inputType="textMultiLine"
+                        android:text="@={fichaElementos.pericias}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/sheetFS_textView_pericias"
                         app:layout_constraintStart_toStartOf="@+id/sheetFS_textView_pericias"

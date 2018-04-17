@@ -449,7 +449,13 @@ public class FichaModel extends BaseObservable{
     }
 
     public String getCa() {
-        return String.valueOf(10 + (armadura + armaduraNatural + caOutros + destrezaMod));
+        if((10 + (armadura + armaduraNatural + caOutros + destrezaMod)) < 10){
+            return String.valueOf(10);
+
+        }else{
+            return String.valueOf(10 + (armadura + armaduraNatural + caOutros + destrezaMod));
+
+        }
     }
 
     public void setCa(String ca) {
@@ -468,8 +474,11 @@ public class FichaModel extends BaseObservable{
     public void setCaOutros(String caOutros) {
         if(caOutros.equals("")){
             this.caOutros = 0;
+        }else if(caOutros.equals("-")){
+            this.caOutros = 0;
         }else{
             this.caOutros = Integer.parseInt(caOutros);
+
         }
         notifyPropertyChanged(R.id.sheetBI_editText_caOutros);
     }
@@ -576,6 +585,8 @@ public class FichaModel extends BaseObservable{
     public void setIniciativaOutros(String iniciativaOutros) {
         if(iniciativaOutros.equals("")){
             this.iniciativaOutros = 0;
+        }else if(iniciativaOutros.equals("-")){
+            this.iniciativaOutros = 0;
         }else{
             this.iniciativaOutros = Integer.parseInt(iniciativaOutros);
         }
@@ -600,7 +611,9 @@ public class FichaModel extends BaseObservable{
     public void setFortitudeOutros(String fortitudeOutros) {
         if(fortitudeOutros.equals("")){
             this.fortitudeOutros = 0;
-        }else {
+        }else if(fortitudeOutros.equals("-")){
+            this.fortitudeOutros = 0;
+        }else{
             this.fortitudeOutros = Integer.parseInt(fortitudeOutros);
         }
         notifyPropertyChanged(R.id.sheet_editText_resistenciasFortitudeOutros);
@@ -637,7 +650,9 @@ public class FichaModel extends BaseObservable{
     public void setReflexoOutros(String reflexoOutros) {
         if(reflexoOutros.equals("")){
             this.reflexoOutros = 0;
-        }else {
+        }else if(reflexoOutros.equals("-")){
+            this.reflexoOutros = 0;
+        }else{
             this.reflexoOutros = Integer.parseInt(reflexoOutros);
         }
         notifyPropertyChanged(R.id.sheet_editText_resistenciasReflexosOutros);
@@ -675,7 +690,9 @@ public class FichaModel extends BaseObservable{
     public void setVontadeOutros(String vontadeOutros) {
         if(vontadeOutros.equals("")){
             this.vontadeOutros = 0;
-        }else {
+        }else if(vontadeOutros.equals("-")){
+            this.vontadeOutros = 0;
+        }else{
             this.vontadeOutros = Integer.parseInt(vontadeOutros);
         }
         notifyPropertyChanged(R.id.sheet_editText_resistenciasVontadeOutros);
@@ -754,6 +771,8 @@ public class FichaModel extends BaseObservable{
 
     public void setAgarrarOutros(String agarrarOutros) {
         if(agarrarOutros.equals("")){
+            this.agarrarOutros = 0;
+        }else if(agarrarOutros.equals("-")){
             this.agarrarOutros = 0;
         }else{
             this.agarrarOutros = Integer.parseInt(agarrarOutros);
@@ -898,7 +917,9 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setCarctClasse(String carctClasse) {
+
         this.carctClasse = carctClasse;
+        notifyPropertyChanged(R.id.sheet_editText_nivel);
     }
 
     public String getTalentos() {
@@ -907,6 +928,7 @@ public class FichaModel extends BaseObservable{
 
     public void setTalentos(String talentos) {
         this.talentos = talentos;
+        notifyPropertyChanged(R.id.sheetFS_editText_telentos);
     }
 
     public String getMagias() {
@@ -931,39 +953,68 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setPericias(String pericias) {
+
         this.pericias = pericias;
+        notifyPropertyChanged(R.id.sheetFS_editText_pericias);
     }
 
-    public int getPvAtual() {
-        return pvAtual;
+    public String getPvAtual() {
+        return String.valueOf(pvAtual);
     }
 
-    public void setPvAtual(int pvAtual) {
-        this.pvAtual = pvAtual;
+    public void setPvAtual(String pvAtual) {
+
+        if(pvAtual.equals("")){
+            this.pvAtual = 0;
+        }else if(pvAtual.equals("-")){
+            this.pvAtual = 0;
+        }else{
+            this.pvAtual = Integer.parseInt(pvAtual);
+        }
+        notifyPropertyChanged(R.id.sheetBI_editText_pvAtual);
     }
 
-    public int getResistenciaNatural() {
-        return resistenciaNatural;
+    public String getResistenciaNatural() {
+        return String.valueOf(resistenciaNatural);
     }
 
-    public void setResistenciaNatural(int resistenciaNatural) {
-        this.resistenciaNatural = resistenciaNatural;
+    public void setResistenciaNatural(String resistenciaNatural) {
+        if(resistenciaNatural.equals("")){
+            this.resistenciaNatural = 0;
+        }else {
+            this.resistenciaNatural = Integer.parseInt(resistenciaNatural);
+        }
+        notifyPropertyChanged(R.id.sheetBI_editText_resistenciasElementais);
     }
 
-    public float getPesoTotal() {
-        return pesoTotal;
+    public String getPesoTotal() {
+        return String.valueOf(pesoTotal);
     }
 
-    public void setPesoTotal(float pesoTotal) {
-        this.pesoTotal = pesoTotal;
+    public void setPesoTotal(String pesoTotal) {
+        if(pesoTotal.equals("")){
+            this.pesoTotal = 0;
+        }else if(pesoTotal.equals(".")){
+            this.pesoTotal = 0;
+        }else {
+            this.pesoTotal = Float.parseFloat(pesoTotal);
+        }
+        notifyPropertyChanged(R.id.sheetEI_editText_carriedWeight);
     }
 
-    public float getPesoMax() {
-        return pesoMax;
+    public String getPesoMax() {
+        return String.valueOf(pesoMax);
     }
 
-    public void setPesoMax(float pesoMax) {
-        this.pesoMax = pesoMax;
+    public void setPesoMax(String pesoMax) {
+        if(pesoMax.equals("")){
+            this.pesoMax = 0;
+        }else if(pesoMax.equals(".")){
+            this.pesoMax = 0;
+        }else {
+            this.pesoMax = Float.parseFloat(pesoMax);
+        }
+        notifyPropertyChanged(R.id.sheetEI_editText_maxWeight);
     }
 
     public String getDescricaoAparencia() {
@@ -972,6 +1023,7 @@ public class FichaModel extends BaseObservable{
 
     public void setDescricaoAparencia(String descricaoAparencia) {
         this.descricaoAparencia = descricaoAparencia;
+        notifyPropertyChanged(R.id.sheetAp_editText_appearance);
     }
 
     public String getTesteResistencia() {

@@ -6,7 +6,7 @@
             name="fichaElementos"
             type="door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel"/>
         <variable
-            name="salvarficha"
+            name="salvarFicha"
             type="door.opposite.grupo2.dungeonscrolls.commands.EventoSalvar"/>
     </data>
 
@@ -188,7 +188,7 @@
                         android:layout_marginTop="8dp"
                         android:ems="10"
                         app:met_mask="###"
-                        android:inputType="numberSigned"
+                        android:inputType="number"
                         android:textAlignment="center"
                         android:text="@={fichaElementos.armadura}"
                         app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_caNormal"
@@ -235,7 +235,7 @@
                         android:layout_marginTop="8dp"
                         android:ems="10"
                         app:met_mask="###"
-                        android:inputType="numberSigned"
+                        android:inputType="number"
                         android:textAlignment="center"
                         android:text="@={fichaElementos.armaduraNatural}"
                         app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_caNormal"
@@ -282,7 +282,7 @@
                         android:layout_marginTop="8dp"
                         android:ems="10"
                         app:met_mask="###"
-                        android:inputType="numberSigned"
+                        android:inputType="numberSigned|number"
                         android:textAlignment="center"
                         android:text="@={fichaElementos.caOutros}"
                         app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_caNormal"
@@ -379,8 +379,9 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
                         android:ems="10"
-                        android:inputType="number"
+                        android:inputType="numberSigned|number"
                         android:textAlignment="center"
+                        android:text="@={fichaElementos.pvAtual}"
                         app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_pvAtual"
                         app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_pvAtual"
                         app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_pvAtual" />
@@ -471,6 +472,7 @@
                         app:met_mask="###"
                         android:inputType="number"
                         android:textAlignment="center"
+                        android:text="@={fichaElementos.resistenciaNatural}"
                         app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_reducaoDeDano"
                         app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_reducaoDeDano"
                         app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_resistenciasElementais" />
@@ -597,7 +599,7 @@
                         android:layout_marginTop="8dp"
                         android:ems="10"
                         app:met_mask="###"
-                        android:inputType="numberSigned"
+                        android:inputType="numberSigned|number"
                         android:textAlignment="center"
                         android:text="@={fichaElementos.iniciativaOutros}"
                         app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_iniciativa"
@@ -755,7 +757,7 @@
                         android:layout_marginTop="8dp"
                         android:ems="10"
                         app:met_mask="###"
-                        android:inputType="none"
+                        android:inputType="numberSigned|number"
                         android:textAlignment="center"
                         android:text="@={fichaElementos.agarrarOutros}"
                         app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_agarrar"
