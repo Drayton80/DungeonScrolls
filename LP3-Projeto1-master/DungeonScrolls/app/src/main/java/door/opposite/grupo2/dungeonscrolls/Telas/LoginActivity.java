@@ -12,6 +12,8 @@ import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.concurrent.Semaphore;
+
 import door.opposite.grupo2.dungeonscrolls.R;
 import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
 import door.opposite.grupo2.dungeonscrolls.databinding.ActivityLoginBinding;
@@ -38,9 +40,10 @@ public class LoginActivity extends Activity {
         sqLite = new SQLite(this);
         it = new Intent(this, RoomsMenu.class);
         //listaUsuario = sqLite.listaUsuario();
-
-
         sqLite.atualizaDataUsuario();
+        sqLite.atualizaDataFicha();
+        sqLite.atualizaDataSala();
+
         binding.setCadevent(new Eventos() {
             @Override
             public void onClickCad() {
@@ -56,6 +59,8 @@ public class LoginActivity extends Activity {
                 dialog = geraDialog.criaDialogFragmentLoadingCircle(LoginActivity.this, loadingCircleDialog);
 
                 Usuario usuario1;
+
+                sqLite.atualizaDataUsuario();
 
 
                 usuario1 = sqLite.selecionarUsuario(binding.getUsuariomodel().getNick());
