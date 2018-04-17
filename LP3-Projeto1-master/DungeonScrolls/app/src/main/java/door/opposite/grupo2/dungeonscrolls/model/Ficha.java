@@ -300,6 +300,10 @@ public class Ficha implements Serializable{
         this.magias = magias;
     }
 
+    public Ficha(int id) {
+        this.id = id;
+    }
+
     public Ficha(int id, String nomePersonagem, String nomeJogador, String classeNivel, String raca,
                  String tendencia, String divindade, String sexo, String tamanho, float altura,
                  float peso, int idade, int forca, int constituicao, int destreza, int inteligencia,

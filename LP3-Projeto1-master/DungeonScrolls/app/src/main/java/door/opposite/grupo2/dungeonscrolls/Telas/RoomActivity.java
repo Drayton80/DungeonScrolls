@@ -69,6 +69,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         binding.setItemSalaCompleta(new SalaModel(salaUsada));
 
         fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
+        //sqLite.atualizaDataFicha(fichasID);
         fichaModel = new FichaModel();
         fichaModelArrayList = fichaModel.getArrayListaFicha(salaUsada.toIntArray(salaUsada.getFichasID()), sqLite);
         fichaAdapter = new FichaAdapter(this, fichaModelArrayList);

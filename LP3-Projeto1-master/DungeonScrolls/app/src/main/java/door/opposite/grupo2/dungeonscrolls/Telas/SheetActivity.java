@@ -1,14 +1,29 @@
 package door.opposite.grupo2.dungeonscrolls.Telas;
 
+import android.content.Context;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.databinding.Observable;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 
 import door.opposite.grupo2.dungeonscrolls.R;
 import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
@@ -29,6 +44,10 @@ public class SheetActivity extends AppCompatActivity {
     Intent extra;
     SQLite sqLite;
     int[] salasID, fichasID;
+    ImageView campoImagem;
+    private byte[] byteArray;
+    StorageReference storage;
+    Uri buffer;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -39,14 +58,17 @@ public class SheetActivity extends AppCompatActivity {
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sheet);
         sqLite = new SQLite(this);
-
+        campoImagem = (ImageView) findViewById(R.id.imageView);
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
         salaUsada = (Sala) extra.getSerializableExtra("salaUsada");
         fichaUsada = (Ficha) extra.getSerializableExtra("fichaUsada");
+        storage = FirebaseStorage.getInstance().getReference();
 
         binding.setFichaElementos(new FichaModel(fichaUsada));
-
+        if(fichaUsada.getImagem() != null) {
+            Picasso.get().load(Uri.parse(fichaUsada.getImagem())).into(binding.imageView);
+        }
 
         binding.setFichaButtons(new EventosFicha(){
             @Override
@@ -125,9 +147,37 @@ public class SheetActivity extends AppCompatActivity {
                 fichaUsada.setVontade(binding.getFichaElementos().vontade);
                 fichaUsada.setVontadeBase(binding.getFichaElementos().vontadeBase);
                 fichaUsada.setVontadeOutros(binding.getFichaElementos().vontadeOutros);
+
+                Uri uri;
+
+                if (byteArray != null){
+                    uri = buffer;
+                }else {
+
+                    uri = Uri.parse("android.resource://door.opposite.grupo2.dungeonscrolls/" + R.drawable.avatar);
+                }
+                StorageReference path = storage.child("FotosFicha").child(uri.getLastPathSegment());
+                path.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        boolean foiInserido = false;
+                        Uri uriCerta = taskSnapshot.getDownloadUrl();
+
+                        fichaUsada.setImagem(uriCerta.toString());
+                    }
+                });
+
                 sqLite.updateDataFicha(fichaUsada);
                 finish();
                 startActivity(getIntent());
+            }
+
+            @Override
+            public void onClickSalvarImagem() {
+                Intent i = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                //i.putExtra(MediaStore.EXTRA_OUTPUT, MyFileContentProvider.CONTENT_URI);
+                startActivityForResult(i, 0);
+
             }
         });
     }
@@ -138,6 +188,60 @@ public class SheetActivity extends AppCompatActivity {
         extra.putExtra("usuarioLogado", usuarioLogado);
         extra.putExtra("salaUsada", salaUsada);
         startActivity(extra);
+    }
+
+
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+
+
+        if (data != null) {
+            Bundle bundle = data.getExtras();
+
+            // Recupera o Bitmap retornado pela c�mera
+            Bitmap bitmap = (Bitmap) bundle.get("data");
+            // Atualiza a imagem na tela
+            buffer = getImageUri(this, bitmap);
+            campoImagem.setImageBitmap(bitmap);
+
+            try {
+                // Salva o array de bytes
+                ByteArrayOutputStream bArray = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bArray);
+                bArray.flush();
+                bArray.close();
+                this.byteArray = bArray.toByteArray();
+            } catch (IOException ex) {
+
+            }
+            Uri uri;
+
+            if (byteArray != null){
+                uri = buffer;
+            }else {
+
+                uri = Uri.parse("android.resource://door.opposite.grupo2.dungeonscrolls/" + R.drawable.avatar);
+            }
+            StorageReference path = storage.child("FotosFicha").child(uri.getLastPathSegment());
+            path.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    boolean foiInserido = false;
+                    Uri uriCerta = taskSnapshot.getDownloadUrl();
+
+                    fichaUsada.setImagem(uriCerta.toString());
+                }
+            });
+            sqLite.updateDataFicha(fichaUsada);
+        }
+    }
+
+    public Uri getImageUri(Context inContext, Bitmap inImage) {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
+        String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
+        return Uri.parse(path);
     }
 
 }

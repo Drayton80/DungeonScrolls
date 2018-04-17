@@ -17,6 +17,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -841,9 +842,127 @@ public class SQLite extends SQLiteOpenHelper{
         if(result == -1){
             return  false;
         }else{
+            Ficha novaFicha = selecionarFicha(ultimaFicha());
+            reference.child("ficha").child(String.valueOf(novaFicha.getId())).setValue(novaFicha);
             return true;
         }
     }
+
+
+    public boolean contains(final int[] array, final int key) {
+        Arrays.sort(array);
+        return Arrays.binarySearch(array, key) >= 0;
+    }
+
+
+    public boolean atualizaDataFicha(final int[] ids){
+        reference.child("ficha").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    Ficha ficha = new Ficha();
+                    //GenericTypeIndicator<ArrayList<Integer>> t = new GenericTypeIndicator<ArrayList<Integer>>(){};
+
+                    if (contains(ids, snapshot.child("id").getValue(int.class))) {
+                        ficha.setId(snapshot.child("id").getValue(int.class));
+                        ficha.setNomePersonagem(snapshot.child("nomePersonagem").getValue(String.class));
+                        ficha.setNomeJogador(snapshot.child("nomeJogador").getValue(String.class));
+                        ficha.setClasseNivel(snapshot.child("classeNivel").getValue(String.class));
+                        ficha.setRaca(snapshot.child("raca").getValue(String.class));
+                        ficha.setTendencia(snapshot.child("tendencia").getValue(String.class));
+                        ficha.setDivindade(snapshot.child("divindade").getValue(String.class));
+                        ficha.setSexo(snapshot.child("sexo").getValue(String.class));
+                        ficha.setTamanho(snapshot.child("tamanho").getValue(String.class));
+                        ficha.setAltura(snapshot.child("altura").getValue(float.class));
+                        ficha.setPeso(snapshot.child("peso").getValue(float.class));
+                        ficha.setIdade(snapshot.child("idade").getValue(int.class));
+                        ficha.setForca(snapshot.child("forca").getValue(int.class));
+                        ficha.setConstituicao(snapshot.child("constituicao").getValue(int.class));
+                        ficha.setDestreza(snapshot.child("destreza").getValue(int.class));
+                        ficha.setInteligencia(snapshot.child("inteligencia").getValue(int.class));
+                        ficha.setSabedoria(snapshot.child("sabedoria").getValue(int.class));
+                        ficha.setCarisma(snapshot.child("carisma").getValue(int.class));
+                        ficha.setForcaMod(snapshot.child("forcaMod").getValue(int.class));
+                        ficha.setConstituicaoMod(snapshot.child("constituicaoMod").getValue(int.class));
+                        ficha.setDestrezaMod(snapshot.child("destrezaMod").getValue(int.class));
+                        ficha.setInteligenciaMod(snapshot.child("inteligenciaMod").getValue(int.class));
+                        ficha.setSabedoriaMod(snapshot.child("sabedoriaMod").getValue(int.class));
+                        ficha.setCarismaMod(snapshot.child("carismaMod").getValue(int.class));
+                        ficha.setCa(snapshot.child("ca").getValue(int.class));
+                        ficha.setCaOutros(snapshot.child("caOutros").getValue(int.class));
+                        ficha.setCaToque(snapshot.child("caToque").getValue(int.class));
+                        ficha.setCaSurpresa(snapshot.child("caSurpresa").getValue(int.class));
+                        ficha.setArmadura(snapshot.child("armadura").getValue(int.class));
+                        ficha.setArmaduraNatural(snapshot.child("armaduraNatural").getValue(int.class));
+                        ficha.setPv(snapshot.child("pv").getValue(int.class));
+                        ficha.setReducaoDeDano(snapshot.child("reducaoDeDano").getValue(int.class));
+                        ficha.setIniciativa(snapshot.child("iniciativa").getValue(int.class));
+                        ficha.setIniciativaOutros(snapshot.child("iniciativaOutros").getValue(int.class));
+                        ficha.setFortitude(snapshot.child("fortitude").getValue(int.class));
+                        ficha.setFortitudeBase(snapshot.child("fortitudeBase").getValue(int.class));
+                        ficha.setFortitudeOutros(snapshot.child("fortitudeOutros").getValue(int.class));
+                        ficha.setReflexo(snapshot.child("reflexo").getValue(int.class));
+                        ficha.setReflexoBase(snapshot.child("reflexoBase").getValue(int.class));
+                        ficha.setReflexoOutros(snapshot.child("reflexoOutros").getValue(int.class));
+                        ficha.setVontade(snapshot.child("vontade").getValue(int.class));
+                        ficha.setVontadeBase(snapshot.child("vontadeBase").getValue(int.class));
+                        ficha.setVontadeOutros(snapshot.child("vontadeOutros").getValue(int.class));
+                        ficha.setBba(snapshot.child("bba").getValue(int.class));
+                        ficha.setResMagica(snapshot.child("resMagica").getValue(int.class));
+                        ficha.setDeslocamento(snapshot.child("deslocamento").getValue(int.class));
+                        ficha.setAgarrar(snapshot.child("agarrar").getValue(int.class));
+                        ficha.setAgarrarOutros(snapshot.child("agarrarOutros").getValue(int.class));
+                        ficha.setPc(snapshot.child("pc").getValue(int.class));
+                        ficha.setPp(snapshot.child("pp").getValue(int.class));
+                        ficha.setPo(snapshot.child("po").getValue(int.class));
+                        ficha.setPl(snapshot.child("pl").getValue(int.class));
+                        ficha.setXp(snapshot.child("xp").getValue(int.class));
+                        ficha.setXpNecessario(snapshot.child("xpNecessario").getValue(int.class));
+                        ficha.setIdiomas(snapshot.child("idiomas").getValue(String.class));
+                        ficha.setInventario(snapshot.child("inventario").getValue(String.class));
+                        ficha.setAtaques(snapshot.child("ataques").getValue(String.class));
+                        ficha.setArmaEquip(snapshot.child("armaEquip").getValue(String.class));
+                        ficha.setArmaduraEquip(snapshot.child("armaduraEquip").getValue(String.class));
+                        ficha.setOutrosEquip(snapshot.child("outrosEquip").getValue(String.class));
+                        ficha.setCarctClasse(snapshot.child("carctClasse").getValue(String.class));
+                        ficha.setTalentos(snapshot.child("talentos").getValue(String.class));
+                        ficha.setMagias(snapshot.child("magias").getValue(String.class));
+                        ficha.setPericias(snapshot.child("pericias").getValue(String.class));
+                        ficha.setPvAtual(snapshot.child("pvAtual").getValue(int.class));
+                        ficha.setResistenciaNatural(snapshot.child("resistenciaNatural").getValue(int.class));
+                        ficha.setPesoTotal(snapshot.child("pesoTotal").getValue(float.class));
+                        ficha.setPesoMax(snapshot.child("pesoMax").getValue(float.class));
+                        ficha.setDescricaoAparencia(snapshot.child("descricaoAparencia").getValue(String.class));
+                        ficha.setTesteResistencia(snapshot.child("testeResistencia").getValue(String.class));
+                        ficha.setChanceFalha(snapshot.child("chanceFalha").getValue(String.class));
+                        ficha.setNumeroMagias(snapshot.child("numeroMagias").getValue(String.class));
+                        ficha.setEscolhaEspecializada(snapshot.child("escolhaEspecializada").getValue(String.class));
+                        ficha.setQualiEspeciais(snapshot.child("qualiEspeciais").getValue(String.class));
+                        ficha.setHabiEspeciais(snapshot.child("habiEspeciais").getValue(String.class));
+                        ficha.setImagem(snapshot.child("imagem").getValue(String.class));
+
+
+                        System.out.println("==========================================" + ficha.getId());
+
+                        boolean existe = verSeTemEsseFicha(ficha.getId());
+                        if (existe == true) {
+                            updateDataFicha(ficha);
+                        } else {
+                            insereDataFicha(ficha);
+                        }
+                    }
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return true;
+    }
+
+
+
 
     public Cursor getAllDataFicha(){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -930,12 +1049,18 @@ public class SQLite extends SQLiteOpenHelper{
         contentValues.put(T3_COL_74, ficha.getEscolhaEspecializada());
         contentValues.put(T3_COL_75, ficha.getQualiEspeciais());
         contentValues.put(T3_COL_76, ficha.getHabiEspeciais());
+
+        reference.child("ficha").child(String.valueOf(ficha.getId())).setValue(ficha);
         db.update(T3_TABLE_NAME, contentValues, "ID = ?", new String[]{String.valueOf(ficha.getId())});
         return true;
     }
 
+
+
+
     public Integer deleteDataFicha(Ficha ficha){
         SQLiteDatabase db = this.getWritableDatabase();
+        reference.child("ficha").child(String.valueOf(ficha.getId())).removeValue();
         return db.delete(T3_TABLE_NAME, "ID = ?", new String[]{String.valueOf(ficha.getId())}); //esse metodo retorna um inteiro, se fori deletado é 1 se não foi é 0
 
     }
@@ -1075,6 +1200,28 @@ public class SQLite extends SQLiteOpenHelper{
             }while(cursor.moveToNext());
         }
         return lista;
+    }
+
+    public boolean verSeTemEsseFicha(int i){
+        List<Ficha> lista = new ArrayList<Ficha>();
+
+        String query = "SELECT * FROM " + T3_TABLE_NAME;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(query, null);
+
+        if(cursor.moveToFirst()){
+            do{
+                Ficha ficha = new Ficha(Integer.parseInt(cursor.getString(0)));
+
+                if (i == ficha.getId()){
+                    return true;
+                }
+
+
+            }while(cursor.moveToNext());
+        }
+        return false;
     }
 
 

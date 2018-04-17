@@ -51,6 +51,7 @@
                     android:layout_marginTop="32dp"
                     android:src="@drawable/avatar"
                     app:civ_border_color="@color/colorSecondaryDark"
+                    android:onClick="@{(v)->cadevent.onClickLogin()}"
                     app:civ_fill_color="@color/colorSecondary"
                     app:civ_border_width="2dp"
                     app:layout_constraintEnd_toEndOf="parent"

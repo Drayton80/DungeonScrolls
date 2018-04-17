@@ -12,4 +12,5 @@ public interface EventosFicha {
     public void onClickInfoMagias();
     public void onClickPropriedadesEspeciais();
     public void onClickSalvarFicha();
+    public void onClickSalvarImagem();
 }

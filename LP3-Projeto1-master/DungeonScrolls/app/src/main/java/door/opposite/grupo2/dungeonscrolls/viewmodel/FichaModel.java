@@ -1,6 +1,7 @@
 package door.opposite.grupo2.dungeonscrolls.viewmodel;
 
 import android.databinding.BaseObservable;
+import android.net.Uri;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -78,7 +79,7 @@ public class FichaModel extends BaseObservable{
     public String carctClasse;
     public String talentos;
     public String magias;
-    public String imagem;
+    public Uri imagem;
     public String pericias;
     public int pvAtual; //lembrar de botas em todo lugar;
     public int resistenciaNatural;
@@ -161,7 +162,9 @@ public class FichaModel extends BaseObservable{
         this.carctClasse = ficha.getCarctClasse();
         this.talentos = ficha.getTalentos();
         this.magias = ficha.getMagias();
-        this.imagem = ficha.getImagem();
+        try {
+            this.imagem = Uri.parse(ficha.getImagem());
+        }catch (Exception e){}
         this.pericias = ficha.getPericias();
         this.pvAtual = ficha.getPvAtual();
         this.resistenciaNatural = ficha.getResistenciaNatural();
@@ -915,11 +918,11 @@ public class FichaModel extends BaseObservable{
     }
 
 
-    public String getImagem() {
+    public Uri getImagem() {
         return imagem;
     }
 
-    public void setImagem(String imagem) {
+    public void setImagem(Uri imagem) {
         this.imagem = imagem;
     }
 

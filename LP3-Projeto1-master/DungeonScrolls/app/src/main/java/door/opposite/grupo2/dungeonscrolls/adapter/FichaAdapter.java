@@ -9,6 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -38,6 +40,9 @@ public class FichaAdapter extends ArrayAdapter<FichaModel> {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         ActivityRoomListviewFichaBinding activityRoomListviewFichaBinding = DataBindingUtil.inflate(layoutInflater, R.layout.activity_room_listview_ficha, parent, false);
         activityRoomListviewFichaBinding.setFichas(fichaModelArrayList.get(position));
+        if (fichaModelArrayList.get(position).getImagem() != null) {
+            Picasso.get().load(fichaModelArrayList.get(position).getImagem()).into(activityRoomListviewFichaBinding.listviewFichaImageViewImagem);
+        }
         System.out.println("=====================Chegou!!");
         return activityRoomListviewFichaBinding.getRoot();
     }}
