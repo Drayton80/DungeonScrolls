@@ -7,11 +7,13 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 
 import door.opposite.grupo2.dungeonscrolls.R;
+import door.opposite.grupo2.dungeonscrolls.commands.EventoSalvar;
 import door.opposite.grupo2.dungeonscrolls.databinding.ActivitySheetMagicInformationDfBinding;
 import door.opposite.grupo2.dungeonscrolls.model.Ficha;
 import door.opposite.grupo2.dungeonscrolls.model.SQLite;
 import door.opposite.grupo2.dungeonscrolls.model.Sala;
 import door.opposite.grupo2.dungeonscrolls.model.Usuario;
+import door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel;
 
 public class SheetMagicInformationActivityDF extends AppCompatActivity {
     ActivitySheetMagicInformationDfBinding binding;
@@ -35,5 +37,16 @@ public class SheetMagicInformationActivityDF extends AppCompatActivity {
         salaUsada = (Sala) extra.getSerializableExtra("salaUsada");
         fichaUsada = (Ficha) extra.getSerializableExtra("fichaUsada");
 
+        binding.setFichaElementos(new FichaModel(fichaUsada));
+
+        binding.setSalvarFicha(new EventoSalvar() {
+            @Override
+            public void onClickSalvar() {
+                fichaUsada.setTesteResistencia(binding.getFichaElementos().testeResistencia);
+                fichaUsada.setChanceFalha(binding.getFichaElementos().chanceFalha);
+                fichaUsada.setEscolhaEspecializada(binding.getFichaElementos().escolhaEspecializada);
+
+            }
+        });
     }
 }

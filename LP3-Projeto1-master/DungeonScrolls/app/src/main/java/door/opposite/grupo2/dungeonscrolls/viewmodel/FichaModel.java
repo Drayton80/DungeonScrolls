@@ -936,7 +936,9 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setMagias(String magias) {
+
         this.magias = magias;
+        notifyPropertyChanged(R.id.sheetMI_editText_numeroMagiasPorDia3);
     }
 
 
@@ -1032,6 +1034,7 @@ public class FichaModel extends BaseObservable{
 
     public void setTesteResistencia(String testeResistencia) {
         this.testeResistencia = testeResistencia;
+        notifyPropertyChanged(R.id.sheetMI_editText_testeDeResistenciaMagica);
     }
 
     public String getChanceFalha() {
@@ -1040,6 +1043,7 @@ public class FichaModel extends BaseObservable{
 
     public void setChanceFalha(String chanceFalha) {
         this.chanceFalha = chanceFalha;
+        notifyPropertyChanged(R.id.sheetMI_editText_testeDeResistenciaMagica2);
     }
 
     public String getNumeroMagias() {
@@ -1048,6 +1052,7 @@ public class FichaModel extends BaseObservable{
 
     public void setNumeroMagias(String numeroMagias) {
         this.numeroMagias = numeroMagias;
+        notifyPropertyChanged(R.id.sheetMI_editText_numeroMagiasPorDia);
     }
 
     public String getEscolhaEspecializada() {
@@ -1056,6 +1061,7 @@ public class FichaModel extends BaseObservable{
 
     public void setEscolhaEspecializada(String escolhaEspecializada) {
         this.escolhaEspecializada = escolhaEspecializada;
+        notifyPropertyChanged(R.id.sheetMI_editText_dominioEscola);
     }
 
     public String getQualiEspeciais() {
