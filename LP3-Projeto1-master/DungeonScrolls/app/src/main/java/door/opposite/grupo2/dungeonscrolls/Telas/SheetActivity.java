@@ -147,6 +147,7 @@ public class SheetActivity extends AppCompatActivity {
                 fichaUsada.setVontade(binding.getFichaElementos().vontade);
                 fichaUsada.setVontadeBase(binding.getFichaElementos().vontadeBase);
                 fichaUsada.setVontadeOutros(binding.getFichaElementos().vontadeOutros);
+                fichaUsada.setCarctClasse(binding.getFichaElementos().carctClasse);
 
                 Uri uri;
 

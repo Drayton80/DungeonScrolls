@@ -52,6 +52,8 @@ public class SheetAppearanceActivityDF extends AppCompatActivity {
                 fichaUsada.setSexo(binding.getFichaElementos().sexo);
                 fichaUsada.setTamanho(binding.getFichaElementos().tamanho);
                 fichaUsada.setIdiomas(binding.getFichaElementos().idiomas);
+                fichaUsada.setDescricaoAparencia(binding.getFichaElementos().descricaoAparencia);
+
                 sqLite.updateDataFicha(fichaUsada);
                 finish();
                 startActivity(getIntent());

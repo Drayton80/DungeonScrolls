@@ -51,6 +51,9 @@ public class SheetEquipmentItensActivityDF extends AppCompatActivity {
                 fichaUsada.setArmaduraEquip(binding.getFichaElementos().armaduraEquip);
                 fichaUsada.setArmaEquip(binding.getFichaElementos().armaEquip);
                 fichaUsada.setOutrosEquip(binding.getFichaElementos().outrosEquip);
+                fichaUsada.setPesoMax(binding.getFichaElementos().pesoMax);
+                fichaUsada.setPesoTotal(binding.getFichaElementos().pesoTotal);
+
                 sqLite.updateDataFicha(fichaUsada);
                 finish();
                 startActivity(getIntent());

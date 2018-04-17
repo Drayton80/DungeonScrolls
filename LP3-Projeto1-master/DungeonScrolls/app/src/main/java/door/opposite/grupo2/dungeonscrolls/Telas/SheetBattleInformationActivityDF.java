@@ -40,10 +40,11 @@ public class SheetBattleInformationActivityDF extends AppCompatActivity {
 
         binding.setFichaElementos(new FichaModel(fichaUsada));
 
-        binding.setSalvarficha(new EventoSalvar() {
+        binding.setSalvarFicha(new EventoSalvar() {
             @Override
             public void onClickSalvar() {
                 fichaUsada.setPv(binding.getFichaElementos().pv);
+                fichaUsada.setPvAtual(binding.getFichaElementos().pvAtual);
                 fichaUsada.setArmadura(binding.getFichaElementos().armadura);
                 fichaUsada.setArmaduraNatural(binding.getFichaElementos().armaduraNatural);
                 fichaUsada.setCaOutros(binding.getFichaElementos().caOutros);
@@ -51,6 +52,7 @@ public class SheetBattleInformationActivityDF extends AppCompatActivity {
                 fichaUsada.setCaToque(binding.getFichaElementos().caToque);
                 fichaUsada.setCaSurpresa(binding.getFichaElementos().caSurpresa);
                 fichaUsada.setResMagica(binding.getFichaElementos().resMagica);
+                fichaUsada.setResistenciaNatural(binding.getFichaElementos().resistenciaNatural);
                 fichaUsada.setIniciativaOutros(binding.getFichaElementos().iniciativaOutros);
                 fichaUsada.setDeslocamento(binding.getFichaElementos().deslocamento);
                 fichaUsada.setAgarrarOutros(binding.getFichaElementos().agarrarOutros);
