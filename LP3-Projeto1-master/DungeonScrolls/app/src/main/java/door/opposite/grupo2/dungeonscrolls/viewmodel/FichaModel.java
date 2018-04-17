@@ -1069,7 +1069,9 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setQualiEspeciais(String qualiEspeciais) {
+
         this.qualiEspeciais = qualiEspeciais;
+        notifyPropertyChanged(R.id.sheetSP_editText_qualidadesEspeciais);
     }
 
     public String getHabiEspeciais() {
@@ -1078,6 +1080,7 @@ public class FichaModel extends BaseObservable{
 
     public void setHabiEspeciais(String habiEspeciais) {
         this.habiEspeciais = habiEspeciais;
+        notifyPropertyChanged(R.id.sheetSP_editText_habilidadesEspeciais);
     }
 
     public ArrayList<FichaModel> getArrayListaFicha(int[] fichasID, SQLite sqLite){

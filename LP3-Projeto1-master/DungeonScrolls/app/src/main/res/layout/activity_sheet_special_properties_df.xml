@@ -3,7 +3,12 @@
 <layout>
 
     <data>
-
+        <variable
+            name="salvarFicha"
+            type="door.opposite.grupo2.dungeonscrolls.commands.EventoSalvar"/>
+        <variable
+            name="fichaElementos"
+            type="door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel"/>
     </data>
 
     <LinearLayout
@@ -35,6 +40,7 @@
                 android:background="@drawable/button_layout"
                 android:text="@string/gerais_salvar"
                 android:textColor="@color/colorExternalButtonTexts"
+                android:onClick="@{()->salvarFicha.onClickSalvar()}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -85,6 +91,7 @@
                         android:layout_marginTop="8dp"
                         android:ems="10"
                         android:inputType="textMultiLine"
+                        android:text="@={fichaElementos.qualiEspeciais}"
                         app:layout_constraintEnd_toEndOf="@+id/sheetSP_textView_qualidadesEspeciais"
                         app:layout_constraintStart_toStartOf="@+id/sheetSP_textView_qualidadesEspeciais"
                         app:layout_constraintTop_toBottomOf="@+id/sheetSP_textView_qualidadesEspeciais" />
@@ -110,8 +117,8 @@
                         android:layout_marginBottom="72dp"
                         android:layout_marginTop="8dp"
                         android:ems="10"
-
                         android:inputType="textMultiLine"
+                        android:text="@={fichaElementos.habiEspeciais}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/sheetSP_textView_habilidadesEspeciais"
                         app:layout_constraintHorizontal_bias="0.0"

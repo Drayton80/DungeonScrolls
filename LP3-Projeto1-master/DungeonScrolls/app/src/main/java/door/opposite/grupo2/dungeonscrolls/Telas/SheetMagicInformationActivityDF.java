@@ -31,6 +31,7 @@ public class SheetMagicInformationActivityDF extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sheet_magic_information_df);
+        sqLite = new SQLite(this);
 
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
@@ -44,8 +45,13 @@ public class SheetMagicInformationActivityDF extends AppCompatActivity {
             public void onClickSalvar() {
                 fichaUsada.setTesteResistencia(binding.getFichaElementos().testeResistencia);
                 fichaUsada.setChanceFalha(binding.getFichaElementos().chanceFalha);
+                fichaUsada.setNumeroMagias(binding.getFichaElementos().numeroMagias);
                 fichaUsada.setEscolhaEspecializada(binding.getFichaElementos().escolhaEspecializada);
+                fichaUsada.setMagias(binding.getFichaElementos().magias);
 
+                sqLite.updateDataFicha(fichaUsada);
+                finish();
+                startActivity(getIntent());
             }
         });
     }

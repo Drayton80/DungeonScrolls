@@ -58,6 +58,7 @@ public class SheetBattleInformationActivityDF extends AppCompatActivity {
                 fichaUsada.setAgarrarOutros(binding.getFichaElementos().agarrarOutros);
                 fichaUsada.setBba(binding.getFichaElementos().bba);
                 fichaUsada.setAtaques(binding.getFichaElementos().ataques);
+
                 sqLite.updateDataFicha(fichaUsada);
                 finish();
                 startActivity(getIntent());
