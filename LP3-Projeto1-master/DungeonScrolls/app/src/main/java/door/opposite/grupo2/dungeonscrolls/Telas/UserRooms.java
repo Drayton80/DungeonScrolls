@@ -40,6 +40,7 @@ public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItem
     int[] salasID;
     Sala salaUsada;
     int posicaoDelete = 0;
+    boolean mestre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +75,7 @@ public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItem
                     if(i == salaPosicao){
                         if (salasID[i+1] == 0){
                         }else{
+                            mestre = true;
                             // System.out.println("=================Entrou aqui, eu achei a sala!");
                             // Cria uma View que referencia o layout dialogfragment_loadingcircle
                             View loadingCircleDialog = getLayoutInflater().inflate(R.layout.dialogfragment_loadingcircle, null);
@@ -85,6 +87,7 @@ public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItem
                             extra = new Intent(UserRooms.this, RoomActivity.class);
                             extra.putExtra("usuarioLogado", usuarioLogado);
                             extra.putExtra("salaUsada", salaUsada);
+                            extra.putExtra("mestre", mestre);
                             //System.out.println("=================Entrou aqui, eu achei a sala!" + salaUsada.getNotas());
                             startActivity(extra);
                         }
@@ -98,7 +101,7 @@ public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItem
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
                 PopupMenu menu = new PopupMenu(UserRooms.this ,view);
                 menu.setOnMenuItemClickListener(UserRooms.this);
-                menu.inflate(R.menu.menu_popup);
+                menu.inflate(R.menu.menu_popup_salas);
                 posicaoDelete = position;
 
                 menu.show();

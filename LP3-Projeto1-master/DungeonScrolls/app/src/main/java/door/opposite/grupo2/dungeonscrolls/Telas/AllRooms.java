@@ -24,10 +24,6 @@ import door.opposite.grupo2.dungeonscrolls.model.Sala;
 import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.SalaModel;
 
-/**
- * Created by FHILIPE on 08/04/2018.
- */
-
 public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentID.NoticeDialogListenerID{
     // Atributos relativos à parte visual do programa:
     // Atributos relativos à parte visual do programa:
@@ -44,7 +40,8 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
     int[] salasID;
     List<Sala> allSalasID;
     Sala salaUsada, salaSelecionada;
-    Boolean salaUsuario = false, salaNulla = false;
+    String novoJogador;
+    Boolean salaUsuario = false, mestre = false, continuar = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +58,7 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
 
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
+        novoJogador = usuarioLogado.getNick();
 
         allSalasID = sqLite.listaSala();
 
@@ -86,6 +84,7 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
                         }else{
                             salaUsada = sqLite.selecionarSala(salasID[i + 1]);
                             if (salaUsada.getNomeMestre().equals(salaModelSelecionada.getNomeMestre())) {
+                                mestre = true;
                                 System.out.println("=================Mesmo Mestre: " + salaModel.getMestre() + " == " + salaUsada.getMestre());
                                 // Cria uma View que referencia o layout dialogfragment_loadingcircle
                                 View loadingCircleDialog = getLayoutInflater().inflate(R.layout.dialogfragment_loadingcircle, null);
@@ -97,6 +96,7 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
                                 extra = new Intent(AllRooms.this, RoomActivity.class);
                                 extra.putExtra("usuarioLogado", usuarioLogado);
                                 extra.putExtra("salaUsada", salaUsada);
+                                extra.putExtra("mestre", mestre);
                                 salaUsuario = true;
                                 startActivity(extra);
                             }
@@ -138,10 +138,12 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
     @Override
     public void onDialogPositiveClick(DialogFragment dialog, String senha) {
         if(salaModelSelecionada.getSenha().equals(senha)){
+            mestre = false;
             salaUsada = sqLite.selecionarSala(salaModelSelecionada.getNome());
             extra = new Intent(AllRooms.this, RoomActivity.class);
             extra.putExtra("usuarioLogado", usuarioLogado);
             extra.putExtra("salaUsada", salaUsada);
+            extra.putExtra("mestre", mestre);
             startActivity(extra);
         }else{
             Toast.makeText(AllRooms.this, "Senha incorreta", Toast.LENGTH_LONG).show();
@@ -153,4 +155,29 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
     public void onDialogNegativeClick(DialogFragment dialog) {
         dialog.dismiss();
     }
+
+    public void onBackPressed(){
+        extra = new Intent(AllRooms.this, RoomsMenu.class);
+        extra.putExtra("usuarioLogado", usuarioLogado);
+        finish();
+        startActivity(extra);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        continuar = true;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if(continuar) {
+            extra = new Intent(AllRooms.this, RoomsMenu.class);
+            extra.putExtra("usuarioLogado", usuarioLogado);
+            finish();
+            startActivity(extra);
+        }
+    }
+
 }

@@ -43,6 +43,7 @@ public class RoomsMenu extends TabActivity{
         TabHost.TabSpec specifications = tabhost.newTabSpec(tag);
         Intent intent = new Intent(context, tabView);
         intent.putExtra("usuarioLogado", usuarioLogado);
+        System.out.println("==================To na TABBB!!!");
         // Define as especificações da Tab
         specifications.setIndicator(title)
                 .setContent(intent);

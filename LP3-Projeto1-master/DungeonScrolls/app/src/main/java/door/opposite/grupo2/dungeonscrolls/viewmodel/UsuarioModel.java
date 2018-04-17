@@ -2,7 +2,11 @@ package door.opposite.grupo2.dungeonscrolls.viewmodel;
 
 import android.databinding.BaseObservable;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import door.opposite.grupo2.dungeonscrolls.R;
+import door.opposite.grupo2.dungeonscrolls.model.SQLite;
 import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 
 /**
@@ -56,6 +60,19 @@ public class UsuarioModel extends BaseObservable{
     }
 
 
+    public ArrayList<UsuarioModel> getArrayListaUsuario(int[] usuariosID, SQLite sqLite){
 
+        ArrayList<UsuarioModel> usuarioModelArrayList = new ArrayList<>();
+
+        for (int i = 0; i < usuariosID.length; i++){
+            if(usuariosID[i] == 0){}
+            else {
+                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + i);
+                UsuarioModel usuarioModel = new UsuarioModel(sqLite.selecionarUsuario(usuariosID[i]));
+                usuarioModelArrayList.add(usuarioModel);
+            }
+        }
+        return usuarioModelArrayList;
+    }
 
 }

@@ -28,6 +28,7 @@ import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
 import door.opposite.grupo2.dungeonscrolls.databinding.ActivityRoomBinding;
 import door.opposite.grupo2.dungeonscrolls.graficAssets.DialogFragmentCreator;
 import door.opposite.grupo2.dungeonscrolls.graficAssets.NoticeDialogFragment;
+import door.opposite.grupo2.dungeonscrolls.graficAssets.NoticeDialogFragmentUsuarios;
 import door.opposite.grupo2.dungeonscrolls.model.Ficha;
 import door.opposite.grupo2.dungeonscrolls.model.SQLite;
 import door.opposite.grupo2.dungeonscrolls.model.Sala;
@@ -35,7 +36,7 @@ import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.SalaModel;
 
-public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener, NoticeDialogFragment.NoticeDialogListener{
+public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener, NoticeDialogFragment.NoticeDialogListener, NoticeDialogFragmentUsuarios.NoticeDialogListenerUsuarios{
     ActivityRoomBinding binding;
     SQLite sqLite;
     Intent extra;
@@ -50,7 +51,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     int posicaoDelete = 0;
     DialogFragmentCreator geraDialog = new DialogFragmentCreator();
     AlertDialog dialog;
-    boolean deletar;
+    boolean deletar, mestre = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,9 +65,22 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
         salaUsada = (Sala) extra.getSerializableExtra("salaUsada");
+        mestre =  extra.getBooleanExtra("mestre", mestre);
+        System.out.println("=================Mestre: " + mestre);
         sqLite = new SQLite(this);
 
         binding.setItemSalaCompleta(new SalaModel(salaUsada));
+
+        if(mestre != true){
+            int[] aux = new int[salaUsada.toIntArray(salaUsada.getJogadoresID()).length +1];
+
+            for (int i = 0; i < salaUsada.toIntArray(salaUsada.getJogadoresID()).length; i++){
+                aux[i] = salaUsada.toIntArray(salaUsada.getJogadoresID())[i];
+            }
+            aux[salaUsada.toIntArray(salaUsada.getJogadoresID()).length] = usuarioLogado.getID();
+            salaUsada.setJogadoresID(salaUsada.toIntList(aux));
+            sqLite.updateDataSala(salaUsada);
+        }
 
         fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
         //sqLite.atualizaDataFicha(fichasID);
@@ -75,64 +89,51 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         fichaAdapter = new FichaAdapter(this, fichaModelArrayList);
         binding.roomListViewFichas.setAdapter(fichaAdapter);
 
+
         binding.roomListViewFichas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
-                PopupMenu menu = new PopupMenu(RoomActivity.this ,view);
-                menu.setOnMenuItemClickListener(RoomActivity.this);
-                menu.inflate(R.menu.menu_popup);
-                posicaoDelete = position;
+               if(mestre != true){
+                   return  false;
+               }else{
+                   PopupMenu menu = new PopupMenu(RoomActivity.this ,view);
+                   menu.setOnMenuItemClickListener(RoomActivity.this);
+                   menu.inflate(R.menu.menu_popup);
+                   posicaoDelete = position;
 
-                menu.show();
+                   menu.show();
 
-                return true;
+                   return true;
+               }
             }
         });
 
         binding.roomListViewFichas.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                int fichaPosicao = position;
-                for(int i = 0; i < salaUsada.toIntArray(salaUsada.getFichasID()).length; i++){
-                    if(i == fichaPosicao){
-                        if (fichasID[i+1] == 0){
-                        }else{
-                            // System.out.println("=================Entrou aqui, eu achei a sala!");
-                            fichaUsada = sqLite.selecionarFicha(fichasID[i+1]);
-                            extra = new Intent(RoomActivity.this, SheetActivity.class);
-                            extra.putExtra("usuarioLogado", usuarioLogado);
-                            extra.putExtra("salaUsada", salaUsada);
-                            extra.putExtra("fichaUsada", fichaUsada);
+                if(mestre != true){
 
-                            startActivity(extra);
+                }else{
+                    int fichaPosicao = position;
+                    salaUsada.setHistoria(binding.roomEditTextResumo.getText().toString());
+                    salaUsada.setNotas(binding.roomEditTextOutrasAnotacoes.getText().toString());
+                    sqLite.updateDataSala(salaUsada);
+                    for(int i = 0; i < salaUsada.toIntArray(salaUsada.getFichasID()).length; i++){
+                        if(i == fichaPosicao){
+                            if (fichasID[i+1] == 0){
+                            }else{
+                                // System.out.println("=================Entrou aqui, eu achei a sala!");
+                                fichaUsada = sqLite.selecionarFicha(fichasID[i+1]);
+                                extra = new Intent(RoomActivity.this, SheetActivity.class);
+                                extra.putExtra("usuarioLogado", usuarioLogado);
+                                extra.putExtra("salaUsada", salaUsada);
+                                extra.putExtra("fichaUsada", fichaUsada);
+
+                                startActivity(extra);
+                            }
                         }
                     }
                 }
-            }
-        });
-
-        binding.roomEditTextResumo.addTextChangedListener(new TextWatcher(){
-            @Override
-            public void afterTextChanged(Editable s){}
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                salaUsada.setHistoria(binding.roomEditTextResumo.getText().toString());
-                sqLite.updateDataSala(salaUsada);
-            }
-        });
-
-        binding.roomEditTextOutrasAnotacoes.addTextChangedListener(new TextWatcher(){
-            @Override
-            public void afterTextChanged(Editable s) {}
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                salaUsada.setNotas(binding.roomEditTextOutrasAnotacoes.getText().toString());
-
-                sqLite.updateDataSala(salaUsada);
             }
         });
 
@@ -175,14 +176,16 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     }
 
-
-
     @Override
     public boolean onMenuItemClick(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.item_vincular:
+                showNoticeDialogUsuarios();
                 return true;
             case R.id.item_deleta:
+                salaUsada.setHistoria(binding.roomEditTextResumo.getText().toString());
+                salaUsada.setNotas(binding.roomEditTextOutrasAnotacoes.getText().toString());
+                sqLite.updateDataSala(salaUsada);
                 showNoticeDialog();
             default:
                 return false;
@@ -193,6 +196,9 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     }
 
     public void onBackPressed(){
+        salaUsada.setHistoria(binding.roomEditTextResumo.getText().toString());
+        salaUsada.setNotas(binding.roomEditTextOutrasAnotacoes.getText().toString());
+        sqLite.updateDataSala(salaUsada);
         extra = new Intent(RoomActivity.this, RoomsMenu.class);
         extra.putExtra("usuarioLogado", usuarioLogado);
         startActivity(extra);
@@ -210,6 +216,12 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public void showNoticeDialog() {
         // Cria uma instância para o Notice Dialog Fragment
         DialogFragment dialog = new NoticeDialogFragment();
+        dialog.show(getFragmentManager(), "NoticeDialogFragment");
+    }
+
+    public void showNoticeDialogUsuarios() {
+        // Cria uma instância para o Notice Dialog Fragment
+        DialogFragment dialog = new NoticeDialogFragmentUsuarios();
         dialog.show(getFragmentManager(), "NoticeDialogFragment");
     }
 
@@ -269,5 +281,15 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         }
 
         return array_novo;
+    }
+
+    @Override
+    public void onDialogPositiveClickUsuarios(DialogFragment dialog) {
+
+    }
+
+    @Override
+    public void onDialogNegativeClickUsuarios(DialogFragment dialog) {
+
     }
 }
