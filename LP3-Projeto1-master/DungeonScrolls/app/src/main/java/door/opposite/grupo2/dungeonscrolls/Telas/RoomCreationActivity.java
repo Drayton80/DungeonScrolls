@@ -8,9 +8,11 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -27,12 +29,15 @@ import door.opposite.grupo2.dungeonscrolls.R;
 import door.opposite.grupo2.dungeonscrolls.adapter.MyFileContentProvider;
 import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
 import door.opposite.grupo2.dungeonscrolls.databinding.ActivityRoomCreationBinding;
+import door.opposite.grupo2.dungeonscrolls.graficAssets.DialogFragmentCreator;
 import door.opposite.grupo2.dungeonscrolls.model.SQLite;
 import door.opposite.grupo2.dungeonscrolls.model.Sala;
 import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.SalaModel;
 
 public class RoomCreationActivity extends AppCompatActivity {
+    DialogFragmentCreator geraDialog = new DialogFragmentCreator();     // Objeto da classe DialogFragmentCreator aonde estão ferramentas para criar Dialog Fragments
+    AlertDialog dialog;
     Intent extra;
     Usuario usuarioLogado;
     ActivityRoomCreationBinding binding;
@@ -62,6 +67,11 @@ public class RoomCreationActivity extends AppCompatActivity {
         binding.setCadevent(new Eventos() {
             @Override
             public void onClickCad() {
+
+                // Cria uma referência para o dialogfragment_loadingcircle para poder gerar seu layout e referenciar aquilo que tem dentro dele
+                View loadingCircleDialog = getLayoutInflater().inflate(R.layout.dialogfragment_loadingcircle, null);
+                // Cria o Dialog Fragment através de um dos métodos da classe DialogFragmentCreator e pega a referência para ele, além de rodar a animação de Loading
+                dialog = geraDialog.criaDialogFragmentLoadingCircle(RoomCreationActivity.this, loadingCircleDialog);
 
                     Uri uri;
 
@@ -99,10 +109,12 @@ public class RoomCreationActivity extends AppCompatActivity {
 
                             sqLite.updateDataUsuario(usuarioLogado);
                             if(foiInserido == true){
+                                geraDialog.fechaDialogFragment(dialog);
                                 Toast.makeText(RoomCreationActivity.this, "Salvo", Toast.LENGTH_LONG).show();
                                 extra.putExtra("usuarioLogado", usuarioLogado);
                                 startActivity(extra);
                             }else{
+                                geraDialog.fechaDialogFragment(dialog);
                                 Toast.makeText(RoomCreationActivity.this, "Não Salvo", Toast.LENGTH_LONG).show();
                             }
                         }
