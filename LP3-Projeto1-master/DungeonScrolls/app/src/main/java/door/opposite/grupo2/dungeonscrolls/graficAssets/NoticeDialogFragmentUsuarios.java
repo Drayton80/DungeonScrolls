@@ -1,5 +1,6 @@
 package door.opposite.grupo2.dungeonscrolls.graficAssets;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -10,20 +11,44 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ListView;
+
 import door.opposite.grupo2.dungeonscrolls.R;
 import door.opposite.grupo2.dungeonscrolls.adapter.FichaAdapter;
+import door.opposite.grupo2.dungeonscrolls.model.Ficha;
+import door.opposite.grupo2.dungeonscrolls.model.SQLite;
+import door.opposite.grupo2.dungeonscrolls.model.Sala;
+import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel;
 
 /**
  * Created by ci on 17/04/18.
  */
 
+@SuppressLint("ValidFragment")
 public class NoticeDialogFragmentUsuarios extends DialogFragment {
 
+    Usuario usuarioUsado, usuarioOn;
+    Sala salaUsada;
+    Ficha fichaUsada;
+    SQLite sqLite;
+    ArrayAdapter<String> jogadoresOn;
+    String[] jogadores;
+    int[] jogadoresID;
+    private ListView jogadoresNaSala;
+
+    public NoticeDialogFragmentUsuarios(Usuario usuarioLogado, Sala salaUsada, Ficha fichaUsada, SQLite sqLite) {
+        this.usuarioUsado = usuarioLogado;
+        this.salaUsada = salaUsada;
+        this.fichaUsada = fichaUsada;
+        this.sqLite = sqLite;
+    }
+
     /* A Activity cria uma instância para o dialog fragmentThe activity that creates an instance of this dialog fragment must
-     * e ela implementa essa interface para receber os "callbacks"
-     * esse método é passado para o DialogFragment */
+         * e ela implementa essa interface para receber os "callbacks"
+         * esse método é passado para o DialogFragment */
     public interface NoticeDialogListenerUsuarios {
         public void onDialogPositiveClickUsuarios(DialogFragment dialog);
         public void onDialogNegativeClickUsuarios(DialogFragment dialog);
@@ -51,13 +76,34 @@ public class NoticeDialogFragmentUsuarios extends DialogFragment {
 
         View usersDialog = getActivity().getLayoutInflater().inflate(R.layout.dialogfragment_room_listajogadores, null);
 
+        jogadoresNaSala = new ListView(usersDialog.getContext());
+        //jogadoresNaSala = (ListView) usersDialog.findViewById(R.id.dialogFragmentListaJogadores_listView_jogadores);
+
+        jogadores = new String[salaUsada.toIntArray(salaUsada.getJogadoresID()).length];
+        jogadoresID = new int[salaUsada.toIntArray(salaUsada.getJogadoresID()).length];
+
+        for (int i = 0; i < salaUsada.toIntArray(salaUsada.getJogadoresID()).length; i++){
+            jogadoresID[i] = salaUsada.toIntArray(salaUsada.getJogadoresID())[i];
+        }
+
+        for(int i = 0; i < salaUsada.toIntArray(salaUsada.getJogadoresID()).length; i++){
+            if(jogadoresID[i] == 0){
+            }else{
+                usuarioOn = sqLite.selecionarUsuario(jogadoresID[i]);
+                jogadores[i] = usuarioOn.getNick();
+            }
+        }
+
+        System.out.println("================Jogador Nick: " + jogadores[1]);
+
+        jogadoresOn = new ArrayAdapter<String>(getActivity(), R.layout.dialogfragment_room_listajogadores, jogadores);
+        jogadoresNaSala.setAdapter(jogadoresOn);
+
         builder.setView(usersDialog);
-        
+
         AlertDialog dialog = builder.create();
         
         dialog.setCanceledOnTouchOutside(false);
-
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
         builder.setMessage("Escolha um usuário:")
                 .setPositiveButton("Confirmar", new DialogInterface.OnClickListener() {

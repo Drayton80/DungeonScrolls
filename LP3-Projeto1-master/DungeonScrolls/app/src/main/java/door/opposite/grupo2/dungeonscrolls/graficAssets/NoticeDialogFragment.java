@@ -16,9 +16,7 @@ public class NoticeDialogFragment extends DialogFragment {
      * esse método é passado para o DialogFragment */
     public interface NoticeDialogListener {
         public void onDialogPositiveClick(DialogFragment dialog);
-
-        void onDialogPositiveClick(DialogFragment dialog, String senha);
-
+        public void onDialogPositiveClick(DialogFragment dialog, String senha);
         public void onDialogNegativeClick(DialogFragment dialog);
     }
 

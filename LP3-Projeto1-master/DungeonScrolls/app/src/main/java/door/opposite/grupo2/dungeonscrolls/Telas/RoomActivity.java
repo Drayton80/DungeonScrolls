@@ -77,6 +77,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             for (int i = 0; i < salaUsada.toIntArray(salaUsada.getJogadoresID()).length; i++){
                 aux[i] = salaUsada.toIntArray(salaUsada.getJogadoresID())[i];
             }
+            System.out.println("==========================aux[0]: " + aux[1]);
             aux[salaUsada.toIntArray(salaUsada.getJogadoresID()).length] = usuarioLogado.getID();
             salaUsada.setJogadoresID(salaUsada.toIntList(aux));
             sqLite.updateDataSala(salaUsada);
@@ -221,7 +222,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     public void showNoticeDialogUsuarios() {
         // Cria uma instância para o Notice Dialog Fragment
-        DialogFragment dialog = new NoticeDialogFragmentUsuarios();
+        DialogFragment dialog = new NoticeDialogFragmentUsuarios(usuarioLogado, salaUsada, fichaUsada, sqLite);
         dialog.show(getFragmentManager(), "NoticeDialogFragment");
     }
 
