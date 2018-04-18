@@ -83,6 +83,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 for (int i = 0; i < salaUsada.toIntArray(salaUsada.getJogadoresID()).length; i++){
                     aux[i] = salaUsada.toIntArray(salaUsada.getJogadoresID())[i];
                 }
+                //
                 aux[salaUsada.toIntArray(salaUsada.getJogadoresID()).length] = usuarioLogado.getID();
                 salaUsada.setJogadoresID(salaUsada.toIntList(aux));
                 sqLite.updateDataSala(salaUsada);
