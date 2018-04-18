@@ -35,6 +35,11 @@ public class LoginActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Cria uma referência para o dialogfragment_loadingcircle para poder gerar seu layout e referenciar aquilo que tem dentro dele
+        View loadingCircleDialog = getLayoutInflater().inflate(R.layout.dialogfragment_loadingcircle, null);
+        // Cria o Dialog Fragment através de um dos métodos da classe DialogFragmentCreator e pega a referência para ele, além de rodar a animação de Loading
+        dialog = geraDialog.criaDialogFragmentLoadingCircle(LoginActivity.this, loadingCircleDialog);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_login);
         binding.setUsuariomodel(new UsuarioModel());
         sqLite = new SQLite(this);
@@ -58,21 +63,24 @@ public class LoginActivity extends Activity {
                 // Cria o Dialog Fragment através de um dos métodos da classe DialogFragmentCreator e pega a referência para ele, além de rodar a animação de Loading
                 dialog = geraDialog.criaDialogFragmentLoadingCircle(LoginActivity.this, loadingCircleDialog);
 
-                Usuario usuario1;
-
-                sqLite.atualizaDataUsuario();
+                try {
 
 
-                usuario1 = sqLite.selecionarUsuario(binding.getUsuariomodel().getNick());
+                    Usuario usuario1;
 
-                if (usuario1.getSenha().equals(binding.getUsuariomodel().getSenha())){
-                    Toast.makeText(LoginActivity.this, "Logou", Toast.LENGTH_LONG).show();
-                    it.putExtra("usuarioLogado", usuario1);
+                    sqLite.atualizaDataUsuario();
 
-                    // Chama o método que gera a animação do loading
-                    //animacoes.loadingMagicCircle(loadingCircleDialog);
-                    // Método que inicia a animação
-                    //animacoes.startLoadingAnimation();
+
+                    usuario1 = sqLite.selecionarUsuario(binding.getUsuariomodel().getNick());
+
+                    if (usuario1.getSenha().equals(binding.getUsuariomodel().getSenha())) {
+                        Toast.makeText(LoginActivity.this, "Logou", Toast.LENGTH_LONG).show();
+                        it.putExtra("usuarioLogado", usuario1);
+
+                        // Chama o método que gera a animação do loading
+                        //animacoes.loadingMagicCircle(loadingCircleDialog);
+                        // Método que inicia a animação
+                        //animacoes.startLoadingAnimation();
 
                     /*
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
@@ -86,17 +94,23 @@ public class LoginActivity extends Activity {
 
                     */
 
-                    startActivity(it);
+                        startActivity(it);
 
-                    // Para a animação
-                    //animacoes.stopLoadingAnimation();
-                    // Fecha o Dialog Fragment
-                    //geraDialog.fechaDialogFragment(loadingDialog);
-                }else{
-                    Toast.makeText(LoginActivity.this, "Senha incorreta", Toast.LENGTH_LONG).show();
+                        // Para a animação
+                        //animacoes.stopLoadingAnimation();
+                        // Fecha o Dialog Fragment
+                        //geraDialog.fechaDialogFragment(loadingDialog);
+                    } else {
+                        Toast.makeText(LoginActivity.this, "Senha incorreta", Toast.LENGTH_LONG).show();
+                    }
+                }catch (Exception e){
+                    Toast.makeText(LoginActivity.this, "Usuario não existente", Toast.LENGTH_LONG).show();
+                    geraDialog.fechaDialogFragment(dialog);
                 }
             }
         });
+
+        geraDialog.fechaDialogFragment(dialog);
     }
 
     @Override

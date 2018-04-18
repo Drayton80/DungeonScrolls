@@ -73,11 +73,18 @@ public class RoomCreationActivity extends AppCompatActivity {
                 // Cria o Dialog Fragment através de um dos métodos da classe DialogFragmentCreator e pega a referência para ele, além de rodar a animação de Loading
                 dialog = geraDialog.criaDialogFragmentLoadingCircle(RoomCreationActivity.this, loadingCircleDialog);
 
+                try{
+                    sqLite.selecionarSala(binding.getSalamodel().getNome());
+                    Toast.makeText(RoomCreationActivity.this, "Nome de sala existente", Toast.LENGTH_LONG).show();
+                    geraDialog.fechaDialogFragment(dialog);
+                }catch(Exception e) {
+
+
                     Uri uri;
 
-                    if (byteArray != null){
+                    if (byteArray != null) {
                         uri = buffer;
-                    }else {
+                    } else {
 
                         uri = Uri.parse("android.resource://door.opposite.grupo2.dungeonscrolls/" + R.drawable.avatar);
                     }
@@ -87,9 +94,9 @@ public class RoomCreationActivity extends AppCompatActivity {
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             boolean foiInserido = false;
                             Uri uriCerta = taskSnapshot.getDownloadUrl();
-                            Sala sala = new Sala(binding.getSalamodel().getNome(),binding.getSalamodel().getSenha(), usuarioLogado.getID(),
+                            Sala sala = new Sala(binding.getSalamodel().getNome(), binding.getSalamodel().getSenha(), usuarioLogado.getID(),
                                     binding.getSalamodel().getHistoria(), usuarioLogado.getNick());
-                            if(binding.roomPasswordPlainText.getText().length() == 0){
+                            if (binding.roomPasswordPlainText.getText().length() == 0) {
                                 sala.setSenha(" ");
                             }
                             sala.setUri(uriCerta.toString());
@@ -97,10 +104,10 @@ public class RoomCreationActivity extends AppCompatActivity {
                             Sala sala1;
                             sala1 = sqLite.selecionarSala(binding.getSalamodel().getNome());
                             // System.out.println(usuarioLogado.getSalasID().toString());
-                            int[] aux = new int[usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length +1];
+                            int[] aux = new int[usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length + 1];
                             // System.out.println(Arrays.toString(usuarioLogado.toIntArray(usuarioLogado.getSalasID())));
 
-                            for (int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length; i++){
+                            for (int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length; i++) {
                                 aux[i] = usuarioLogado.toIntArray(usuarioLogado.getSalasID())[i];
                             }
                             aux[usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length] = sala1.getID();
@@ -108,19 +115,18 @@ public class RoomCreationActivity extends AppCompatActivity {
                             usuarioLogado.setSalasID(usuarioLogado.toIntList(aux));
 
                             sqLite.updateDataUsuario(usuarioLogado);
-                            if(foiInserido == true){
-                                geraDialog.fechaDialogFragment(dialog);
+                            if (foiInserido == true) {
                                 Toast.makeText(RoomCreationActivity.this, "Salvo", Toast.LENGTH_LONG).show();
                                 extra.putExtra("usuarioLogado", usuarioLogado);
                                 startActivity(extra);
-                            }else{
+                            } else {
                                 geraDialog.fechaDialogFragment(dialog);
                                 Toast.makeText(RoomCreationActivity.this, "Não Salvo", Toast.LENGTH_LONG).show();
                             }
                         }
                     });
 
-            }
+                }   }
             @Override
             public void onClickLogin(){
                 Intent i = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
@@ -165,5 +171,16 @@ public class RoomCreationActivity extends AppCompatActivity {
         inImage.compress(Bitmap.CompressFormat.JPEG, 100, bytes);
         String path = MediaStore.Images.Media.insertImage(inContext.getContentResolver(), inImage, "Title", null);
         return Uri.parse(path);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // dialog só é null antes de ser instanciado, apenas por garantia para não dar erros
+        if(dialog != null){
+            // Usado para fechar o Dialog Fragment do Loading Magic Circle, é chamado no onStop() pois ele apenas ocorre quando outra activity é chamada
+            // e essa sai de visualização, logo após não estar mais visível.
+            geraDialog.fechaDialogFragment(dialog);
+        }
     }
 }

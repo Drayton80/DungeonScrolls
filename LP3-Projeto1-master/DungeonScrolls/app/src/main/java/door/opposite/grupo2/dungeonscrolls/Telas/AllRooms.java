@@ -71,6 +71,10 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
         binding.lvRooms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                View loadingCircleDialog = getLayoutInflater().inflate(R.layout.dialogfragment_loadingcircle, null);
+                // Usa um dos métodos de DialogFragmentCreator para criar um dialog fragment do loading dialog e ao mesmo tempo passar sua
+                // referência para um AlertDialog chamado dialog
+                dialog = geradorDialog.criaDialogFragmentLoadingCircle(AllRooms.this, loadingCircleDialog);
                 int salaPosicao = position;
                 int i = 0;
                 System.out.println("=================Sala Posição: " + salaPosicao);
@@ -87,10 +91,7 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
                                 mestre = true;
                                 System.out.println("=================Mesmo Mestre: " + salaModel.getMestre() + " == " + salaUsada.getMestre());
                                 // Cria uma View que referencia o layout dialogfragment_loadingcircle
-                                View loadingCircleDialog = getLayoutInflater().inflate(R.layout.dialogfragment_loadingcircle, null);
-                                // Usa um dos métodos de DialogFragmentCreator para criar um dialog fragment do loading dialog e ao mesmo tempo passar sua
-                                // referência para um AlertDialog chamado dialog
-                                dialog = geradorDialog.criaDialogFragmentLoadingCircle(AllRooms.this, loadingCircleDialog);
+
 
                                 salaUsada = sqLite.selecionarSala(salasID[i + 1]);
                                 extra = new Intent(AllRooms.this, RoomActivity.class);
@@ -105,11 +106,7 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
                 }
                 if(salaUsuario == false){
                     if(salaModelSelecionada.getSenha().length() == 1){
-                        // Cria uma View que referencia o layout dialogfragment_loadingcircle
-                        View loadingCircleDialog = getLayoutInflater().inflate(R.layout.dialogfragment_loadingcircle, null);
-                        // Usa um dos métodos de DialogFragmentCreator para criar um dialog fragment do loading dialog e ao mesmo tempo passar sua
-                        // referência para um AlertDialog chamado dialog
-                        dialog = geradorDialog.criaDialogFragmentLoadingCircle(AllRooms.this, loadingCircleDialog);
+
 
                         salaUsada = sqLite.selecionarSala(salaModelSelecionada.getNome());
                         extra = new Intent(AllRooms.this, RoomActivity.class);
@@ -180,4 +177,15 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
         }
     }
 
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        // dialog só é null antes de ser instanciado, apenas por garantia para não dar erros
+        if(dialog != null){
+            // Usado para fechar o Dialog Fragment do Loading Magic Circle, é chamado no onStop() pois ele apenas ocorre quando outra activity é chamada
+            // e essa sai de visualização, logo após não estar mais visível.
+            geradorDialog.fechaDialogFragment(dialog);
+        }
+    }
 }
