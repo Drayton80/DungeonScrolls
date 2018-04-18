@@ -5,6 +5,9 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import door.opposite.grupo2.dungeonscrolls.R;
 
 /**
  *  Esta classe serve para gerar Dialog Fragments com facilidade apenas passando o contexto da view Java pertencente a classe aonde será gerado
@@ -54,7 +57,7 @@ public class DialogFragmentCreator {
      * @param contexto
      * @param dialogView
      */
-    public boolean criaDialogFragment(Context contexto, final View dialogView){
+    public AlertDialog criaDialogFragment(Context contexto, final View dialogView){
         // Cria um Builder para poder manipular o Dialog
         AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(contexto);
         // Serve para referenciar a tela (layout) ao qual o Dialog Fragment será exibido em forma de pop-up
@@ -71,7 +74,7 @@ public class DialogFragmentCreator {
         dialog.show();
 
         // Retorna o dialog para que ele possa ser fechado, caso necessário, com o método fechaDialogFragment
-        return false;
+        return dialog;
     }
 
     /** Descrição: esse método faz o cancelamento e, consquentemente, fecha qualquer dialog fragment que receber

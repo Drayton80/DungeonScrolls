@@ -40,7 +40,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     ActivityRoomBinding binding;
     SQLite sqLite;
     Intent extra;
-    Usuario usuarioLogado;
+    Usuario usuarioLogado, usuarioOn;
     Sala salaUsada;
     Ficha fichaUsada;
     SalaModel salaModel;
@@ -51,7 +51,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     int posicaoDelete = 0;
     DialogFragmentCreator geraDialog = new DialogFragmentCreator();
     AlertDialog dialog;
-    boolean deletar, mestre = false;
+    boolean deletar = false, mestre = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,15 +72,21 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         binding.setItemSalaCompleta(new SalaModel(salaUsada));
 
         if(mestre != true){
-            int[] aux = new int[salaUsada.toIntArray(salaUsada.getJogadoresID()).length +1];
-
-            for (int i = 0; i < salaUsada.toIntArray(salaUsada.getJogadoresID()).length; i++){
-                aux[i] = salaUsada.toIntArray(salaUsada.getJogadoresID())[i];
+            for(int i = 1; i < salaUsada.toIntArray(salaUsada.getJogadoresID()).length; i++){
+                usuarioOn = sqLite.selecionarUsuario(salaUsada.toIntArray(salaUsada.getJogadoresID())[i]);
+                if(usuarioLogado.getNick().equals(usuarioOn.getNick())){
+                   deletar = true;
+                }
             }
-            System.out.println("==========================aux[0]: " + aux[1]);
-            aux[salaUsada.toIntArray(salaUsada.getJogadoresID()).length] = usuarioLogado.getID();
-            salaUsada.setJogadoresID(salaUsada.toIntList(aux));
-            sqLite.updateDataSala(salaUsada);
+            if(deletar != true){
+                int[] aux = new int[salaUsada.toIntArray(salaUsada.getJogadoresID()).length + 1];
+                for (int i = 0; i < salaUsada.toIntArray(salaUsada.getJogadoresID()).length; i++){
+                    aux[i] = salaUsada.toIntArray(salaUsada.getJogadoresID())[i];
+                }
+                aux[salaUsada.toIntArray(salaUsada.getJogadoresID()).length] = usuarioLogado.getID();
+                salaUsada.setJogadoresID(salaUsada.toIntList(aux));
+                sqLite.updateDataSala(salaUsada);
+            }
         }
 
         fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
@@ -89,7 +95,6 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         fichaModelArrayList = fichaModel.getArrayListaFicha(salaUsada.toIntArray(salaUsada.getFichasID()), sqLite);
         fichaAdapter = new FichaAdapter(this, fichaModelArrayList);
         binding.roomListViewFichas.setAdapter(fichaAdapter);
-
 
         binding.roomListViewFichas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -129,7 +134,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                                 extra.putExtra("usuarioLogado", usuarioLogado);
                                 extra.putExtra("salaUsada", salaUsada);
                                 extra.putExtra("fichaUsada", fichaUsada);
-
+                                extra.putExtra("mestre", mestre);
                                 startActivity(extra);
                             }
                         }
@@ -252,7 +257,6 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     @Override
     public void onDialogPositiveClick(DialogFragment dialog, String senha) {
-
     }
 
     @Override
@@ -285,12 +289,36 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     }
 
     @Override
-    public void onDialogPositiveClickUsuarios(DialogFragment dialog) {
+    public void onDialogPositiveClickUsuarios(DialogFragment dialog, String nickUsuario) {
+        fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
+        for(int i = 0; i < salaUsada.toIntArray(salaUsada.getFichasID()).length; i++){
+            if(i == posicaoDelete){
+                if (fichasID[i+1] == 0){
+                }else{
+                    // System.out.println("=================Entrou aqui, eu achei a sala!");
+                    Ficha ficha = sqLite.selecionarFicha(fichasID[i+1]);
+                    usuarioOn = sqLite.selecionarUsuario(nickUsuario);
+
+                    int[] aux = new int[usuarioOn.toIntArray(usuarioOn.getFichasID()).length + 1];
+                    // System.out.println(Arrays.toString(usuarioLogado.toIntArray(usuarioLogado.getSalasID())));
+
+                    for (int j = 0; j < usuarioOn.toIntArray(usuarioOn.getFichasID()).length; j++) {
+                        aux[j] = usuarioOn.toIntArray(usuarioOn.getFichasID())[j];
+                    }
+                    aux[usuarioOn.toIntArray(usuarioOn.getFichasID()).length] = ficha.getId();
+                    // System.out.println(Arrays.toString(aux));
+                    usuarioOn.setFichasID((usuarioOn.toIntList(aux)));
+
+                    sqLite.updateDataUsuario(usuarioOn);
+                    dialog.dismiss();
+                }
+            }
+        }
 
     }
 
     @Override
     public void onDialogNegativeClickUsuarios(DialogFragment dialog) {
-
+        dialog.dismiss();
     }
 }

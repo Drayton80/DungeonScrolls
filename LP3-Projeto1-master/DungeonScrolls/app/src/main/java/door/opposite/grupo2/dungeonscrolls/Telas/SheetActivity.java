@@ -48,6 +48,7 @@ public class SheetActivity extends AppCompatActivity {
     private byte[] byteArray;
     StorageReference storage;
     Uri buffer;
+    Boolean mestre = false;
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
@@ -63,6 +64,8 @@ public class SheetActivity extends AppCompatActivity {
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
         salaUsada = (Sala) extra.getSerializableExtra("salaUsada");
         fichaUsada = (Ficha) extra.getSerializableExtra("fichaUsada");
+        mestre =  extra.getBooleanExtra("mestre", mestre);
+
         storage = FirebaseStorage.getInstance().getReference();
 
         binding.setFichaElementos(new FichaModel(fichaUsada));
@@ -188,6 +191,7 @@ public class SheetActivity extends AppCompatActivity {
         extra = new Intent(SheetActivity.this, RoomActivity.class);
         extra.putExtra("usuarioLogado", usuarioLogado);
         extra.putExtra("salaUsada", salaUsada);
+        mestre =  extra.getBooleanExtra("mestre", mestre);
         startActivity(extra);
     }
 

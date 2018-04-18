@@ -92,7 +92,6 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
                                 System.out.println("=================Mesmo Mestre: " + salaModel.getMestre() + " == " + salaUsada.getMestre());
                                 // Cria uma View que referencia o layout dialogfragment_loadingcircle
 
-
                                 salaUsada = sqLite.selecionarSala(salasID[i + 1]);
                                 extra = new Intent(AllRooms.this, RoomActivity.class);
                                 extra.putExtra("usuarioLogado", usuarioLogado);

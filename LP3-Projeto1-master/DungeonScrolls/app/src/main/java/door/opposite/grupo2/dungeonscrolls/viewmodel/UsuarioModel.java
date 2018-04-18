@@ -31,6 +31,15 @@ public class UsuarioModel extends BaseObservable{
         this.email = usuario.getEmail();
     }
 
+    public String getId() {
+        return String.valueOf(id);
+    }
+
+    public void setId(String id) {
+        this.id = Integer.parseInt(id);
+        notifyPropertyChanged(R.id.idDoJogador);
+    }
+
     public String getNick() {
         return nick;
     }
@@ -38,6 +47,7 @@ public class UsuarioModel extends BaseObservable{
     public void setNick(String nick) {
         this.nick = nick;
         notifyPropertyChanged(R.id.login_username_plainText);
+        notifyPropertyChanged(R.id.nomeDoJogador);
     }
 
     public String getSenha() {

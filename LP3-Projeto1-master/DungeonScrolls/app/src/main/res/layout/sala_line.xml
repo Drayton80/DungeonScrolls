@@ -30,7 +30,7 @@
         app:layout_constraintVertical_bias="0.007" />
 
     <TextView
-        android:id="@+id/nomeDaSala"
+        android:id="@+id/nomeDoJogador"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -50,8 +50,8 @@
         android:text="@{listaSala.nomeMestre}"
         android:textAppearance="@style/TextAppearance.AppCompat.Menu"
         app:layout_constraintBottom_toBottomOf="@+id/imagemDaSala"
-        app:layout_constraintStart_toStartOf="@+id/nomeDaSala"
-        app:layout_constraintTop_toBottomOf="@+id/nomeDaSala" />
+        app:layout_constraintStart_toStartOf="@+id/nomeDoJogador"
+        app:layout_constraintTop_toBottomOf="@+id/nomeDoJogador" />
 
     <TextView
         android:id="@+id/statusDaSala"

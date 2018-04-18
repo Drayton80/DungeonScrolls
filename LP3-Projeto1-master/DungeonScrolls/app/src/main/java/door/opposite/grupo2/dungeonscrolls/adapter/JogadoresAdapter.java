@@ -16,6 +16,8 @@ import java.util.Arrays;
 
 import door.opposite.grupo2.dungeonscrolls.R;
 import door.opposite.grupo2.dungeonscrolls.databinding.ActivityRoomListviewFichaBinding;
+import door.opposite.grupo2.dungeonscrolls.databinding.DialogfragmentRoomListajogadoresBinding;
+import door.opposite.grupo2.dungeonscrolls.databinding.JogadoresLineBinding;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.UsuarioModel;
 
@@ -28,7 +30,7 @@ public class JogadoresAdapter extends ArrayAdapter<UsuarioModel> {
     Context context2;
 
     public JogadoresAdapter(@NonNull Context context, ArrayList<UsuarioModel> usuarioModelArrayList)  {
-        super(context, R.layout.dialogfragment_room_listajogadores, usuarioModelArrayList);
+        super(context, R.layout.jogadores_line, usuarioModelArrayList);
         this.context2 = context;
         this.usuarioModelArrayList = usuarioModelArrayList;
         System.out.println("To aqui: =================" + Arrays.toString(usuarioModelArrayList.toArray()));
@@ -37,17 +39,12 @@ public class JogadoresAdapter extends ArrayAdapter<UsuarioModel> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-/*
+
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View Dialog = getLayoutInflater().inflate(R.layout.dialogfragment_loadingcircle, null);
-        Dialog activityRoomListviewFichaBinding = DataBindingUtil.inflate(layoutInflater, R.layout.activity_room_listview_ficha, parent, false);
-        activityRoomListviewFichaBinding.setU(usuarioModelArrayList.get(position));
-        if (usuarioModelArrayList.get(position).getImagem() != null) {
-            Picasso.get().load(fichaModelArrayList.get(position).getImagem()).into(activityRoomListviewFichaBinding.listviewFichaImageViewImagem);
-        }
-        System.out.println("=====================Chegou!!");
-        return activityRoomListviewFichaBinding.getRoot();
-        */
-        return null;
+        JogadoresLineBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.jogadores_line, parent, false);
+        binding.setJogadoresSala(usuarioModelArrayList.get(position));
+
+        System.out.println("=====================Chegou aqui no usuario!!");
+        return binding.getRoot();
     }
 }
