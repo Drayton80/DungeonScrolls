@@ -6,18 +6,7 @@
             type="door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel"/>
     </data>
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        tools:context="door.opposite.grupo2.dungeonscrolls.Telas.RoomsListViewFicha">
 
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar" />
 
         <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -55,5 +44,4 @@
                 app:layout_constraintTop_toBottomOf="@+id/listviewFicha_imageView_imagem" />
 
         </android.support.constraint.ConstraintLayout>
-    </LinearLayout>
 </layout>

@@ -57,7 +57,7 @@
     <string name="sheet_activity_recordSheet_resistenciasBase">Base</string>
     <string name="sheet_activity_recordSheet_resistenciasOutros">Outros</string>
     <string name="sheet_activity_recordSheet_resistenciasModificador">Modificador</string>
-    <string name="sheet_activity_recordSheet_resistenciasFortitude">Fortitude</string>
+    <string name="sheet_activity_recordSheet_resistenciasFortitude" translatable="false">Fortitude</string>
     <string name="sheet_activity_recordSheet_resistenciasReflexos">Reflexos</string>
     <string name="sheet_activity_recordSheet_resistenciasVontade">Vontade</string>
     <string name="sheet_activity_recordSheet_age">Idade</string>
@@ -143,21 +143,21 @@
     <string name="options_activity_opcoesDeUsuario">Características de Usuário</string>
     <string name="options_activity_nome">Nome de Usuário</string>
     <string name="options_activity_senha">Senha</string>
-    <string name="options_activity_email">Email</string>
+    <string name="options_activity_email" translatable="false">Email</string>
     <string name="options_activity_salvar">Salvar Alterações</string>
 
 
     <!-- Textos Relativos ao Idioma American English (EN) -->
 
     <!-- Textos Gerais -->
-    <string name="choose_language_english">American English</string>
+    <string name="choose_language_english" translatable="false">American English</string>
     <string name="choose_language_portuguese">Português Brasileiro</string>
 
     <string name="gerais_expandir">Expandir</string>
     <string name="gerais_salvar">Salvar</string>
 
-    <string name="title_activity_login">LoginActivity</string>
-    <string name="title_activity_main2">Main2Activity</string>
-    <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
+    <string name="title_activity_login" translatable="false">LoginActivity</string>
+    <string name="title_activity_main2" translatable="false">Main2Activity</string>
+    <string name="action_settings" translatable="false">Settings</string>
+    <string name="section_format" translatable="false">Hello World from section: %1$d</string>
 </resources>
