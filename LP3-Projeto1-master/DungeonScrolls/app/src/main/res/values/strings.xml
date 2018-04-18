@@ -147,6 +147,13 @@
     <string name="options_activity_salvar">Salvar Alterações</string>
 
 
+    <string name="menu_navigationDrawer_listaDeSalas">Lista de Salas</string>
+    <string name="menu_navigationDrawer_paginaPrincipal">Página Principal</string>
+    <string name="menu_navigationDrawer_ficha">Ficha de Personagem</string>
+    <string name="menu_navigationDrawer_configuracoes">Configurações</string>
+    <string name="menu_navigationDrawer_sairDaConta">Sair da Conta</string>
+
+
     <!-- Textos Relativos ao Idioma American English (EN) -->
 
     <!-- Textos Gerais -->
@@ -160,4 +167,8 @@
     <string name="title_activity_main2" translatable="false">Main2Activity</string>
     <string name="action_settings" translatable="false">Settings</string>
     <string name="section_format" translatable="false">Hello World from section: %1$d</string>
+
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="title_activity_main3">Main3Activity</string>
 </resources>

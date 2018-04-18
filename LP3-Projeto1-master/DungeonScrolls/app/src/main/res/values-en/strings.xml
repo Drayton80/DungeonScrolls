@@ -134,4 +134,11 @@
     <string name="choose_language_portuguese">" Brazilian Portuguese"</string>
     <string name="gerais_expandir">Expand</string>
     <string name="gerais_salvar">Save</string>
+    <string name="menu_navigationDrawer_listaDeSalas">Rooms List</string>
+    <string name="menu_navigationDrawer_paginaPrincipal">Home</string>
+    <string name="menu_navigationDrawer_ficha">Character Sheet</string>
+    <string name="menu_navigationDrawer_configuracoes">Options</string>
+    <string name="menu_navigationDrawer_sairDaConta">Log Out</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>
