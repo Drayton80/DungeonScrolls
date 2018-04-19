@@ -49,7 +49,7 @@
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="32dp"
-                    android:src="@drawable/avatar"
+                    android:src="@drawable/no_image_selection_room_1"
                     app:civ_border_color="@color/colorSecondaryDark"
                     android:onClick="@{(v)->cadevent.onClickLogin()}"
                     app:civ_fill_color="@color/colorSecondary"

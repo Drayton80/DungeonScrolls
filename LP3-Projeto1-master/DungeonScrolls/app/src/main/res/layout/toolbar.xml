@@ -9,4 +9,13 @@
     app:title="@string/app_name">
 
 
+    <ImageButton
+        android:id="@+id/home_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:backgroundTint="@color/colorPrimary"
+        app:srcCompat="@drawable/home" />
+
+
 </android.support.v7.widget.Toolbar>

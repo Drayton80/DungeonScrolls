@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
     <data>
         <variable
             name="salvarFicha"
@@ -10,205 +12,217 @@
             type="door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel"/>
     </data>
 
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/sheetMI_drawer_menu"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar" />
-        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            xmlns:app="http://schemas.android.com/apk/res-auto"
-            xmlns:tools="http://schemas.android.com/tools"
+        <android.support.design.widget.NavigationView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/navigationdrawer_header"
+            app:menu="@menu/menu_navigation_drawer_sheet">
+        </android.support.design.widget.NavigationView>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context="door.opposite.grupo2.dungeonscrolls.Telas.SheetMagicInformationActivityDF">
+            android:orientation="vertical">
 
-            <Button
-                android:id="@+id/sheetMI_button_salvar"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:layout_marginEnd="24dp"
-                android:layout_marginStart="24dp"
-                android:background="@drawable/button_layout"
-                android:text="@string/gerais_salvar"
-                android:textColor="@color/colorExternalButtonTexts"
-                android:onClick="@{()->salvarFicha.onClickSalvar()}"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <ScrollView
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar" />
+            <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                tools:context="door.opposite.grupo2.dungeonscrolls.Telas.SheetMagicInformationActivityDF">
 
-                <android.support.constraint.ConstraintLayout
+                <Button
+                    android:id="@+id/sheetMI_button_salvar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginStart="24dp"
+                    android:background="@drawable/button_layout"
+                    android:text="@string/gerais_salvar"
+                    android:textColor="@color/colorExternalButtonTexts"
+                    android:onClick="@{()->salvarFicha.onClickSalvar()}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <ScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
 
-                    <TextView
-                        android:id="@+id/sheetMI_textView_title"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="32dp"
-                        android:layout_marginStart="32dp"
-                        android:layout_marginTop="24dp"
-                        android:text="@string/sheet_activity_magicInformationSheet_titulo"
-                        android:textAlignment="center"
-                        android:textSize="20dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                    <android.support.constraint.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/sheetMI_textView_testeDeResistenciaMagica"
-                        android:layout_width="75dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16dp"
-                        android:text="@string/sheet_activity_magicInformationSheet_testeDeResistencia"
-                        android:textAlignment="center"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/sheetMI_textView_title" />
+                        <TextView
+                            android:id="@+id/sheetMI_textView_title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="32dp"
+                            android:layout_marginStart="32dp"
+                            android:layout_marginTop="24dp"
+                            android:text="@string/sheet_activity_magicInformationSheet_titulo"
+                            android:textAlignment="center"
+                            android:textSize="20dp"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
 
-                    <EditText
-                        android:id="@+id/sheetMI_editText_testeDeResistenciaMagica"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:ems="10"
-                        android:inputType="number"
-                        android:textAlignment="center"
-                        android:text="@={fichaElementos.testeResistencia}"
-                        app:layout_constraintEnd_toEndOf="@+id/sheetMI_textView_testeDeResistenciaMagica"
-                        app:layout_constraintStart_toStartOf="@+id/sheetMI_textView_testeDeResistenciaMagica"
-                        app:layout_constraintTop_toBottomOf="@+id/sheetMI_textView_testeDeResistenciaMagica" />
+                        <TextView
+                            android:id="@+id/sheetMI_textView_testeDeResistenciaMagica"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="16dp"
+                            android:text="@string/sheet_activity_magicInformationSheet_testeDeResistencia"
+                            android:textAlignment="center"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/sheetMI_textView_title" />
 
-                    <EditText
-                        android:id="@+id/sheetMI_editText_testeDeResistenciaMagica2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:ems="10"
-                        android:inputType="number"
-                        android:textAlignment="center"
-                        android:text="@={fichaElementos.chanceFalha}"
-                        app:layout_constraintEnd_toEndOf="@+id/sheetMI_textView_chanceFalhaArcana"
-                        app:layout_constraintStart_toStartOf="@+id/sheetMI_textView_chanceFalhaArcana"
-                        app:layout_constraintTop_toBottomOf="@+id/sheetMI_textView_chanceFalhaArcana" />
+                        <EditText
+                            android:id="@+id/sheetMI_editText_testeDeResistenciaMagica"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:ems="10"
+                            android:inputType="number"
+                            android:textAlignment="center"
+                            android:text="@={fichaElementos.testeResistencia}"
+                            app:layout_constraintEnd_toEndOf="@+id/sheetMI_textView_testeDeResistenciaMagica"
+                            app:layout_constraintStart_toStartOf="@+id/sheetMI_textView_testeDeResistenciaMagica"
+                            app:layout_constraintTop_toBottomOf="@+id/sheetMI_textView_testeDeResistenciaMagica" />
 
-                    <TextView
-                        android:id="@+id/sheetMI_textView_chanceFalhaArcana"
-                        android:layout_width="75dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16dp"
-                        android:text="@string/sheet_activity_magicInformationSheet_chanceDeFalhaArcana"
-                        android:textAlignment="center"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/sheetMI_editText_testeDeResistenciaMagica" />
+                        <EditText
+                            android:id="@+id/sheetMI_editText_testeDeResistenciaMagica2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:ems="10"
+                            android:inputType="number"
+                            android:textAlignment="center"
+                            android:text="@={fichaElementos.chanceFalha}"
+                            app:layout_constraintEnd_toEndOf="@+id/sheetMI_textView_chanceFalhaArcana"
+                            app:layout_constraintStart_toStartOf="@+id/sheetMI_textView_chanceFalhaArcana"
+                            app:layout_constraintTop_toBottomOf="@+id/sheetMI_textView_chanceFalhaArcana" />
 
-                    <TextView
-                        android:id="@+id/sheetMI_textView_numeroMagiasPorDia"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginEnd="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/sheet_activity_magicInformationSheet_numeroDeMagiasPorDia"
-                        android:textAlignment="center"
-                        app:layout_constraintBottom_toBottomOf="@+id/sheetMI_textView_testeDeResistenciaMagica"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/sheetMI_textView_testeDeResistenciaMagica"
-                        app:layout_constraintTop_toTopOf="@+id/sheetMI_textView_testeDeResistenciaMagica" />
+                        <TextView
+                            android:id="@+id/sheetMI_textView_chanceFalhaArcana"
+                            android:layout_width="75dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="16dp"
+                            android:text="@string/sheet_activity_magicInformationSheet_chanceDeFalhaArcana"
+                            android:textAlignment="center"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/sheetMI_editText_testeDeResistenciaMagica" />
 
-                    <EditText
-                        android:id="@+id/sheetMI_editText_numeroMagiasPorDia"
-                        android:layout_width="0dp"
-                        android:layout_height="0dp"
-                        android:layout_marginTop="8dp"
-                        android:ems="10"
-                        android:inputType="textMultiLine"
-                        android:textAlignment="center"
-                        android:text="@={fichaElementos.numeroMagias}"
-                        app:layout_constraintBottom_toBottomOf="@+id/sheetMI_editText_testeDeResistenciaMagica2"
-                        app:layout_constraintEnd_toEndOf="@+id/sheetMI_textView_numeroMagiasPorDia"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="@+id/sheetMI_textView_numeroMagiasPorDia"
-                        app:layout_constraintTop_toBottomOf="@+id/sheetMI_textView_numeroMagiasPorDia" />
+                        <TextView
+                            android:id="@+id/sheetMI_textView_numeroMagiasPorDia"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginBottom="8dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/sheet_activity_magicInformationSheet_numeroDeMagiasPorDia"
+                            android:textAlignment="center"
+                            app:layout_constraintBottom_toBottomOf="@+id/sheetMI_textView_testeDeResistenciaMagica"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/sheetMI_textView_testeDeResistenciaMagica"
+                            app:layout_constraintTop_toTopOf="@+id/sheetMI_textView_testeDeResistenciaMagica" />
 
-                    <TextView
-                        android:id="@+id/sheetMI_textView_dominioEscola"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16dp"
-                        android:text="@string/sheet_activity_magicInformationSheet_dominioEscola"
-                        android:textAlignment="center"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/sheetMI_editText_testeDeResistenciaMagica2" />
+                        <EditText
+                            android:id="@+id/sheetMI_editText_numeroMagiasPorDia"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:layout_marginTop="8dp"
+                            android:ems="10"
+                            android:inputType="textMultiLine"
+                            android:textAlignment="center"
+                            android:text="@={fichaElementos.numeroMagias}"
+                            app:layout_constraintBottom_toBottomOf="@+id/sheetMI_editText_testeDeResistenciaMagica2"
+                            app:layout_constraintEnd_toEndOf="@+id/sheetMI_textView_numeroMagiasPorDia"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toStartOf="@+id/sheetMI_textView_numeroMagiasPorDia"
+                            app:layout_constraintTop_toBottomOf="@+id/sheetMI_textView_numeroMagiasPorDia" />
 
-                    <EditText
-                        android:id="@+id/sheetMI_editText_dominioEscola"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:ems="10"
-                        android:inputType="text"
-                        android:textAlignment="center"
-                        android:text="@={fichaElementos.escolhaEspecializada}"
-                        app:layout_constraintEnd_toEndOf="@+id/sheetMI_textView_dominioEscola"
-                        app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toStartOf="@+id/sheetMI_textView_dominioEscola"
-                        app:layout_constraintTop_toBottomOf="@+id/sheetMI_textView_dominioEscola" />
+                        <TextView
+                            android:id="@+id/sheetMI_textView_dominioEscola"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="16dp"
+                            android:text="@string/sheet_activity_magicInformationSheet_dominioEscola"
+                            android:textAlignment="center"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/sheetMI_editText_testeDeResistenciaMagica2" />
 
-                    <TextView
-                        android:id="@+id/sheetMI_textView_magias"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="16dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginTop="16dp"
-                        android:text="@string/sheet_activity_magicInformationSheet_magias"
-                        android:textAlignment="center"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/sheetMI_editText_dominioEscola" />
+                        <EditText
+                            android:id="@+id/sheetMI_editText_dominioEscola"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:ems="10"
+                            android:inputType="text"
+                            android:textAlignment="center"
+                            android:text="@={fichaElementos.escolhaEspecializada}"
+                            app:layout_constraintEnd_toEndOf="@+id/sheetMI_textView_dominioEscola"
+                            app:layout_constraintHorizontal_bias="1.0"
+                            app:layout_constraintStart_toStartOf="@+id/sheetMI_textView_dominioEscola"
+                            app:layout_constraintTop_toBottomOf="@+id/sheetMI_textView_dominioEscola" />
 
-                    <EditText
-                        android:id="@+id/sheetMI_editText_numeroMagiasPorDia3"
-                        android:layout_width="0dp"
-                        android:layout_height="470dp"
-                        android:layout_marginBottom="72dp"
-                        android:layout_marginTop="8dp"
-                        android:ems="10"
-                        android:inputType="textMultiLine"
-                        android:textAlignment="center"
-                        android:text="@={fichaElementos.magias}"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/sheetMI_textView_magias"
-                        app:layout_constraintStart_toStartOf="@+id/sheetMI_textView_magias"
-                        app:layout_constraintTop_toBottomOf="@+id/sheetMI_textView_magias" />
+                        <TextView
+                            android:id="@+id/sheetMI_textView_magias"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="16dp"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="16dp"
+                            android:text="@string/sheet_activity_magicInformationSheet_magias"
+                            android:textAlignment="center"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/sheetMI_editText_dominioEscola" />
+
+                        <EditText
+                            android:id="@+id/sheetMI_editText_numeroMagiasPorDia3"
+                            android:layout_width="0dp"
+                            android:layout_height="470dp"
+                            android:layout_marginBottom="72dp"
+                            android:layout_marginTop="8dp"
+                            android:ems="10"
+                            android:inputType="textMultiLine"
+                            android:textAlignment="center"
+                            android:text="@={fichaElementos.magias}"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/sheetMI_textView_magias"
+                            app:layout_constraintStart_toStartOf="@+id/sheetMI_textView_magias"
+                            app:layout_constraintTop_toBottomOf="@+id/sheetMI_textView_magias" />
 
 
-                </android.support.constraint.ConstraintLayout>
+                    </android.support.constraint.ConstraintLayout>
 
-            </ScrollView>
+                </ScrollView>
 
-        </android.support.constraint.ConstraintLayout>
-    </LinearLayout>
+            </android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+
+    </android.support.v4.widget.DrawerLayout>
 </layout>
