@@ -22,7 +22,7 @@ public class InitialActivity extends AppCompatActivity {
         sqLite.atualizaDataSala();
 
 
-        getSupportActionBar().hide();
+        //getSupportActionBar().hide();
 
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
