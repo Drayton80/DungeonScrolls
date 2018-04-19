@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -41,6 +42,8 @@ import door.opposite.grupo2.dungeonscrolls.viewmodel.SalaModel;
 public class RoomCreationActivity extends AppCompatActivity {
     DialogFragmentCreator geraDialog = new DialogFragmentCreator();     // Objeto da classe DialogFragmentCreator aonde estão ferramentas para criar Dialog Fragments
     AlertDialog dialog;
+    AlertDialog dialogCamera;
+    DialogFragmentCreator geraDialogCamera = new DialogFragmentCreator();
     Intent extra;
     Usuario usuarioLogado;
     ActivityRoomCreationBinding binding;
@@ -133,14 +136,30 @@ public class RoomCreationActivity extends AppCompatActivity {
                 }   }
             @Override
             public void onClickLogin(){
+                View loadingCircleDialog = getLayoutInflater().inflate(R.layout.dialogfragment_photos, null);
+                dialogCamera = geraDialogCamera.criaDialogFragmentLoadingCamera(RoomCreationActivity.this, loadingCircleDialog);
+                Button bt_camera = (Button)loadingCircleDialog.findViewById(R.id.bt_camera);
+                Button bt_galeria = (Button)loadingCircleDialog.findViewById(R.id.bt_galeria);
+                bt_camera.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent i = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+                        startActivityForResult(i, 0);
+                        geraDialogCamera.fechaDialogFragment(dialogCamera);
+                    }
+                });
+
+                bt_galeria.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                        startActivityForResult(galleryIntent, 1);
+                        geraDialogCamera.fechaDialogFragment(dialogCamera);
+
+                    }
+                });
 
 
-
-                //Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-               // startActivityForResult(galleryIntent, 1);
-
-                Intent i = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(i, 0);
             }
         });
 
@@ -186,7 +205,7 @@ public class RoomCreationActivity extends AppCompatActivity {
             }
 
         }
-        }
+    }
 
     public Uri getImageUri(Context inContext, Bitmap inImage) {
         ByteArrayOutputStream bytes = new ByteArrayOutputStream();

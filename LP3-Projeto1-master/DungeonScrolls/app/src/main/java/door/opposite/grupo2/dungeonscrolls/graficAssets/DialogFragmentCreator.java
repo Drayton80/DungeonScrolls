@@ -49,6 +49,25 @@ public class DialogFragmentCreator {
         // Retorna o dialog para que ele possa ser fechado, caso necessário, com o método fechaDialogFragment
         return dialog;
     }
+
+    public AlertDialog criaDialogFragmentLoadingCamera(Context contexto, View dialogView){
+        // Cria um Builder para poder manipular o Dialog
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(contexto);
+        // Serve para referenciar a tela (layout) ao qual o Dialog Fragment será exibido em forma de pop-up
+        dialogBuilder.setView(dialogView);
+
+        // Cria efetivamente o dialog
+        AlertDialog dialog = dialogBuilder.create();
+        // Informando que ao apertar fora do dialog fragment, ele não feche automaticamente
+        dialog.setCanceledOnTouchOutside(false);
+        // Exibe o dialog
+        dialog.show();
+
+
+
+        // Retorna o dialog para que ele possa ser fechado, caso necessário, com o método fechaDialogFragment
+        return dialog;
+    }
     /** Descrição: esse método gera um Dialog Fragment customizado
      *  Parâmetros:
      *      Context contexto - Contexto da classe Java relativa a View em que será exibida o Dialog Fragment
