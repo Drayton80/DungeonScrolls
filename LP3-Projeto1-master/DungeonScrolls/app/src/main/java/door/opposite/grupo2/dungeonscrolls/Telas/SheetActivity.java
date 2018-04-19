@@ -9,6 +9,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -57,15 +59,25 @@ public class SheetActivity extends AppCompatActivity {
     StorageReference storage;
     Uri buffer;
     Boolean mestre = false;
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle toggle;
+
 
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_sheet);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_sheet);
+        drawerLayout = (DrawerLayout)findViewById(R.id.sheet_drawer_menu);
+        toggle = new android.support.v7.app.ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.common_open_on_phone, R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        drawerLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                toggle.syncState();
+            }
+        });
         sqLite = new SQLite(this);
         campoImagem = (ImageView) findViewById(R.id.imageView);
         extra = getIntent();

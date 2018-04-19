@@ -4,6 +4,8 @@ import android.app.TabActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.widget.TabHost;
 
@@ -16,6 +18,8 @@ public class RoomsMenu extends TabActivity{
 
     Intent extra;
     Usuario usuarioLogado;
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle toggle;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -23,6 +27,15 @@ public class RoomsMenu extends TabActivity{
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         TabHost host = (TabHost) findViewById(android.R.id.tabhost);
+        drawerLayout = (DrawerLayout)findViewById(R.id.rooms_drawer_menu);
+        toggle = new android.support.v7.app.ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.common_open_on_phone, R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        drawerLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                toggle.syncState();
+            }
+        });
 
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");

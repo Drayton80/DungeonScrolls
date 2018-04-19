@@ -11,6 +11,8 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -52,15 +54,25 @@ public class RoomCreationActivity extends AppCompatActivity {
     boolean pegoFoto = false;
     StorageReference storage;
     Uri buffer;
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_room_creation);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_room_creation);
+        drawerLayout = (DrawerLayout)findViewById(R.id.rooms_drawer_creation);
+        toggle = new android.support.v7.app.ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.common_open_on_phone, R.string.close);
+        drawerLayout.addDrawerListener(toggle);
+        drawerLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                toggle.syncState();
+            }
+        });
         campoImagem = (ImageView) findViewById(R.id.sala_imageView);
         sqLite = new SQLite(this);
         binding.setSalamodel(new SalaModel());

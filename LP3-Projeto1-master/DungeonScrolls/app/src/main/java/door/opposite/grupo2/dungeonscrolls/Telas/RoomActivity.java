@@ -3,6 +3,10 @@ package door.opposite.grupo2.dungeonscrolls.Telas;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -36,7 +40,8 @@ import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.SalaModel;
 
-public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener, NoticeDialogFragment.NoticeDialogListener, NoticeDialogFragmentUsuarios.NoticeDialogListenerUsuarios{
+public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener, NoticeDialogFragment.NoticeDialogListener, NoticeDialogFragmentUsuarios.NoticeDialogListenerUsuarios,
+        NavigationView.OnNavigationItemSelectedListener{
     ActivityRoomBinding binding;
     SQLite sqLite;
     Intent extra;
@@ -52,15 +57,38 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     DialogFragmentCreator geraDialog = new DialogFragmentCreator();
     AlertDialog dialog;
     boolean deletar = false, mestre = false;
+    private DrawerLayout drawerLayout;
+    private ActionBarDrawerToggle toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_room);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
         setSupportActionBar(toolbar);
 
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_room);
+
+        drawerLayout = (DrawerLayout)findViewById(R.id.room_drawer_menu);
+        toggle = new android.support.v7.app.ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.common_open_on_phone, R.string.close);
+        toggle.setDrawerIndicatorEnabled(true);
+        drawerLayout.addDrawerListener(toggle);
+        drawerLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                toggle.syncState();
+            }
+        });
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(false);
+        NavigationView mNavigationView = (NavigationView) findViewById(R.id.design_navigation_view);
+
+        if (mNavigationView != null) {
+            mNavigationView.setNavigationItemSelectedListener(this);
+        }
+
 
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
@@ -289,6 +317,32 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         return array_novo;
     }
 
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (toggle.onOptionsItemSelected(item)) {
+            switch (item.getItemId()) {
+                case R.id.menu_navigationDrawer_item_listaDeSalas:
+                    extra = new Intent(RoomActivity.this, RoomsMenu.class);
+                    extra.putExtra("usuarioLogado", usuarioLogado);
+                    //extra.putExtra("salaUsada", salaUsada);
+                    //extra.putExtra("fichaUsada", fichaUsada);
+                    //extra.putExtra("mestre", mestre);
+                    startActivity(extra);
+                    return true;
+                case R.id.menu_navigationDrawer_item_configuracoes:
+                    //inciarOpções
+                    return true;
+                case R.id.menu_navigationDrawer_item_sairDaConta:
+                    extra = new Intent(RoomActivity.this, MainActivity.class);
+                    startActivity(extra);
+                    return true;
+            }
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     @Override
     public void onDialogPositiveClickUsuarios(DialogFragment dialog, String nickUsuario) {
         fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
@@ -321,5 +375,12 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     @Override
     public void onDialogNegativeClickUsuarios(DialogFragment dialog) {
         dialog.dismiss();
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        System.out.println("=================Entrou aqui, eu achei a sala!");
+
+        return true;
     }
 }
