@@ -14,7 +14,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Telas.MainActivity">
+        <activity android:name=".Telas.InitialActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,6 +26,7 @@
         <activity
             android:name=".Telas.SheetActivity"
             android:label="@string/sheet_activity_recordSheet_tituloPrincipal" />
+        <activity android:name=".Telas.MainActivity"/>
         <activity android:name=".Telas.SheetAppearanceActivityDF" />
         <activity android:name=".Telas.SheetFeatsSkillsActivityDF" />
         <activity android:name=".Telas.SheetEquipmentItensActivityDF" />

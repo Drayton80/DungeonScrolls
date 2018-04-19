@@ -45,7 +45,7 @@ public class SheetActivity extends AppCompatActivity {
     SQLite sqLite;
     int[] salasID, fichasID;
     ImageView campoImagem;
-    private byte[] byteArray;
+    boolean pegoFoto = false;
     StorageReference storage;
     Uri buffer;
     Boolean mestre = false;
@@ -154,7 +154,7 @@ public class SheetActivity extends AppCompatActivity {
 
                 Uri uri;
 
-                if (byteArray != null){
+                if (pegoFoto){
                     uri = buffer;
                 }else {
 
@@ -178,8 +178,11 @@ public class SheetActivity extends AppCompatActivity {
 
             @Override
             public void onClickSalvarImagem() {
+
+                //Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                // startActivityForResult(galleryIntent, 1);
+
                 Intent i = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                //i.putExtra(MediaStore.EXTRA_OUTPUT, MyFileContentProvider.CONTENT_URI);
                 startActivityForResult(i, 0);
 
             }
@@ -200,6 +203,7 @@ public class SheetActivity extends AppCompatActivity {
     {
         super.onActivityResult(requestCode, resultCode, data);
 
+        if(requestCode == 0){
 
         if (data != null) {
             Bundle bundle = data.getExtras();
@@ -209,20 +213,13 @@ public class SheetActivity extends AppCompatActivity {
             // Atualiza a imagem na tela
             buffer = getImageUri(this, bitmap);
             campoImagem.setImageBitmap(bitmap);
+            pegoFoto = true;
 
-            try {
-                // Salva o array de bytes
-                ByteArrayOutputStream bArray = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bArray);
-                bArray.flush();
-                bArray.close();
-                this.byteArray = bArray.toByteArray();
-            } catch (IOException ex) {
+        }
 
-            }
             Uri uri;
 
-            if (byteArray != null){
+            if (pegoFoto){
                 uri = buffer;
             }else {
 
@@ -238,8 +235,29 @@ public class SheetActivity extends AppCompatActivity {
                     fichaUsada.setImagem(uriCerta.toString());
                 }
             });
+
             sqLite.updateDataFicha(fichaUsada);
         }
+
+            if(requestCode == 1){
+
+                if (data != null) {
+
+
+                    // Atualiza a imagem na tela
+                    buffer = data.getData();
+                    Bitmap bitmap = null;
+                    try {
+                        bitmap = MediaStore.Images.Media.getBitmap(SheetActivity.this.getContentResolver(),buffer);
+                    } catch (IOException e) {
+                        System.out.println("oush");
+                    }
+                    campoImagem.setImageBitmap(bitmap);
+                    pegoFoto = true;
+
+                }
+
+            }
     }
 
     public Uri getImageUri(Context inContext, Bitmap inImage) {

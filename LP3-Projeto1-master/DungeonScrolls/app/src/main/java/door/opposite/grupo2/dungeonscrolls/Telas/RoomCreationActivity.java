@@ -1,6 +1,8 @@
 package door.opposite.grupo2.dungeonscrolls.Telas;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Bitmap;
@@ -8,6 +10,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,8 +28,8 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URL;
 
+
 import door.opposite.grupo2.dungeonscrolls.R;
-import door.opposite.grupo2.dungeonscrolls.adapter.MyFileContentProvider;
 import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
 import door.opposite.grupo2.dungeonscrolls.databinding.ActivityRoomCreationBinding;
 import door.opposite.grupo2.dungeonscrolls.graficAssets.DialogFragmentCreator;
@@ -43,7 +46,7 @@ public class RoomCreationActivity extends AppCompatActivity {
     ActivityRoomCreationBinding binding;
     SQLite sqLite;
     ImageView campoImagem;
-    private byte[] byteArray;
+    boolean pegoFoto = false;
     StorageReference storage;
     Uri buffer;
 
@@ -59,6 +62,7 @@ public class RoomCreationActivity extends AppCompatActivity {
         sqLite = new SQLite(this);
         binding.setSalamodel(new SalaModel());
         storage = FirebaseStorage.getInstance().getReference();
+        final AlertDialog.Builder builder = new AlertDialog.Builder(RoomCreationActivity.this);
 
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
@@ -82,7 +86,7 @@ public class RoomCreationActivity extends AppCompatActivity {
 
                     Uri uri;
 
-                    if (byteArray != null) {
+                    if (pegoFoto) {
                         uri = buffer;
                     } else {
 
@@ -129,8 +133,13 @@ public class RoomCreationActivity extends AppCompatActivity {
                 }   }
             @Override
             public void onClickLogin(){
+
+
+
+                //Intent galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+               // startActivityForResult(galleryIntent, 1);
+
                 Intent i = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-                //i.putExtra(MediaStore.EXTRA_OUTPUT, MyFileContentProvider.CONTENT_URI);
                 startActivityForResult(i, 0);
             }
         });
@@ -143,7 +152,7 @@ public class RoomCreationActivity extends AppCompatActivity {
     {
         super.onActivityResult(requestCode, resultCode, data);
 
-
+        if(requestCode == 0) {
             if (data != null) {
                 Bundle bundle = data.getExtras();
 
@@ -152,18 +161,31 @@ public class RoomCreationActivity extends AppCompatActivity {
                 // Atualiza a imagem na tela
                 buffer = getImageUri(this, bitmap);
                 campoImagem.setImageBitmap(bitmap);
+                pegoFoto = true;
 
-                try {
-                    // Salva o array de bytes
-                    ByteArrayOutputStream bArray = new ByteArrayOutputStream();
-                    bitmap.compress(Bitmap.CompressFormat.JPEG, 100, bArray);
-                    bArray.flush();
-                    bArray.close();
-                    this.byteArray = bArray.toByteArray();
-                } catch (IOException ex) {
 
-                }
             }
+        }
+
+        if(requestCode == 1){
+
+            if (data != null) {
+
+
+                // Atualiza a imagem na tela
+                buffer = data.getData();
+                Bitmap bitmap = null;
+                try {
+                    bitmap = MediaStore.Images.Media.getBitmap(RoomCreationActivity.this.getContentResolver(),buffer);
+                } catch (IOException e) {
+                    System.out.println("oush");
+                }
+                campoImagem.setImageBitmap(bitmap);
+                pegoFoto = true;
+
+            }
+
+        }
         }
 
     public Uri getImageUri(Context inContext, Bitmap inImage) {

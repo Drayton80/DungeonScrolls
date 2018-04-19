@@ -1,9 +1,11 @@
 package door.opposite.grupo2.dungeonscrolls.Telas;
 
+import android.Manifest;
 import android.app.TabActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.widget.TabHost;
 
 import door.opposite.grupo2.dungeonscrolls.R;
@@ -11,10 +13,18 @@ import door.opposite.grupo2.dungeonscrolls.R;
 @SuppressWarnings("deprecation")
 public class MainActivity extends TabActivity {
 
+    private static final int  PERMISSIONS_MULTIPLE_REQUEST = 2;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ActivityCompat.requestPermissions(MainActivity.this,
+                new String[]{ Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE },
+                PERMISSIONS_MULTIPLE_REQUEST);
+
 
         TabHost host = (TabHost) findViewById(android.R.id.tabhost);
 
