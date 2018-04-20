@@ -23,19 +23,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Telas.LoginActivity" />
-        <activity android:name=".Telas.SignUpActivity" />
+        <activity android:name=".Telas.LoginActivity"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".Telas.SignUpActivity"
+            android:windowSoftInputMode="stateHidden"/>
         <activity
             android:name=".Telas.SheetActivity"
+            android:windowSoftInputMode="stateHidden"
             android:label="@string/sheet_activity_recordSheet_tituloPrincipal" />
         <activity android:name=".Telas.MainActivity"/>
-        <activity android:name=".Telas.SheetAppearanceActivityDF" />
-        <activity android:name=".Telas.SheetFeatsSkillsActivityDF" />
-        <activity android:name=".Telas.SheetEquipmentItensActivityDF" />
-        <activity android:name=".Telas.SheetBattleInformationActivityDF" />
-        <activity android:name=".Telas.RoomCreationActivity" />
-        <activity android:name=".Telas.SheetSpecialPropertiesActivityDF" />
-        <activity android:name=".Telas.SheetMagicInformationActivityDF" />
+        <activity android:name=".Telas.SheetAppearanceActivityDF"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".Telas.SheetFeatsSkillsActivityDF"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".Telas.SheetEquipmentItensActivityDF"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".Telas.SheetBattleInformationActivityDF"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".Telas.RoomCreationActivity"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".Telas.SheetSpecialPropertiesActivityDF"
+            android:windowSoftInputMode="stateHidden"/>
+        <activity android:name=".Telas.SheetMagicInformationActivityDF"
+            android:windowSoftInputMode="stateHidden"/>
         <activity android:name=".Telas.RoomsMenu" />
         <activity android:name=".Telas.AllRooms" />
         <activity android:name=".Telas.UserRooms" />
