@@ -91,15 +91,17 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
 
         extra = getIntent();
-        usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
-        salaUsada = (Sala) extra.getSerializableExtra("salaUsada");
+        Usuario test = (Usuario) extra.getSerializableExtra("usuarioLogado");
+        salaUsada = (Sala)extra.getSerializableExtra("salaUsada");
+
         mestre =  extra.getBooleanExtra("mestre", mestre);
         System.out.println("=================Mestre: " + mestre);
         sqLite = new SQLite(this);
         sqLite.atualizaDataFicha();
         sqLite.atualizaDataUsuario();
-        sqLite.atualizaDataSala();
+        //sqLite.atualizaDataSala();
 
+        usuarioLogado = sqLite.selecionarUsuario(test.getID());
         binding.setItemSalaCompleta(new SalaModel(salaUsada));
 
         if(mestre != true){
@@ -305,7 +307,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public void onBackPressed(){
         salaUsada.setHistoria(binding.roomEditTextResumo.getText().toString());
         salaUsada.setNotas(binding.roomEditTextOutrasAnotacoes.getText().toString());
-        sqLite.updateDataSala(salaUsada);
+        //sqLite.updateDataSala(salaUsada);
         extra = new Intent(RoomActivity.this, RoomsMenu.class);
         extra.putExtra("usuarioLogado", usuarioLogado);
         startActivity(extra);
