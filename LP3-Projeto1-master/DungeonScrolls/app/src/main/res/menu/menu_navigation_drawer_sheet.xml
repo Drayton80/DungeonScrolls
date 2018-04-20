@@ -6,8 +6,6 @@
         android:title="@string/menu_navigationDrawer_paginaPrincipal" />
     <item android:id="@+id/menu_navigationDrawer_item_fichaPersonagem"
         android:title="@string/menu_navigationDrawer_ficha" />
-    <item android:id="@+id/menu_navigationDrawer_item_configuracoes"
-        android:title="@string/menu_navigationDrawer_configuracoes" />
     <item android:id="@+id/menu_navigationDrawer_item_sairDaConta"
         android:title="@string/menu_navigationDrawer_sairDaConta" />
 </menu>

@@ -103,7 +103,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             for(int i = 1; i < salaUsada.toIntArray(salaUsada.getJogadoresID()).length; i++){
                 usuarioOn = sqLite.selecionarUsuario(salaUsada.toIntArray(salaUsada.getJogadoresID())[i]);
                 if(usuarioLogado.getNick().equals(usuarioOn.getNick())){
-                   deletar = true;
+                    deletar = true;
                 }
             }
             if(deletar != true){
@@ -138,18 +138,18 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         binding.roomListViewFichas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
-               if(mestre != true){
-                   return true;
-               }else{
-                   PopupMenu menu = new PopupMenu(RoomActivity.this ,view);
-                   menu.setOnMenuItemClickListener(RoomActivity.this);
-                   menu.inflate(R.menu.menu_popup);
-                   posicaoDelete = position;
+                if(mestre != true){
+                    return true;
+                }else{
+                    PopupMenu menu = new PopupMenu(RoomActivity.this ,view);
+                    menu.setOnMenuItemClickListener(RoomActivity.this);
+                    menu.inflate(R.menu.menu_popup);
+                    posicaoDelete = position;
 
-                   menu.show();
+                    menu.show();
 
-                   return true;
-               }
+                    return true;
+                }
             }
         });
 
@@ -369,31 +369,6 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (toggle.onOptionsItemSelected(item)) {
-            switch (item.getItemId()) {
-                case R.id.menu_navigationDrawer_item_listaDeSalas:
-                    extra = new Intent(RoomActivity.this, RoomsMenu.class);
-                    extra.putExtra("usuarioLogado", usuarioLogado);
-                    //extra.putExtra("salaUsada", salaUsada);
-                    //extra.putExtra("fichaUsada", fichaUsada);
-                    //extra.putExtra("mestre", mestre);
-                    startActivity(extra);
-                    return true;
-                case R.id.menu_navigationDrawer_item_configuracoes:
-                    //inciarOpções
-                    return true;
-                case R.id.menu_navigationDrawer_item_sairDaConta:
-                    extra = new Intent(RoomActivity.this, MainActivity.class);
-                    startActivity(extra);
-                    return true;
-            }
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public void onDialogPositiveClickUsuarios(DialogFragment dialog, String nickUsuario) {
         fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
         for(int i = 0; i < salaUsada.toIntArray(salaUsada.getFichasID()).length; i++){
@@ -429,7 +404,20 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        System.out.println("=================Entrou aqui, eu achei a sala!");
+        switch (item.getItemId()) {
+            case R.id.menu_navigationDrawer_item_listaDeSalas:
+                extra = new Intent(RoomActivity.this, RoomsMenu.class);
+                extra.putExtra("usuarioLogado", usuarioLogado);
+                //extra.putExtra("salaUsada", salaUsada);
+                //extra.putExtra("fichaUsada", fichaUsada);
+                //extra.putExtra("mestre", mestre);
+                startActivity(extra);
+                return true;
+            case R.id.menu_navigationDrawer_item_sairDaConta:
+                extra = new Intent(RoomActivity.this, MainActivity.class);
+                startActivity(extra);
+                return true;
+        }
 
         return true;
     }

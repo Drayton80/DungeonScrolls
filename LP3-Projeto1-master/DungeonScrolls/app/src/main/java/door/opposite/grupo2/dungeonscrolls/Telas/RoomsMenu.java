@@ -4,9 +4,12 @@ import android.app.TabActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.TabHost;
 
 import door.opposite.grupo2.dungeonscrolls.R;
@@ -14,7 +17,7 @@ import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 
 @SuppressWarnings("deprecation")
 
-public class RoomsMenu extends TabActivity{
+public class RoomsMenu extends TabActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     Intent extra;
     Usuario usuarioLogado;
@@ -36,6 +39,11 @@ public class RoomsMenu extends TabActivity{
                 toggle.syncState();
             }
         });
+        NavigationView mNavigationView = (NavigationView) findViewById(R.id.design_navigation_view);
+
+        if (mNavigationView != null) {
+            mNavigationView.setNavigationItemSelectedListener(this);
+        }
 
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
@@ -63,5 +71,17 @@ public class RoomsMenu extends TabActivity{
 
         // Faz a tab ser executada
         tabhost.addTab(specifications);
+    }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_navigationDrawer_item_sairDaConta:
+                extra = new Intent(RoomsMenu.this, MainActivity.class);
+                startActivity(extra);
+                return true;
+        }
+        return true;
     }
 }

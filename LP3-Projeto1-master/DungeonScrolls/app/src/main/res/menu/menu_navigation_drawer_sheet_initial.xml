@@ -4,8 +4,6 @@
         android:title="@string/menu_navigationDrawer_listaDeSalas" />
     <item android:id="@+id/menu_navigationDrawer_item_paginaPrincipal"
         android:title="@string/menu_navigationDrawer_paginaPrincipal" />
-    <item android:id="@+id/menu_navigationDrawer_item_configuracoes"
-        android:title="@string/menu_navigationDrawer_configuracoes" />
     <item android:id="@+id/menu_navigationDrawer_item_sairDaConta"
         android:title="@string/menu_navigationDrawer_sairDaConta" />
 </menu>

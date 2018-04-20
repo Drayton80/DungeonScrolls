@@ -2,11 +2,14 @@ package door.opposite.grupo2.dungeonscrolls.Telas;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 
 import door.opposite.grupo2.dungeonscrolls.R;
 import door.opposite.grupo2.dungeonscrolls.commands.EventoSalvar;
@@ -17,13 +20,14 @@ import door.opposite.grupo2.dungeonscrolls.model.Sala;
 import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel;
 
-public class SheetFeatsSkillsActivityDF extends AppCompatActivity {
+public class SheetFeatsSkillsActivityDF extends AppCompatActivity implements  NavigationView.OnNavigationItemSelectedListener{
     ActivitySheetFeatsSkillsDfBinding binding;
     Usuario usuarioLogado;
     Sala salaUsada;
     Ficha fichaUsada;
     Intent extra;
     SQLite sqLite;
+    Boolean mestre = false;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
 
@@ -45,11 +49,17 @@ public class SheetFeatsSkillsActivityDF extends AppCompatActivity {
                 toggle.syncState();
             }
         });
+        NavigationView mNavigationView = (NavigationView) findViewById(R.id.design_navigation_view);
+
+        if (mNavigationView != null) {
+            mNavigationView.setNavigationItemSelectedListener(this);
+        }
 
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
         salaUsada = (Sala) extra.getSerializableExtra("salaUsada");
         fichaUsada = (Ficha) extra.getSerializableExtra("fichaUsada");
+        mestre = extra.getBooleanExtra("mestre", mestre);
 
         binding.setFichaElementos(new FichaModel(fichaUsada));
 
@@ -64,5 +74,43 @@ public class SheetFeatsSkillsActivityDF extends AppCompatActivity {
                 startActivity(getIntent());
             }
         });
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.menu_navigationDrawer_item_listaDeSalas:
+                extra = new Intent(SheetFeatsSkillsActivityDF.this, RoomsMenu.class);
+                extra.putExtra("usuarioLogado", usuarioLogado);
+                //extra.putExtra("salaUsada", salaUsada);
+                //extra.putExtra("fichaUsada", fichaUsada);
+                //extra.putExtra("mestre", mestre);
+                startActivity(extra);
+                return true;
+            case R.id.menu_navigationDrawer_item_paginaPrincipal:
+                extra = new Intent(SheetFeatsSkillsActivityDF.this, RoomActivity.class);
+                extra.putExtra("usuarioLogado", usuarioLogado);
+                extra.putExtra("salaUsada", salaUsada);
+                //extra.putExtra("fichaUsada", fichaUsada);
+                //extra.putExtra("mestre", mestre);
+                startActivity(extra);
+                return true;
+            case R.id.menu_navigationDrawer_item_fichaPersonagem:
+                extra = new Intent(SheetFeatsSkillsActivityDF.this, SheetActivity.class);
+                extra.putExtra("usuarioLogado", usuarioLogado);
+                extra.putExtra("salaUsada", salaUsada);
+                extra.putExtra("fichaUsada", fichaUsada);
+                extra.putExtra("mestre", mestre);
+                startActivity(extra);
+                return true;
+
+            case R.id.menu_navigationDrawer_item_sairDaConta:
+                extra = new Intent(SheetFeatsSkillsActivityDF.this, MainActivity.class);
+                startActivity(extra);
+                return true;
+
+        }
+        return false;
     }
 }

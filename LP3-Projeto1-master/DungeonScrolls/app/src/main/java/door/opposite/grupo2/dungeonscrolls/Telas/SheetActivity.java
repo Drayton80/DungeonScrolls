@@ -8,6 +8,8 @@ import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,6 +18,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -41,7 +44,7 @@ import door.opposite.grupo2.dungeonscrolls.model.Sala;
 import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel;
 
-public class SheetActivity extends AppCompatActivity {
+public class SheetActivity extends AppCompatActivity implements  NavigationView.OnNavigationItemSelectedListener {
     DialogFragmentCreator geraDialog = new DialogFragmentCreator();     // Objeto da classe DialogFragmentCreator aonde estão ferramentas para criar Dialog Fragments
     AlertDialog dialog;
     AlertDialog dialogCamera;
@@ -69,34 +72,37 @@ public class SheetActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sheet);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        drawerLayout = (DrawerLayout)findViewById(R.id.sheet_drawer_menu);
+        drawerLayout = (DrawerLayout) findViewById(R.id.sheet_drawer_menu);
         toggle = new android.support.v7.app.ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.common_open_on_phone, R.string.close);
         drawerLayout.addDrawerListener(toggle);
-        drawerLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                toggle.syncState();
-            }
-        });
+        toggle.syncState();
+
+        NavigationView mNavigationView = (NavigationView) findViewById(R.id.design_navigation_view);
+
+        if (mNavigationView != null) {
+            mNavigationView.setNavigationItemSelectedListener(this);
+        }
+
         sqLite = new SQLite(this);
         campoImagem = (ImageView) findViewById(R.id.imageView);
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
         salaUsada = (Sala) extra.getSerializableExtra("salaUsada");
         fichaUsada = (Ficha) extra.getSerializableExtra("fichaUsada");
-        mestre =  extra.getBooleanExtra("mestre", mestre);
+        mestre = extra.getBooleanExtra("mestre", mestre);
         try {
             Picasso.get().load(Uri.parse(fichaUsada.getImagem())).into(campoImagem);
-        }catch (Exception e){}
+        } catch (Exception e) {
+        }
 
         storage = FirebaseStorage.getInstance().getReference();
 
         binding.setFichaElementos(new FichaModel(fichaUsada));
-        if(fichaUsada.getImagem() != null) {
+        if (fichaUsada.getImagem() != null) {
             Picasso.get().load(Uri.parse(fichaUsada.getImagem())).into(binding.imageView);
         }
 
-        binding.setFichaButtons(new EventosFicha(){
+        binding.setFichaButtons(new EventosFicha() {
             @Override
             public void onClickAparencia() {
                 // Cria uma referência para o dialogfragment_loadingcircle para poder gerar seu layout e referenciar aquilo que tem dentro dele
@@ -164,6 +170,7 @@ public class SheetActivity extends AppCompatActivity {
                 extra.putExtra("usuarioLogado", usuarioLogado);
                 extra.putExtra("salaUsada", salaUsada);
                 extra.putExtra("fichaUsada", fichaUsada);
+                extra.putExtra("mestre", mestre);
                 startActivity(extra);
             }
 
@@ -178,6 +185,7 @@ public class SheetActivity extends AppCompatActivity {
                 extra.putExtra("usuarioLogado", usuarioLogado);
                 extra.putExtra("salaUsada", salaUsada);
                 extra.putExtra("fichaUsada", fichaUsada);
+                extra.putExtra("mestre", mestre);
                 startActivity(extra);
             }
 
@@ -214,9 +222,9 @@ public class SheetActivity extends AppCompatActivity {
 
                 Uri uri;
 
-                if (pegoFoto){
+                if (pegoFoto) {
                     uri = buffer;
-                }else {
+                } else {
 
                     uri = Uri.parse("android.resource://door.opposite.grupo2.dungeonscrolls/" + R.drawable.avatar);
                 }
@@ -243,8 +251,8 @@ public class SheetActivity extends AppCompatActivity {
 
                 View loadingCircleDialog = getLayoutInflater().inflate(R.layout.dialogfragment_photos, null);
                 dialogCamera = geraDialogCamera.criaDialogFragmentLoadingCamera(SheetActivity.this, loadingCircleDialog);
-                Button bt_camera = (Button)loadingCircleDialog.findViewById(R.id.bt_camera);
-                Button bt_galeria = (Button)loadingCircleDialog.findViewById(R.id.bt_galeria);
+                Button bt_camera = (Button) loadingCircleDialog.findViewById(R.id.bt_camera);
+                Button bt_galeria = (Button) loadingCircleDialog.findViewById(R.id.bt_galeria);
                 bt_camera.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
@@ -265,9 +273,6 @@ public class SheetActivity extends AppCompatActivity {
                 });
 
 
-
-
-
             }
         });
     }
@@ -277,16 +282,15 @@ public class SheetActivity extends AppCompatActivity {
         extra = new Intent(SheetActivity.this, RoomActivity.class);
         extra.putExtra("usuarioLogado", usuarioLogado);
         extra.putExtra("salaUsada", salaUsada);
-        mestre =  extra.getBooleanExtra("mestre", mestre);
+        extra.putExtra("mestre", mestre);
         startActivity(extra);
     }
 
 
-    protected void onActivityResult(int requestCode, int resultCode, Intent data)
-    {
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode == 0){
+        if (requestCode == 0) {
 
             if (data != null) {
                 Bundle bundle = data.getExtras();
@@ -302,9 +306,9 @@ public class SheetActivity extends AppCompatActivity {
 
             Uri uri;
 
-            if (pegoFoto){
+            if (pegoFoto) {
                 uri = buffer;
-            }else {
+            } else {
 
                 uri = Uri.parse("android.resource://door.opposite.grupo2.dungeonscrolls/" + R.drawable.avatar);
             }
@@ -322,7 +326,7 @@ public class SheetActivity extends AppCompatActivity {
             sqLite.updateDataFicha(fichaUsada);
         }////
 
-        if(requestCode == 1){
+        if (requestCode == 1) {
 
             if (data != null) {
 
@@ -331,7 +335,7 @@ public class SheetActivity extends AppCompatActivity {
                 buffer = data.getData();
                 Bitmap bitmap = null;
                 try {
-                    bitmap = MediaStore.Images.Media.getBitmap(SheetActivity.this.getContentResolver(),buffer);
+                    bitmap = MediaStore.Images.Media.getBitmap(SheetActivity.this.getContentResolver(), buffer);
                 } catch (IOException e) {
                     System.out.println("oush");
                 }
@@ -342,9 +346,9 @@ public class SheetActivity extends AppCompatActivity {
 
             Uri uri;
 
-            if (pegoFoto){
+            if (pegoFoto) {
                 uri = buffer;
-            }else {
+            } else {
 
                 uri = Uri.parse("android.resource://door.opposite.grupo2.dungeonscrolls/" + R.drawable.avatar);
             }
@@ -376,11 +380,40 @@ public class SheetActivity extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         // dialog só é null antes de ser instanciado, apenas por garantia para não dar erros
-        if(dialog != null){
+        if (dialog != null) {
             // Usado para fechar o Dialog Fragment do Loading Magic Circle, é chamado no onStop() pois ele apenas ocorre quando outra activity é chamada
             // e essa sai de visualização, logo após não estar mais visível.
             geraDialog.fechaDialogFragment(dialog);
         }
     }
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        switch (item.getItemId()) {
+            case R.id.menu_navigationDrawer_item_listaDeSalas:
+                extra = new Intent(SheetActivity.this, RoomsMenu.class);
+                extra.putExtra("usuarioLogado", usuarioLogado);
+                //extra.putExtra("salaUsada", salaUsada);
+                //extra.putExtra("fichaUsada", fichaUsada);
+                //extra.putExtra("mestre", mestre);
+                startActivity(extra);
+                return true;
+            case R.id.menu_navigationDrawer_item_paginaPrincipal:
+                extra = new Intent(SheetActivity.this, RoomActivity.class);
+                extra.putExtra("usuarioLogado", usuarioLogado);
+                extra.putExtra("salaUsada", salaUsada);
+                //extra.putExtra("fichaUsada", fichaUsada);
+                //extra.putExtra("mestre", mestre);
+                startActivity(extra);
+                return true;
+
+            case R.id.menu_navigationDrawer_item_sairDaConta:
+                extra = new Intent(SheetActivity.this, MainActivity.class);
+                startActivity(extra);
+                return true;
+
+        }
+        return false;
+    }
 }

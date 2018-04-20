@@ -10,6 +10,8 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -17,6 +19,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -41,7 +44,7 @@ import door.opposite.grupo2.dungeonscrolls.model.Sala;
 import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.SalaModel;
 
-public class RoomCreationActivity extends AppCompatActivity {
+public class RoomCreationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
     DialogFragmentCreator geraDialog = new DialogFragmentCreator();     // Objeto da classe DialogFragmentCreator aonde estão ferramentas para criar Dialog Fragments
     AlertDialog dialog;
     AlertDialog dialogCamera;
@@ -105,7 +108,7 @@ public class RoomCreationActivity extends AppCompatActivity {
                         uri = buffer;
                     } else {
 
-                        uri = Uri.parse("android.resource://door.opposite.grupo2.dungeonscrolls/" + R.drawable.avatar);
+                        uri = Uri.parse("android.resource://door.opposite.grupo2.dungeonscrolls/" + R.drawable.no_image_selection_room_1);
                     }
                     StorageReference path = storage.child("FotosSala").child(uri.getLastPathSegment());
                     path.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -235,5 +238,25 @@ public class RoomCreationActivity extends AppCompatActivity {
             // e essa sai de visualização, logo após não estar mais visível.
             geraDialog.fechaDialogFragment(dialog);
         }
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_navigationDrawer_item_listaDeSalas:
+                extra = new Intent(RoomCreationActivity.this, RoomsMenu.class);
+                extra.putExtra("usuarioLogado", usuarioLogado);
+                //extra.putExtra("salaUsada", salaUsada);
+                //extra.putExtra("fichaUsada", fichaUsada);
+                //extra.putExtra("mestre", mestre);
+                startActivity(extra);
+                return true;
+
+            case R.id.menu_navigationDrawer_item_sairDaConta:
+                extra = new Intent(RoomCreationActivity.this, MainActivity.class);
+                startActivity(extra);
+                return true;
+        }
+        return true;
     }
 }

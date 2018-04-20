@@ -16,14 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <android.support.design.widget.NavigationView
-            android:id="@+id/design_navigation_view"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="start"
-            app:headerLayout="@layout/navigationdrawer_header"
-            app:menu="@menu/menu_navigation_drawer_room">
-        </android.support.design.widget.NavigationView>
+
 
         <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
@@ -146,5 +139,13 @@
 
             </android.support.constraint.ConstraintLayout>
         </LinearLayout>
+        <android.support.design.widget.NavigationView
+            android:id="@+id/design_navigation_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:headerLayout="@layout/navigationdrawer_header"
+            app:menu="@menu/menu_navigation_drawer_room">
+        </android.support.design.widget.NavigationView>
     </android.support.v4.widget.DrawerLayout>
 </layout>
