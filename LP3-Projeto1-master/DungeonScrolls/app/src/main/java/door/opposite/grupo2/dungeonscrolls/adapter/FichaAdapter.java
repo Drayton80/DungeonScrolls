@@ -30,7 +30,6 @@ public class FichaAdapter extends ArrayAdapter<FichaModel> {
         super(context, R.layout.activity_room_listview_ficha, fichaModelArrayList);
         this.context2 = context;
         this.fichaModelArrayList = fichaModelArrayList;
-        System.out.println("To aqui: =================" + Arrays.toString(fichaModelArrayList.toArray()));
     }
 
     @NonNull
@@ -43,6 +42,5 @@ public class FichaAdapter extends ArrayAdapter<FichaModel> {
         if (fichaModelArrayList.get(position).getImagem() != null) {
             Picasso.get().load(fichaModelArrayList.get(position).getImagem()).into(activityRoomListviewFichaBinding.listviewFichaImageViewImagem);
         }
-        System.out.println("=====================Chegou!!");
         return activityRoomListviewFichaBinding.getRoot();
     }}

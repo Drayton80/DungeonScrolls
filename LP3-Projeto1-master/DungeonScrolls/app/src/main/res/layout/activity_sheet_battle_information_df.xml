@@ -835,7 +835,7 @@
             </android.support.constraint.ConstraintLayout>
         </LinearLayout>
         <android.support.design.widget.NavigationView
-            android:id="@+id/design_navigation_view"
+            android:id="@+id/design_navigation_view_5"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="start"

@@ -33,7 +33,6 @@ public class JogadoresAdapter extends ArrayAdapter<UsuarioModel> {
         super(context, R.layout.jogadores_line, usuarioModelArrayList);
         this.context2 = context;
         this.usuarioModelArrayList = usuarioModelArrayList;
-        System.out.println("To aqui: =================" + Arrays.toString(usuarioModelArrayList.toArray()));
     }
 
     @NonNull
@@ -44,7 +43,6 @@ public class JogadoresAdapter extends ArrayAdapter<UsuarioModel> {
         JogadoresLineBinding binding = DataBindingUtil.inflate(layoutInflater, R.layout.jogadores_line, parent, false);
         binding.setJogadoresSala(usuarioModelArrayList.get(position));
 
-        System.out.println("=====================Chegou aqui no usuario!!");
         return binding.getRoot();
     }
 }

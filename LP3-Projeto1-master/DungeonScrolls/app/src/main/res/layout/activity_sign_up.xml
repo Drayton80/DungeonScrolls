@@ -29,7 +29,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <ImageView
+            <android.support.v7.widget.AppCompatImageView
                 android:id="@+id/dungeonScrolls_logo2"
                 android:layout_width="300dp"
                 android:layout_height="130dp"

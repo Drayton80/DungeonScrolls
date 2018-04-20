@@ -6,9 +6,6 @@ import android.support.v7.widget.Toolbar;
 
 import door.opposite.grupo2.dungeonscrolls.R;
 
-/**
- * Created by Drayton on 10/04/18.
- */
 
 public class RoomListViewFicha extends AppCompatActivity {
     private String nome;
@@ -21,7 +18,7 @@ public class RoomListViewFicha extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
-        // Construtor(es) da Classe
+    // Construtor(es) da Classe
     public RoomListViewFicha(String nome, int imagem){
         this.nome = nome;
         this.imagem = imagem;

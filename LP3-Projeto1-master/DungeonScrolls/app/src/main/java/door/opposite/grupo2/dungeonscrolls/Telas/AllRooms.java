@@ -2,6 +2,7 @@ package door.opposite.grupo2.dungeonscrolls.Telas;
 
 import android.app.DialogFragment;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AlertDialog;
@@ -79,20 +80,16 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
                 dialog = geradorDialog.criaDialogFragmentLoadingCircle(AllRooms.this, loadingCircleDialog);
                 int salaPosicao = position;
                 int i = 0;
-                System.out.println("=================Sala Posição: " + salaPosicao);
                 try {
                     salaModelSelecionada = salaModelArrayList.get(salaPosicao);
                 }catch (Exception e){}
                 for (i = 0; i < salasID.length; i++) {
                     try {
                         if (salasID[i + 1] == 0) {
-                            System.out.println("=================Entrou aqui!!!!!!");
                         }else{
                             salaUsada = sqLite.selecionarSala(salasID[i + 1]);
                             if (salaUsada.getNomeMestre().equals(salaModelSelecionada.getNomeMestre())) {
                                 mestre = true;
-                                System.out.println("=================Mesmo Mestre: " + salaModel.getMestre() + " == " + salaUsada.getMestre());
-                                // Cria uma View que referencia o layout dialogfragment_loadingcircle
 
                                 salaUsada = sqLite.selecionarSala(salasID[i + 1]);
                                 extra = new Intent(AllRooms.this, RoomActivity.class);

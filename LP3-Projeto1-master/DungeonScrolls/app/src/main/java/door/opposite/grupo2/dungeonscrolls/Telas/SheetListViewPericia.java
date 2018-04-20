@@ -6,9 +6,7 @@ import android.support.v7.widget.Toolbar;
 
 import door.opposite.grupo2.dungeonscrolls.R;
 
-/**
- * Created by drayton on 07/04/18.
- */
+
 
 public class SheetListViewPericia extends AppCompatActivity {
     private String nomePericia;

@@ -187,7 +187,6 @@ public class SQLite extends SQLiteOpenHelper{
                 user.setEmail(snapshot.child("email").getValue(String.class));
                 user.setSalasID(snapshot.child("salasID").getValue(t));
                 user.setFichasID(snapshot.child("fichasID").getValue(t));
-                System.out.println("==========================================" + user.getID());
 
                 boolean existe = verSeTemEsseUsuario(user.getID());
                 if (existe == true){
@@ -566,7 +565,6 @@ public class SQLite extends SQLiteOpenHelper{
                     sala.setNomeMestre(snapshot.child("nomeMestre").getValue(String.class));
                     sala.setNotas(snapshot.child("notas").getValue(String.class));
                     sala.setUri(snapshot.child("uri").getValue(String.class));
-                    System.out.println("==========================================" + sala.getID());
 
                     boolean existe = verSeTemEsseSala(sala.getID());
                     if (existe == true){
@@ -1054,8 +1052,6 @@ public class SQLite extends SQLiteOpenHelper{
         //    mutex.acquire();
         //}catch(Exception e){}
 
-
-
         reference.child("ficha").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -1144,9 +1140,6 @@ public class SQLite extends SQLiteOpenHelper{
                         ficha.setImagem(snapshot.child("imagem").getValue(String.class));
                         System.out.println("Terminei de olhar e montar");
                         //mutex.release();
-
-
-                        System.out.println("==========================================" + ficha.getId());
 
                         boolean existe = verSeTemEsseFicha(ficha.getId());
                         if (existe == true) {
@@ -1277,7 +1270,6 @@ public class SQLite extends SQLiteOpenHelper{
        // try {
          //   mutex.acquire();
         //}catch(Exception e){}
-        System.out.println("Comecei a ler o que tá montado");
         SQLiteDatabase db = this.getReadableDatabase();
 
         Cursor cursor = db.query(T3_TABLE_NAME, new String[]{T3_COL_1, T3_COL_2,
@@ -1338,8 +1330,8 @@ public class SQLite extends SQLiteOpenHelper{
         if (cursor == null){
             return null;
         }
-        //Da erro se não achar um dado igual ao procurado //Fui um falho e não consegui ajeitar
 
+        //Da erro se não achar um dado igual ao procurado //Fui um falho e não consegui ajeitar
         Ficha ficha = new Ficha(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4),
                 cursor.getString(5), cursor.getString(6), cursor.getString(7), cursor.getString(8), Float.parseFloat(cursor.getString(9)), Float.parseFloat(cursor.getString(10)),
                 Integer.parseInt(cursor.getString(11)), Integer.parseInt(cursor.getString(12)), Integer.parseInt(cursor.getString(13)), Integer.parseInt(cursor.getString(14)),
@@ -1427,7 +1419,6 @@ public class SQLite extends SQLiteOpenHelper{
                 if (i == ficha.getId()){
                     return true;
                 }
-
 
             }while(cursor.moveToNext());
         }

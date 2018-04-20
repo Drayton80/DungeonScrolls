@@ -56,7 +56,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     int posicaoDelete = 0;
     DialogFragmentCreator geraDialog = new DialogFragmentCreator();
     AlertDialog dialog;
-    boolean deletar = false, mestre;
+    boolean deletar = false, mestre, lock = false;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
 
@@ -83,7 +83,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setHomeButtonEnabled(false);
-        NavigationView mNavigationView = (NavigationView) findViewById(R.id.design_navigation_view);
+        NavigationView mNavigationView = (NavigationView) findViewById(R.id.design_navigation_view_2);
 
         if (mNavigationView != null) {
             mNavigationView.setNavigationItemSelectedListener(this);
@@ -95,7 +95,6 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         salaUsada = (Sala)extra.getSerializableExtra("salaUsada");
 
         mestre =  extra.getBooleanExtra("mestre", mestre);
-        System.out.println("=================Mestre: " + mestre);
         sqLite = new SQLite(this);
         sqLite.atualizaDataFicha();
         sqLite.atualizaDataUsuario();
@@ -173,12 +172,12 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 int fichaPosicao = position;
                 salaUsada.setHistoria(binding.roomEditTextResumo.getText().toString());
                 salaUsada.setNotas(binding.roomEditTextOutrasAnotacoes.getText().toString());
-                sqLite.updateDataSala(salaUsada);
+                //sqLite.updateDataSala(salaUsada);
                 for(int i = 0; i < salaUsada.toIntArray(salaUsada.getFichasID()).length; i++){
                     if(i == fichaPosicao){
                         if (fichasID[i+1] == 0){
                         }else{
-                            // System.out.println("=================Entrou aqui, eu achei a sala!");
+
                             fichaUsada = sqLite.selecionarFicha(fichasID[i+1]);
                             extra = new Intent(RoomActivity.this, SheetActivity.class);
                             extra.putExtra("usuarioLogado", usuarioLogado);
@@ -195,86 +194,93 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         binding.setAdicionaFicha(new Eventos() {
             @Override
             public void onClickCad() {
-                if(mestre == true){
-                    sqLite.insereDataFicha(new Ficha("Nova Ficha", "",
-                            "", "", "", "", "", "",
-                            0, 0, 0, 0, 0, 0, 0,
-                            0, 0, 0, 0, 0,
-                            0, 0, 0, 0, 0, 0,
-                            0, 0, 0, 0, 0, 0,
-                            0, 0, 0, 0, 0,
-                            0, 0, 0, 0, 0, 0,
-                            0, 0, 0, 0, 0, 0, 0,
-                            0, 0, 0, "", "", "", "",
-                            "", "", "", "", "", "",
-                            0, 0, 0, 0, "", "",
-                            "", "","","", ""));
+                if(lock != true){
+                    lock = true;
+                    if(mestre == true){
+                        sqLite.insereDataFicha(new Ficha("Nova Ficha", "",
+                                "", "", "", "", "", "",
+                                0, 0, 0, 0, 0, 0, 0,
+                                0, 0, 0, 0, 0,
+                                0, 0, 0, 0, 0, 0,
+                                0, 0, 0, 0, 0, 0,
+                                0, 0, 0, 0, 0,
+                                0, 0, 0, 0, 0, 0,
+                                0, 0, 0, 0, 0, 0, 0,
+                                0, 0, 0, "", "", "", "",
+                                "", "", "", "", "", "",
+                                0, 0, 0, 0, "", "",
+                                "", "","","", ""));
 
-                    int[] aux = new int[salaUsada.toIntArray(salaUsada.getFichasID()).length +1];
+                        int[] aux = new int[salaUsada.toIntArray(salaUsada.getFichasID()).length +1];
 
-                    for (int i = 0; i < salaUsada.toIntArray(salaUsada.getFichasID()).length; i++){
-                        aux[i] = salaUsada.toIntArray(salaUsada.getFichasID())[i];
-                    }
-                    aux[salaUsada.toIntArray(salaUsada.getFichasID()).length] = sqLite.ultimaFicha();
+                        for (int i = 0; i < salaUsada.toIntArray(salaUsada.getFichasID()).length; i++){
+                            aux[i] = salaUsada.toIntArray(salaUsada.getFichasID())[i];
+                        }
+                        aux[salaUsada.toIntArray(salaUsada.getFichasID()).length] = sqLite.ultimaFicha();
 
-                    salaUsada.setFichasID(salaUsada.toIntList(aux));
+                        salaUsada.setFichasID(salaUsada.toIntList(aux));
 
-                    sqLite.updateDataSala(salaUsada);
+                        sqLite.updateDataSala(salaUsada);
 
-                    fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
-                    fichaModel = new FichaModel();
-                    fichaModelArrayList = fichaModel.getArrayListaFicha(salaUsada.toIntArray(salaUsada.getFichasID()), sqLite);
-                    fichaAdapter = new FichaAdapter(RoomActivity.this, fichaModelArrayList);
-                    binding.roomListViewFichas.setAdapter(fichaAdapter);
-                }else{
-                    sqLite.insereDataFicha(new Ficha("Nova Ficha", "",
-                            "", "", "", "", "", "",
-                            0, 0, 0, 0, 0, 0, 0,
-                            0, 0, 0, 0, 0,
-                            0, 0, 0, 0, 0, 0,
-                            0, 0, 0, 0, 0, 0,
-                            0, 0, 0, 0, 0,
-                            0, 0, 0, 0, 0, 0,
-                            0, 0, 0, 0, 0, 0, 0,
-                            0, 0, 0, "", "", "", "",
-                            "", "", "", "", "", "",
-                            0, 0, 0, 0, "", "",
-                            "", "","","", ""));
+                        fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
+                        fichaModel = new FichaModel();
+                        fichaModelArrayList = fichaModel.getArrayListaFicha(salaUsada.toIntArray(salaUsada.getFichasID()), sqLite);
+                        fichaAdapter = new FichaAdapter(RoomActivity.this, fichaModelArrayList);
+                        binding.roomListViewFichas.setAdapter(fichaAdapter);
+                        lock = false;
+                    }else{
+                        sqLite.insereDataFicha(new Ficha("Nova Ficha", "",
+                                "", "", "", "", "", "",
+                                0, 0, 0, 0, 0, 0, 0,
+                                0, 0, 0, 0, 0,
+                                0, 0, 0, 0, 0, 0,
+                                0, 0, 0, 0, 0, 0,
+                                0, 0, 0, 0, 0,
+                                0, 0, 0, 0, 0, 0,
+                                0, 0, 0, 0, 0, 0, 0,
+                                0, 0, 0, "", "", "", "",
+                                "", "", "", "", "", "",
+                                0, 0, 0, 0, "", "",
+                                "", "","","", ""));
 
-                    int[] aux = new int[usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length +1];
-                    int[] aux2 = new int[salaUsada.toIntArray(salaUsada.getFichasID()).length +1];
+                        int[] aux = new int[usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length +1];
+                        int[] aux2 = new int[salaUsada.toIntArray(salaUsada.getFichasID()).length +1];
 
-                    for (int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length; i++){
-                        aux[i] = usuarioLogado.toIntArray(usuarioLogado.getFichasID())[i];
-                    }
-                    for (int i = 0; i < salaUsada.toIntArray(salaUsada.getFichasID()).length; i++){
-                        aux2[i] = salaUsada.toIntArray(salaUsada.getFichasID())[i];
-                    }
+                        for (int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length; i++){
+                            aux[i] = usuarioLogado.toIntArray(usuarioLogado.getFichasID())[i];
+                        }
+                        for (int i = 0; i < salaUsada.toIntArray(salaUsada.getFichasID()).length; i++){
+                            aux2[i] = salaUsada.toIntArray(salaUsada.getFichasID())[i];
+                        }
 
-                    aux[usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length] = sqLite.ultimaFicha();
-                    aux2[salaUsada.toIntArray(salaUsada.getFichasID()).length] = sqLite.ultimaFicha();
+                        aux[usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length] = sqLite.ultimaFicha();
+                        aux2[salaUsada.toIntArray(salaUsada.getFichasID()).length] = sqLite.ultimaFicha();
 
-                    usuarioLogado.setFichasID(usuarioLogado.toIntList(aux));
-                    salaUsada.setFichasID(salaUsada.toIntList(aux2));
+                        usuarioLogado.setFichasID(usuarioLogado.toIntList(aux));
+                        salaUsada.setFichasID(salaUsada.toIntList(aux2));
 
-                    sqLite.updateDataSala(salaUsada);
-                    sqLite.updateDataUsuario(usuarioLogado);
+                        sqLite.updateDataSala(salaUsada);
+                        sqLite.updateDataUsuario(usuarioLogado);
 
-                    fichaSalaID = salaUsada.toIntArray(salaUsada.getFichasID());
-                    fichasID = usuarioLogado.toIntArray(usuarioLogado.getFichasID());
-                    int[] fichasNaSala = new int[usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length];
-                    for(int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length; i++){
-                        for(int j = 0; j < salaUsada.toIntArray(salaUsada.getFichasID()).length; j++){
-                            if(fichaSalaID[j] == fichasID[i]){
-                                fichasNaSala[i] = fichasID[i];
+                        fichaSalaID = salaUsada.toIntArray(salaUsada.getFichasID());
+                        fichasID = usuarioLogado.toIntArray(usuarioLogado.getFichasID());
+                        int[] fichasNaSala = new int[usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length];
+                        for(int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length; i++){
+                            for(int j = 0; j < salaUsada.toIntArray(salaUsada.getFichasID()).length; j++){
+                                if(fichaSalaID[j] == fichasID[i]){
+                                    fichasNaSala[i] = fichasID[i];
+                                }
                             }
                         }
+                        //sqLite.atualizaDataFicha(fichasID);
+                        fichaModel = new FichaModel();
+                        fichaModelArrayList = fichaModel.getArrayListaFicha(fichasNaSala, sqLite);
+                        fichaAdapter = new FichaAdapter(RoomActivity.this, fichaModelArrayList);
+                        binding.roomListViewFichas.setAdapter(fichaAdapter);
+                        lock = false;
+                        finish();
+                        startActivity(getIntent());
                     }
-                    //sqLite.atualizaDataFicha(fichasID);
-                    fichaModel = new FichaModel();
-                    fichaModelArrayList = fichaModel.getArrayListaFicha(fichasNaSala, sqLite);
-                    fichaAdapter = new FichaAdapter(RoomActivity.this, fichaModelArrayList);
-                    binding.roomListViewFichas.setAdapter(fichaAdapter);
                 }
             }
 
@@ -318,7 +324,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         super.onStop();
         // dialog só é null antes de ser instanciado, apenas por garantia para não dar erros
         if(deletar == true){
-            System.out.println("===========================Deletado!!!");
+
         }
     }
 
@@ -342,13 +348,13 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 if (fichasID[i+1] == 0){
 
                 }else{
-                    // System.out.println("=================Entrou aqui, eu achei a sala!");
+
                     Ficha ficha = sqLite.selecionarFicha(fichasID[i+1]);
-                    //----------comeca
+                    //----------começa
                     int array_auxiliar[] = salaUsada.toIntArray(salaUsada.getFichasID());
                     array_auxiliar = achaElemento(array_auxiliar, ficha.getId());
                     salaUsada.setFichasID(salaUsada.toIntList(array_auxiliar));
-                    //-----------ternina
+                    //-----------termina
                     sqLite.updateDataSala(salaUsada);
                     sqLite.deleteDataFicha(ficha);
                     finish();
@@ -399,18 +405,18 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             if(i == posicaoDelete){
                 if (fichasID[i+1] == 0){
                 }else{
-                    // System.out.println("=================Entrou aqui, eu achei a sala!");
+
                     Ficha ficha = sqLite.selecionarFicha(fichasID[i+1]);
                     usuarioOn = sqLite.selecionarUsuario(nickUsuario);
 
                     int[] aux = new int[usuarioOn.toIntArray(usuarioOn.getFichasID()).length + 1];
-                    // System.out.println(Arrays.toString(usuarioLogado.toIntArray(usuarioLogado.getSalasID())));
+
 
                     for (int j = 0; j < usuarioOn.toIntArray(usuarioOn.getFichasID()).length; j++) {
                         aux[j] = usuarioOn.toIntArray(usuarioOn.getFichasID())[j];
                     }
                     aux[usuarioOn.toIntArray(usuarioOn.getFichasID()).length] = ficha.getId();
-                    // System.out.println(Arrays.toString(aux));
+
                     usuarioOn.setFichasID((usuarioOn.toIntList(aux)));
 
                     sqLite.updateDataUsuario(usuarioOn);
@@ -432,9 +438,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             case R.id.menu_navigationDrawer_item_listaDeSalas:
                 extra = new Intent(RoomActivity.this, RoomsMenu.class);
                 extra.putExtra("usuarioLogado", usuarioLogado);
-                //extra.putExtra("salaUsada", salaUsada);
-                //extra.putExtra("fichaUsada", fichaUsada);
-                //extra.putExtra("mestre", mestre);
+
                 startActivity(extra);
                 return true;
             case R.id.menu_navigationDrawer_item_sairDaConta:

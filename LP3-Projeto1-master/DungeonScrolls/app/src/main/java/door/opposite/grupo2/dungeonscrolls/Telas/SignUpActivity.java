@@ -28,6 +28,8 @@ public class SignUpActivity extends Activity {
 
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,8 @@ public class SignUpActivity extends Activity {
         sqLite = new SQLite(this);
         binding.setUsuariomodel(new UsuarioModel());
         it = new Intent(this, MainActivity.class);
+        final String usuarioJaExistente = getResources().getString(R.string.toast_signUp_usuarioJaExistente);
+        final String sucessoCadastro = getResources().getString(R.string.toast_signUp_sucessoCadastro);
 
 
         binding.setCadevent(new Eventos() {
@@ -53,7 +57,7 @@ public class SignUpActivity extends Activity {
 
                 try{
                     sqLite.selecionarUsuario(binding.getUsuariomodel().getNick());
-                    Toast.makeText(SignUpActivity.this, "Nome de usuario existente", Toast.LENGTH_LONG).show();
+                    Toast.makeText(SignUpActivity.this, usuarioJaExistente, Toast.LENGTH_LONG).show();
                     geraDialog.fechaDialogFragment(dialog);
                 }catch (Exception e) {
                     boolean foiInserido = false;
@@ -63,10 +67,9 @@ public class SignUpActivity extends Activity {
 
 
                     if (foiInserido == true) {
-                        Toast.makeText(SignUpActivity.this, "Salvo", Toast.LENGTH_LONG).show();
+                        Toast.makeText(SignUpActivity.this, sucessoCadastro, Toast.LENGTH_LONG).show();
                         startActivity(it);
                     } else {
-                        Toast.makeText(SignUpActivity.this, "Não Salvo", Toast.LENGTH_LONG).show();
                         geraDialog.fechaDialogFragment(dialog);
                     }
                 }

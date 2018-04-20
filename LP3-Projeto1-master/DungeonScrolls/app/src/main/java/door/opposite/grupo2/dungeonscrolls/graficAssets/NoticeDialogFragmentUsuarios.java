@@ -103,9 +103,6 @@ public class NoticeDialogFragmentUsuarios extends DialogFragment {
             }
         }
 
-        System.out.println("================Jogador Nick: " + jogadores.get(0));
-
-
 
         jogadoresID = salaUsada.toIntArray(salaUsada.getFichasID());
         UsuarioModel usuarioModel = new UsuarioModel();

@@ -13,10 +13,6 @@ import java.util.ArrayList;
 
 import door.opposite.grupo2.dungeonscrolls.R;
 
-/**
- * Created by drayton on 07/04/18.
- */
-
 public class SheetListViewPericiaAdapter extends ArrayAdapter<SheetListViewPericia> {
     private final Context contexto;
     private final ArrayList<SheetListViewPericia> elementos;

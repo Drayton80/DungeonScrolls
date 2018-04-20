@@ -50,7 +50,7 @@ public class SheetMagicInformationActivityDF extends AppCompatActivity implement
             }
         });
 
-        NavigationView mNavigationView = (NavigationView) findViewById(R.id.design_navigation_view);
+        NavigationView mNavigationView = (NavigationView) findViewById(R.id.design_navigation_view_9);
 
         if (mNavigationView != null) {
             mNavigationView.setNavigationItemSelectedListener(this);
@@ -88,17 +88,14 @@ public class SheetMagicInformationActivityDF extends AppCompatActivity implement
             case R.id.menu_navigationDrawer_item_listaDeSalas:
                 extra = new Intent(SheetMagicInformationActivityDF.this, RoomsMenu.class);
                 extra.putExtra("usuarioLogado", usuarioLogado);
-                //extra.putExtra("salaUsada", salaUsada);
-                //extra.putExtra("fichaUsada", fichaUsada);
-                //extra.putExtra("mestre", mestre);
+
                 startActivity(extra);
                 return true;
             case R.id.menu_navigationDrawer_item_paginaPrincipal:
                 extra = new Intent(SheetMagicInformationActivityDF.this, RoomActivity.class);
                 extra.putExtra("usuarioLogado", usuarioLogado);
                 extra.putExtra("salaUsada", salaUsada);
-                //extra.putExtra("fichaUsada", fichaUsada);
-                //extra.putExtra("mestre", mestre);
+
                 startActivity(extra);
                 return true;
             case R.id.menu_navigationDrawer_item_fichaPersonagem:

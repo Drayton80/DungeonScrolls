@@ -45,8 +45,6 @@ public class SalaModel extends BaseObservable{
         this.imagem = Uri.parse(sala.getUri());
         this.nomeMestre = sala.getNomeMestre();
         this.notas = sala.getNotas();
-        //Bitmap bitmap = BitmapFactory.decodeFile(sala.getUri());
-        //this.imagemModel = new BitmapDrawable(bitmap);
     }
 
     public String getNome() {
@@ -136,9 +134,7 @@ public class SalaModel extends BaseObservable{
         for (int i = 0; i < salasArray.size(); i++){
             if(salasArray.get(i).getID() == 0){}
             else {
-                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + i);
                 SalaModel salaModel = new SalaModel(salasArray.get(i));
-                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + salaModel.getNome());
                 salaModelArrayList.add(salaModel);
             }
         }
@@ -153,9 +149,7 @@ public class SalaModel extends BaseObservable{
         for (int i = 0; i < salasID.length; i++){
             if(salasID[i] == 0){}
             else {
-                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + i);
                 SalaModel salaModel = new SalaModel(sqLite.selecionarSala(salasID[i]));
-                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + salaModel.getNome());
                 salaModelArrayList.add(salaModel);
             }
         }

@@ -153,6 +153,13 @@
     <string name="menu_navigationDrawer_configuracoes">Configurações</string>
     <string name="menu_navigationDrawer_sairDaConta">Sair da Conta</string>
 
+    <string name="toast_login_senhaInvalida">Senha incorreta</string>
+    <string name="toast_login_usuarioInexistente">Usuario inexistente</string>
+    <string name="toast_signUp_usuarioJaExistente">Nome ja existente</string>
+    <string name="toast_signUp_sucessoCadastro">Cadastrado com sucesso</string>
+    <string name="toast_roomCreation_salaJaExistente">Sala ja existente</string>
+    <string name="toast_roomCreation_salaCriada">Sala criada com sucesso</string>
+
 
     <!-- Textos Relativos ao Idioma American English (EN) -->
 
@@ -170,5 +177,5 @@
 
     <string name="open">Open</string>
     <string name="close">Close</string>
-    <string name="title_activity_main3">Main3Activity</string>
+    <string name="title_activity_main3" translatable="false">Main3Activity</string>
 </resources>

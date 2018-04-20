@@ -66,7 +66,6 @@ public class UsuarioModel extends BaseObservable{
     public void setEmail(String email) {
         this.email = email;
         notifyPropertyChanged(R.id.signup_email_textView);
-
     }
 
 
@@ -77,7 +76,6 @@ public class UsuarioModel extends BaseObservable{
         for (int i = 0; i < usuariosID.length; i++){
             if(usuariosID[i] == 0){}
             else {
-                System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>" + i);
                 UsuarioModel usuarioModel = new UsuarioModel(sqLite.selecionarUsuario(usuariosID[i]));
                 usuarioModelArrayList.add(usuarioModel);
             }

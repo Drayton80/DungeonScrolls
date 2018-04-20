@@ -76,7 +76,6 @@ public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItem
                         if (salasID[i+1] == 0){
                         }else{
                             mestre = true;
-                            // System.out.println("=================Entrou aqui, eu achei a sala!");
                             // Cria uma View que referencia o layout dialogfragment_loadingcircle
                             View loadingCircleDialog = getLayoutInflater().inflate(R.layout.dialogfragment_loadingcircle, null);
                             // Usa um dos métodos de DialogFragmentCreator para criar um dialog fragment do loading dialog e ao mesmo tempo passar sua
@@ -88,7 +87,6 @@ public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItem
                             extra.putExtra("usuarioLogado", usuarioLogado);
                             extra.putExtra("salaUsada", salaUsada);
                             extra.putExtra("mestre", mestre);
-                            //System.out.println("=================Entrou aqui, eu achei a sala!" + salaUsada.getNotas());
                             startActivity(extra);
                         }
                     }
@@ -160,15 +158,15 @@ public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItem
         for(int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length; i++){
             if(i == posicaoDelete){
                 if (salasID[i+1] == 0){
-                    System.out.println("==========================================================");
+
                 }else{
-                    // System.out.println("=================Entrou aqui, eu achei a sala!");
+
                     Sala sala = sqLite.selecionarSala(salasID[i+1]);
-                    //----------comeca
+                    //----------começa
                     int array_auxiliar[] = usuarioLogado.toIntArray(usuarioLogado.getSalasID());
                     array_auxiliar = achaElemento(array_auxiliar, sala.getID());
                     usuarioLogado.setSalasID(usuarioLogado.toIntList(array_auxiliar));
-                    //-----------ternina
+                    //-----------termina
                     sqLite.updateDataUsuario(usuarioLogado);
                     sqLite.deleteDataSala(sala);
                     extra = new Intent(UserRooms.this, RoomsMenu.class);

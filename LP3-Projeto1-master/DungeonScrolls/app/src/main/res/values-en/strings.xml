@@ -65,7 +65,7 @@
     <string name="sheet_activity_recordSheet_equipamentos">Gear</string>
     <string name="sheet_activity_recordSheet_magia">Spells</string>
     <string name="sheet_activity_recordSheet_combate">Combat</string>
-    <string name="sheet_activity_recordSheet_especiais" translatable="false">Special</string>
+    <string name="sheet_activity_recordSheet_especiais" translatable="false">Specials</string>
     <string name="sheet_activity_recordSheet_outrasCategorias">Others  Categories</string>
     <string name="sheet_activity_appearanceSheet_title">Informations</string>
     <string name="sheet_activity_appearanceSheet_height">Size(m)</string>
@@ -141,4 +141,10 @@
     <string name="menu_navigationDrawer_sairDaConta">Log Out</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="toast_login_senhaInvalida">Wrong Password</string>
+    <string name="toast_login_usuarioInexistente">Invalid User</string>
+    <string name="toast_signUp_usuarioJaExistente">User already exist</string>
+    <string name="toast_signUp_sucessoCadastro">Registered Successfully</string>
+    <string name="toast_roomCreation_salaJaExistente">Room already exist</string>
+    <string name="toast_roomCreation_salaCriada">Room Sucessfully created</string>
 </resources>

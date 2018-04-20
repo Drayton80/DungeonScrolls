@@ -39,7 +39,7 @@ public class RoomsMenu extends TabActivity implements NavigationView.OnNavigatio
                 toggle.syncState();
             }
         });
-        NavigationView mNavigationView = (NavigationView) findViewById(R.id.design_navigation_view);
+        NavigationView mNavigationView = (NavigationView) findViewById(R.id.design_navigation_view_1);
 
         if (mNavigationView != null) {
             mNavigationView.setNavigationItemSelectedListener(this);

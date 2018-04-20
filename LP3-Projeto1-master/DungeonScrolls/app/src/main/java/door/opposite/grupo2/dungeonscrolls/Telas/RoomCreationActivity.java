@@ -60,6 +60,7 @@ public class RoomCreationActivity extends AppCompatActivity implements Navigatio
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,20 +68,14 @@ public class RoomCreationActivity extends AppCompatActivity implements Navigatio
         binding = DataBindingUtil.setContentView(this,R.layout.activity_room_creation);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        drawerLayout = (DrawerLayout)findViewById(R.id.rooms_drawer_creation);
-        toggle = new android.support.v7.app.ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.common_open_on_phone, R.string.close);
-        drawerLayout.addDrawerListener(toggle);
-        drawerLayout.post(new Runnable() {
-            @Override
-            public void run() {
-                toggle.syncState();
-            }
-        });
+
         campoImagem = (ImageView) findViewById(R.id.sala_imageView);
         sqLite = new SQLite(this);
         binding.setSalamodel(new SalaModel());
         storage = FirebaseStorage.getInstance().getReference();
         final AlertDialog.Builder builder = new AlertDialog.Builder(RoomCreationActivity.this);
+        final String salaJaExistente = getResources().getString(R.string.toast_roomCreation_salaJaExistente);
+        final String salaCriada = getResources().getString(R.string.toast_roomCreation_salaCriada);
 
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
@@ -97,7 +92,7 @@ public class RoomCreationActivity extends AppCompatActivity implements Navigatio
 
                 try{
                     sqLite.selecionarSala(binding.getSalamodel().getNome());
-                    Toast.makeText(RoomCreationActivity.this, "Nome de sala existente", Toast.LENGTH_LONG).show();
+                    Toast.makeText(RoomCreationActivity.this, salaJaExistente, Toast.LENGTH_LONG).show();
                     geraDialog.fechaDialogFragment(dialog);
                 }catch(Exception e) {
 
@@ -125,25 +120,23 @@ public class RoomCreationActivity extends AppCompatActivity implements Navigatio
                                 foiInserido = sqLite.insereDataSala(sala);
                                 Sala sala1;
                                 sala1 = sqLite.selecionarSala(binding.getSalamodel().getNome());
-                                // System.out.println(usuarioLogado.getSalasID().toString());
+
                                 int[] aux = new int[usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length + 1];
-                                // System.out.println(Arrays.toString(usuarioLogado.toIntArray(usuarioLogado.getSalasID())));
 
                                 for (int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length; i++) {
                                     aux[i] = usuarioLogado.toIntArray(usuarioLogado.getSalasID())[i];
                                 }
                                 aux[usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length] = sala1.getID();
-                                // System.out.println(Arrays.toString(aux));
+
                                 usuarioLogado.setSalasID(usuarioLogado.toIntList(aux));
 
                                 sqLite.updateDataUsuario(usuarioLogado);
                                 if (foiInserido == true) {
-                                    Toast.makeText(RoomCreationActivity.this, "Salvo", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(RoomCreationActivity.this, salaCriada, Toast.LENGTH_LONG).show();
                                     extra.putExtra("usuarioLogado", usuarioLogado);
                                     startActivity(extra);
                                 } else {
                                     geraDialog.fechaDialogFragment(dialog);
-                                    Toast.makeText(RoomCreationActivity.this, "Não Salvo", Toast.LENGTH_LONG).show();
                                 }
                             }
                         });
@@ -192,6 +185,7 @@ public class RoomCreationActivity extends AppCompatActivity implements Navigatio
 
                 // Recupera o Bitmap retornado pela c�mera
                 Bitmap bitmap = (Bitmap) bundle.get("data");
+
                 // Atualiza a imagem na tela
                 buffer = getImageUri(this, bitmap);
                 campoImagem.setImageBitmap(bitmap);
@@ -246,9 +240,7 @@ public class RoomCreationActivity extends AppCompatActivity implements Navigatio
             case R.id.menu_navigationDrawer_item_listaDeSalas:
                 extra = new Intent(RoomCreationActivity.this, RoomsMenu.class);
                 extra.putExtra("usuarioLogado", usuarioLogado);
-                //extra.putExtra("salaUsada", salaUsada);
-                //extra.putExtra("fichaUsada", fichaUsada);
-                //extra.putExtra("mestre", mestre);
+
                 startActivity(extra);
                 return true;
 
