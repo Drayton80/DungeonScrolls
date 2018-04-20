@@ -52,7 +52,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     FichaModel fichaModel;
     ArrayList<FichaModel> fichaModelArrayList;
     FichaAdapter fichaAdapter;
-    int[] fichasID;
+    int[] fichasID, fichaSalaID;
     int posicaoDelete = 0;
     DialogFragmentCreator geraDialog = new DialogFragmentCreator();
     AlertDialog dialog;
@@ -126,10 +126,19 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             fichaAdapter = new FichaAdapter(this, fichaModelArrayList);
             binding.roomListViewFichas.setAdapter(fichaAdapter);
         }else{
+            fichaSalaID = salaUsada.toIntArray(salaUsada.getFichasID());
             fichasID = usuarioLogado.toIntArray(usuarioLogado.getFichasID());
+            int[] fichasNaSala = new int[usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length];
+            for(int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length; i++){
+                for(int j = 0; j < salaUsada.toIntArray(salaUsada.getFichasID()).length; j++){
+                    if(fichaSalaID[j] == fichasID[i]){
+                        fichasNaSala[i] = fichasID[i];
+                    }
+                }
+            }
             //sqLite.atualizaDataFicha(fichasID);
             fichaModel = new FichaModel();
-            fichaModelArrayList = fichaModel.getArrayListaFicha(usuarioLogado.toIntArray(usuarioLogado.getFichasID()), sqLite);
+            fichaModelArrayList = fichaModel.getArrayListaFicha(fichasNaSala, sqLite);
             fichaAdapter = new FichaAdapter(this, fichaModelArrayList);
             binding.roomListViewFichas.setAdapter(fichaAdapter);
         }
@@ -246,9 +255,19 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                     sqLite.updateDataSala(salaUsada);
                     sqLite.updateDataUsuario(usuarioLogado);
 
+                    fichaSalaID = salaUsada.toIntArray(salaUsada.getFichasID());
                     fichasID = usuarioLogado.toIntArray(usuarioLogado.getFichasID());
+                    int[] fichasNaSala = new int[usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length];
+                    for(int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length; i++){
+                        for(int j = 0; j < salaUsada.toIntArray(salaUsada.getFichasID()).length; j++){
+                            if(fichaSalaID[j] == fichasID[i]){
+                                fichasNaSala[i] = fichasID[i];
+                            }
+                        }
+                    }
+                    //sqLite.atualizaDataFicha(fichasID);
                     fichaModel = new FichaModel();
-                    fichaModelArrayList = fichaModel.getArrayListaFicha(usuarioLogado.toIntArray(usuarioLogado.getFichasID()), sqLite);
+                    fichaModelArrayList = fichaModel.getArrayListaFicha(fichasNaSala, sqLite);
                     fichaAdapter = new FichaAdapter(RoomActivity.this, fichaModelArrayList);
                     binding.roomListViewFichas.setAdapter(fichaAdapter);
                 }
