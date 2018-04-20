@@ -77,7 +77,7 @@ public class SheetActivity extends AppCompatActivity implements  NavigationView.
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView mNavigationView = (NavigationView) findViewById(R.id.design_navigation_view);
+        NavigationView mNavigationView = (NavigationView) findViewById(R.id.design_navigation_view_3);
 
         if (mNavigationView != null) {
             mNavigationView.setNavigationItemSelectedListener(this);
@@ -387,6 +387,8 @@ public class SheetActivity extends AppCompatActivity implements  NavigationView.
         if (dialog != null) {
             // Usado para fechar o Dialog Fragment do Loading Magic Circle, é chamado no onStop() pois ele apenas ocorre quando outra activity é chamada
             // e essa sai de visualização, logo após não estar mais visível.
+            geraDialog.fechaDialogFragment(dialog);
+
         }
     }
 
