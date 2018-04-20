@@ -54,6 +54,8 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_all_rooms);
         sqLite = new SQLite(this);
+        sqLite.atualizaDataFicha();
+        sqLite.atualizaDataUsuario();
         sqLite.atualizaDataSala();
 
         extra = getIntent();

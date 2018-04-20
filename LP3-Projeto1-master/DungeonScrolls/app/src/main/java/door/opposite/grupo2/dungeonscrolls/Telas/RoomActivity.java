@@ -96,6 +96,9 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         mestre =  extra.getBooleanExtra("mestre", mestre);
         System.out.println("=================Mestre: " + mestre);
         sqLite = new SQLite(this);
+        sqLite.atualizaDataFicha();
+        sqLite.atualizaDataUsuario();
+        sqLite.atualizaDataSala();
 
         binding.setItemSalaCompleta(new SalaModel(salaUsada));
 
