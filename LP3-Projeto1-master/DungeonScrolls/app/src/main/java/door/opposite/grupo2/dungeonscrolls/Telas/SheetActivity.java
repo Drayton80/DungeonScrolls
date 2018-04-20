@@ -242,7 +242,6 @@ public class SheetActivity extends AppCompatActivity implements  NavigationView.
                 sqLite.updateDataFicha(fichaUsada);
                 finish();
                 startActivity(getIntent());
-                geraDialog.fechaDialogFragment(dialog);
 
             }
 
@@ -320,10 +319,11 @@ public class SheetActivity extends AppCompatActivity implements  NavigationView.
                     Uri uriCerta = taskSnapshot.getDownloadUrl();
 
                     fichaUsada.setImagem(uriCerta.toString());
+                    sqLite.updateDataFicha(fichaUsada);
                 }
             });
 
-            sqLite.updateDataFicha(fichaUsada);
+
         }////
 
         if (requestCode == 1) {
@@ -360,10 +360,11 @@ public class SheetActivity extends AppCompatActivity implements  NavigationView.
                     Uri uriCerta = taskSnapshot.getDownloadUrl();
 
                     fichaUsada.setImagem(uriCerta.toString());
+                    sqLite.updateDataFicha(fichaUsada);
                 }
             });
 
-            sqLite.updateDataFicha(fichaUsada);
+
 
         }
     }
@@ -383,7 +384,6 @@ public class SheetActivity extends AppCompatActivity implements  NavigationView.
         if (dialog != null) {
             // Usado para fechar o Dialog Fragment do Loading Magic Circle, é chamado no onStop() pois ele apenas ocorre quando outra activity é chamada
             // e essa sai de visualização, logo após não estar mais visível.
-            geraDialog.fechaDialogFragment(dialog);
         }
     }
 

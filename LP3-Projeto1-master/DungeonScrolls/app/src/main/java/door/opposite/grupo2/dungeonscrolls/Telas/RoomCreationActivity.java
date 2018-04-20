@@ -111,42 +111,42 @@ public class RoomCreationActivity extends AppCompatActivity implements Navigatio
                         uri = Uri.parse("android.resource://door.opposite.grupo2.dungeonscrolls/" + R.drawable.no_image_selection_room_1);
                     }
                     StorageReference path = storage.child("FotosSala").child(uri.getLastPathSegment());
-                    path.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            boolean foiInserido = false;
-                            Uri uriCerta = taskSnapshot.getDownloadUrl();
-                            Sala sala = new Sala(binding.getSalamodel().getNome(), binding.getSalamodel().getSenha(), usuarioLogado.getID(),
-                                    binding.getSalamodel().getHistoria(), usuarioLogado.getNick());
-                            if (binding.roomPasswordPlainText.getText().length() == 0) {
-                                sala.setSenha(" ");
-                            }
-                            sala.setUri(uriCerta.toString());
-                            foiInserido = sqLite.insereDataSala(sala);
-                            Sala sala1;
-                            sala1 = sqLite.selecionarSala(binding.getSalamodel().getNome());
-                            // System.out.println(usuarioLogado.getSalasID().toString());
-                            int[] aux = new int[usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length + 1];
-                            // System.out.println(Arrays.toString(usuarioLogado.toIntArray(usuarioLogado.getSalasID())));
+                        path.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                boolean foiInserido = false;
+                                Uri uriCerta = taskSnapshot.getDownloadUrl();
+                                Sala sala = new Sala(binding.getSalamodel().getNome(), binding.getSalamodel().getSenha(), usuarioLogado.getID(),
+                                        binding.getSalamodel().getHistoria(), usuarioLogado.getNick());
+                                if (binding.roomPasswordPlainText.getText().length() == 0) {
+                                    sala.setSenha(" ");
+                                }
+                                sala.setUri(uriCerta.toString());
+                                foiInserido = sqLite.insereDataSala(sala);
+                                Sala sala1;
+                                sala1 = sqLite.selecionarSala(binding.getSalamodel().getNome());
+                                // System.out.println(usuarioLogado.getSalasID().toString());
+                                int[] aux = new int[usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length + 1];
+                                // System.out.println(Arrays.toString(usuarioLogado.toIntArray(usuarioLogado.getSalasID())));
 
-                            for (int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length; i++) {
-                                aux[i] = usuarioLogado.toIntArray(usuarioLogado.getSalasID())[i];
-                            }
-                            aux[usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length] = sala1.getID();
-                            // System.out.println(Arrays.toString(aux));
-                            usuarioLogado.setSalasID(usuarioLogado.toIntList(aux));
+                                for (int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length; i++) {
+                                    aux[i] = usuarioLogado.toIntArray(usuarioLogado.getSalasID())[i];
+                                }
+                                aux[usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length] = sala1.getID();
+                                // System.out.println(Arrays.toString(aux));
+                                usuarioLogado.setSalasID(usuarioLogado.toIntList(aux));
 
-                            sqLite.updateDataUsuario(usuarioLogado);
-                            if (foiInserido == true) {
-                                Toast.makeText(RoomCreationActivity.this, "Salvo", Toast.LENGTH_LONG).show();
-                                extra.putExtra("usuarioLogado", usuarioLogado);
-                                startActivity(extra);
-                            } else {
-                                geraDialog.fechaDialogFragment(dialog);
-                                Toast.makeText(RoomCreationActivity.this, "Não Salvo", Toast.LENGTH_LONG).show();
+                                sqLite.updateDataUsuario(usuarioLogado);
+                                if (foiInserido == true) {
+                                    Toast.makeText(RoomCreationActivity.this, "Salvo", Toast.LENGTH_LONG).show();
+                                    extra.putExtra("usuarioLogado", usuarioLogado);
+                                    startActivity(extra);
+                                } else {
+                                    geraDialog.fechaDialogFragment(dialog);
+                                    Toast.makeText(RoomCreationActivity.this, "Não Salvo", Toast.LENGTH_LONG).show();
+                                }
                             }
-                        }
-                    });
+                        });
 
                 }   }
             @Override
