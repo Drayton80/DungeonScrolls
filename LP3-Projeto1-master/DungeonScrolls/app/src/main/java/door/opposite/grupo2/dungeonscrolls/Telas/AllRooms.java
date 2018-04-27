@@ -11,6 +11,13 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -37,6 +44,9 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
     Usuario usuarioLogado;
     SalaModel salaModel, salaModelSelecionada;
     ArrayList<SalaModel> salaModelArrayList;
+    List<Sala> salas;
+    DatabaseReference reference;
+    FirebaseDatabase database;
     SalaAdapter salaAdapter;
     int[] salasID;
     List<Sala> allSalasID;
@@ -58,6 +68,8 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
         sqLite.atualizaDataFicha();
         sqLite.atualizaDataUsuario();
         sqLite.atualizaDataSala();
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference();
 
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
@@ -67,9 +79,15 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
 
         salasID = usuarioLogado.toIntArray(usuarioLogado.getSalasID());
         salaModel = new SalaModel();
-        salaModelArrayList = salaModel.getArrayListSala(sqLite.listaSala(), sqLite);
+
+        salas = sqLite.listaSala();
+        salaModelArrayList = salaModel.getArrayListSala(salas, sqLite);
         salaAdapter = new SalaAdapter(this, salaModelArrayList);
         binding.lvRooms.setAdapter(salaAdapter);
+
+        atualizaDataSala();
+
+
 
         binding.lvRooms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -144,6 +162,49 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
             Toast.makeText(AllRooms.this, "Senha incorreta", Toast.LENGTH_LONG).show();
             dialog.dismiss();
         }
+    }
+
+
+    public boolean atualizaDataSala(){
+
+        reference.child("sala").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                salas.clear();
+                for (DataSnapshot snapshot: dataSnapshot.getChildren()){
+                    Sala sala = new Sala();
+                    GenericTypeIndicator<ArrayList<Integer>> t = new GenericTypeIndicator<ArrayList<Integer>>(){};
+                    sala.setID(snapshot.child("id").getValue(int.class));
+                    sala.setMestre(snapshot.child("mestre").getValue(int.class));
+                    sala.setNome(snapshot.child("nome").getValue(String.class));
+                    sala.setSenha(snapshot.child("senha").getValue(String.class));
+                    sala.setHistoria(snapshot.child("historia").getValue(String.class));
+                    sala.setJogadoresID(snapshot.child("jogadoresID").getValue(t));
+                    sala.setFichasID(snapshot.child("fichasID").getValue(t));
+                    sala.setNomeMestre(snapshot.child("nomeMestre").getValue(String.class));
+                    sala.setNotas(snapshot.child("notas").getValue(String.class));
+                    sala.setUri(snapshot.child("uri").getValue(String.class));
+                    salas.add(sala);
+                    salaModelArrayList = salaModel.getArrayListSala(salas, sqLite);
+                    salaAdapter = new SalaAdapter(AllRooms.this, salaModelArrayList);
+                    binding.lvRooms.setAdapter(salaAdapter);
+                    boolean existe = sqLite.verSeTemEsseSala(sala.getID());
+                    if (existe == true){
+                        sqLite.updateDataSala(sala);
+                    }
+                    else{
+                        sqLite.insereDataSala(sala);
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return true;
     }
 
     @Override
