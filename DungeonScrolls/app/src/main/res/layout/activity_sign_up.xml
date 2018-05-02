@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="cadevent"
+            type="door.opposite.grupo2.dungeonscrolls.commands.Eventos"/>
+
+        <variable
+            name="usuariomodel"
+            type="door.opposite.grupo2.dungeonscrolls.viewmodel.UsuarioModel"/>
+
+
+    </data>
+
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="door.opposite.grupo2.dungeonscrolls.Telas.SignUpActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.AppCompatImageView
+                android:id="@+id/dungeonScrolls_logo2"
+                android:layout_width="300dp"
+                android:layout_height="130dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/dungeon_scrolls_logo_fechado" />
+
+            <TextView
+                android:id="@+id/login_username_textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/login_activity_username_textView"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/dungeonScrolls_logo2"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/dungeonScrolls_logo2"
+                app:layout_constraintTop_toBottomOf="@+id/dungeonScrolls_logo2" />
+
+            <EditText
+                android:id="@+id/login_username_plainText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:textSize="16dp"
+                android:text="@={usuariomodel.nick}"
+                app:layout_constraintEnd_toEndOf="@+id/login_username_textView"
+                app:layout_constraintStart_toStartOf="@+id/login_username_textView"
+                app:layout_constraintTop_toBottomOf="@+id/login_username_textView" />
+
+            <EditText
+                android:id="@+id/signup_email_textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:text="@={usuariomodel.email}"
+                android:inputType="textEmailAddress"
+                app:layout_constraintEnd_toEndOf="@+id/signup_email_plainTextEmail"
+                app:layout_constraintStart_toStartOf="@+id/signup_email_plainTextEmail"
+                app:layout_constraintTop_toBottomOf="@+id/signup_email_plainTextEmail" />
+
+            <TextView
+                android:id="@+id/signup_email_plainTextEmail"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/login_activity_tabSignUp_email"
+                app:layout_constraintEnd_toEndOf="@+id/login_username_textView"
+                app:layout_constraintStart_toStartOf="@+id/login_username_textView"
+                app:layout_constraintTop_toBottomOf="@+id/login_username_plainText" />
+
+            <TextView
+                android:id="@+id/login_password_textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="@string/login_activity_password_textView"
+                android:textSize="16dp"
+                app:layout_constraintEnd_toEndOf="@+id/signup_email_plainTextEmail"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/signup_email_plainTextEmail"
+                app:layout_constraintTop_toBottomOf="@+id/signup_email_textView" />
+
+            <EditText
+                android:id="@+id/login_password_password"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:text="@={usuariomodel.senha}"
+                android:inputType="textPassword"
+                app:layout_constraintEnd_toEndOf="@+id/login_password_textView"
+                app:layout_constraintStart_toStartOf="@+id/login_password_textView"
+                app:layout_constraintTop_toBottomOf="@+id/login_password_textView" />
+
+            <Button
+                android:id="@+id/signup_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="32dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/button_layout"
+                android:onClick="@{(v)->cadevent.onClickCad()}"
+                android:text="@string/login_activity_tabSignUp_button"
+                android:textColor="@color/colorSecondaryLight"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/login_password_textView"
+                app:layout_constraintStart_toStartOf="@+id/login_password_textView"
+                app:layout_constraintTop_toBottomOf="@+id/login_password_password" />
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>
+    </layout>

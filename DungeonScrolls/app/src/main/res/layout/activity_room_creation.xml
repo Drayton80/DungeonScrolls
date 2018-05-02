@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="cadevent"
+            type="door.opposite.grupo2.dungeonscrolls.commands.Eventos"/>
+
+        <variable
+            name="salamodel"
+            type="door.opposite.grupo2.dungeonscrolls.viewmodel.SalaModel"/>
+
+
+    </data>
+
+
+    <android.support.v4.widget.DrawerLayout
+        tools:context="door.opposite.grupo2.dungeonscrolls.Telas.RoomsMenu"
+        android:id="@+id/rooms_drawer_creation"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <include
+            android:id ="@+id/toolbar"
+            layout="@layout/toolbar"/>
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="door.opposite.grupo2.dungeonscrolls.Telas.RoomCreationActivity">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/sala_imageView"
+                    android:layout_width="135dp"
+                    android:layout_height="135dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="32dp"
+                    android:src="@drawable/no_image_selection_room_1"
+                    app:civ_border_color="@color/colorSecondaryDark"
+                    android:onClick="@{(v)->cadevent.onClickLogin()}"
+                    app:civ_fill_color="@color/colorSecondary"
+                    app:civ_border_width="2dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/roomName_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/room_activity_creation_nomeDaSala"
+                    android:textAlignment="center"
+                    android:textSize="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/sala_imageView" />
+
+                <EditText
+                    android:id="@+id/options_editText_nome"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="@={salamodel.nome}"
+                    android:textAlignment="center"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="@+id/roomName_textView"
+                    app:layout_constraintStart_toStartOf="@+id/roomName_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/roomName_textView" />
+
+                <TextView
+                    android:id="@+id/roomPassword_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="@string/room_activity_creation_senha"
+                    android:textAlignment="center"
+                    android:textSize="16dp"
+                    app:layout_constraintEnd_toEndOf="@+id/roomName_textView"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/roomName_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/options_editText_nome" />
+
+                <EditText
+                    android:id="@+id/roomPassword_plainText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="textPassword"
+                    android:text="@={salamodel.senha}"
+                    android:textAlignment="center"
+                    app:layout_constraintEnd_toEndOf="@+id/roomPassword_textView"
+                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintStart_toStartOf="@+id/roomPassword_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/roomPassword_textView" />
+
+                <Button
+                    android:id="@+id/btn_criar"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginStart="32dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/button_layout_internal"
+                    android:onClick="@{(v)->cadevent.onClickCad()}"
+                    android:text="@string/room_activity_creation_btnCriar"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/roomPassword_plainText" />
+
+
+            </android.support.constraint.ConstraintLayout>
+
+
+        </ScrollView>
+
+    </android.support.constraint.ConstraintLayout>
+    </LinearLayout>
+
+    </android.support.v4.widget.DrawerLayout>
+
+</layout>

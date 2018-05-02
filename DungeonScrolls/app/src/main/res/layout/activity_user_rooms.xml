@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="detalheSala"
+            type="door.opposite.grupo2.dungeonscrolls.commands.Eventos"/>
+        <variable
+            name="criaSala"
+            type="door.opposite.grupo2.dungeonscrolls.commands.Eventos"/>
+    </data>
+
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="door.opposite.grupo2.dungeonscrolls.Telas.UserRooms">
+
+    <ListView
+        android:id="@+id/lvUserRooms"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        style="@android:style/Widget.DeviceDefault.Light.Button"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/button_layout_internal"
+        android:onClick="@{()-> criaSala.onClickCad()}"
+        android:text="@string/userRooms_activity_btn_criarSala"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</android.support.constraint.ConstraintLayout>
+</layout>

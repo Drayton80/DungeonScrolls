@@ -1,0 +1,1217 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="fichaButtons"
+            type="door.opposite.grupo2.dungeonscrolls.commands.EventosFicha"/>
+        <variable
+            name="fichaElementos"
+            type="door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel"/>
+    </data>
+
+
+        <android.support.v4.widget.DrawerLayout
+            android:id="@+id/sheet_drawer_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/toolbar"
+                    layout="@layout/toolbar" />
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:context="door.opposite.grupo2.dungeonscrolls.Telas.SheetActivity">
+
+                    <Button
+                        android:id="@+id/sheet_button_salvar"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginStart="24dp"
+                        android:background="@drawable/button_layout"
+                        android:onClick="@{()->fichaButtons.onClickSalvarFicha()}"
+                        android:text="@string/gerais_salvar"
+                        android:textColor="@color/colorExternalButtonTexts"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent" />
+
+                    <ScrollView
+                        android:id="@+id/scrollView3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0">
+
+                        <android.support.constraint.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:tag="atributes">
+                            <!--app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"-->
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/imageView"
+                                android:layout_width="0dp"
+                                android:layout_height="141dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="16dp"
+                                android:src="@drawable/no_image_selection_character_1"
+                                android:onClick="@{()-> fichaButtons.onClickSalvarImagem()}"
+                                app:civ_border_color="@color/colorSecondaryDark"
+                                app:civ_fill_color="@color/colorSecondary"
+                                app:civ_border_width="2dp"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_title"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_title"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_title" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="24dp"
+                                android:text="@string/sheet_activity_recordSheet_title"
+                                android:textAlignment="center"
+                                android:textSize="18dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                tools:ignore="MissingConstraints" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_name"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="16dp"
+                                android:text="@string/sheet_activity_recordSheet_name"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+                            <EditText
+                                android:id="@+id/sheet_plainText_name"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:ems="10"
+                                android:inputType="textPersonName"
+                                android:text="@={fichaElementos.nomePersonagem}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_name"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_name"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_name" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_idade"
+                                android:layout_width="55dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginRight="16dp"
+                                android:text="@string/sheet_activity_recordSheet_age"
+                                android:textAlignment="center"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_textView_experiencia"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_textView_experiencia" />
+
+                            <com.santalu.maskedittext.MaskEditText
+                                android:id="@+id/sheet_editText_idade"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:ems="10"
+                                android:inputType="number"
+                                android:text="@={fichaElementos.idade}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_idade"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_idade"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_idade"
+                                app:met_mask="######" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_experiencia"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="8dp"
+                                android:text="@string/sheet_activity_recordSheet_experiencia"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toStartOf="@+id/white_space2"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_plainText_name" />
+
+                            <com.santalu.maskedittext.MaskEditText
+                                android:id="@+id/sheet_editText_experiencia"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:ems="10"
+                                android:inputType="number"
+                                android:text="@={fichaElementos.xp}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_experiencia"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_experiencia"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_experiencia"
+                                app:met_mask="#######" />
+
+                            <TextView
+                                android:id="@+id/white_space2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginRight="8dp"
+                                android:layout_marginStart="8dp"
+                                android:textAlignment="center"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_textView_idade"
+                                app:layout_constraintEnd_toStartOf="@+id/sheet_textView_idade"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_textView_idade" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_raca"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginRight="16dp"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/sheet_activity_recordSheet_raca"
+                                android:textAlignment="center"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_textView_experiencia"
+                                app:layout_constraintEnd_toStartOf="@+id/sheet_textView_idade"
+                                app:layout_constraintStart_toEndOf="@+id/white_space2"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_textView_experiencia" />
+
+                            <EditText
+                                android:id="@+id/sheet_editText_raca"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:ems="10"
+                                android:inputType="text"
+                                android:text="@={fichaElementos.raca}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_raca"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_raca"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_raca" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_classes"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="16dp"
+                                android:text="@string/sheet_activity_recordSheet_classes"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_editText_raca"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_experiencia" />
+
+                            <EditText
+                                android:id="@+id/sheet_editText_classes"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:ems="10"
+                                android:inputType="textMultiLine"
+                                android:text="@={fichaElementos.classeNivel}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_classes"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_classes"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_classes" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_nivel"
+                                android:layout_width="55dp"
+                                android:layout_height="0dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginRight="16dp"
+                                android:text="@string/sheet_activity_recordSheet_nivel"
+                                android:textAlignment="center"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_textView_classes"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_textView_classes" />
+
+                            <com.santalu.maskedittext.MaskEditText
+                                android:id="@+id/sheet_editText_nivel"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:ems="10"
+                                android:inputType="number"
+                                android:text="@={fichaElementos.carctClasse}"
+                                android:textAlignment="center"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_classes"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_nivel"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_nivel"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_nivel"
+                                app:met_mask="######" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_outrasCategorias"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginRight="16dp"
+                                android:layout_marginStart="16dp"
+                                android:layout_marginTop="16dp"
+                                android:text="@string/sheet_activity_recordSheet_outrasCategorias"
+                                android:textAlignment="center"
+                                android:textSize="14sp"
+                                app:layout_constraintBottom_toTopOf="@+id/sheet_editText_habilidadesForcaModificador"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toEndOf="@+id/sheet_textView_habilidadesTitulo"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_classes" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_habilidadesTitulo"
+                                android:layout_width="0dp"
+                                android:layout_height="18dp"
+                                android:layout_marginTop="16dp"
+                                android:text="@string/sheet_activity_recordSheet_habilidadesTitulo"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesModificador"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesNome"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_classes" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_habilidadesNome"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="24dp"
+                                android:layout_marginTop="4dp"
+                                android:text="@string/sheet_activity_recordSheet_habilidadesNome"
+                                android:textAlignment="center"
+                                android:textSize="10sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_habilidadesTitulo" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_habilidadesValor"
+                                android:layout_width="55dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="12dp"
+                                android:text="@string/sheet_activity_recordSheet_habilidadesValor"
+                                android:textAlignment="center"
+                                android:textSize="10sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_textView_habilidadesNome"
+                                app:layout_constraintStart_toEndOf="@+id/sheet_textView_habilidadesNome"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_textView_habilidadesNome" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_habilidadesModificador"
+                                android:layout_width="55dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/sheet_activity_recordSheet_habilidadesModificador"
+                                android:textAlignment="center"
+                                android:textSize="10sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_textView_habilidadesNome"
+                                app:layout_constraintStart_toEndOf="@+id/sheet_textView_habilidadesValor"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_textView_habilidadesNome" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_habilidadesForcaSigla"
+                                android:layout_width="wrap_content"
+                                android:layout_height="18dp"
+                                android:layout_marginBottom="8dp"
+                                android:text="@string/sheet_activity_recordSheet_habilidadesForcaSigla"
+                                android:textAlignment="center"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_habilidadesForca"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesForca"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesForca"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_habilidadesForca"
+                                app:layout_constraintVertical_bias="0.63" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_habilidadesForca"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/sheet_activity_recordSheet_habilidadesForca"
+                                android:textAlignment="center"
+                                android:textSize="8sp"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesNome"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesNome"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_habilidadesForcaSigla" />
+
+                            <com.santalu.maskedittext.MaskEditText
+                                android:id="@+id/sheet_editText_habilidadesForca"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:ems="10"
+                                android:inputType="number"
+                                android:text="@={fichaElementos.forca}"
+                                android:textAlignment="center"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_reducaoDeDano"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesValor"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesValor"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_habilidadesValor"
+                                app:met_mask="###" />
+
+
+                            <EditText
+                                android:id="@+id/sheet_editText_habilidadesForcaModificador"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:editable="false"
+                                android:ems="10"
+                                android:inputType="none"
+                                android:text="@={fichaElementos.forcaMod}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesModificador"
+                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesModificador"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_habilidadesModificador" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_habilidadesDestrezaSigla"
+                                android:layout_width="wrap_content"
+                                android:layout_height="18dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/sheet_activity_recordSheet_habilidadesDestrezaSigla"
+                                android:textAlignment="center"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_habilidadesDestreza"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesDestreza"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesDestreza"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_habilidadesDestreza"
+                                app:layout_constraintVertical_bias="0.63" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_habilidadesDestreza"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/sheet_activity_recordSheet_habilidadesDestreza"
+                                android:textAlignment="center"
+                                android:textSize="8sp"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesNome"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesNome"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_habilidadesDestrezaSigla" />
+
+                            <com.santalu.maskedittext.MaskEditText
+                                android:id="@+id/sheet_editText_habilidadesDestreza"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:ems="10"
+                                android:inputType="number"
+                                android:text="@={fichaElementos.destreza}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesValor"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesValor"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_habilidadesForca"
+                                app:met_mask="###" />
+
+                            <EditText
+                                android:id="@+id/sheet_editText_habilidadesDestrezaModificador"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:editable="false"
+                                android:ems="10"
+                                android:inputType="none"
+                                android:text="@={fichaElementos.destrezaMod}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesModificador"
+                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesModificador"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_habilidadesForcaModificador" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_habilidadesConstituicaoSigla"
+                                android:layout_width="wrap_content"
+                                android:layout_height="18dp"
+                                android:layout_marginBottom="8dp"
+                                android:text="@string/sheet_activity_recordSheet_habilidadesConstituicaoSigla"
+                                android:textAlignment="center"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_habilidadesConstituicao"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesConstituicao"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesConstituicao"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_habilidadesConstituicao"
+                                app:layout_constraintVertical_bias="0.63" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_habilidadesConstituicao"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/sheet_activity_recordSheet_habilidadesConstituicao"
+                                android:textAlignment="center"
+                                android:textSize="8sp"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesNome"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesNome"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_habilidadesConstituicaoSigla" />
+
+                            <com.santalu.maskedittext.MaskEditText
+                                android:id="@+id/sheet_editText_habilidadesConstituicao"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:ems="10"
+                                android:inputType="number"
+                                android:text="@={fichaElementos.constituicao}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesValor"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesValor"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_habilidadesDestreza"
+                                app:met_mask="###" />
+
+                            <EditText
+                                android:id="@+id/sheet_editText_habilidadesConstituicaoModificador"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:editable="false"
+                                android:ems="10"
+                                android:inputType="none"
+                                android:text="@={fichaElementos.constituicaoMod}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesModificador"
+                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesModificador"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_habilidadesDestrezaModificador" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_habilidadesSabedoriaSigla"
+                                android:layout_width="wrap_content"
+                                android:layout_height="18dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/sheet_activity_recordSheet_habilidadesSabedoriaSigla"
+                                android:textAlignment="center"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_habilidadesSabedoria"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesSabedoria"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesSabedoria"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_habilidadesSabedoria"
+                                app:layout_constraintVertical_bias="0.63" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_habilidadesSabedoria"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/sheet_activity_recordSheet_habilidadesSabedoria"
+                                android:textAlignment="center"
+                                android:textSize="8sp"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesNome"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesNome"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_habilidadesSabedoriaSigla" />
+
+                            <com.santalu.maskedittext.MaskEditText
+                                android:id="@+id/sheet_editText_habilidadesSabedoria"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:ems="10"
+                                android:inputType="number"
+                                android:text="@={fichaElementos.sabedoria}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesValor"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesValor"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_habilidadesConstituicao"
+                                app:met_mask="###" />
+
+                            <EditText
+                                android:id="@+id/sheet_editText_habilidadesSabedoriaModificador"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:editable="false"
+                                android:ems="10"
+                                android:inputType="none"
+                                android:text="@={fichaElementos.sabedoriaMod}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesModificador"
+                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesModificador"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_habilidadesConstituicaoModificador" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_habilidadesInteligenciaSigla"
+                                android:layout_width="wrap_content"
+                                android:layout_height="18dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/sheet_activity_recordSheet_habilidadesInteligenciaSigla"
+                                android:textAlignment="center"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_habilidadesInteligencia"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesInteligencia"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesInteligencia"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_habilidadesInteligencia"
+                                app:layout_constraintVertical_bias="0.63" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_habilidadesInteligencia"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/sheet_activity_recordSheet_habilidadesInteligencia"
+                                android:textAlignment="center"
+                                android:textSize="8sp"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesNome"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesNome"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_habilidadesInteligenciaSigla" />
+
+                            <com.santalu.maskedittext.MaskEditText
+                                android:id="@+id/sheet_editText_habilidadesInteligencia"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:ems="10"
+                                android:inputType="number"
+                                android:text="@={fichaElementos.inteligencia}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesValor"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesValor"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_habilidadesSabedoria"
+                                app:met_mask="###" />
+
+                            <EditText
+                                android:id="@+id/sheet_editText_habilidadesInteligenciaModificador"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:editable="false"
+                                android:ems="10"
+                                android:inputType="none"
+                                android:text="@={fichaElementos.inteligenciaMod}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesModificador"
+                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesModificador"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_habilidadesSabedoriaModificador" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_habilidadesCarismaSigla"
+                                android:layout_width="wrap_content"
+                                android:layout_height="18dp"
+                                android:layout_marginBottom="8dp"
+                                android:text="@string/sheet_activity_recordSheet_habilidadesCarismaSigla"
+                                android:textAlignment="center"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_habilidadesCarisma"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesCarisma"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesCarisma"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_habilidadesCarisma"
+                                app:layout_constraintVertical_bias="0.63" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_habilidadesCarisma"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/sheet_activity_recordSheet_habilidadesCarisma"
+                                android:textAlignment="center"
+                                android:textSize="8sp"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesNome"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesNome"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_habilidadesCarismaSigla" />
+
+                            <com.santalu.maskedittext.MaskEditText
+                                android:id="@+id/sheet_editText_habilidadesCarisma"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:ems="10"
+                                android:inputType="number"
+                                android:text="@={fichaElementos.carisma}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesValor"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesValor"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_habilidadesInteligencia"
+                                app:met_mask="###" />
+
+                            <EditText
+                                android:id="@+id/sheet_editText_habilidadesCarismaModificador"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:editable="false"
+                                android:ems="10"
+                                android:inputType="none"
+                                android:text="@={fichaElementos.carismaMod}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_habilidadesModificador"
+                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_habilidadesModificador"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_habilidadesInteligenciaModificador" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_resistenciasTitulo"
+                                android:layout_width="300dp"
+                                android:layout_height="18dp"
+                                android:layout_marginTop="16dp"
+                                android:text="@string/sheet_activity_recordSheet_resistenciasTitulo"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasOutros"
+                                app:layout_constraintHorizontal_bias="0.49"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasNome"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_habilidadesCarisma" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_resistenciasNome"
+                                android:layout_width="55dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginRight="8dp"
+                                android:text="@string/sheet_activity_recordSheet_resistenciasNome"
+                                android:textAlignment="center"
+                                android:textSize="10sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_textView_resistenciasModificador"
+                                app:layout_constraintEnd_toStartOf="@+id/sheet_textView_resistenciasTotal"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_textView_resistenciasModificador" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_resistenciasTotal"
+                                android:layout_width="55dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginRight="8dp"
+                                android:text="@string/sheet_activity_recordSheet_resistenciasTotal"
+                                android:textAlignment="center"
+                                android:textSize="10sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_textView_resistenciasNome"
+                                app:layout_constraintEnd_toStartOf="@+id/sheet_textView_resistenciasModificador"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_textView_resistenciasNome" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_resistenciasBase"
+                                android:layout_width="55dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/sheet_activity_recordSheet_resistenciasBase"
+                                android:textAlignment="center"
+                                android:textSize="10sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_textView_resistenciasNome"
+                                app:layout_constraintStart_toEndOf="@+id/sheet_textView_resistenciasModificador"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_textView_resistenciasNome" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_resistenciasOutros"
+                                android:layout_width="55dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/sheet_activity_recordSheet_resistenciasOutros"
+                                android:textAlignment="center"
+                                android:textSize="10sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_textView_resistenciasNome"
+                                app:layout_constraintStart_toEndOf="@+id/sheet_textView_resistenciasBase"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_textView_resistenciasNome" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_resistenciasModificador"
+                                android:layout_width="55dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginLeft="8dp"
+                                android:layout_marginRight="8dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginTop="8dp"
+                                android:text="@string/sheet_activity_recordSheet_resistenciasModificador"
+                                android:textAlignment="center"
+                                android:textSize="10sp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_resistenciasTitulo" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_resistenciasFortitude"
+                                android:layout_width="wrap_content"
+                                android:layout_height="18dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/sheet_activity_recordSheet_resistenciasFortitude"
+                                android:textAlignment="center"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_resistenciasFortitudeTotal"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasNome"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasNome"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_resistenciasFortitudeTotal" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_resistenciasFortitudeHabilidade"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/sheet_activity_recordSheet_habilidadesConstituicao"
+                                android:textAlignment="center"
+                                android:textSize="8sp"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasNome"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasNome"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_resistenciasFortitude" />
+
+                            <EditText
+                                android:id="@+id/sheet_editText_resistenciasFortitudeTotal"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:editable="false"
+                                android:ems="10"
+                                android:inputType="none"
+                                android:text="@={fichaElementos.fortitude}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasTotal"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasTotal"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_resistenciasTotal" />
+
+                            <TextView
+                                android:id="@+id/sinal_igual5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:text="="
+                                android:textSize="18sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_resistenciasFortitudeTotal"
+                                app:layout_constraintStart_toEndOf="@+id/sheet_editText_resistenciasFortitudeTotal"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_resistenciasFortitudeTotal" />
+
+                            <EditText
+                                android:id="@+id/sheet_editText_resistenciasFortitudeModificador"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:editable="false"
+                                android:ems="10"
+                                android:inputType="none"
+                                android:text="@={fichaElementos.constituicaoMod}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasModificador"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasModificador"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_resistenciasModificador" />
+
+                            <com.santalu.maskedittext.MaskEditText
+                                android:id="@+id/sheet_editText_resistenciasFortitudeBase"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:ems="10"
+                                android:inputType="number"
+                                android:text="@={fichaElementos.fortitudeBase}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasBase"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasBase"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_resistenciasBase"
+                                app:met_mask="###" />
+
+                            <TextView
+                                android:id="@+id/sinal_mais"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:text="+"
+                                android:textSize="18sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_resistenciasFortitudeTotal"
+                                app:layout_constraintEnd_toStartOf="@+id/sheet_editText_resistenciasFortitudeOutros"
+                                app:layout_constraintStart_toEndOf="@+id/sheet_editText_resistenciasFortitudeBase"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_resistenciasFortitudeTotal" />
+
+                            <com.santalu.maskedittext.MaskEditText
+                                android:id="@+id/sheet_editText_resistenciasFortitudeOutros"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:ems="10"
+                                android:inputType="numberSigned|number"
+                                android:text="@={fichaElementos.fortitudeOutros}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasOutros"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasOutros"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_resistenciasOutros"
+                                app:met_mask="###" />
+
+                            <TextView
+                                android:id="@+id/sinal_mais7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:text="+"
+                                android:textSize="18sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_resistenciasFortitudeTotal"
+                                app:layout_constraintEnd_toStartOf="@+id/sheet_editText_resistenciasFortitudeBase"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_resistenciasFortitudeTotal" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_resistenciasReflexos"
+                                android:layout_width="wrap_content"
+                                android:layout_height="18dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/sheet_activity_recordSheet_resistenciasReflexos"
+                                android:textAlignment="center"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_resistenciasReflexosTotal"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasNome"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasNome"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_resistenciasReflexosTotal" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_resistenciasReflexosHabilidade"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/sheet_activity_recordSheet_habilidadesDestreza"
+                                android:textAlignment="center"
+                                android:textSize="8sp"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasNome"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasNome"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_resistenciasReflexos" />
+
+                            <EditText
+                                android:id="@+id/sheet_editText_resistenciasReflexosTotal"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:editable="false"
+                                android:ems="10"
+                                android:inputType="none"
+                                android:text="@={fichaElementos.reflexo}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasTotal"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasTotal"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_resistenciasFortitudeTotal" />
+
+                            <TextView
+                                android:id="@+id/sinal_igual7"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:text="="
+                                android:textSize="18sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_resistenciasReflexosTotal"
+                                app:layout_constraintStart_toEndOf="@+id/sheet_editText_resistenciasFortitudeTotal"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_resistenciasReflexosTotal" />
+
+                            <EditText
+                                android:id="@+id/sheet_editText_resistenciasReflexosModificador"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:editable="false"
+                                android:ems="10"
+                                android:inputType="none"
+                                android:text="@={fichaElementos.destrezaMod}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasModificador"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasModificador"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_resistenciasFortitudeTotal" />
+
+                            <com.santalu.maskedittext.MaskEditText
+                                android:id="@+id/sheet_editText_resistenciasReflexosBase"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:ems="10"
+                                android:inputType="number"
+                                android:text="@={fichaElementos.reflexoBase}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasBase"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasBase"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_resistenciasFortitudeBase"
+                                app:met_mask="###" />
+
+                            <TextView
+                                android:id="@+id/sinal_mais5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:text="+"
+                                android:textSize="18sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_resistenciasReflexosBase"
+                                app:layout_constraintEnd_toStartOf="@+id/sheet_editText_resistenciasFortitudeOutros"
+                                app:layout_constraintStart_toEndOf="@+id/sheet_editText_resistenciasFortitudeBase"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_resistenciasReflexosBase" />
+
+                            <com.santalu.maskedittext.MaskEditText
+                                android:id="@+id/sheet_editText_resistenciasReflexosOutros"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:ems="10"
+                                android:inputType="numberSigned|number"
+                                android:text="@={fichaElementos.reflexoOutros}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasOutros"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasOutros"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_resistenciasFortitudeOutros"
+                                app:met_mask="###" />
+
+                            <TextView
+                                android:id="@+id/sinal_mais8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:text="+"
+                                android:textSize="18sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_resistenciasReflexosBase"
+                                app:layout_constraintEnd_toStartOf="@+id/sheet_editText_resistenciasReflexosBase"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_resistenciasReflexosBase" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_resistenciasVontade"
+                                android:layout_width="wrap_content"
+                                android:layout_height="18dp"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/sheet_activity_recordSheet_resistenciasVontade"
+                                android:textAlignment="center"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_resistenciasVontadeTotal"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasNome"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasNome"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_resistenciasVontadeTotal" />
+
+                            <TextView
+                                android:id="@+id/sheet_textView_resistenciasVontadeHabilidade"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/sheet_activity_recordSheet_habilidadesSabedoria"
+                                android:textAlignment="center"
+                                android:textSize="8sp"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasNome"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasNome"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_textView_resistenciasVontade" />
+
+                            <EditText
+                                android:id="@+id/sheet_editText_resistenciasVontadeTotal"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="72dp"
+                                android:layout_marginTop="8dp"
+                                android:editable="false"
+                                android:ems="10"
+                                android:inputType="none"
+                                android:text="@={fichaElementos.vontade}"
+                                android:textAlignment="center"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasTotal"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasTotal"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_resistenciasReflexosTotal" />
+
+                            <TextView
+                                android:id="@+id/sinal_igual8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:text="="
+                                android:textSize="18sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_resistenciasVontadeTotal"
+                                app:layout_constraintStart_toEndOf="@+id/sheet_editText_resistenciasFortitudeTotal"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_resistenciasVontadeTotal" />
+
+                            <EditText
+                                android:id="@+id/sheet_editText_resistenciasVontadeModificador"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:editable="false"
+                                android:ems="10"
+                                android:inputType="none"
+                                android:text="@={fichaElementos.sabedoriaMod}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasModificador"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasModificador"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_resistenciasReflexosModificador" />
+
+                            <com.santalu.maskedittext.MaskEditText
+                                android:id="@+id/sheet_editText_resistenciasVontadeBase"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:ems="10"
+                                android:inputType="number"
+                                android:text="@={fichaElementos.vontadeBase}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasBase"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasBase"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_resistenciasReflexosBase"
+                                app:met_mask="###" />
+
+                            <TextView
+                                android:id="@+id/sinal_mais6"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginStart="8dp"
+                                android:text="+"
+                                android:textSize="18sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_resistenciasVontadeBase"
+                                app:layout_constraintEnd_toStartOf="@+id/sheet_editText_resistenciasFortitudeOutros"
+                                app:layout_constraintStart_toEndOf="@+id/sheet_editText_resistenciasFortitudeBase"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_resistenciasVontadeBase" />
+
+                            <com.santalu.maskedittext.MaskEditText
+                                android:id="@+id/sheet_editText_resistenciasVontadeOutros"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:ems="10"
+                                android:inputType="numberSigned|number"
+                                android:text="@={fichaElementos.vontadeOutros}"
+                                android:textAlignment="center"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_textView_resistenciasOutros"
+                                app:layout_constraintStart_toStartOf="@+id/sheet_textView_resistenciasOutros"
+                                app:layout_constraintTop_toBottomOf="@+id/sheet_editText_resistenciasReflexosOutros"
+                                app:met_mask="###" />
+
+                            <TextView
+                                android:id="@+id/sinal_mais9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:text="+"
+                                android:textSize="18sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_resistenciasVontadeBase"
+                                app:layout_constraintEnd_toStartOf="@+id/sheet_editText_resistenciasVontadeBase"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_resistenciasVontadeBase" />
+
+                            <Button
+                                android:id="@+id/sheet_button_aparencia"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginStart="16dp"
+                                android:onClick="@{()-> fichaButtons.onClickAparencia()}"
+                                android:text="@string/sheet_activity_recordSheet_aparencia"
+                                android:textSize="12sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_habilidadesForcaModificador"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="1.0"
+                                app:layout_constraintStart_toEndOf="@+id/sheet_textView_habilidadesModificador"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_habilidadesForcaModificador" />
+
+                            <Button
+                                android:id="@+id/sheet_button_caracteristicasCombate"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginStart="16dp"
+                                android:onClick="@{()-> fichaButtons.onClickCombate()}"
+                                android:text="@string/sheet_activity_recordSheet_combate"
+                                android:textSize="12sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_habilidadesDestrezaModificador"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toEndOf="@+id/sheet_textView_habilidadesModificador"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_habilidadesDestrezaModificador"
+                                app:layout_constraintVertical_bias="0.0" />
+
+                            <Button
+                                android:id="@+id/sheet_button_featsSkills"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginStart="16dp"
+                                android:onClick="@{()-> fichaButtons.onClickTalentosPericias()}"
+                                android:text="@string/sheet_activity_recordSheet_featsSkills"
+                                android:textSize="12sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_habilidadesConstituicaoModificador"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/sheet_editText_habilidadesConstituicaoModificador"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_habilidadesConstituicaoModificador" />
+
+                            <Button
+                                android:id="@+id/sheet_button_equipamentos"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginRight="16dp"
+                                android:layout_marginStart="16dp"
+                                android:onClick="@{()-> fichaButtons.onClickEquipamentos()}"
+                                android:text="@string/sheet_activity_recordSheet_equipamentos"
+                                android:textSize="12sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_habilidadesSabedoriaModificador"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/sheet_editText_habilidadesSabedoriaModificador"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_habilidadesSabedoriaModificador" />
+
+                            <Button
+                                android:id="@+id/sheet_button_propriedadesEspeciais"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginEnd="16dp"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginStart="16dp"
+                                android:onClick="@{()-> fichaButtons.onClickPropriedadesEspeciais()}"
+                                android:text="@string/sheet_activity_recordSheet_especiais"
+                                android:textSize="12sp"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_habilidadesCarismaModificador"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toEndOf="@+id/sheet_editText_habilidadesCarismaModificador"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_habilidadesCarismaModificador" />
+
+                            <Button
+                                android:id="@+id/sheet_button_informacoesMagia"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:layout_marginLeft="16dp"
+                                android:layout_marginStart="16dp"
+                                android:onClick="@{()-> fichaButtons.onClickInfoMagias()}"
+                                android:text="@string/sheet_activity_recordSheet_magia"
+                                app:layout_constraintBottom_toBottomOf="@+id/sheet_editText_habilidadesInteligenciaModificador"
+                                app:layout_constraintEnd_toEndOf="@+id/sheet_button_equipamentos"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toEndOf="@+id/sheet_editText_habilidadesInteligenciaModificador"
+                                app:layout_constraintTop_toTopOf="@+id/sheet_editText_habilidadesInteligenciaModificador"
+                                android:textSize="12sp" />
+
+                        </android.support.constraint.ConstraintLayout>
+                    </ScrollView>
+                </android.support.constraint.ConstraintLayout>
+
+            </LinearLayout>
+
+            <android.support.design.widget.NavigationView
+                android:id="@+id/design_navigation_view_3"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="start"
+                app:headerLayout="@layout/navigationdrawer_header"
+                app:menu="@menu/menu_navigation_drawer_sheet_initial">
+            </android.support.design.widget.NavigationView>
+
+        </android.support.v4.widget.DrawerLayout>
+</layout>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="fichas"
+            type="door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel"/>
+    </data>
+
+        <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/listviewFicha_imageView_imagem"
+                android:layout_width="108dp"
+                android:layout_height="78dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                app:civ_fill_color="@color/colorSecondary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:src="@drawable/no_image_selection_character_2" />
+
+            <TextView
+                android:id="@+id/listviewFicha_textView_nome"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@{fichas.nomePersonagem}"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/listviewFicha_imageView_imagem" />
+
+        </android.support.constraint.ConstraintLayout>
+</layout>

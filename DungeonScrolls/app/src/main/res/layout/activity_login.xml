@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="cadevent"
+            type="door.opposite.grupo2.dungeonscrolls.commands.Eventos"/>
+
+        <variable
+            name="usuariomodel"
+            type="door.opposite.grupo2.dungeonscrolls.viewmodel.UsuarioModel"/>
+
+
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context="door.opposite.grupo2.dungeonscrolls.Telas.LoginActivity">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <android.support.v7.widget.AppCompatImageView
+                    android:id="@+id/dungeonScrolls_logo"
+                    android:layout_width="300dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/dungeon_scrolls_logo_fechado" />
+
+                <TextView
+                    android:id="@+id/login_username_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/login_activity_username_textView"
+                    android:textSize="16dp"
+                    app:layout_constraintEnd_toEndOf="@+id/dungeonScrolls_logo"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="@+id/dungeonScrolls_logo"
+                    app:layout_constraintTop_toBottomOf="@+id/dungeonScrolls_logo" />
+
+                <EditText
+                    android:id="@+id/login_username_plainText"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="@={usuariomodel.nick}"
+                    android:textSize="16dp"
+                    app:layout_constraintEnd_toEndOf="@+id/login_username_textView"
+                    app:layout_constraintStart_toStartOf="@+id/login_username_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/login_username_textView" />
+
+                <TextView
+                    android:id="@+id/login_password_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="@string/login_activity_password_textView"
+                    android:textSize="16dp"
+                    app:layout_constraintEnd_toEndOf="@+id/login_username_textView"
+                    app:layout_constraintStart_toStartOf="@+id/login_username_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/login_username_plainText" />
+
+                <EditText
+                    android:id="@+id/login_password_password"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ems="10"
+                    android:inputType="textPassword"
+                    android:text="@={usuariomodel.senha}"
+                    app:layout_constraintEnd_toEndOf="@+id/login_password_textView"
+                    app:layout_constraintStart_toStartOf="@+id/login_password_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/login_password_textView" />
+
+                <Button
+                    android:id="@+id/login_button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="32dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/button_layout"
+                    android:onClick="@{(v)->cadevent.onClickLogin()}"
+                    android:text="@string/login_activity_tabLogin_button"
+                    android:textColor="@color/colorSecondaryLight"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/login_password_textView"
+                    app:layout_constraintStart_toStartOf="@+id/login_password_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/login_password_password"
+                    app:layout_constraintVertical_bias="0.0" />
+
+            </android.support.constraint.ConstraintLayout>
+        </ScrollView>
+    </android.support.constraint.ConstraintLayout>
+</layout>

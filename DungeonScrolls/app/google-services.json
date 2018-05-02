@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "133206345318",
+    "firebase_url": "https://dungeon-scrolls.firebaseio.com",
+    "project_id": "dungeon-scrolls",
+    "storage_bucket": "dungeon-scrolls.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:133206345318:android:3fa44ac9ee23ced2",
+        "android_client_info": {
+          "package_name": "door.opposite.grupo2.dungeonscrolls"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "133206345318-qiptm79ruur5kf0rmrl34eukmret1uof.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "door.opposite.grupo2.dungeonscrolls",
+            "certificate_hash": "844f5219cef9f3ed0b2ae25a4084138413391574"
+          }
+        },
+        {
+          "client_id": "133206345318-1ajkveu0go13s870i6uie4k93ddvt6uc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCAl4OC1OVYfZ4Y5CRbTPJnad76zDs4sG4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "133206345318-1ajkveu0go13s870i6uie4k93ddvt6uc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
