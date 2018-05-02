@@ -169,10 +169,7 @@ public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItem
                     //-----------termina
                     sqLite.updateDataUsuario(usuarioLogado);
                     sqLite.deleteDataSala(sala);
-                    extra = new Intent(UserRooms.this, RoomsMenu.class);
-                    extra.putExtra("usuarioLogado", usuarioLogado);
-                    finish();
-                    startActivity(extra);
+                    onRestart();
                 }
             }
         }
@@ -211,5 +208,54 @@ public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItem
         }
 
         return array_novo;
+    }
+
+    // Quando a tela fica em segundo plano e volta para o primeiro plano ela passa pelo onRestart()
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_user_rooms);
+        sqLite = new SQLite(this);
+        sqLite.atualizaDataSala();
+        extra = getIntent();
+        usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
+
+        salasID = usuarioLogado.toIntArray(usuarioLogado.getSalasID());
+        salaModel = new SalaModel();
+        salaModelArrayList = salaModel.getArrayListSala(usuarioLogado.toIntArray(usuarioLogado.getSalasID()), sqLite);
+        salaAdapter = new SalaAdapter(this, salaModelArrayList);
+        binding.lvUserRooms.setAdapter(salaAdapter);
+
+        // Usa um dos métodos de DialogFragmentCreator para fechar o loading dialog, passando como parâmetro a referência para
+        // o próprio dialog retornado na criação com criaDialogFragmentLoadingCircle
+        geradorDialog.fechaDialogFragment(dialog);
+
+        binding.lvUserRooms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                int salaPosicao = position;
+                for(int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getSalasID()).length; i++){
+                    if(i == salaPosicao){
+                        if (salasID[i+1] == 0){
+                        }else{
+                            mestre = true;
+                            // Cria uma View que referencia o layout dialogfragment_loadingcircle
+                            View loadingCircleDialog = getLayoutInflater().inflate(R.layout.dialogfragment_loadingcircle, null);
+                            // Usa um dos métodos de DialogFragmentCreator para criar um dialog fragment do loading dialog e ao mesmo tempo passar sua
+                            // referência para um AlertDialog chamado dialog
+                            dialog = geradorDialog.criaDialogFragmentLoadingCircle(UserRooms.this, loadingCircleDialog);
+
+                            salaUsada = sqLite.selecionarSala(salasID[i+1]);
+                            extra = new Intent(UserRooms.this, RoomActivity.class);
+                            extra.putExtra("usuarioLogado", usuarioLogado);
+                            extra.putExtra("salaUsada", salaUsada);
+                            extra.putExtra("mestre", mestre);
+                            startActivity(extra);
+                        }
+                    }
+                }
+            }
+        });
     }
 }

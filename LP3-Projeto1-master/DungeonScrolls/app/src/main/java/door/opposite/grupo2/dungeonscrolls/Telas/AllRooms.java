@@ -142,6 +142,84 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
         geradorDialog.fechaDialogFragment(dialog);
     }
 
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+
+        sqLite = new SQLite(this);
+        sqLite.atualizaDataFicha();
+        sqLite.atualizaDataUsuario();
+        sqLite.atualizaDataSala();
+        database = FirebaseDatabase.getInstance();
+        reference = database.getReference();
+
+        extra = getIntent();
+        usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
+        novoJogador = usuarioLogado.getNick();
+
+        allSalasID = sqLite.listaSala();
+
+        salasID = usuarioLogado.toIntArray(usuarioLogado.getSalasID());
+        salaModel = new SalaModel();
+
+        salas = sqLite.listaSala();
+        salaModelArrayList = salaModel.getArrayListSala(salas, sqLite);
+        salaAdapter = new SalaAdapter(this, salaModelArrayList);
+        binding.lvRooms.setAdapter(salaAdapter);
+
+        atualizaDataSala();
+
+
+
+        binding.lvRooms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                View loadingCircleDialog = getLayoutInflater().inflate(R.layout.dialogfragment_loadingcircle, null);
+                // Usa um dos métodos de DialogFragmentCreator para criar um dialog fragment do loading dialog e ao mesmo tempo passar sua
+                // referência para um AlertDialog chamado dialog
+                dialog = geradorDialog.criaDialogFragmentLoadingCircle(AllRooms.this, loadingCircleDialog);
+                int salaPosicao = position;
+                int i = 0;
+                try {
+                    salaModelSelecionada = salaModelArrayList.get(salaPosicao);
+                }catch (Exception e){}
+                for (i = 0; i < salasID.length; i++) {
+                    try {
+                        if (salasID[i + 1] == 0) {
+                        }else{
+                            salaUsada = sqLite.selecionarSala(salasID[i + 1]);
+                            if (salaUsada.getNomeMestre().equals(salaModelSelecionada.getNomeMestre())) {
+                                mestre = true;
+
+                                salaUsada = sqLite.selecionarSala(salasID[i + 1]);
+                                extra = new Intent(AllRooms.this, RoomActivity.class);
+                                extra.putExtra("usuarioLogado", usuarioLogado);
+                                extra.putExtra("salaUsada", salaUsada);
+                                extra.putExtra("mestre", mestre);
+                                salaUsuario = true;
+                                startActivity(extra);
+                            }
+                        }
+                    }catch(Exception e){}
+                }
+                if(salaUsuario == false){
+                    if(salaModelSelecionada.getSenha().length() == 1){
+
+
+                        salaUsada = sqLite.selecionarSala(salaModelSelecionada.getNome());
+                        extra = new Intent(AllRooms.this, RoomActivity.class);
+                        extra.putExtra("usuarioLogado", usuarioLogado);
+                        extra.putExtra("salaUsada", salaUsada);
+                        salaUsuario = true;
+                        startActivity(extra);
+                    }else{
+                        showNoticeDialog();
+                    }
+                }
+            }
+        });
+    }
+
     public void showNoticeDialog() {
         // Cria uma instância para o Notice Dialog Fragment
         DialogFragment dialog = new NoticeDialogFragmentID();
@@ -213,10 +291,7 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
     }
 
     public void onBackPressed(){
-        extra = new Intent(AllRooms.this, RoomsMenu.class);
-        extra.putExtra("usuarioLogado", usuarioLogado);
-        finish();
-        startActivity(extra);
+        onRestart();
     }
 
     @Override
@@ -224,18 +299,6 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
         super.onPause();
         continuar = true;
     }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        if(continuar) {
-            extra = new Intent(AllRooms.this, RoomsMenu.class);
-            extra.putExtra("usuarioLogado", usuarioLogado);
-            finish();
-            startActivity(extra);
-        }
-    }
-
 
     @Override
     protected void onStop() {
