@@ -70,7 +70,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
         setSupportActionBar(toolbar);
 
-
+        // Área do Navigation Drawer
         drawerLayout = (DrawerLayout)findViewById(R.id.room_drawer_menu);
         toggle = new android.support.v7.app.ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.common_open_on_phone, R.string.close);
         toggle.setDrawerIndicatorEnabled(true);
@@ -89,20 +89,25 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             mNavigationView.setNavigationItemSelectedListener(this);
         }
 
-
+        // Pegando os dados que foram passados na Intent
         extra = getIntent();
         Usuario test = (Usuario) extra.getSerializableExtra("usuarioLogado");
         salaUsada = (Sala)extra.getSerializableExtra("salaUsada");
-
         mestre =  extra.getBooleanExtra("mestre", mestre);
+
+        // Criando Objeto da Classe SQLite
         sqLite = new SQLite(this);
+
+        // Traz as coisas do servidor
         sqLite.atualizaDataFicha();
         sqLite.atualizaDataUsuario();
-        //sqLite.atualizaDataSala();
 
+        // Pega o usuário logado
         usuarioLogado = sqLite.selecionarUsuario(test.getID());
+
         binding.setItemSalaCompleta(new SalaModel(salaUsada));
 
+        // Checa se o usuário é mestre, ou seja, tem as permissões necessárias dentro do escopo daquela sala
         if(mestre != true){
             for(int i = 1; i < salaUsada.toIntArray(salaUsada.getJogadoresID()).length; i++){
                 usuarioOn = sqLite.selecionarUsuario(salaUsada.toIntArray(salaUsada.getJogadoresID())[i]);
@@ -291,12 +296,16 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     }
 
+    // onMenuItemClick é chamado toda vez que, ao pressionar por muito tempo uma ficha, um item do menu que aparece
+    // é pressionado
     @Override
     public boolean onMenuItemClick(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
+            // Caso o item seja Vincular:
             case R.id.item_vincular:
                 showNoticeDialogUsuarios();
                 return true;
+            // Caso o item seja Deletar:
             case R.id.item_deleta:
                 salaUsada.setHistoria(binding.roomEditTextResumo.getText().toString());
                 salaUsada.setNotas(binding.roomEditTextOutrasAnotacoes.getText().toString());
