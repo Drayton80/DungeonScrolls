@@ -22,6 +22,16 @@
     <string name="room_activity_resumoHistoria">Resumo da História</string>
     <string name="room_activity_anotacoes">Outras Anotações</string>
     <string name="room_activity_adicionar">Adicionar Ficha</string>
+    <string name="room_dialogFragment_pergunta">Deseja gerar algumas características automaticamente?</string>
+
+    <string name="room_newSheetAutomatically_activity_tipo">Tipo</string>
+    <string name="room_newSheetAutomatically_activity_nivelDificuldade">Nível de Dificuldade</string>
+    <string name="room_newSheetAutomatically_activity_ambiente">Ambiente e Temperatura</string>
+    <string name="room_newSheetAutomatically_activity_nivelAjuste">Nível de Ajuste</string>
+    <string name="room_newSheetAutomatically_activity_tamanho">Tamanho</string>
+    <string name="room_newSheetAutomatically_activity_alinhamento">Alinhamento</string>
+    <string name="room_newSheetAutomatically_activity_continuar">Continuar</string>
+    <string name="room_newSheetAutomatically_activity_cancelar">Cancelar</string>
 
     <string name="roomsMenu_dialogFragment_senha_senhaDica">Digite a senha da sala aqui</string>
     <string name="roomsMenu_dialogFragment_senha_prosseguir">Prosseguir</string>
@@ -148,7 +158,7 @@
 
 
     <string name="menu_navigationDrawer_listaDeSalas">Lista de Salas</string>
-    <string name="menu_navigationDrawer_sala">Sala</string>
+    <string name="menu_navigationDrawer_sala">Página Principal</string>
     <string name="menu_navigationDrawer_salaPaginaPrincipal">    Página Principal</string>
     <string name="menu_navigationDrawer_salaListaJogadores">    Lista de Jogadores</string>
     <string name="menu_navigationDrawer_salaFichasPersonagens">    Fichas de Personagens</string>
@@ -173,6 +183,8 @@
 
     <string name="gerais_expandir">Expandir</string>
     <string name="gerais_salvar">Salvar</string>
+    <string name="gerais_sim">Sim</string>
+    <string name="gerais_nao">Não</string>
 
     <string name="title_activity_login" translatable="false">LoginActivity</string>
     <string name="title_activity_main2" translatable="false">Main2Activity</string>

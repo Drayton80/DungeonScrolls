@@ -4,7 +4,7 @@
         android:title="@string/menu_navigationDrawer_listaDeSalas" />
     <item android:id="@+id/menu_navigationDrawer_item_paginaPrincipal"
         android:title="@string/menu_navigationDrawer_sala" />
-        <item android:id="@+id/menu_navigationDrawer_item_salaPaginaPrincipal"
+        <!--item android:id="@+id/menu_navigationDrawer_item_salaPaginaPrincipal"
             android:title="@string/menu_navigationDrawer_salaPaginaPrincipal" />
         <item android:id="@+id/menu_navigationDrawer_item_salaJogadores"
             android:title="@string/menu_navigationDrawer_salaListaJogadores" />
@@ -13,7 +13,7 @@
         <item android:id="@+id/menu_navigationDrawer_item_paginaFichasMonstros"
             android:title="@string/menu_navigationDrawer_salaFichasMonstros" />
         <item android:id="@+id/menu_navigationDrawer_item_fichaPersonagem"
-            android:title="@string/menu_navigationDrawer_ficha" />
+            android:title="@string/menu_navigationDrawer_ficha" /-->
     <item android:id="@+id/menu_navigationDrawer_item_sairDaConta"
         android:title="@string/menu_navigationDrawer_sairDaConta" />
 </menu>

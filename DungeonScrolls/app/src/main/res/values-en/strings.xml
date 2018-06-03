@@ -146,7 +146,7 @@
     <string name="toast_signUp_sucessoCadastro">Registered Successfully</string>
     <string name="toast_roomCreation_salaJaExistente">Room already exist</string>
     <string name="toast_roomCreation_salaCriada">Room Sucessfully created</string>
-    <string name="menu_navigationDrawer_sala">Room</string>
+    <string name="menu_navigationDrawer_sala">Home</string>
     <string name="menu_navigationDrawer_salaFichasMonstros">"    Monsters Sheet"</string>
     <string name="menu_navigationDrawer_salaFichasPersonagens">"    Characters Sheet"</string>
     <string name="menu_navigationDrawer_salaListaJogadores">"    Players List"</string>
