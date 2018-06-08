@@ -93,7 +93,7 @@
                         <EditText
                             android:id="@+id/sheetSP_editText_qualidadesEspeciais"
                             android:layout_width="0dp"
-                            android:layout_height="270dp"
+                            android:layout_height="170dp"
                             android:layout_marginTop="8dp"
                             android:ems="10"
                             android:inputType="textMultiLine"
@@ -119,17 +119,98 @@
                         <EditText
                             android:id="@+id/sheetSP_editText_habilidadesEspeciais"
                             android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_marginBottom="72dp"
+                            android:layout_height="170dp"
                             android:layout_marginTop="8dp"
                             android:ems="10"
                             android:inputType="textMultiLine"
+                            android:text="@={fichaElementos.habiEspeciais}"
+                            app:layout_constraintEnd_toEndOf="@+id/sheetSP_textView_habilidadesEspeciais"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="@+id/sheetSP_textView_habilidadesEspeciais"
+                            app:layout_constraintTop_toBottomOf="@+id/sheetSP_textView_habilidadesEspeciais" />
+
+                        <TextView
+                            android:id="@+id/sheetSP_textView_ambiente"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:text="@string/sheet_activity_specialProperties_ambiente"
+                            android:textAlignment="center"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/sheetSP_editText_habilidadesEspeciais" />
+
+                        <EditText
+                            android:id="@+id/sheetSP_editText_ambiente"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:text="@={fichaElementos.habiEspeciais}"
+                            app:layout_constraintEnd_toEndOf="@+id/sheetSP_textView_habilidadesEspeciais"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="@+id/sheetSP_textView_habilidadesEspeciais"
+                            app:layout_constraintTop_toBottomOf="@+id/sheetSP_textView_ambiente" />
+
+                        <TextView
+                            android:id="@+id/sheetSP_textView_organizacao"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:text="@string/sheet_activity_specialProperties_organizacao"
+                            android:textAlignment="center"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/sheetSP_editText_ambiente" />
+
+                        <EditText
+                            android:id="@+id/sheetSP_editText_organizacao"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
+                            android:text="@={fichaElementos.habiEspeciais}"
+                            app:layout_constraintEnd_toEndOf="@+id/sheetSP_textView_habilidadesEspeciais"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="@+id/sheetSP_textView_habilidadesEspeciais"
+                            app:layout_constraintTop_toBottomOf="@+id/sheetSP_textView_organizacao" />
+
+                        <TextView
+                            android:id="@+id/sheetSP_textView_evolucao"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginStart="16dp"
+                            android:text="@string/sheet_activity_specialProperties_evolucao"
+                            android:textAlignment="center"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            tools:layout_editor_absoluteY="668dp" />
+
+                        <EditText
+                            android:id="@+id/sheetSP_editText_evolucao"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="72dp"
+                            android:layout_marginTop="8dp"
+                            android:ems="10"
+                            android:inputType="textPersonName"
                             android:text="@={fichaElementos.habiEspeciais}"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="@+id/sheetSP_textView_habilidadesEspeciais"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="@+id/sheetSP_textView_habilidadesEspeciais"
-                            app:layout_constraintTop_toBottomOf="@+id/sheetSP_textView_habilidadesEspeciais" />
+                            app:layout_constraintTop_toBottomOf="@+id/sheetSP_textView_evolucao"
+                            app:layout_constraintVertical_bias="0.0" />
 
 
                     </android.support.constraint.ConstraintLayout>

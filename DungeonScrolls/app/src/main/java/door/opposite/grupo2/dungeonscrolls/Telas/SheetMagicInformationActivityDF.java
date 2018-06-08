@@ -98,7 +98,7 @@ public class SheetMagicInformationActivityDF extends AppCompatActivity implement
 
                 startActivity(extra);
                 return true;
-            case R.id.menu_navigationDrawer_item_fichaPersonagem:
+            /*case R.id.menu_navigationDrawer_item_fichaPersonagem:
                 extra = new Intent(SheetMagicInformationActivityDF.this, SheetActivity.class);
                 extra.putExtra("usuarioLogado", usuarioLogado);
                 extra.putExtra("salaUsada", salaUsada);
@@ -106,7 +106,7 @@ public class SheetMagicInformationActivityDF extends AppCompatActivity implement
                 extra.putExtra("mestre", mestre);
                 startActivity(extra);
                 return true;
-
+            */
             case R.id.menu_navigationDrawer_item_sairDaConta:
                 extra = new Intent(SheetMagicInformationActivityDF.this, MainActivity.class);
                 startActivity(extra);

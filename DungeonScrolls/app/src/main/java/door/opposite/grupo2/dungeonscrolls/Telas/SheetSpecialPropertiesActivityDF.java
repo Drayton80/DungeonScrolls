@@ -95,6 +95,7 @@ public class SheetSpecialPropertiesActivityDF extends AppCompatActivity implemen
 
                 startActivity(extra);
                 return true;
+                /*
             case R.id.menu_navigationDrawer_item_fichaPersonagem:
                 extra = new Intent(SheetSpecialPropertiesActivityDF.this, SheetActivity.class);
                 extra.putExtra("usuarioLogado", usuarioLogado);
@@ -103,7 +104,7 @@ public class SheetSpecialPropertiesActivityDF extends AppCompatActivity implemen
                 extra.putExtra("mestre", mestre);
                 startActivity(extra);
                 return true;
-
+            */
             case R.id.menu_navigationDrawer_item_sairDaConta:
                 extra = new Intent(SheetSpecialPropertiesActivityDF.this, MainActivity.class);
                 startActivity(extra);

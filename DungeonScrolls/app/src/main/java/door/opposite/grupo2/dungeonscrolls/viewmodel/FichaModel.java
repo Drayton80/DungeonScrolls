@@ -547,7 +547,7 @@ public class FichaModel extends BaseObservable{
         }else{
             this.pv = Integer.parseInt(pv);
         }
-        notifyPropertyChanged(R.id.sheetBI_editText_pvTotal);
+        //notifyPropertyChanged(R.id.sheetBI_editText_pvTotal);
     }
 
     public String getReducaoDeDano() {
@@ -973,7 +973,7 @@ public class FichaModel extends BaseObservable{
         }else{
             this.pvAtual = Integer.parseInt(pvAtual);
         }
-        notifyPropertyChanged(R.id.sheetBI_editText_pvAtual);
+        //notifyPropertyChanged(R.id.sheetBI_editText_pvAtual);
     }
 
     public String getResistenciaNatural() {

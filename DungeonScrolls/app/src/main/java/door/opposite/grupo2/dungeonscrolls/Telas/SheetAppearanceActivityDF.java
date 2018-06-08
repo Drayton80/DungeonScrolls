@@ -99,7 +99,7 @@ public class SheetAppearanceActivityDF extends AppCompatActivity implements  Nav
 
                 startActivity(extra);
                 return true;
-            case R.id.menu_navigationDrawer_item_fichaPersonagem:
+            /*case R.id.menu_navigationDrawer_item_fichaPersonagem:
                 extra = new Intent(SheetAppearanceActivityDF.this, SheetActivity.class);
                 extra.putExtra("usuarioLogado", usuarioLogado);
                 extra.putExtra("salaUsada", salaUsada);
@@ -107,7 +107,7 @@ public class SheetAppearanceActivityDF extends AppCompatActivity implements  Nav
                 extra.putExtra("mestre", mestre);
                 startActivity(extra);
                 return true;
-
+            */
             case R.id.menu_navigationDrawer_item_sairDaConta:
                 extra = new Intent(SheetAppearanceActivityDF.this, MainActivity.class);
                 startActivity(extra);

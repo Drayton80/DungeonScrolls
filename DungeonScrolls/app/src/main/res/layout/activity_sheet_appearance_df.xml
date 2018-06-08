@@ -118,12 +118,11 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="16dp"
-                        android:layout_marginTop="16dp"
                         android:text="@string/sheet_activity_appearanceSheet_weight"
                         android:textAlignment="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/blank_space"
-                        app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_title" />
+                        app:layout_constraintTop_toTopOf="@+id/sheetAp_textView_height" />
 
                     <com.santalu.maskedittext.MaskEditText
                         android:id="@+id/sheetAp_editText_weight"
@@ -141,6 +140,58 @@
                         app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_weight" />
 
                     <TextView
+                        android:id="@+id/sheetAp_textView_espaco"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/sheet_activity_appearanceSheet_espaco"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toStartOf="@+id/blank_space"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/sheetAp_editText_height" />
+
+                    <com.santalu.maskedittext.MaskEditText
+                        android:id="@+id/sheetAp_editText_espaco"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:inputType="numberDecimal"
+                        android:text="@={fichaElementos.altura}"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_height"
+                        app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_height"
+                        app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_espaco"
+                        app:met_mask="#######" />
+
+                    <TextView
+                        android:id="@+id/sheetAp_textView_alcance"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="16dp"
+                        android:text="@string/sheet_activity_appearanceSheet_alcance"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/blank_space"
+                        app:layout_constraintTop_toTopOf="@+id/sheetAp_textView_espaco" />
+
+                    <com.santalu.maskedittext.MaskEditText
+                        android:id="@+id/sheetAp_editText_weight2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:ems="10"
+                        android:inputType="numberDecimal"
+                        android:text="@={fichaElementos.peso}"
+                        android:textAlignment="center"
+                        app:layout_constraintEnd_toEndOf="@+id/sheetAp_textView_weight"
+                        app:layout_constraintHorizontal_bias="0.47"
+                        app:layout_constraintStart_toStartOf="@+id/sheetAp_textView_weight"
+                        app:layout_constraintTop_toBottomOf="@+id/sheetAp_textView_alcance"
+                        app:met_mask="#######" />
+
+                    <TextView
                         android:id="@+id/sheetAp_textView_inclination"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -148,8 +199,9 @@
                         android:text="@string/sheet_activity_appearanceSheet_inclination"
                         android:textAlignment="center"
                         app:layout_constraintEnd_toEndOf="@+id/sheetAp_editText_height"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/sheetAp_editText_height"
-                        app:layout_constraintTop_toBottomOf="@+id/sheetAp_editText_height" />
+                        app:layout_constraintTop_toBottomOf="@+id/sheetAp_editText_espaco" />
 
                     <EditText
                         android:id="@+id/sheetAp_editText_inclination"
@@ -168,12 +220,11 @@
                         android:id="@+id/sheetAp_textView_divinity"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="16dp"
                         android:text="@string/sheet_activity_appearanceSheet_divinity"
                         android:textAlignment="center"
                         app:layout_constraintEnd_toEndOf="@+id/sheetAp_editText_weight"
                         app:layout_constraintStart_toStartOf="@+id/sheetAp_editText_weight"
-                        app:layout_constraintTop_toBottomOf="@+id/sheetAp_editText_weight" />
+                        app:layout_constraintTop_toTopOf="@+id/sheetAp_textView_inclination" />
 
                     <EditText
                         android:id="@+id/sheetAp_editText_divinity"

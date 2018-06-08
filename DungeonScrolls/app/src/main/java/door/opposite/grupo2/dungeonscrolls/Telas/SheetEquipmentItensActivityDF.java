@@ -100,6 +100,7 @@ public class SheetEquipmentItensActivityDF extends AppCompatActivity implements 
 
                 startActivity(extra);
                 return true;
+            /*
             case R.id.menu_navigationDrawer_item_fichaPersonagem:
                 extra = new Intent(SheetEquipmentItensActivityDF.this, SheetActivity.class);
                 extra.putExtra("usuarioLogado", usuarioLogado);
@@ -108,7 +109,7 @@ public class SheetEquipmentItensActivityDF extends AppCompatActivity implements 
                 extra.putExtra("mestre", mestre);
                 startActivity(extra);
                 return true;
-
+            */
             case R.id.menu_navigationDrawer_item_sairDaConta:
                 extra = new Intent(SheetEquipmentItensActivityDF.this, MainActivity.class);
                 startActivity(extra);

@@ -13,17 +13,16 @@
     <string name="allRooms_activity_tabAllRooms_title">Todas as salas</string>
     <string name="userRooms_activity_tabUserRooms_title">Suas salas</string>
     <string name="userRooms_activity_btn_criarSala">criar sala</string>
+
     <string name="room_activity_creation_nomeDaSala">Nome da Sala</string>
     <string name="room_activity_creation_senha">Senha (Opcional)</string>
     <string name="room_activity_creation_btnCriar">Criar</string>
     <string name="room_activity_creation_resumoDaHistoria">Historia</string>
-
     <string name="room_activity_fichas">Suas Fichas</string>
     <string name="room_activity_resumoHistoria">Resumo da História</string>
     <string name="room_activity_anotacoes">Outras Anotações</string>
     <string name="room_activity_adicionar">Adicionar Ficha</string>
     <string name="room_dialogFragment_pergunta">Deseja gerar algumas características automaticamente?</string>
-
     <string name="room_newSheetAutomatically_activity_tipo">Tipo</string>
     <string name="room_newSheetAutomatically_activity_nivelDificuldade">Nível de Dificuldade</string>
     <string name="room_newSheetAutomatically_activity_ambiente">Ambiente e Temperatura</string>
@@ -39,7 +38,11 @@
 
     <string name="sheet_activity_recordSheet_tituloPrincipal">Ficha de Personagem</string>
     <string name="sheet_activity_recordSheet_title">Ficha de Personagem</string>
-    <string name="sheet_activity_recordSheet_name">Nome Completo</string>
+    <string name="sheet_activity_recordSheet_name">Nome</string>
+    <string name="sheet_activity_recordSheet_tipo">Tipo</string>
+    <string name="sheet_activity_recordSheet_subtipo">Sub-Tipo(s)</string>
+    <string name="sheet_activity_recordSheet_pvAtual">PV Atual</string>
+    <string name="sheet_activity_recordSheet_pvTotal">PV Total</string>
     <string name="sheet_activity_recordSheet_idade">Idade</string>
     <string name="sheet_activity_recordSheet_experiencia">Experiência</string>
     <string name="sheet_activity_recordSheet_raca">Raça</string>
@@ -61,6 +64,8 @@
     <string name="sheet_activity_recordSheet_habilidadesInteligencia">Inteligência</string>
     <string name="sheet_activity_recordSheet_habilidadesCarismaSigla">CAR</string>
     <string name="sheet_activity_recordSheet_habilidadesCarisma">Carisma</string>
+    <string name="sheet_activity_recordSheet_nivelDeDificuldade">Nível de Dificuldade</string>
+    <string name="sheet_activity_recordSheet_nivelDeAjuste">Nível de Ajuste</string>
     <string name="sheet_activity_recordSheet_resistenciasTitulo">Testes de Resistências</string>
     <string name="sheet_activity_recordSheet_resistenciasNome">Nome</string>
     <string name="sheet_activity_recordSheet_resistenciasTotal">Total</string>
@@ -87,6 +92,8 @@
     <string name="sheet_activity_appearanceSheet_title">Informações e Aparência</string>
     <string name="sheet_activity_appearanceSheet_height">Altura(m)</string>
     <string name="sheet_activity_appearanceSheet_weight">Peso(kg)</string>
+    <string name="sheet_activity_appearanceSheet_espaco">Espaço</string>
+    <string name="sheet_activity_appearanceSheet_alcance">Alcance</string>
     <string name="sheet_activity_appearanceSheet_inclination">Tendência</string>
     <string name="sheet_activity_appearanceSheet_divinity">Divindade(s)</string>
     <string name="sheet_activity_appearanceSheet_gender">Sexo</string>
@@ -123,9 +130,6 @@
     <string name="sheet_activity_battleInformationSheet_caOutros">Outros</string>
     <string name="sheet_activity_battleInformationSheet_resistenciasNaturais">Resistências Naturais</string>
     <string name="sheet_activity_battleInformationSheet_resistenciaMagica">Resistência Mágica</string>
-    <string name="sheet_activity_battleInformationSheet_pvTitulo">Pontos de Vida</string>
-    <string name="sheet_activity_battleInformationSheet_pvAtual">PV Atual</string>
-    <string name="sheet_activity_battleInformationSheet_pvTotal">PV Total</string>
     <string name="sheet_activity_battleInformationSheet_reducaoDeDano">Redução de Dano</string>
     <string name="sheet_activity_battleInformationSheet_iniciativaTitulo">Iniciativa</string>
     <string name="sheet_activity_battleInformationSheet_iniciativa">Total</string>
@@ -149,6 +153,9 @@
     <string name="sheet_activity_specialProperties_title">Propriedades Especiais</string>
     <string name="sheet_activity_specialProperties_qualidadesEspeciais">Qualidades Especiais</string>
     <string name="sheet_activity_specialProperties_habilidadesEspeciais">Habilidades Especiais</string>
+    <string name="sheet_activity_specialProperties_ambiente">Ambiente e Temperatura</string>
+    <string name="sheet_activity_specialProperties_organizacao">Organização</string>
+    <string name="sheet_activity_specialProperties_evolucao">Evolução</string>
 
     <string name="options_activity_opcoesDeUsuario">Características de Usuário</string>
     <string name="options_activity_nome">Nome de Usuário</string>

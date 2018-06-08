@@ -82,13 +82,13 @@
                             android:layout_height="18dp"
                             android:layout_marginEnd="16dp"
                             android:layout_marginStart="16dp"
-                            android:layout_marginTop="16dp"
+                            android:layout_marginTop="8dp"
                             android:text="@string/sheet_activity_battleInformationSheet_caTitulo"
                             android:textAlignment="center"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/sheetBI_editText_pvAtual" />
+                            app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_title" />
 
                         <TextView
                             android:id="@+id/sheetBI_textView_caNormal"
@@ -123,10 +123,9 @@
                             android:text="@string/sheet_activity_battleInformationSheet_caToque"
                             android:textAlignment="center"
                             android:textSize="10sp"
-                            app:layout_constraintBottom_toBottomOf="@+id/white_space8"
+                            app:layout_constraintBottom_toBottomOf="@+id/sheetBI_textView_caSurpresa"
                             app:layout_constraintEnd_toEndOf="@+id/sheetBI_editText_caNormal"
-                            app:layout_constraintStart_toStartOf="@+id/sheetBI_editText_caNormal"
-                            app:layout_constraintTop_toTopOf="@+id/white_space8" />
+                            app:layout_constraintStart_toStartOf="@+id/sheetBI_editText_caNormal" />
 
                         <EditText
                             android:id="@+id/sheetBI_editText_caToque"
@@ -142,16 +141,6 @@
                             app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_caToque"
                             app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_caToque"
                             app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_caToque" />
-
-                        <TextView
-                            android:id="@+id/white_space8"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="60dp"
-                            android:text="   "
-                            app:layout_constraintBottom_toBottomOf="@+id/sheetBI_textView_resistenciasElementais"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="@+id/sheetBI_textView_resistenciasElementais" />
 
                         <TextView
                             android:id="@+id/white_space2"
@@ -302,13 +291,13 @@
                             android:id="@+id/sheetBI_textView_caSurpresa"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
                             android:text="@string/sheet_activity_battleInformationSheet_caSurpresa"
                             android:textAlignment="center"
                             android:textSize="10sp"
-                            app:layout_constraintBottom_toBottomOf="@+id/white_space8"
                             app:layout_constraintEnd_toEndOf="@+id/sheetBI_editText_caArmadura"
                             app:layout_constraintStart_toStartOf="@+id/sheetBI_editText_caArmadura"
-                            app:layout_constraintTop_toTopOf="@+id/white_space8" />
+                            app:layout_constraintTop_toBottomOf="@+id/sheetBI_editText_caArmadura" />
 
                         <com.santalu.maskedittext.MaskEditText
                             android:id="@+id/sheetBI_editText_caSurpresa"
@@ -333,10 +322,9 @@
                             android:text="@string/sheet_activity_battleInformationSheet_resistenciaMagica"
                             android:textAlignment="center"
                             android:textSize="10sp"
-                            app:layout_constraintBottom_toBottomOf="@+id/sheetBI_textView_resistenciasElementais"
+                            app:layout_constraintBottom_toBottomOf="@+id/sheetBI_textView_caSurpresa"
                             app:layout_constraintEnd_toStartOf="@+id/sheetBI_textView_resistenciasElementais"
-                            app:layout_constraintStart_toStartOf="@+id/sheetBI_editText_caNatural"
-                            app:layout_constraintTop_toTopOf="@+id/sheetBI_textView_resistenciasElementais" />
+                            app:layout_constraintStart_toStartOf="@+id/sheetBI_editText_caNatural" />
 
                         <com.santalu.maskedittext.MaskEditText
                             android:id="@+id/sheetBI_editText_resistenciaMagica"
@@ -352,80 +340,6 @@
                             app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_resistenciaMagica"
                             app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_resistenciaMagica"
                             app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_resistenciaMagica" />
-
-                        <TextView
-                            android:id="@+id/sheetBI_textView_pvTitulo"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="16dp"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="16dp"
-                            android:text="@string/sheet_activity_battleInformationSheet_pvTitulo"
-                            android:textAlignment="center"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.51"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_title" />
-
-                        <TextView
-                            android:id="@+id/sheetBI_textView_pvAtual"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/sheet_activity_battleInformationSheet_pvAtual"
-                            android:textAlignment="center"
-                            android:textSize="10sp"
-                            app:layout_constraintBottom_toBottomOf="@+id/white_space3"
-                            app:layout_constraintEnd_toStartOf="@+id/white_space3"
-                            app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_pvTitulo"
-                            app:layout_constraintTop_toTopOf="@+id/white_space3" />
-
-                        <EditText
-                            android:id="@+id/sheetBI_editText_pvAtual"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:ems="10"
-                            android:inputType="numberSigned|number"
-                            android:textAlignment="center"
-                            android:text="@={fichaElementos.pvAtual}"
-                            app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_pvAtual"
-                            app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_pvAtual"
-                            app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_pvAtual" />
-
-                        <TextView
-                            android:id="@+id/white_space3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="   "
-                            app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_pvTitulo"
-                            app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_pvTitulo"
-                            app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_pvTitulo" />
-
-                        <TextView
-                            android:id="@+id/sheetBI_textView_pvTotal"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:text="@string/sheet_activity_battleInformationSheet_pvTotal"
-                            android:textAlignment="center"
-                            android:textSize="10sp"
-                            app:layout_constraintBottom_toBottomOf="@+id/white_space3"
-                            app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_pvTitulo"
-                            app:layout_constraintStart_toEndOf="@+id/white_space3"
-                            app:layout_constraintTop_toTopOf="@+id/white_space3" />
-
-                        <EditText
-                            android:id="@+id/sheetBI_editText_pvTotal"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:ems="10"
-                            android:inputType="number"
-                            android:textAlignment="center"
-                            android:text="@={fichaElementos.pv}"
-                            app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_pvTotal"
-                            app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_pvTotal"
-                            app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_pvAtual" />
 
                         <TextView
                             android:id="@+id/sheetBI_textView_reducaoDeDano"
@@ -458,16 +372,20 @@
                         <TextView
                             android:id="@+id/sheetBI_textView_resistenciasElementais"
                             android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="16dp"
+                            android:layout_height="12dp"
+                            android:layout_marginEnd="16dp"
+                            android:layout_marginLeft="8dp"
                             android:layout_marginRight="16dp"
+                            android:layout_marginStart="8dp"
                             android:layout_marginTop="8dp"
                             android:text="@string/sheet_activity_battleInformationSheet_resistenciasNaturais"
                             android:textAlignment="center"
                             android:textSize="10sp"
+                            app:layout_constraintBottom_toBottomOf="@+id/sheetBI_textView_resistenciaMagica"
                             app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/sheetBI_editText_caOutros"
-                            app:layout_constraintTop_toBottomOf="@+id/sheetBI_editText_reducaoDeDano" />
+                            app:layout_constraintStart_toStartOf="@+id/sheetBI_editText_reducaoDeDano"
+                            app:layout_constraintTop_toBottomOf="@+id/sheetBI_editText_reducaoDeDano"
+                            app:layout_constraintVertical_bias="1.0" />
 
                         <com.santalu.maskedittext.MaskEditText
                             android:id="@+id/sheetBI_editText_resistenciasElementais"
@@ -475,13 +393,13 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:ems="10"
-                            app:met_mask="###"
                             android:inputType="number"
-                            android:textAlignment="center"
                             android:text="@={fichaElementos.resistenciaNatural}"
+                            android:textAlignment="center"
                             app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_reducaoDeDano"
                             app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_reducaoDeDano"
-                            app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_resistenciasElementais" />
+                            app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_resistenciasElementais"
+                            app:met_mask="###" />
 
                         <TextView
                             android:id="@+id/sheetBI_textView_iniciativaTitulo"
@@ -510,11 +428,12 @@
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
+                            android:editable="false"
                             android:ems="10"
                             android:inputType="none"
-                            android:textAlignment="center"
                             android:text="@={fichaElementos.iniciativa}"
-                            android:editable="false"
+                            android:textAlignment="center"
+                            app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_iniciativaDestreza"
                             app:layout_constraintEnd_toStartOf="@+id/white_space5"
                             app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_iniciativa"
                             app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_iniciativa" />
@@ -526,31 +445,34 @@
                             android:layout_marginStart="60dp"
                             android:layout_marginTop="8dp"
                             android:text="   "
+                            app:layout_constraintBottom_toBottomOf="@+id/sheetBI_textView_iniciativaDestreza"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_iniciativaTitulo" />
+                            app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_iniciativaTitulo"
+                            app:layout_constraintVertical_bias="1.0" />
 
                         <TextView
                             android:id="@+id/sinal_igual2"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
+                            android:layout_marginTop="8dp"
                             android:text="="
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_iniciativa"
                             app:layout_constraintEnd_toStartOf="@+id/sheetBI_editText_iniciativaDestreza"
                             app:layout_constraintStart_toEndOf="@+id/sheetBI_editText_iniciativa"
-                            app:layout_constraintTop_toBottomOf="@+id/white_space5" />
+                            app:layout_constraintTop_toTopOf="@+id/sheetBI_editText_iniciativa" />
 
                         <TextView
                             android:id="@+id/sheetBI_textView_iniciativaDestreza"
                             android:layout_width="45dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
                             android:text="@string/sheet_activity_battleInformationSheet_iniciativaDestreza"
                             android:textAlignment="center"
                             android:textSize="10sp"
-                            app:layout_constraintBottom_toBottomOf="@+id/white_space5"
                             app:layout_constraintStart_toEndOf="@+id/white_space5"
-                            app:layout_constraintTop_toTopOf="@+id/white_space5" />
+                            app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_iniciativaTitulo" />
 
                         <EditText
                             android:id="@+id/sheetBI_editText_iniciativaDestreza"
@@ -579,12 +501,13 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
+                            android:layout_marginTop="8dp"
                             android:text="+"
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_iniciativaDestreza"
                             app:layout_constraintEnd_toStartOf="@+id/sheetBI_editText_iniciativaOutros"
                             app:layout_constraintStart_toEndOf="@+id/sheetBI_editText_iniciativaDestreza"
-                            app:layout_constraintTop_toBottomOf="@+id/white_space7"
+                            app:layout_constraintTop_toTopOf="@+id/sheetBI_editText_iniciativaDestreza"
                             app:layout_constraintVertical_bias="0.55" />
 
                         <TextView
@@ -661,7 +584,8 @@
                             android:textSize="10sp"
                             app:layout_constraintBottom_toBottomOf="@+id/white_space9"
                             app:layout_constraintEnd_toStartOf="@+id/white_space9"
-                            app:layout_constraintTop_toTopOf="@+id/white_space9" />
+                            app:layout_constraintTop_toTopOf="@+id/white_space9"
+                            app:layout_constraintVertical_bias="1.0" />
 
                         <EditText
                             android:id="@+id/sheetBI_editText_agarrar"
@@ -684,31 +608,34 @@
                             android:layout_marginLeft="60dp"
                             android:layout_marginTop="8dp"
                             android:text="   "
+                            app:layout_constraintBottom_toBottomOf="@+id/sheetBI_textView_agarrarForca"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_agarrarTitulo" />
+                            app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_agarrarTitulo"
+                            app:layout_constraintVertical_bias="1.0" />
 
                         <TextView
                             android:id="@+id/sinal_igual3"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
+                            android:layout_marginTop="8dp"
                             android:text="="
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_agarrar"
                             app:layout_constraintEnd_toStartOf="@+id/sheetBI_editText_agarrarForca"
                             app:layout_constraintStart_toEndOf="@+id/sheetBI_editText_agarrar"
-                            app:layout_constraintTop_toBottomOf="@+id/white_space9" />
+                            app:layout_constraintTop_toTopOf="@+id/sheetBI_editText_agarrar" />
 
                         <TextView
                             android:id="@+id/sheetBI_textView_agarrarForca"
                             android:layout_width="45dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
                             android:text="@string/sheet_activity_battleInformationSheet_agarrarForca"
                             android:textAlignment="center"
                             android:textSize="10sp"
-                            app:layout_constraintBottom_toBottomOf="@+id/white_space9"
                             app:layout_constraintStart_toEndOf="@+id/white_space9"
-                            app:layout_constraintTop_toTopOf="@+id/white_space9" />
+                            app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_agarrarTitulo" />
 
                         <EditText
                             android:id="@+id/sheetBI_editText_agarrarForca"
@@ -730,6 +657,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:text="   "
+                            app:layout_constraintBottom_toBottomOf="@+id/sheetBI_textView_agarrarForca"
                             app:layout_constraintStart_toEndOf="@+id/sheetBI_textView_agarrarForca"
                             app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_agarrarTitulo" />
 
@@ -738,11 +666,12 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="8dp"
+                            android:layout_marginTop="8dp"
                             android:text="+"
                             android:textSize="18sp"
                             app:layout_constraintBottom_toBottomOf="@+id/sheetBI_editText_agarrarForca"
                             app:layout_constraintStart_toEndOf="@+id/sheetBI_editText_agarrarForca"
-                            app:layout_constraintTop_toBottomOf="@+id/white_space10"
+                            app:layout_constraintTop_toTopOf="@+id/sheetBI_editText_agarrarForca"
                             app:layout_constraintVertical_bias="0.55" />
 
                         <TextView
@@ -754,7 +683,8 @@
                             android:textSize="10sp"
                             app:layout_constraintBottom_toBottomOf="@+id/white_space9"
                             app:layout_constraintStart_toEndOf="@+id/white_space10"
-                            app:layout_constraintTop_toTopOf="@+id/white_space9" />
+                            app:layout_constraintTop_toTopOf="@+id/white_space9"
+                            app:layout_constraintVertical_bias="1.0" />
 
                         <com.santalu.maskedittext.MaskEditText
                             android:id="@+id/sheetBI_editText_agarrarOutros"
@@ -819,13 +749,15 @@
                             android:layout_height="170dp"
                             android:layout_marginBottom="72dp"
                             android:layout_marginTop="8dp"
-                            android:text="@={fichaElementos.ataques}"
                             android:ems="10"
                             android:inputType="textMultiLine"
+                            android:text="@={fichaElementos.ataques}"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_attacks"
+                            app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="@+id/sheetBI_textView_attacks"
-                            app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_attacks" />
+                            app:layout_constraintTop_toBottomOf="@+id/sheetBI_textView_attacks"
+                            app:layout_constraintVertical_bias="0.0" />
 
 
                     </android.support.constraint.ConstraintLayout>

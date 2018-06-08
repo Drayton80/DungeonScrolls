@@ -103,9 +103,6 @@
     <string name="sheet_activity_battleInformationSheet_caOutros">Others</string>
     <string name="sheet_activity_battleInformationSheet_resistenciasNaturais">Natural Save</string>
     <string name="sheet_activity_battleInformationSheet_resistenciaMagica">Spell Save</string>
-    <string name="sheet_activity_battleInformationSheet_pvTitulo">Hit Points</string>
-    <string name="sheet_activity_battleInformationSheet_pvAtual">Current HP</string>
-    <string name="sheet_activity_battleInformationSheet_pvTotal">Total HP</string>
     <string name="sheet_activity_battleInformationSheet_reducaoDeDano">Damage Reduction</string>
     <string name="sheet_activity_battleInformationSheet_iniciativaTitulo">Initiative</string>
     <string name="sheet_activity_battleInformationSheet_iniciativa">Total</string>
@@ -151,4 +148,26 @@
     <string name="menu_navigationDrawer_salaFichasPersonagens">"    Characters Sheet"</string>
     <string name="menu_navigationDrawer_salaListaJogadores">"    Players List"</string>
     <string name="menu_navigationDrawer_salaPaginaPrincipal">"     Home"</string>
+    <string name="sheet_activity_recordSheet_tipo">Type</string>
+    <string name="sheet_activity_recordSheet_subtipo">Subtype</string>
+    <string name="gerais_sim">Yes</string>
+    <string name="gerais_nao">No</string>
+    <string name="room_dialogFragment_pergunta">Do you desire to random generate some characteristics?</string>
+    <string name="room_newSheetAutomatically_activity_tipo">Type</string>
+    <string name="room_newSheetAutomatically_activity_nivelDificuldade">Challenge Rating</string>
+    <string name="room_newSheetAutomatically_activity_ambiente">Enviroment and Temperature</string>
+    <string name="room_newSheetAutomatically_activity_nivelAjuste">Adjustment Level</string>
+    <string name="room_newSheetAutomatically_activity_tamanho">Size</string>
+    <string name="room_newSheetAutomatically_activity_alinhamento">Alignment</string>
+    <string name="room_newSheetAutomatically_activity_continuar">Continue</string>
+    <string name="room_newSheetAutomatically_activity_cancelar">Cancel</string>
+    <string name="sheet_activity_appearanceSheet_espaco">Space</string>
+    <string name="sheet_activity_appearanceSheet_alcance">Reach</string>
+    <string name="sheet_activity_specialProperties_ambiente">Enviroment and Temperature</string>
+    <string name="sheet_activity_specialProperties_organizacao">Organization</string>
+    <string name="sheet_activity_specialProperties_evolucao">Advancement</string>
+    <string name="sheet_activity_recordSheet_nivelDeDificuldade">Challenge Rating</string>
+    <string name="sheet_activity_recordSheet_nivelDeAjuste">Adjustment Level</string>
+    <string name="sheet_activity_recordSheet_pvAtual">Current HP</string>
+    <string name="sheet_activity_recordSheet_pvTotal">Total HP</string>
 </resources>
