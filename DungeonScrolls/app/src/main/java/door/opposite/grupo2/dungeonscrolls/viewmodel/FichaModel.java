@@ -570,7 +570,7 @@ public class FichaModel extends BaseObservable{
         }else{
             this.pv = Integer.parseInt(pv);
         }
-        //notifyPropertyChanged(R.id.sheetBI_editText_pvTotal);
+        notifyPropertyChanged(R.id.sheet_editText_pvtotal);
     }
 
     public String getReducaoDeDano() {
@@ -974,7 +974,7 @@ public class FichaModel extends BaseObservable{
     }
 
     public String getPericias() {
-        return pericias;
+        return String.valueOf(pericias);
     }
 
     public void setPericias(String pericias) {
@@ -996,7 +996,7 @@ public class FichaModel extends BaseObservable{
         }else{
             this.pvAtual = Integer.parseInt(pvAtual);
         }
-        //notifyPropertyChanged(R.id.sheetBI_editText_pvAtual);
+        notifyPropertyChanged(R.id.sheet_editText_pvatual);
     }
 
     public String getResistenciaNatural() {
@@ -1052,7 +1052,7 @@ public class FichaModel extends BaseObservable{
     }
 
     public String getTesteResistencia() {
-        return testeResistencia;
+        return String.valueOf(testeResistencia);
     }
 
     public void setTesteResistencia(String testeResistencia) {
@@ -1070,7 +1070,7 @@ public class FichaModel extends BaseObservable{
     }
 
     public String getNumeroMagias() {
-        return numeroMagias;
+        return numeroMagias ;
     }
 
     public void setNumeroMagias(String numeroMagias) {
@@ -1145,7 +1145,9 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setSubTipo(String subTipo) {
+
         this.subTipo = subTipo;
+        notifyPropertyChanged(R.id.sheet_plainText_subtype);
     }
 
     public String getNivelAjuste() {
@@ -1154,30 +1156,52 @@ public class FichaModel extends BaseObservable{
 
     public void setNivelAjuste(String nivelAjuste) {
         this.nivelAjuste = nivelAjuste;
+        notifyPropertyChanged(R.id.sheet_editText_nivelDeAjuste);
     }
 
-    public float getNivelDesafio() {
-        return nivelDesafio;
+    public String getNivelDesafio() {
+        return String.valueOf(nivelDesafio);
     }
 
-    public void setNivelDesafio(float nivelDesafio) {
-        this.nivelDesafio = nivelDesafio;
+    public void setNivelDesafio(String nivelDesafio) {
+        if(nivelDesafio.equals("")){
+            this.nivelDesafio = 0;
+        }else if(nivelDesafio.equals(".")){
+            this.nivelDesafio = 0;
+        }else{
+            this.nivelDesafio = Float.parseFloat(nivelDesafio);
+        }
+        notifyPropertyChanged(R.id.sheet_editText_nivelDeDificuldade);
     }
 
-    public float getEspaco() {
-        return espaco;
+    public String getEspaco() {
+        return String.valueOf(espaco);
     }
 
-    public void setEspaco(float espaco) {
-        this.espaco = espaco;
+    public void setEspaco(String espaco) {
+        if(espaco.equals("")){
+            this.espaco = 0;
+        }else if(espaco.equals(".")){
+            this.espaco = 0;
+        }else{
+            this.espaco = Float.parseFloat(espaco);
+        }
+        notifyPropertyChanged(R.id.sheetAp_editText_espaco);
     }
 
-    public float getAlcance() {
-        return alcance;
+    public String getAlcance() {
+        return String.valueOf(alcance);
     }
 
-    public void setAlcance(float alcance) {
-        this.alcance = alcance;
+    public void setAlcance(String alcance) {
+        if(alcance.equals("")){
+            this.alcance = 0;
+        }else if(alcance.equals(".")){
+            this.alcance = 0;
+        }else{
+            this.alcance = Float.parseFloat(alcance);
+        }
+        notifyPropertyChanged(R.id.sheetAp_editText_weight2);
     }
 
     public String getAnotacoes() {

@@ -222,6 +222,13 @@ public class SheetActivity extends AppCompatActivity implements  NavigationView.
                 fichaUsada.setVontadeBase(binding.getFichaElementos().vontadeBase);
                 fichaUsada.setVontadeOutros(binding.getFichaElementos().vontadeOutros);
                 fichaUsada.setCarctClasse(binding.getFichaElementos().carctClasse);
+                fichaUsada.setPvAtual(binding.getFichaElementos().pvAtual);
+                fichaUsada.setPv(binding.getFichaElementos().pv);
+                fichaUsada.setSubTipo(binding.getFichaElementos().subTipo);
+                fichaUsada.setNivelDesafio(binding.getFichaElementos().nivelDesafio);
+                fichaUsada.setNivelAjuste(binding.getFichaElementos().nivelAjuste);
+                fichaUsada.setTipo(binding.getFichaElementos().tipo);
+
 
                 Uri uri;
 

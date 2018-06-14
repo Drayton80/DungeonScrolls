@@ -74,6 +74,8 @@ public class SheetAppearanceActivityDF extends AppCompatActivity implements  Nav
                 fichaUsada.setTamanho(binding.getFichaElementos().tamanho);
                 fichaUsada.setIdiomas(binding.getFichaElementos().idiomas);
                 fichaUsada.setDescricaoAparencia(binding.getFichaElementos().descricaoAparencia);
+                fichaUsada.setEspaco(binding.getFichaElementos().espaco);
+                fichaUsada.setAlcance(binding.getFichaElementos().alcance);
 
                 sqLite.updateDataFicha(fichaUsada);
                 finish();
