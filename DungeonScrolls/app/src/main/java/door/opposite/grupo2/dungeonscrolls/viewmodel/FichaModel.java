@@ -92,6 +92,17 @@ public class FichaModel extends BaseObservable{
     public String escolhaEspecializada;
     public String qualiEspeciais;
     public String habiEspeciais;
+
+    public String ambiente;
+    public String organizacao;
+    public String evolucao;
+    public String tipo;
+    public String subTipo;
+    public String nivelAjuste;
+    public String anotacoes;
+    public float nivelDesafio;
+    public float espaco;
+    public float alcance;
     
 
 
@@ -177,6 +188,18 @@ public class FichaModel extends BaseObservable{
         this.escolhaEspecializada = ficha.getEscolhaEspecializada();
         this.qualiEspeciais = ficha.getQualiEspeciais();
         this.habiEspeciais = ficha.getHabiEspeciais();
+
+        this.ambiente = ficha.getAmbiente();
+        this.organizacao = ficha.getOrganizacao();
+        this.evolucao = ficha.getEvolucao();
+        this.tipo = ficha.getTipo();
+        this.subTipo = ficha.getSubTipo();
+        this.nivelAjuste = ficha.getNivelAjuste();
+        this.anotacoes = ficha.getAnotacoes();
+        this.nivelDesafio = ficha.getNivelDesafio();
+        this.espaco = ficha.getEspaco();
+        this.alcance = ficha.getAlcance();
+
 
     }
 
@@ -1074,6 +1097,8 @@ public class FichaModel extends BaseObservable{
         notifyPropertyChanged(R.id.sheetSP_editText_qualidadesEspeciais);
     }
 
+
+
     public String getHabiEspeciais() {
         return habiEspeciais;
     }
@@ -1081,6 +1106,86 @@ public class FichaModel extends BaseObservable{
     public void setHabiEspeciais(String habiEspeciais) {
         this.habiEspeciais = habiEspeciais;
         notifyPropertyChanged(R.id.sheetSP_editText_habilidadesEspeciais);
+    }
+
+    public String getAmbiente() {
+        return ambiente;
+    }
+
+    public void setAmbiente(String ambiente) {
+        this.ambiente = ambiente;
+    }
+
+    public String getOrganizacao() {
+        return organizacao;
+    }
+
+    public void setOrganizacao(String organizacao) {
+        this.organizacao = organizacao;
+    }
+
+    public String getEvolucao() {
+        return evolucao;
+    }
+
+    public void setEvolucao(String evolucao) {
+        this.evolucao = evolucao;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getSubTipo() {
+        return subTipo;
+    }
+
+    public void setSubTipo(String subTipo) {
+        this.subTipo = subTipo;
+    }
+
+    public String getNivelAjuste() {
+        return nivelAjuste;
+    }
+
+    public void setNivelAjuste(String nivelAjuste) {
+        this.nivelAjuste = nivelAjuste;
+    }
+
+    public float getNivelDesafio() {
+        return nivelDesafio;
+    }
+
+    public void setNivelDesafio(float nivelDesafio) {
+        this.nivelDesafio = nivelDesafio;
+    }
+
+    public float getEspaco() {
+        return espaco;
+    }
+
+    public void setEspaco(float espaco) {
+        this.espaco = espaco;
+    }
+
+    public float getAlcance() {
+        return alcance;
+    }
+
+    public void setAlcance(float alcance) {
+        this.alcance = alcance;
+    }
+
+    public String getAnotacoes() {
+        return anotacoes;
+    }
+
+    public void setAnotacoes(String anotacoes) {
+        this.anotacoes = anotacoes;
     }
 
     public ArrayList<FichaModel> getArrayListaFicha(int[] fichasID, SQLite sqLite){

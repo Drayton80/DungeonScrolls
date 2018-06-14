@@ -214,7 +214,9 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                                 0, 0, 0, "", "", "", "",
                                 "", "", "", "", "", "",
                                 0, 0, 0, 0, "", "",
-                                "", "","","", ""));
+                                "", "","","", "",
+                                "", "", "", "", "", "", "",
+                                0, 0, 0));
 
                         int[] aux = new int[salaUsada.toIntArray(salaUsada.getFichasID()).length +1];
 
@@ -246,7 +248,9 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                                 0, 0, 0, "", "", "", "",
                                 "", "", "", "", "", "",
                                 0, 0, 0, 0, "", "",
-                                "", "","","", ""));
+                                "", "","","", "",
+                                "", "", "", "", "", "", "",
+                                0, 0, 0));
 
                         int[] aux = new int[usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length +1];
                         int[] aux2 = new int[salaUsada.toIntArray(salaUsada.getFichasID()).length +1];
