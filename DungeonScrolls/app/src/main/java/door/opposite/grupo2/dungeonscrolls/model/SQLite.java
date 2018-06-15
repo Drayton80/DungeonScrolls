@@ -13,6 +13,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -27,6 +33,8 @@ import java.util.concurrent.Semaphore;
 
 public class SQLite extends SQLiteOpenHelper{
     Semaphore mutex = new Semaphore(1);
+    FirebaseFirestore fireStore;
+    DocumentReference docRef = FirebaseFirestore.getInstance().document("Data/App");
     FirebaseDatabase database;
     DatabaseReference reference;
     StorageReference storageReference;
@@ -184,6 +192,23 @@ public class SQLite extends SQLiteOpenHelper{
 
 
     public boolean atualizaDataUsuario(){
+        docRef.collection("usuarios").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                for (DocumentSnapshot doc: documentSnapshots){
+                    Usuario user = doc.toObject(Usuario.class);
+
+                    boolean existe = verSeTemEsseUsuario(user.getID());
+                    if (existe == true){
+                        updateDataUsuario(user);
+                    }
+                    else{
+                        insereDataUsuario(user);
+                    }
+                }
+            }
+        });
+        /*
 
         reference.child("usuario").addValueEventListener(new ValueEventListener() {
             @Override
@@ -212,7 +237,7 @@ public class SQLite extends SQLiteOpenHelper{
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        });*/
 
         return true;
     }
@@ -244,7 +269,9 @@ public class SQLite extends SQLiteOpenHelper{
             return  false;
         }else{
             Usuario novoUsuario = selecionarUsuario(usuario.getNick());
-            reference.child("usuario").child(String.valueOf(novoUsuario.getID())).setValue(novoUsuario);
+            //reference.child("usuario").child(String.valueOf(novoUsuario.getID())).setValue(novoUsuario);
+            String id = String.valueOf(novoUsuario.getID());
+            docRef.collection("usuarios").document(id).set(novoUsuario);
             return true;
         }
     }
@@ -265,15 +292,16 @@ public class SQLite extends SQLiteOpenHelper{
         contentValues.put(T1_COL_5, usuario.getSalasID().toString());
         contentValues.put(T1_COL_6,usuario.getFichasID().toString());
 
-        reference.child("usuario").child(String.valueOf(usuario.getID())).setValue(usuario);
-
+        //reference.child("usuario").child(String.valueOf(usuario.getID())).setValue(usuario);
+        String id = String.valueOf(usuario.getID());
+        docRef.collection("usuarios").document(id).set(usuario);
         db.update(T1_TABLE_NAME, contentValues, "ID = ?", new String[]{String.valueOf(usuario.getID())});
         return true;
     }
 
     public Integer deleteDataUsuario(Usuario usuario){
         SQLiteDatabase db = this.getWritableDatabase();
-        reference.child("usuario").child(String.valueOf(usuario.getID())).removeValue();
+        //reference.child("usuario").child(String.valueOf(usuario.getID())).removeValue();
         return db.delete(T1_TABLE_NAME, "ID = ?", new String[]{String.valueOf(usuario.getID())}); //esse metodo retorna um inteiro, se fori deletado é 1 se não foi é 0
 
     }
@@ -559,6 +587,24 @@ public class SQLite extends SQLiteOpenHelper{
 
 
     public boolean atualizaDataSala(){
+
+        docRef.collection("salas").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                for (DocumentSnapshot doc: documentSnapshots){
+                    Sala sala = doc.toObject(Sala.class);
+
+                    boolean existe = verSeTemEsseSala(sala.getID());
+                    if (existe == true){
+                        updateDataSala(sala);
+                    }
+                    else{
+                        insereDataSala(sala);
+                    }
+                }
+            }
+        });
+        /*
         reference.child("sala").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -590,7 +636,7 @@ public class SQLite extends SQLiteOpenHelper{
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        });*/
         return true;
     }
 
@@ -612,8 +658,9 @@ public class SQLite extends SQLiteOpenHelper{
             return  false;
         }else{
             Sala novaSala = selecionarSala(sala.getNome());
-
-            reference.child("sala").child(String.valueOf(novaSala.getID())).setValue(novaSala);
+            String id = String.valueOf(novaSala.getID());
+            docRef.collection("salas").document(id).set(novaSala);
+            //reference.child("sala").child(String.valueOf(novaSala.getID())).setValue(novaSala);
 
             return true;
         }
@@ -641,14 +688,16 @@ public class SQLite extends SQLiteOpenHelper{
         contentValues.put(T2_COL_10, sala.getNotas());
 
 
-        reference.child("sala").child(String.valueOf(sala.getID())).setValue(sala);
+        //reference.child("sala").child(String.valueOf(sala.getID())).setValue(sala);
+        String id = String.valueOf(sala.getID());
+        docRef.collection("salas").document(id).set(sala);
         db.update(T2_TABLE_NAME, contentValues, "ID = ?", new String[]{String.valueOf(sala.getID())});
         return true;
     }
 
     public Integer deleteDataSala(Sala sala){
         SQLiteDatabase db = this.getWritableDatabase();
-        reference.child("sala").child(String.valueOf(sala.getID())).removeValue();
+        //reference.child("sala").child(String.valueOf(sala.getID())).removeValue();
         return db.delete(T2_TABLE_NAME, "ID = ?", new String[]{String.valueOf(sala.getID())}); //esse metodo retorna um inteiro, se fori deletado é 1 se não foi é 0
 
     }
@@ -934,7 +983,9 @@ public class SQLite extends SQLiteOpenHelper{
             return  false;
         }else{
             Ficha novaFicha = selecionarFicha(ultimaFicha());
-            reference.child("ficha").child(String.valueOf(novaFicha.getId())).setValue(novaFicha);
+            //reference.child("ficha").child(String.valueOf(novaFicha.getId())).setValue(novaFicha);
+            String id = String.valueOf(novaFicha.getId());
+            docRef.collection("fichas").document(id).set(novaFicha);
             return true;
         }
     }
@@ -1080,10 +1131,28 @@ public class SQLite extends SQLiteOpenHelper{
 
     public boolean atualizaDataFicha(){
 
+        docRef.collection("fichas").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                for (DocumentSnapshot doc: documentSnapshots){
+                    Ficha ficha = doc.toObject(Ficha.class);
+
+                    boolean existe = verSeTemEsseFicha(ficha.getId());
+                    if (existe == true){
+                        updateDataFicha(ficha);
+                    }
+                    else{
+                        insereDataFicha(ficha);
+                    }
+                }
+            }
+        });
+
+
         //try {
         //    mutex.acquire();
         //}catch(Exception e){}
-
+/*
         reference.child("ficha").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -1200,7 +1269,7 @@ public class SQLite extends SQLiteOpenHelper{
 
             }
 
-        });
+        });*/
         return true;
     }
 
@@ -1304,7 +1373,9 @@ public class SQLite extends SQLiteOpenHelper{
         contentValues.put(T3_COL_86, ficha.getAlcance());
 
 
-        reference.child("ficha").child(String.valueOf(ficha.getId())).setValue(ficha);
+        //reference.child("ficha").child(String.valueOf(ficha.getId())).setValue(ficha);
+        String id = String.valueOf(ficha.getId());
+        docRef.collection("fichas").document(id).set(ficha);
         db.update(T3_TABLE_NAME, contentValues, "ID = ?", new String[]{String.valueOf(ficha.getId())});
         return true;
     }
