@@ -17,6 +17,12 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.GenericTypeIndicator;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,6 +59,7 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
     Sala salaUsada, salaSelecionada;
     String novoJogador;
     Boolean salaUsuario = false, mestre = false, continuar = false;
+    DocumentReference docRef = FirebaseFirestore.getInstance().document("Data/App");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,6 +75,7 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
         sqLite.atualizaDataFicha();
         sqLite.atualizaDataUsuario();
         sqLite.atualizaDataSala();
+        sqLite.verSeDeletouSala();
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
 
@@ -245,6 +253,23 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
 
     public boolean atualizaDataSala(){
 
+
+
+        docRef.collection("salas").addSnapshotListener(new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                salas.clear();
+                for (DocumentSnapshot doc: documentSnapshots){
+                    Sala sala = doc.toObject(Sala.class);
+
+                    salas.add(sala);
+                    salaModelArrayList = salaModel.getArrayListSala(salas, sqLite);
+                    salaAdapter = new SalaAdapter(AllRooms.this, salaModelArrayList);
+                    binding.lvRooms.setAdapter(salaAdapter);
+                }
+            }
+        });
+/*
         reference.child("sala").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -281,7 +306,7 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });
+        });*/
         return true;
     }
 

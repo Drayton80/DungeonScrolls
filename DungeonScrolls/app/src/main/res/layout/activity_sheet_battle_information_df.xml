@@ -362,7 +362,7 @@
                             android:layout_marginTop="8dp"
                             android:ems="10"
                             app:met_mask="######"
-                            android:inputType="none|textPersonName"
+                            android:inputType="number"
                             android:textAlignment="center"
                             android:text="@={fichaElementos.reducaoDeDano}"
                             app:layout_constraintEnd_toEndOf="@+id/sheetBI_textView_reducaoDeDano"

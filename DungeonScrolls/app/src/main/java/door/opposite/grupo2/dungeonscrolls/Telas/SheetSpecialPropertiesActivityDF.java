@@ -70,6 +70,10 @@ public class SheetSpecialPropertiesActivityDF extends AppCompatActivity implemen
             public void onClickSalvar() {
                 fichaUsada.setQualiEspeciais(binding.getFichaElementos().qualiEspeciais);
                 fichaUsada.setHabiEspeciais(binding.getFichaElementos().habiEspeciais);
+                fichaUsada.setAmbiente(binding.getFichaElementos().ambiente);
+                fichaUsada.setEvolucao(binding.getFichaElementos().evolucao);
+                fichaUsada.setOrganizacao(binding.getFichaElementos().organizacao);
+
 
                 sqLite.updateDataFicha(fichaUsada);
                 finish();

@@ -528,10 +528,17 @@ public class SQLite extends SQLiteOpenHelper{
         return lista;
     }
 
+    public Integer deleteDataSala(Sala sala){
+        SQLiteDatabase db = this.getWritableDatabase();
+        //reference.child("sala").child(String.valueOf(sala.getID())).removeValue();
+        docRef.collection("salas").document(String.valueOf(sala.getID())).delete();
+        return db.delete(T2_TABLE_NAME, "ID = ?", new String[]{String.valueOf(sala.getID())}); //esse metodo retorna um inteiro, se fori deletado é 1 se não foi é 0
 
+    }
 
     public void verSeDeletouSala(){
-        List<Sala> lista = new ArrayList<Sala>();
+
+        final List<Long> lista = new ArrayList<Long>();
 
         String query = "SELECT * FROM " + T2_TABLE_NAME;
 
@@ -541,6 +548,40 @@ public class SQLite extends SQLiteOpenHelper{
         if(c.moveToFirst()){
             do{
                 final Sala sala = new Sala(Integer.valueOf(c.getString(0)), c.getString(1), c.getString(2), Integer.parseInt(c.getString(3)), c.getString(4), c.getString(8));
+                docRef.collection("salas").addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                        List<Sala> lista = listaSala();
+                        for (DocumentSnapshot doc: documentSnapshots){
+                            Sala sala = doc.toObject(Sala.class);
+                            for(int i = 0; i < listaSala().size(); i++){
+                                if(lista.get(i).getID() == sala.getID()){
+                                    System.out.println("NÃO DELETA");
+                                    lista.remove(i);
+                                    break;
+                                }
+                            }
+
+                        }
+                        try {
+                            deleteDataSala(lista.get(0));
+                        }catch (Exception hue){
+
+                        }
+                        try {
+                            deleteDataSala(lista.get(1));
+                        }catch (Exception hue){
+
+                        }
+                        try {
+                            deleteDataSala(lista.get(2));
+                        }catch (Exception hue){
+
+                        }
+                    }
+                });
+                System.out.println("=================================hjk.l" + lista.toString());
+/*
                 reference.child("sala").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
@@ -555,7 +596,8 @@ public class SQLite extends SQLiteOpenHelper{
                     public void onCancelled(DatabaseError databaseError) {
 
                     }
-                });
+
+                });*/
 
             }while(c.moveToNext());
         }
@@ -695,12 +737,7 @@ public class SQLite extends SQLiteOpenHelper{
         return true;
     }
 
-    public Integer deleteDataSala(Sala sala){
-        SQLiteDatabase db = this.getWritableDatabase();
-        //reference.child("sala").child(String.valueOf(sala.getID())).removeValue();
-        return db.delete(T2_TABLE_NAME, "ID = ?", new String[]{String.valueOf(sala.getID())}); //esse metodo retorna um inteiro, se fori deletado é 1 se não foi é 0
 
-    }
 
 
 
@@ -881,7 +918,7 @@ public class SQLite extends SQLiteOpenHelper{
                 sala.setJogadoresID(intList1);
                 sala.setFichasID(intList2);
 
-                lista.add(sala);
+               lista.add(sala);
             }while(c.moveToNext());
         }
         return lista;

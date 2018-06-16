@@ -54,6 +54,7 @@ public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItem
         binding = DataBindingUtil.setContentView(this, R.layout.activity_user_rooms);
         sqLite = new SQLite(this);
         sqLite.atualizaDataSala();
+        sqLite.verSeDeletouSala();
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
 

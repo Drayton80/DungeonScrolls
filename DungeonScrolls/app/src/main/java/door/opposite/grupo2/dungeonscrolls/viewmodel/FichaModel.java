@@ -1113,7 +1113,9 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setAmbiente(String ambiente) {
+
         this.ambiente = ambiente;
+        notifyPropertyChanged(R.id.sheetSP_editText_ambiente);
     }
 
     public String getOrganizacao() {
@@ -1121,7 +1123,9 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setOrganizacao(String organizacao) {
+
         this.organizacao = organizacao;
+        notifyPropertyChanged(R.id.sheetSP_editText_organizacao);
     }
 
     public String getEvolucao() {
@@ -1129,7 +1133,9 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setEvolucao(String evolucao) {
+
         this.evolucao = evolucao;
+        notifyPropertyChanged(R.id.sheetSP_editText_evolucao);
     }
 
     public String getTipo() {
@@ -1209,7 +1215,9 @@ public class FichaModel extends BaseObservable{
     }
 
     public void setAnotacoes(String anotacoes) {
+
         this.anotacoes = anotacoes;
+        //notifyPropertyChanged(R.id.sheetAp_editText_weight2);
     }
 
     public ArrayList<FichaModel> getArrayListaFicha(int[] fichasID, SQLite sqLite){
