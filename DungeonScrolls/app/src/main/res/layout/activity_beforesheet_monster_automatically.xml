@@ -4,14 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="door.opposite.grupo2.dungeonscrolls.RoomNewSheetAutomaticallyActivity">
+    tools:context="door.opposite.grupo2.dungeonscrolls.BeforeSheetMonsterAutomaticallyActivity">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
 
     <TextView
         android:id="@+id/roomNewSheetAutomatically_textView_tipo"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
         android:text="@string/room_newSheetAutomatically_activity_tipo"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@+id/roomNewSheetAutomatically_textView_nd"
@@ -38,12 +43,13 @@
         android:id="@+id/roomNewSheetAutomatically_textView_nd"
         android:layout_width="78dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:layout_marginTop="16dp"
         android:text="@string/room_newSheetAutomatically_activity_nivelDificuldade"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <EditText
         android:id="@+id/roomNewSheetAutomatically_editText_nd"
@@ -161,12 +167,13 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="4dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:text="@string/room_newSheetAutomatically_activity_cancelar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/whiteSpace"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/roomNewSheetAutomatically_editText_alinhamento"
         app:layout_constraintTop_toBottomOf="@+id/roomNewSheetAutomatically_editText_alinhamento"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -175,12 +182,13 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
         android:layout_marginStart="4dp"
         android:layout_marginTop="16dp"
         android:text="@string/room_newSheetAutomatically_activity_continuar"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/roomNewSheetAutomatically_editText_alinhamento"
         app:layout_constraintStart_toEndOf="@+id/whiteSpace"
         app:layout_constraintTop_toBottomOf="@+id/roomNewSheetAutomatically_editText_alinhamento"
         app:layout_constraintVertical_bias="0.00999999" />

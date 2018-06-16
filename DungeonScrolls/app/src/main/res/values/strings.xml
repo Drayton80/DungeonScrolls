@@ -36,6 +36,10 @@
     <string name="roomsMenu_dialogFragment_senha_prosseguir">Prosseguir</string>
     <string name="roomsMenu_dialogFragment_senha_cancelar">Cancelar</string>
 
+    <string name="listMonster_dialogFragment_monstroCriado">Monstros do D&amp;D 3.5</string>
+    <string name="listMonster_dialogFragment_monstroAutomatico">Gerador Automático</string>
+    <string name="listMonster_dialogFragment_monstroNovo">Ficha Vazia</string>
+
     <string name="sheet_activity_recordSheet_tituloPrincipal">Ficha de Personagem</string>
     <string name="sheet_activity_recordSheet_title">Ficha de Personagem</string>
     <string name="sheet_activity_recordSheet_name">Nome</string>

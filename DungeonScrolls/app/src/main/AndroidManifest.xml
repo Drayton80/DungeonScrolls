@@ -60,7 +60,10 @@
         <activity android:name=".Telas.UserRooms" />
         <activity android:name=".Telas.RoomActivity" />
         <activity android:name=".Telas.OptionsActivity" />
-        <activity android:name=".RoomNewSheetAutomaticallyActivity"></activity>
+        <activity android:name=".BeforeSheetMonsterAutomaticallyActivity" />
+        <activity android:name=".MonsterSheetChoiceActivity" />
+        <activity android:name=".BeforeSheetMonsterCreatedActivity" />
+        <activity android:name=".RoomMonsterListActivity"></activity>
     </application>
 
 </manifest>
