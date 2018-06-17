@@ -17,9 +17,9 @@ public class InitialActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.initial_screen);
         sqLite = new SQLite(this);
-        sqLite.atualizaDataFicha();
-        sqLite.atualizaDataUsuario();
-        sqLite.atualizaDataSala();
+        sqLite.atualizaDataFicha(this);
+        sqLite.atualizaDataUsuario(this);
+        sqLite.atualizaDataSala(this);
 
 
         //getSupportActionBar().hide();

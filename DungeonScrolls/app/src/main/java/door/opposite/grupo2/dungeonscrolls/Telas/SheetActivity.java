@@ -84,9 +84,9 @@ public class SheetActivity extends AppCompatActivity implements  NavigationView.
         }
 
         sqLite = new SQLite(this);
-        sqLite.atualizaDataFicha();
-        sqLite.atualizaDataUsuario();
-        sqLite.atualizaDataSala();
+        sqLite.atualizaDataFicha(this);
+        sqLite.atualizaDataUsuario(this);
+        sqLite.atualizaDataSala(this);
         campoImagem = (ImageView) findViewById(R.id.imageView);
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");

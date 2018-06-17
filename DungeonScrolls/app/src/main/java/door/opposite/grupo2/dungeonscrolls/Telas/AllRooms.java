@@ -1,5 +1,6 @@
 package door.opposite.grupo2.dungeonscrolls.Telas;
 
+import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -72,10 +73,10 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_all_rooms);
         sqLite = new SQLite(this);
-        sqLite.atualizaDataFicha();
-        sqLite.atualizaDataUsuario();
-        sqLite.atualizaDataSala();
-        sqLite.verSeDeletouSala();
+        sqLite.atualizaDataFicha(this);
+        sqLite.atualizaDataUsuario(this);
+        sqLite.atualizaDataSala(this);
+        sqLite.verSeDeletouSala(this);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
 
@@ -93,7 +94,7 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
         salaAdapter = new SalaAdapter(this, salaModelArrayList);
         binding.lvRooms.setAdapter(salaAdapter);
 
-        atualizaDataSala();
+        atualizaDataSala(this);
 
 
 
@@ -155,9 +156,9 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
         super.onRestart();
 
         sqLite = new SQLite(this);
-        sqLite.atualizaDataFicha();
-        sqLite.atualizaDataUsuario();
-        sqLite.atualizaDataSala();
+        sqLite.atualizaDataFicha(this);
+        sqLite.atualizaDataUsuario(this);
+        sqLite.atualizaDataSala(this);
         database = FirebaseDatabase.getInstance();
         reference = database.getReference();
 
@@ -175,7 +176,7 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
         salaAdapter = new SalaAdapter(this, salaModelArrayList);
         binding.lvRooms.setAdapter(salaAdapter);
 
-        atualizaDataSala();
+        atualizaDataSala(this);
 
 
 
@@ -251,11 +252,11 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
     }
 
 
-    public boolean atualizaDataSala(){
+    public boolean atualizaDataSala(Activity activity){
 
 
 
-        docRef.collection("salas").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        docRef.collection("salas").addSnapshotListener(activity, new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                 salas.clear();

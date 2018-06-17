@@ -53,8 +53,8 @@ public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItem
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_user_rooms);
         sqLite = new SQLite(this);
-        sqLite.atualizaDataSala();
-        sqLite.verSeDeletouSala();
+        sqLite.atualizaDataSala(this);
+        sqLite.verSeDeletouSala(this);
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
 
@@ -218,7 +218,7 @@ public class UserRooms extends AppCompatActivity implements PopupMenu.OnMenuItem
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_user_rooms);
         sqLite = new SQLite(this);
-        sqLite.atualizaDataSala();
+        sqLite.atualizaDataSala(this);
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
 

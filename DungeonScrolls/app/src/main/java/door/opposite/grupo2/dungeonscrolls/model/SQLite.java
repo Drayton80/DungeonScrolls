@@ -1,5 +1,6 @@
 package door.opposite.grupo2.dungeonscrolls.model;
 
+import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -191,8 +192,8 @@ public class SQLite extends SQLiteOpenHelper{
     }
 
 
-    public boolean atualizaDataUsuario(){
-        docRef.collection("usuarios").addSnapshotListener(new EventListener<QuerySnapshot>() {
+    public boolean atualizaDataUsuario(Activity activity){
+        docRef.collection("usuarios").addSnapshotListener(activity, new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                 for (DocumentSnapshot doc: documentSnapshots){
@@ -536,7 +537,7 @@ public class SQLite extends SQLiteOpenHelper{
 
     }
 
-    public void verSeDeletouSala(){
+    public void verSeDeletouSala(Activity activity){
 
         final List<Long> lista = new ArrayList<Long>();
 
@@ -548,7 +549,7 @@ public class SQLite extends SQLiteOpenHelper{
         if(c.moveToFirst()){
             do{
                 final Sala sala = new Sala(Integer.valueOf(c.getString(0)), c.getString(1), c.getString(2), Integer.parseInt(c.getString(3)), c.getString(4), c.getString(8));
-                docRef.collection("salas").addSnapshotListener(new EventListener<QuerySnapshot>() {
+                docRef.collection("salas").addSnapshotListener(activity, new EventListener<QuerySnapshot>() {
                     @Override
                     public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                         List<Sala> lista = listaSala();
@@ -628,9 +629,9 @@ public class SQLite extends SQLiteOpenHelper{
 
 
 
-    public boolean atualizaDataSala(){
+    public boolean atualizaDataSala(Activity activity){
 
-        docRef.collection("salas").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        docRef.collection("salas").addSnapshotListener(activity, new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                 for (DocumentSnapshot doc: documentSnapshots){
@@ -1034,141 +1035,10 @@ public class SQLite extends SQLiteOpenHelper{
     }
 
 
-    public boolean atualizaDataFicha(final int[] ids){
 
-        //try {
-        //    mutex.acquire();
-        //}catch(Exception e){}
+    public boolean atualizaDataFicha(Activity activity){
 
-
-
-        reference.child("ficha").addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    Ficha ficha = new Ficha();
-                    //GenericTypeIndicator<ArrayList<Integer>> t = new GenericTypeIndicator<ArrayList<Integer>>(){};
-
-
-                    if (contains(ids, snapshot.child("id").getValue(int.class))) {
-                        ficha.setId(snapshot.child("id").getValue(int.class));
-                        ficha.setNomePersonagem(snapshot.child("nomePersonagem").getValue(String.class));
-                        ficha.setNomeJogador(snapshot.child("nomeJogador").getValue(String.class));
-                        ficha.setClasseNivel(snapshot.child("classeNivel").getValue(String.class));
-                        ficha.setRaca(snapshot.child("raca").getValue(String.class));
-                        ficha.setTendencia(snapshot.child("tendencia").getValue(String.class));
-                        ficha.setDivindade(snapshot.child("divindade").getValue(String.class));
-                        ficha.setSexo(snapshot.child("sexo").getValue(String.class));
-                        ficha.setTamanho(snapshot.child("tamanho").getValue(String.class));
-                        ficha.setAltura(snapshot.child("altura").getValue(float.class));
-                        ficha.setPeso(snapshot.child("peso").getValue(float.class));
-                        ficha.setIdade(snapshot.child("idade").getValue(int.class));
-                        ficha.setForca(snapshot.child("forca").getValue(int.class));
-                        ficha.setConstituicao(snapshot.child("constituicao").getValue(int.class));
-                        ficha.setDestreza(snapshot.child("destreza").getValue(int.class));
-                        ficha.setInteligencia(snapshot.child("inteligencia").getValue(int.class));
-                        ficha.setSabedoria(snapshot.child("sabedoria").getValue(int.class));
-                        ficha.setCarisma(snapshot.child("carisma").getValue(int.class));
-                        ficha.setForcaMod(snapshot.child("forcaMod").getValue(int.class));
-                        ficha.setConstituicaoMod(snapshot.child("constituicaoMod").getValue(int.class));
-                        ficha.setDestrezaMod(snapshot.child("destrezaMod").getValue(int.class));
-                        ficha.setInteligenciaMod(snapshot.child("inteligenciaMod").getValue(int.class));
-                        ficha.setSabedoriaMod(snapshot.child("sabedoriaMod").getValue(int.class));
-                        ficha.setCarismaMod(snapshot.child("carismaMod").getValue(int.class));
-                        ficha.setCa(snapshot.child("ca").getValue(int.class));
-                        ficha.setCaOutros(snapshot.child("caOutros").getValue(int.class));
-                        ficha.setCaToque(snapshot.child("caToque").getValue(int.class));
-                        ficha.setCaSurpresa(snapshot.child("caSurpresa").getValue(int.class));
-                        ficha.setArmadura(snapshot.child("armadura").getValue(int.class));
-                        ficha.setArmaduraNatural(snapshot.child("armaduraNatural").getValue(int.class));
-                        ficha.setPv(snapshot.child("pv").getValue(int.class));
-                        ficha.setReducaoDeDano(snapshot.child("reducaoDeDano").getValue(int.class));
-                        ficha.setIniciativa(snapshot.child("iniciativa").getValue(int.class));
-                        ficha.setIniciativaOutros(snapshot.child("iniciativaOutros").getValue(int.class));
-                        ficha.setFortitude(snapshot.child("fortitude").getValue(int.class));
-                        ficha.setFortitudeBase(snapshot.child("fortitudeBase").getValue(int.class));
-                        ficha.setFortitudeOutros(snapshot.child("fortitudeOutros").getValue(int.class));
-                        ficha.setReflexo(snapshot.child("reflexo").getValue(int.class));
-                        ficha.setReflexoBase(snapshot.child("reflexoBase").getValue(int.class));
-                        ficha.setReflexoOutros(snapshot.child("reflexoOutros").getValue(int.class));
-                        ficha.setVontade(snapshot.child("vontade").getValue(int.class));
-                        ficha.setVontadeBase(snapshot.child("vontadeBase").getValue(int.class));
-                        ficha.setVontadeOutros(snapshot.child("vontadeOutros").getValue(int.class));
-                        ficha.setBba(snapshot.child("bba").getValue(int.class));
-                        ficha.setResMagica(snapshot.child("resMagica").getValue(int.class));
-                        ficha.setDeslocamento(snapshot.child("deslocamento").getValue(int.class));
-                        ficha.setAgarrar(snapshot.child("agarrar").getValue(int.class));
-                        ficha.setAgarrarOutros(snapshot.child("agarrarOutros").getValue(int.class));
-                        ficha.setPc(snapshot.child("pc").getValue(int.class));
-                        ficha.setPp(snapshot.child("pp").getValue(int.class));
-                        ficha.setPo(snapshot.child("po").getValue(int.class));
-                        ficha.setPl(snapshot.child("pl").getValue(int.class));
-                        ficha.setXp(snapshot.child("xp").getValue(int.class));
-                        ficha.setXpNecessario(snapshot.child("xpNecessario").getValue(int.class));
-                        ficha.setIdiomas(snapshot.child("idiomas").getValue(String.class));
-                        ficha.setInventario(snapshot.child("inventario").getValue(String.class));
-                        ficha.setAtaques(snapshot.child("ataques").getValue(String.class));
-                        ficha.setArmaEquip(snapshot.child("armaEquip").getValue(String.class));
-                        ficha.setArmaduraEquip(snapshot.child("armaduraEquip").getValue(String.class));
-                        ficha.setOutrosEquip(snapshot.child("outrosEquip").getValue(String.class));
-                        ficha.setCarctClasse(snapshot.child("carctClasse").getValue(String.class));
-                        ficha.setTalentos(snapshot.child("talentos").getValue(String.class));
-                        ficha.setMagias(snapshot.child("magias").getValue(String.class));
-                        ficha.setPericias(snapshot.child("pericias").getValue(String.class));
-                        ficha.setPvAtual(snapshot.child("pvAtual").getValue(int.class));
-                        ficha.setResistenciaNatural(snapshot.child("resistenciaNatural").getValue(int.class));
-                        ficha.setPesoTotal(snapshot.child("pesoTotal").getValue(float.class));
-                        ficha.setPesoMax(snapshot.child("pesoMax").getValue(float.class));
-                        ficha.setDescricaoAparencia(snapshot.child("descricaoAparencia").getValue(String.class));
-                        ficha.setTesteResistencia(snapshot.child("testeResistencia").getValue(String.class));
-                        ficha.setChanceFalha(snapshot.child("chanceFalha").getValue(String.class));
-                        ficha.setNumeroMagias(snapshot.child("numeroMagias").getValue(String.class));
-                        ficha.setEscolhaEspecializada(snapshot.child("escolhaEspecializada").getValue(String.class));
-                        ficha.setQualiEspeciais(snapshot.child("qualiEspeciais").getValue(String.class));
-                        ficha.setHabiEspeciais(snapshot.child("habiEspeciais").getValue(String.class));
-                        ficha.setImagem(snapshot.child("imagem").getValue(String.class));
-
-                        ficha.setAmbiente(snapshot.child("ambiente").getValue(String.class));
-                        ficha.setOrganizacao(snapshot.child("organizacao").getValue(String.class));
-                        ficha.setEvolucao(snapshot.child("evolucao").getValue(String.class));
-                        ficha.setTipo(snapshot.child("tipo").getValue(String.class));
-                        ficha.setSubTipo(snapshot.child("subTipo").getValue(String.class));
-                        ficha.setNivelAjuste(snapshot.child("nivelAjuste").getValue(String.class));
-                        ficha.setAnotacoes(snapshot.child("anotacoes").getValue(String.class));
-                        ficha.setNivelDesafio(snapshot.child("nivelDesafio").getValue(float.class));
-                        ficha.setEspaco(snapshot.child("espaco").getValue(float.class));
-                        ficha.setAlcance(snapshot.child("alcance").getValue(float.class));
-                        System.out.println("Terminei de olhar e montar");
-                        //mutex.release();
-
-
-                        System.out.println("==========================================" + ficha.getId());
-
-                        boolean existe = verSeTemEsseFicha(ficha.getId());
-                        if (existe == true) {
-                            updateDataFicha(ficha);
-                        } else {
-                            insereDataFicha(ficha);
-                        }
-
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-
-        });
-        return true;
-    }
-
-
-    public boolean atualizaDataFicha(){
-
-        docRef.collection("fichas").addSnapshotListener(new EventListener<QuerySnapshot>() {
+        docRef.collection("fichas").addSnapshotListener(activity, new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
                 for (DocumentSnapshot doc: documentSnapshots){
@@ -1593,25 +1463,58 @@ public class SQLite extends SQLiteOpenHelper{
 
 
 
-    public void verSeDeletouFicha(){
-        List<Ficha> lista = new ArrayList<Ficha>();
+    public void verSeDeletouFicha(Activity activity){
+
+        final List<Long> lista = new ArrayList<Long>();
 
         String query = "SELECT * FROM " + T3_TABLE_NAME;
 
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(query, null);
+        Cursor c = db.rawQuery(query, null);
 
-        if(cursor.moveToFirst()){
+        if(c.moveToFirst()){
             do{
-                final Ficha ficha = new Ficha(Integer.parseInt(cursor.getString(0)));
+                docRef.collection("fichas").addSnapshotListener(activity, new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                        List<Ficha> lista = listaFicha();
+                        for (DocumentSnapshot doc: documentSnapshots){
+                            Ficha ficha = doc.toObject(Ficha.class);
+                            for(int i = 0; i < listaFicha().size(); i++){
+                                if(lista.get(i).getId() == ficha.getId()){
+                                    System.out.println("NÃO DELETA");
+                                    lista.remove(i);
+                                    break;
+                                }
+                            }
 
-                reference.child("ficha").addListenerForSingleValueEvent(new ValueEventListener() {
+                        }
+                        try {
+                            deleteDataFicha(lista.get(0));
+                        }catch (Exception hue){
+
+                        }
+                        try {
+                            deleteDataFicha(lista.get(1));
+                        }catch (Exception hue){
+
+                        }
+                        try {
+                            deleteDataFicha(lista.get(2));
+                        }catch (Exception hue){
+
+                        }
+                    }
+                });
+                System.out.println("=================================hjk.l" + lista.toString());
+/*
+                reference.child("sala").addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
-                        if (snapshot.child(String.valueOf(ficha.getId())).exists()) {
+                        if (snapshot.child(String.valueOf(sala.getID())).exists()) {
 
                         }else{
-                            deleteDataFicha(ficha);
+                            deleteDataSala(sala);
                         }
                     }
 
@@ -1619,9 +1522,10 @@ public class SQLite extends SQLiteOpenHelper{
                     public void onCancelled(DatabaseError databaseError) {
 
                     }
-                });
 
-            }while(cursor.moveToNext());
+                });*/
+
+            }while(c.moveToNext());
         }
 
     }

@@ -61,7 +61,7 @@ public class SignUpActivity extends Activity {
                     geraDialog.fechaDialogFragment(dialog);
                 }catch (Exception e) {
                     boolean foiInserido = false;
-                    sqLite.atualizaDataUsuario();
+                    sqLite.atualizaDataUsuario(SignUpActivity.this);
                     foiInserido = sqLite.insereDataUsuario(new Usuario(binding.getUsuariomodel().getNick(),
                             binding.getUsuariomodel().getSenha(), binding.getUsuariomodel().getEmail()));
 

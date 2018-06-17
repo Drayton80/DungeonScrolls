@@ -46,9 +46,9 @@ public class LoginActivity extends Activity {
         sqLite = new SQLite(this);
         it = new Intent(this, RoomsMenu.class);
         //listaUsuario = sqLite.listaUsuario();
-        sqLite.atualizaDataUsuario();
-        sqLite.atualizaDataFicha();
-        sqLite.atualizaDataSala();
+        sqLite.atualizaDataUsuario(this);
+        sqLite.atualizaDataFicha(this);
+        sqLite.atualizaDataSala(this);
         final String senhaInvalida = getResources().getString(R.string.toast_login_senhaInvalida);
         final String usuarioInexistente = getResources().getString(R.string.toast_login_usuarioInexistente);
 
@@ -70,7 +70,7 @@ public class LoginActivity extends Activity {
 
                     Usuario usuario1;
 
-                    sqLite.atualizaDataUsuario();
+                    sqLite.atualizaDataUsuario(LoginActivity.this);
 
                     usuario1 = sqLite.selecionarUsuario(binding.getUsuariomodel().getNick());
 

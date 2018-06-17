@@ -1,5 +1,6 @@
 package door.opposite.grupo2.dungeonscrolls.Telas;
 
+import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -21,6 +22,13 @@ import android.widget.ListView;
 import android.widget.PopupMenu;
 import android.widget.Switch;
 import android.widget.Toast;
+
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -59,6 +67,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     boolean deletar = false, mestre, lock = false;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
+    DocumentReference docRef = FirebaseFirestore.getInstance().document("Data/App");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,8 +108,10 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         sqLite = new SQLite(this);
 
         // Traz as coisas do servidor
-        sqLite.atualizaDataFicha();
-        sqLite.atualizaDataUsuario();
+        sqLite.atualizaDataFicha(this);
+        sqLite.atualizaDataUsuario(this);
+        sqLite.verSeDeletouFicha(this);
+        atualizaDataFicha(this);
 
         // Pega o usuário logado
         usuarioLogado = sqLite.selecionarUsuario(test.getID());
@@ -339,6 +350,29 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         if(deletar == true){
 
         }
+    }
+
+    public boolean atualizaDataFicha(Activity activity) {
+
+
+        docRef.collection("salas").addSnapshotListener(activity, new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+
+                for (DocumentSnapshot doc : documentSnapshots) {
+                    Sala sala = doc.toObject(Sala.class);
+                    if(sala.getID() == salaUsada.getID()) {
+                        salaUsada = sala;
+                        fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
+                        fichaModelArrayList = fichaModel.getArrayListaFicha(salaUsada.toIntArray(salaUsada.getFichasID()), sqLite);
+                        fichaAdapter = new FichaAdapter(RoomActivity.this, fichaModelArrayList);
+                        binding.roomListViewFichas.setAdapter(fichaAdapter);
+                    }
+
+                }
+            }
+        });
+        return true;
     }
 
     public void showNoticeDialog() {

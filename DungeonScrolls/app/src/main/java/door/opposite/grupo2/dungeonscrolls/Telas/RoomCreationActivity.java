@@ -77,6 +77,8 @@ public class RoomCreationActivity extends AppCompatActivity implements Navigatio
         final String salaJaExistente = getResources().getString(R.string.toast_roomCreation_salaJaExistente);
         final String salaCriada = getResources().getString(R.string.toast_roomCreation_salaCriada);
 
+        sqLite.atualizaDataSala(this);
+
         extra = getIntent();
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
         extra = new Intent(this, RoomsMenu.class);
