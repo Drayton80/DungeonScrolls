@@ -1292,7 +1292,7 @@ public class SQLite extends SQLiteOpenHelper{
 
     public Integer deleteDataFicha(Ficha ficha){
         SQLiteDatabase db = this.getWritableDatabase();
-        reference.child("ficha").child(String.valueOf(ficha.getId())).removeValue();
+        docRef.collection("fichas").document(String.valueOf(ficha.getId())).delete();
         return db.delete(T3_TABLE_NAME, "ID = ?", new String[]{String.valueOf(ficha.getId())}); //esse metodo retorna um inteiro, se fori deletado é 1 se não foi é 0
 
     }

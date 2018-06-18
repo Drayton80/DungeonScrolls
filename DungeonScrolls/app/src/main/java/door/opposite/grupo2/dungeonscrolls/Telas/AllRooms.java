@@ -255,6 +255,16 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
     public boolean atualizaDataSala(Activity activity){
 
 
+        docRef.collection("usuarios").addSnapshotListener(activity, new EventListener<QuerySnapshot>() {
+            @Override
+            public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                salas.clear();
+                salas = sqLite.listaSala();
+                salaModelArrayList = salaModel.getArrayListSala(salas, sqLite);
+                salaAdapter = new SalaAdapter(AllRooms.this, salaModelArrayList);
+                binding.lvRooms.setAdapter(salaAdapter);
+            }
+        });
 
         docRef.collection("salas").addSnapshotListener(activity, new EventListener<QuerySnapshot>() {
             @Override
@@ -267,7 +277,7 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
                     salaModelArrayList = salaModel.getArrayListSala(salas, sqLite);
                     salaAdapter = new SalaAdapter(AllRooms.this, salaModelArrayList);
                     binding.lvRooms.setAdapter(salaAdapter);
-                }
+                    }
             }
         });
 /*
