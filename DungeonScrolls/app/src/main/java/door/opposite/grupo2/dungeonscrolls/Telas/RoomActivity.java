@@ -40,6 +40,7 @@ import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
 import door.opposite.grupo2.dungeonscrolls.databinding.ActivityRoomBinding;
 import door.opposite.grupo2.dungeonscrolls.graficAssets.DialogFragmentCreator;
 import door.opposite.grupo2.dungeonscrolls.graficAssets.NoticeDialogFragment;
+import door.opposite.grupo2.dungeonscrolls.graficAssets.NoticeDialogFragmentFichas;
 import door.opposite.grupo2.dungeonscrolls.graficAssets.NoticeDialogFragmentUsuarios;
 import door.opposite.grupo2.dungeonscrolls.model.Ficha;
 import door.opposite.grupo2.dungeonscrolls.model.SQLite;
@@ -139,13 +140,15 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         }
 
         if(mestre == true){
+            System.out.println("-----------------------Eu sou mestre =D, é true == " + mestre);
             fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
             //sqLite.atualizaDataFicha(fichasID);
             fichaModel = new FichaModel();
             fichaModelArrayList = fichaModel.getArrayListaFicha(salaUsada.toIntArray(salaUsada.getFichasID()), sqLite);
             fichaAdapter = new FichaAdapter(this, fichaModelArrayList);
             binding.roomListViewFichas.setAdapter(fichaAdapter);
-        }else{
+        }else if(mestre == false){
+            System.out.println("-----------------------Não sou o mestre :c, é false == " + mestre);
             fichaSalaID = salaUsada.toIntArray(salaUsada.getFichasID());
             fichasID = usuarioLogado.toIntArray(usuarioLogado.getFichasID());
             int[] fichasNaSala = new int[usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length];
@@ -168,7 +171,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
                 if(mestre != true){
-                    return true;
+                    return false;
                 }else{
                     PopupMenu menu = new PopupMenu(RoomActivity.this ,view);
                     menu.setOnMenuItemClickListener(RoomActivity.this);
@@ -210,6 +213,8 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         binding.setAdicionaFicha(new Eventos() {
             @Override
             public void onClickCad() {
+                showNoticeDialogFichas();
+                /*
                 if(lock != true){
                     lock = true;
                     if(mestre == true){
@@ -302,6 +307,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                         startActivity(getIntent());
                     }
                 }
+                */
             }
 
             @Override
@@ -384,6 +390,12 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public void showNoticeDialogUsuarios() {
         // Cria uma instância para o Notice Dialog Fragment
         DialogFragment dialog = new NoticeDialogFragmentUsuarios(usuarioLogado, salaUsada, fichaUsada, sqLite);
+        dialog.show(getFragmentManager(), "NoticeDialogFragment");
+    }
+
+    public void showNoticeDialogFichas(){
+        // Cria uma instância para o Notice Dialog Fragment
+        DialogFragment dialog = new NoticeDialogFragmentFichas(usuarioLogado, salaUsada, fichaUsada, mestre, sqLite);
         dialog.show(getFragmentManager(), "NoticeDialogFragment");
     }
 

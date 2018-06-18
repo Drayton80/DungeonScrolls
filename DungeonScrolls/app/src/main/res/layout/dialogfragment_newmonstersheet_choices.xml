@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="AddFicha"
+            type="door.opposite.grupo2.dungeonscrolls.commands.EventosEscolhaFichas"/>
+    </data>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -15,6 +21,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:text="@string/listMonster_dialogFragment_monstroCriado"
+        android:onClick="@{()->AddFicha.onFichaMonstro()}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -29,6 +36,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/listMonster_dialogFragment_monstroAutomatico"
+        android:onClick="@{()->AddFicha.onFichaAutomatica()}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -45,9 +53,11 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="@string/listMonster_dialogFragment_monstroNovo"
+        android:onClick="@{()->AddFicha.onFichaVazia()}"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/monsterSheetChoice_button_monstroAutomatico" />
 </android.support.constraint.ConstraintLayout>
+</layout>
