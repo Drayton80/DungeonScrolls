@@ -48,7 +48,7 @@ import static android.databinding.DataBindingUtil.setContentView;
 @SuppressLint("ValidFragment")
 public class NoticeDialogFragmentFichas extends DialogFragment {
 
-    Usuario usuarioUsado, usuarioOn;
+    Usuario usuarioUsado;
     Sala salaUsada;
     Ficha fichaUsada;
     FichaModel fichaModel;
@@ -62,11 +62,6 @@ public class NoticeDialogFragmentFichas extends DialogFragment {
     Button automatico;
     Button fichaVazia;
     Intent extra;
-    int[] jogadoresID;
-    private ListView jogadoresNaSala;
-    ArrayList<UsuarioModel> usuarioModelArrayList;
-    JogadoresAdapter usuariosAdapter;
-
 
     public NoticeDialogFragmentFichas(Usuario usuarioLogado, Sala salaUsada, Ficha fichaUsada, boolean mestre, SQLite sqLite) {
         this.usuarioUsado = usuarioLogado;
@@ -151,7 +146,7 @@ public class NoticeDialogFragmentFichas extends DialogFragment {
                                 "", "", "", "", "", "",
                                 0, 0, 0, 0, "", "",
                                 "", "","","", "",
-                                "", "", "", "", "", "", "",
+                                "", "", "", "Tipo", "", "", "",
                                 0, 0, 0));
 
                         int[] aux = new int[salaUsada.toIntArray(salaUsada.getFichasID()).length +1];
@@ -190,7 +185,7 @@ public class NoticeDialogFragmentFichas extends DialogFragment {
                                 "", "", "", "", "", "",
                                 0, 0, 0, 0, "", "",
                                 "", "","","", "",
-                                "", "", "", "", "", "", "",
+                                "", "", "", "Tipo", "", "", "",
                                 0, 0, 0));
 
                         int[] aux = new int[usuarioUsado.toIntArray(usuarioUsado.getFichasID()).length +1];

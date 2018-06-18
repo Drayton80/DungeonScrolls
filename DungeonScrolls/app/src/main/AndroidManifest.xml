@@ -58,10 +58,11 @@
         <activity android:name=".Telas.RoomsMenu" />
         <activity android:name=".Telas.AllRooms" />
         <activity android:name=".Telas.UserRooms" />
-        <activity android:name=".Telas.RoomActivity" />
+        <activity
+            android:name=".Telas.RoomActivity"
+            android:windowSoftInputMode="stateHidden" />
         <activity android:name=".Telas.OptionsActivity" />
         <activity android:name=".BeforeSheetMonsterAutomaticallyActivity" />
-        <activity android:name=".MonsterSheetChoiceActivity" />
         <activity android:name=".BeforeSheetMonsterCreatedActivity" />
         <activity android:name=".RoomMonsterListActivity"></activity>
     </application>

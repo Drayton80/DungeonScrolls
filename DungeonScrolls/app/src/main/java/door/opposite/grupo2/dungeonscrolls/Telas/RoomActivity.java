@@ -240,12 +240,12 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 salaUsada.setHistoria(binding.roomEditTextResumo.getText().toString());
                 salaUsada.setNotas(binding.roomEditTextOutrasAnotacoes.getText().toString());
                 //sqLite.updateDataSala(salaUsada);
-                for(int i = 0; i < salaUsada.toIntArray(salaUsada.getFichasID()).length; i++){
+                int[] fichasUsadas = removeMonster();
+                for(int i = 0; i < fichasUsadas.length; i++){
                     if(i == fichaPosicao){
-                        if (fichasID[i+1] == 0){
+                        if (fichasUsadas[i] == 0){
                         }else{
-
-                            fichaUsada = sqLite.selecionarFicha(fichasID[i+1]);
+                            fichaUsada = sqLite.selecionarFicha(fichasUsadas[i]);
                             extra = new Intent(RoomActivity.this, SheetActivity.class);
                             extra.putExtra("usuarioLogado", usuarioLogado);
                             extra.putExtra("salaUsada", salaUsada);

@@ -28,6 +28,7 @@ import door.opposite.grupo2.dungeonscrolls.Telas.RoomActivity;
 import door.opposite.grupo2.dungeonscrolls.Telas.RoomsMenu;
 import door.opposite.grupo2.dungeonscrolls.Telas.SheetActivity;
 import door.opposite.grupo2.dungeonscrolls.adapter.FichaAdapter;
+import door.opposite.grupo2.dungeonscrolls.adapter.FichaMonsterAdapter;
 import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
 import door.opposite.grupo2.dungeonscrolls.databinding.ActivityRoomMonsterlistBinding;
 import door.opposite.grupo2.dungeonscrolls.graficAssets.DialogFragmentCreator;
@@ -50,7 +51,7 @@ public class RoomMonsterListActivity extends AppCompatActivity implements PopupM
     SalaModel salaModel;
     FichaModel fichaModel;
     ArrayList<FichaModel> fichaModelArrayList;
-    FichaAdapter fichaAdapter;
+    FichaMonsterAdapter fichaMonsterAdapter;
     int[] fichasID, fichaSalaID, fichasMonsterID;
     int posicaoDelete = 0;
     DialogFragmentCreator geraDialog = new DialogFragmentCreator();
@@ -138,8 +139,8 @@ public class RoomMonsterListActivity extends AppCompatActivity implements PopupM
             fichaModel = new FichaModel();
             try {
                 fichaModelArrayList = fichaModel.getArrayListaFicha(fichasMonstersID, sqLite);
-                fichaAdapter = new FichaAdapter(this, fichaModelArrayList);
-                binding.monsterListListView.setAdapter(fichaAdapter);
+                fichaMonsterAdapter = new FichaMonsterAdapter(this, fichaModelArrayList);
+                binding.monsterListListView.setAdapter(fichaMonsterAdapter);
             }catch (Exception e){
 
             }
@@ -148,12 +149,19 @@ public class RoomMonsterListActivity extends AppCompatActivity implements PopupM
         binding.setAdicionaFicha(new Eventos() {
             @Override
             public void onClickCad() {
+
                 showNoticeDialogFichas();
             }
 
             @Override
             public void onClickLogin() {
-
+                extra = new Intent(RoomMonsterListActivity.this, RoomActivity.class);
+                extra.putExtra("usuarioLogado", usuarioLogado);
+                extra.putExtra("salaUsada", salaUsada);
+                extra.putExtra("fichaUsada", fichaUsada);
+                extra.putExtra("mestre", mestre);
+                finish();
+                startActivity(extra);
             }
         });
 
@@ -207,8 +215,8 @@ public class RoomMonsterListActivity extends AppCompatActivity implements PopupM
                     fichaModel = new FichaModel();
                     try {
                         fichaModelArrayList = fichaModel.getArrayListaFicha(fichasMonstersID, sqLite);
-                        fichaAdapter = new FichaAdapter(RoomMonsterListActivity.this, fichaModelArrayList);
-                        binding.monsterListListView.setAdapter(fichaAdapter);
+                        fichaMonsterAdapter = new FichaMonsterAdapter(RoomMonsterListActivity.this, fichaModelArrayList);
+                        binding.monsterListListView.setAdapter(fichaMonsterAdapter);
                     }catch (Exception ee){
 
                     }

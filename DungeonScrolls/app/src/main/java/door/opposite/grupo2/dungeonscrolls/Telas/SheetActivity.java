@@ -117,6 +117,7 @@ public class SheetActivity extends AppCompatActivity implements  NavigationView.
                 extra.putExtra("usuarioLogado", usuarioLogado);
                 extra.putExtra("salaUsada", salaUsada);
                 extra.putExtra("fichaUsada", fichaUsada);
+                finish();
                 startActivity(extra);
             }
 
@@ -131,6 +132,7 @@ public class SheetActivity extends AppCompatActivity implements  NavigationView.
                 extra.putExtra("usuarioLogado", usuarioLogado);
                 extra.putExtra("salaUsada", salaUsada);
                 extra.putExtra("fichaUsada", fichaUsada);
+                finish();
                 startActivity(extra);
             }
 
@@ -145,6 +147,7 @@ public class SheetActivity extends AppCompatActivity implements  NavigationView.
                 extra.putExtra("usuarioLogado", usuarioLogado);
                 extra.putExtra("salaUsada", salaUsada);
                 extra.putExtra("fichaUsada", fichaUsada);
+                finish();
                 startActivity(extra);
             }
 
@@ -159,6 +162,7 @@ public class SheetActivity extends AppCompatActivity implements  NavigationView.
                 extra.putExtra("usuarioLogado", usuarioLogado);
                 extra.putExtra("salaUsada", salaUsada);
                 extra.putExtra("fichaUsada", fichaUsada);
+                finish();
                 startActivity(extra);
             }
 
@@ -174,6 +178,7 @@ public class SheetActivity extends AppCompatActivity implements  NavigationView.
                 extra.putExtra("salaUsada", salaUsada);
                 extra.putExtra("fichaUsada", fichaUsada);
                 extra.putExtra("mestre", mestre);
+                finish();
                 startActivity(extra);
             }
 
@@ -189,6 +194,7 @@ public class SheetActivity extends AppCompatActivity implements  NavigationView.
                 extra.putExtra("salaUsada", salaUsada);
                 extra.putExtra("fichaUsada", fichaUsada);
                 extra.putExtra("mestre", mestre);
+                finish();
                 startActivity(extra);
             }
 
@@ -416,7 +422,7 @@ public class SheetActivity extends AppCompatActivity implements  NavigationView.
                 extra.putExtra("usuarioLogado", usuarioLogado);
                 extra.putExtra("salaUsada", salaUsada);
                 //extra.putExtra("fichaUsada", fichaUsada);
-                //extra.putExtra("mestre", mestre);
+                extra.putExtra("mestre", mestre);
                 startActivity(extra);
                 return true;
 

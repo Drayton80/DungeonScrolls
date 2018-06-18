@@ -14,6 +14,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import door.opposite.grupo2.dungeonscrolls.R;
+import door.opposite.grupo2.dungeonscrolls.databinding.LineMonsterCreatedBinding;
 import door.opposite.grupo2.dungeonscrolls.databinding.MonsterLineBinding;
 import door.opposite.grupo2.dungeonscrolls.databinding.SalaLineBinding;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.NomesMonstros;
@@ -28,7 +29,7 @@ public class MonstroAdapter extends ArrayAdapter<NomesMonstros> {
     Context context1;
 
     public MonstroAdapter(@NonNull Context context, ArrayList<NomesMonstros> MonstrosModelArrayList)  {
-        super(context, R.layout.monster_line, MonstrosModelArrayList);
+        super(context, R.layout.line_monster_created, MonstrosModelArrayList);
         this.context1 = context;
         this.MonstrosModelArrayList = MonstrosModelArrayList;
     }
@@ -39,10 +40,10 @@ public class MonstroAdapter extends ArrayAdapter<NomesMonstros> {
 
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
 
-        MonsterLineBinding monsterLineBinding = DataBindingUtil.inflate(layoutInflater, R.layout.monster_line, parent, false);
-        monsterLineBinding.setMonstros(MonstrosModelArrayList.get(position));
+        LineMonsterCreatedBinding LineMonsterCreatedBinding = DataBindingUtil.inflate(layoutInflater, R.layout.line_monster_created, parent, false);
+        LineMonsterCreatedBinding.setNomeMonstros(MonstrosModelArrayList.get(position));
 
-        return monsterLineBinding.getRoot();
+        return LineMonsterCreatedBinding.getRoot();
     }
 
 

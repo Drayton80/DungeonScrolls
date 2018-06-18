@@ -33,10 +33,9 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
                 android:clickable="true"
                 android:onClick="@{()->adicionaFicha.onClickLogin()}"
-                app:backgroundTint="@color/colorSecondary"
+                app:backgroundTint="@color/colorPrimaryLight"
                 app:fabSize="mini"
                 app:layout_constraintBottom_toTopOf="@+id/room_button_adicionar"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -48,14 +47,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="24dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
                 android:clickable="true"
                 android:onClick="@{()->adicionaFicha.onClickCad()}"
-                android:src="@drawable/float_action_button_plus"
-                app:backgroundTint="@color/colorSecondary"
+                app:backgroundTint="@color/colorPrimaryLight"
                 app:fabSize="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/float_action_button_plus" />
 
             <include
                 android:id="@+id/toolbar"
@@ -144,12 +142,12 @@
                     android:id="@+id/room_textView_outrasAnotacoes"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
                     android:text="@string/room_activity_anotacoes"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="@+id/room_editText_resumo"
                     app:layout_constraintStart_toEndOf="@+id/room_textView_fichasTitulo"
-                    app:layout_constraintTop_toBottomOf="@+id/white_space" />
+                    app:layout_constraintTop_toBottomOf="@+id/white_space"
+                    android:layout_marginLeft="16dp" />
 
                 <EditText
                     android:id="@+id/room_editText_outrasAnotacoes"

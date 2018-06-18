@@ -33,16 +33,30 @@
             tools:context="door.opposite.grupo2.dungeonscrolls.Telas.RoomsActivity">
 
             <android.support.design.widget.FloatingActionButton
-                android:id="@+id/monsterList_floatingActionButton_add"
+                android:id="@+id/monsterList_floatingAction_home"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
+                android:clickable="true"
+                android:onClick="@{()->adicionaFicha.onClickLogin()}"
+                app:backgroundTint="@color/colorPrimaryLight"
+                app:fabSize="mini"
+                app:layout_constraintBottom_toTopOf="@+id/monsterList_floatingActionButton_add"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:srcCompat="@drawable/ic_skull" />
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/monsterList_floatingActionButton_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:layout_marginEnd="16dp"
                 android:clickable="true"
                 android:onClick="@{()->adicionaFicha.onClickCad()}"
                 android:src="@drawable/float_action_button_plus"
                 app:backgroundTint="@color/colorPrimaryLight"
+                app:elevation="3dp"
                 app:fabSize="normal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent" />

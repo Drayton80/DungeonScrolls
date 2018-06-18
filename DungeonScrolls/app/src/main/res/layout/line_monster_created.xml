@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="nomeMonstros"
+            type="door.opposite.grupo2.dungeonscrolls.viewmodel.NomesMonstros"/>
+        <variable
+            name="listaSala"
+            type="door.opposite.grupo2.dungeonscrolls.viewmodel.SalaModel"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/nomeDoJogador"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@{nomeMonstros.nome}"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.SearchResult.Title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/nomeDoMestre"
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="16dp"
+            android:text="@{nomeMonstros.nd}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Menu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/nomeDoJogador"
+            app:layout_constraintTop_toBottomOf="@+id/nomeDoJogador" />
+
+        <TextView
+            android:id="@+id/statusDaSala"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Fechada"
+            app:layout_constraintBottom_toBottomOf="@+id/nomeDoMestre"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
