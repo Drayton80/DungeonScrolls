@@ -143,7 +143,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             }
         }
 
-        fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
+        /*fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
         fichasUser = new int[fichasID.length];
         int userCont = 0;
         for(int cont = 0; cont < fichasID.length; cont++){
@@ -162,7 +162,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         }
         for(int i = 0; i < fichasUser.length; i++){
             System.out.println("---------------Id das fichas: " + fichasUser[i]);
-        }
+        }*/
         /*
         if(mestre == true){
             System.out.println("-----------------------Eu sou mestre =D, é true == " + mestre);
@@ -421,9 +421,11 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 int[] fichasUser = removeMonster();
                 if(mestre == true){
                     System.out.println("-----------------------Eu sou mestre =D, é true == " + mestre);
-                    //sqLite.atualizaDataFicha(fichasID);
+                    fichasUser = removeMonster();
+                    fichaModel = new FichaModel();
                     fichaModel = new FichaModel();
                     try {
+                        //fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
                         fichaModelArrayList = fichaModel.getArrayListaFicha(fichasUser, sqLite);
                         fichaAdapter = new FichaAdapter(RoomActivity.this, fichaModelArrayList);
                         binding.roomListViewFichas.setAdapter(fichaAdapter);
@@ -441,7 +443,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                             }
                         }
                     }
-                    //sqLite.atualizaDataFicha(fichasID);
+                   //sqLite.atualizaDataFicha(fichasID);
                     fichaModel = new FichaModel();
                     try{
                         fichaModelArrayList = fichaModel.getArrayListaFicha(fichasNaSala, sqLite);
@@ -450,19 +452,46 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                     }catch (Exception ee){
                     }
                 }
-                /*
-                for (DocumentSnapshot doc : documentSnapshots) {
+
+                /*for (DocumentSnapshot doc : documentSnapshots) {
                     Sala sala = doc.toObject(Sala.class);
                     if(sala.getID() == salaUsada.getID()) {
-                        salaUsada = sala;
-                        //fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
-                        fichaModelArrayList = fichaModel.getArrayListaFicha(fichaAtt, sqLite);
-                        fichaAdapter = new FichaAdapter(RoomActivity.this, fichaModelArrayList);
-                        binding.roomListViewFichas.setAdapter(fichaAdapter);
+                        if(mestre == true){
+                            salaUsada = sala;
+                            fichaModel = new FichaModel();
+                            try {
+                                //fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
+                                fichaModelArrayList = fichaModel.getArrayListaFicha(fichasUser, sqLite);
+                                fichaAdapter = new FichaAdapter(RoomActivity.this, fichaModelArrayList);
+                                binding.roomListViewFichas.setAdapter(fichaAdapter);
+                            }catch (Exception ee){
+
+                            }
+                        }else if(mestre == false){
+                            salaUsada = sala;
+                            //fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
+                            fichasID = usuarioLogado.toIntArray(usuarioLogado.getFichasID());
+                            fichasNaSala = new int[usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length];
+                            for(int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length; i++){
+                                for(int j = 0; j < fichasUser.length; j++){
+                                    if(fichasUser[j] == fichasID[i]){
+                                        fichasNaSala[i] = fichasID[i];
+                                    }
+                                }
+                            }
+                            fichaModel = new FichaModel();
+                            try {
+                                //fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
+                                fichaModelArrayList = fichaModel.getArrayListaFicha(fichasNaSala, sqLite);
+                                fichaAdapter = new FichaAdapter(RoomActivity.this, fichaModelArrayList);
+                                binding.roomListViewFichas.setAdapter(fichaAdapter);
+                            }catch (Exception ee){
+
+                            }
+                        }
                     }
 
-                }
-                */
+                }*/
             }
         });
         return true;

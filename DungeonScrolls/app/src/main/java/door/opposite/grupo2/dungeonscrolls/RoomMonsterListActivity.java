@@ -25,6 +25,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 import java.util.ArrayList;
 
 import door.opposite.grupo2.dungeonscrolls.Telas.RoomActivity;
+import door.opposite.grupo2.dungeonscrolls.Telas.RoomsMenu;
 import door.opposite.grupo2.dungeonscrolls.Telas.SheetActivity;
 import door.opposite.grupo2.dungeonscrolls.adapter.FichaAdapter;
 import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
@@ -299,5 +300,15 @@ public class RoomMonsterListActivity extends AppCompatActivity implements PopupM
             }
         }
         return fichasMonsterID;
+    }
+
+    public void onBackPressed(){
+        //sqLite.updateDataSala(salaUsada);
+        extra = new Intent(RoomMonsterListActivity.this, RoomActivity.class);
+        extra.putExtra("usuarioLogado", usuarioLogado);
+        extra.putExtra("salaUsada", salaUsada);
+        extra.putExtra("fichaUsada", fichaUsada);
+        extra.putExtra("mestre", mestre);
+        startActivity(extra);
     }
 }

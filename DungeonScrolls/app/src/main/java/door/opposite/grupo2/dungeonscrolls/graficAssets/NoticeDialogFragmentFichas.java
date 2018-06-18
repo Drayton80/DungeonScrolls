@@ -134,6 +134,7 @@ public class NoticeDialogFragmentFichas extends DialogFragment {
 
         fichaVazia.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
+                extra = new Intent(getActivity(), RoomMonsterListActivity.class);
                 if(lock != true){
                     lock = true;
                     if(mestre == true){
@@ -168,6 +169,13 @@ public class NoticeDialogFragmentFichas extends DialogFragment {
                         lock = false;
                         //getActivity().closeContextMenu();
                         //startActivity(getActivity().getIntent());
+                        dismiss();
+                        extra.putExtra("usuarioLogado", usuarioUsado);
+                        extra.putExtra("salaUsada", salaUsada);
+                        extra.putExtra("fichaUsada", fichaUsada);
+                        extra.putExtra("mestre", mestre);
+                        getActivity().finish();
+                        startActivity(extra);
                     }else{
                         sqLite.insereDataFicha(new Ficha("Novo Monstro", "",
                                 "", "", "", "", "", "",
@@ -216,6 +224,12 @@ public class NoticeDialogFragmentFichas extends DialogFragment {
                         }
                         //sqLite.atualizaDataFicha(fichasID);
                         lock = false;
+                        dismiss();
+                        extra.putExtra("usuarioLogado", usuarioUsado);
+                        extra.putExtra("salaUsada", salaUsada);
+                        extra.putExtra("fichaUsada", fichaUsada);
+                        extra.putExtra("mestre", mestre);
+                        startActivity(extra);
                     }
                 }
             }
