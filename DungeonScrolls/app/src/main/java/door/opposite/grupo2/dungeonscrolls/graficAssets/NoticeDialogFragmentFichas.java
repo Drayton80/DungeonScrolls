@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -23,7 +24,11 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import door.opposite.grupo2.dungeonscrolls.BeforeSheetMonsterAutomaticallyActivity;
+import door.opposite.grupo2.dungeonscrolls.BeforeSheetMonsterCreatedActivity;
 import door.opposite.grupo2.dungeonscrolls.R;
+import door.opposite.grupo2.dungeonscrolls.RoomMonsterListActivity;
+import door.opposite.grupo2.dungeonscrolls.Telas.RoomActivity;
 import door.opposite.grupo2.dungeonscrolls.adapter.FichaAdapter;
 import door.opposite.grupo2.dungeonscrolls.adapter.JogadoresAdapter;
 import door.opposite.grupo2.dungeonscrolls.commands.EventosEscolhaFichas;
@@ -56,6 +61,7 @@ public class NoticeDialogFragmentFichas extends DialogFragment {
     Button monstro;
     Button automatico;
     Button fichaVazia;
+    Intent extra;
     int[] jogadoresID;
     private ListView jogadoresNaSala;
     ArrayList<UsuarioModel> usuarioModelArrayList;
@@ -106,13 +112,23 @@ public class NoticeDialogFragmentFichas extends DialogFragment {
 
         monstro.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                extra = new Intent(getActivity(), BeforeSheetMonsterCreatedActivity.class);
+                extra.putExtra("usuarioLogado", usuarioUsado);
+                extra.putExtra("salaUsada", salaUsada);
+                extra.putExtra("fichaUsada", fichaUsada);
+                extra.putExtra("mestre", mestre);
+                startActivity(extra);
             }
         });
 
         automatico.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-
+                extra = new Intent(getActivity(), BeforeSheetMonsterAutomaticallyActivity.class);
+                extra.putExtra("usuarioLogado", usuarioUsado);
+                extra.putExtra("salaUsada", salaUsada);
+                extra.putExtra("fichaUsada", fichaUsada);
+                extra.putExtra("mestre", mestre);
+                startActivity(extra);
             }
         });
 
@@ -150,6 +166,8 @@ public class NoticeDialogFragmentFichas extends DialogFragment {
 
                         fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
                         lock = false;
+                        //getActivity().closeContextMenu();
+                        //startActivity(getActivity().getIntent());
                     }else{
                         sqLite.insereDataFicha(new Ficha("Novo Monstro", "",
                                 "", "", "", "", "", "",

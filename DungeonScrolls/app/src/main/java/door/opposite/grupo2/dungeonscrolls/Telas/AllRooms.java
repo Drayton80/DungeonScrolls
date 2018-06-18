@@ -60,7 +60,7 @@ public class AllRooms extends AppCompatActivity implements NoticeDialogFragmentI
     Sala salaUsada, salaSelecionada;
     String novoJogador;
     Boolean salaUsuario = false, mestre = false, continuar = false;
-    DocumentReference docRef = FirebaseFirestore.getInstance().document("Data/App");
+    DocumentReference docRef = FirebaseFirestore.getInstance().document("Data2/App");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
