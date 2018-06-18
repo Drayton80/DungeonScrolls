@@ -24,6 +24,8 @@ android {
 }
 
 dependencies {
+    android.defaultConfig.vectorDrawables.useSupportLibrary = true;
+
     // Bibliotecas do Firebase:
     implementation 'com.google.firebase:firebase-database:11.8.0'
     implementation 'com.google.firebase:firebase-storage:11.8.0'
