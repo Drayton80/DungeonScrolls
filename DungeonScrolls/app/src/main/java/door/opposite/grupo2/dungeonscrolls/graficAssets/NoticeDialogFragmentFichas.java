@@ -121,7 +121,7 @@ public class NoticeDialogFragmentFichas extends DialogFragment {
                 if(lock != true){
                     lock = true;
                     if(mestre == true){
-                        sqLite.insereDataFicha(new Ficha("Nova Ficha", "",
+                        sqLite.insereDataFicha(new Ficha("Novo Monstro", "",
                                 "", "", "", "", "", "",
                                 0, 0, 0, 0, 0, 0, 0,
                                 0, 0, 0, 0, 0,
@@ -130,7 +130,7 @@ public class NoticeDialogFragmentFichas extends DialogFragment {
                                 0, 0, 0, 0, 0,
                                 0, 0, 0, 0, 0, 0,
                                 0, 0, 0, 0, 0, 0, 0,
-                                0, 0, 0, "", "", "", "",
+                                0, 0, 2, "", "", "", "",
                                 "", "", "", "", "", "",
                                 0, 0, 0, 0, "", "",
                                 "", "","","", "",
@@ -151,7 +151,7 @@ public class NoticeDialogFragmentFichas extends DialogFragment {
                         fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
                         lock = false;
                     }else{
-                        sqLite.insereDataFicha(new Ficha("Nova Ficha", "",
+                        sqLite.insereDataFicha(new Ficha("Novo Monstro", "",
                                 "", "", "", "", "", "",
                                 0, 0, 0, 0, 0, 0, 0,
                                 0, 0, 0, 0, 0,
@@ -160,7 +160,7 @@ public class NoticeDialogFragmentFichas extends DialogFragment {
                                 0, 0, 0, 0, 0,
                                 0, 0, 0, 0, 0, 0,
                                 0, 0, 0, 0, 0, 0, 0,
-                                0, 0, 0, "", "", "", "",
+                                0, 0, 2, "", "", "", "",
                                 "", "", "", "", "", "",
                                 0, 0, 0, 0, "", "",
                                 "", "","","", "",

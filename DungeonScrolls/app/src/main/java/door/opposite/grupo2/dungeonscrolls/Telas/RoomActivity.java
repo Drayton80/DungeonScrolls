@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import door.opposite.grupo2.dungeonscrolls.R;
+import door.opposite.grupo2.dungeonscrolls.RoomMonsterListActivity;
 import door.opposite.grupo2.dungeonscrolls.adapter.FichaAdapter;
 import door.opposite.grupo2.dungeonscrolls.adapter.SalaAdapter;
 import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
@@ -56,12 +57,12 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     Intent extra;
     Usuario usuarioLogado, usuarioOn;
     Sala salaUsada;
-    Ficha fichaUsada;
+    Ficha fichaUsada, fichaUser;
     SalaModel salaModel;
     FichaModel fichaModel;
     ArrayList<FichaModel> fichaModelArrayList;
     FichaAdapter fichaAdapter;
-    int[] fichasID, fichaSalaID;
+    int[] fichasID, fichaSalaID, fichasMonsterID, fichasNaSala, fichasUser;
     int posicaoDelete = 0;
     DialogFragmentCreator geraDialog = new DialogFragmentCreator();
     AlertDialog dialog;
@@ -139,19 +140,44 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             }
         }
 
+        fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
+        fichasUser = new int[fichasID.length];
+        int userCont = 0;
+        for(int cont = 0; cont < fichasID.length; cont++){
+            if (fichasID[cont] == 0){
+            }else {
+                fichaUser = sqLite.selecionarFicha(fichasID[cont]);
+                if (fichaUser.getXpNecessario() == 2) {
+                }else{
+                    System.out.println("---------------Monstro: " + fichaUser.getXpNecessario());
+                    fichasUser[userCont] = fichaUser.getId();
+                    System.out.println("---------------ID: " + fichasUser[userCont]);
+                    userCont++;
+                    System.out.println("---------------userCont: " + userCont);
+                }
+            }
+
+        }
+        for(int i = 0; i < fichasUser.length; i++){
+            System.out.println("---------------Id das fichas: " + fichasUser[i]);
+        }
+
         if(mestre == true){
             System.out.println("-----------------------Eu sou mestre =D, é true == " + mestre);
-            fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
             //sqLite.atualizaDataFicha(fichasID);
             fichaModel = new FichaModel();
-            fichaModelArrayList = fichaModel.getArrayListaFicha(salaUsada.toIntArray(salaUsada.getFichasID()), sqLite);
-            fichaAdapter = new FichaAdapter(this, fichaModelArrayList);
-            binding.roomListViewFichas.setAdapter(fichaAdapter);
+            try {
+                fichaModelArrayList = fichaModel.getArrayListaFicha(fichasUser, sqLite);
+                fichaAdapter = new FichaAdapter(this, fichaModelArrayList);
+                binding.roomListViewFichas.setAdapter(fichaAdapter);
+            }catch (Exception e){
+
+            }
         }else if(mestre == false){
             System.out.println("-----------------------Não sou o mestre :c, é false == " + mestre);
             fichaSalaID = salaUsada.toIntArray(salaUsada.getFichasID());
             fichasID = usuarioLogado.toIntArray(usuarioLogado.getFichasID());
-            int[] fichasNaSala = new int[usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length];
+            fichasNaSala = new int[usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length];
             for(int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length; i++){
                 for(int j = 0; j < salaUsada.toIntArray(salaUsada.getFichasID()).length; j++){
                     if(fichaSalaID[j] == fichasID[i]){
@@ -165,7 +191,6 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             fichaAdapter = new FichaAdapter(this, fichaModelArrayList);
             binding.roomListViewFichas.setAdapter(fichaAdapter);
         }
-
 
         binding.roomListViewFichas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -213,8 +238,6 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         binding.setAdicionaFicha(new Eventos() {
             @Override
             public void onClickCad() {
-                showNoticeDialogFichas();
-                /*
                 if(lock != true){
                     lock = true;
                     if(mestre == true){
@@ -227,7 +250,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                                 0, 0, 0, 0, 0,
                                 0, 0, 0, 0, 0, 0,
                                 0, 0, 0, 0, 0, 0, 0,
-                                0, 0, 0, "", "", "", "",
+                                0, 0, 1, "", "", "", "",
                                 "", "", "", "", "", "",
                                 0, 0, 0, 0, "", "",
                                 "", "","","", "",
@@ -261,7 +284,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                                 0, 0, 0, 0, 0,
                                 0, 0, 0, 0, 0, 0,
                                 0, 0, 0, 0, 0, 0, 0,
-                                0, 0, 0, "", "", "", "",
+                                0, 0, 1, "", "", "", "",
                                 "", "", "", "", "", "",
                                 0, 0, 0, 0, "", "",
                                 "", "","","", "",
@@ -307,11 +330,16 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                         startActivity(getIntent());
                     }
                 }
-                */
             }
 
             @Override
             public void onClickLogin() {
+                extra = new Intent(RoomActivity.this, RoomMonsterListActivity.class);
+                extra.putExtra("usuarioLogado", usuarioLogado);
+                extra.putExtra("salaUsada", salaUsada);
+                extra.putExtra("fichaUsada", fichaUsada);
+                extra.putExtra("mestre", mestre);
+                startActivity(extra);
             }
         });
 

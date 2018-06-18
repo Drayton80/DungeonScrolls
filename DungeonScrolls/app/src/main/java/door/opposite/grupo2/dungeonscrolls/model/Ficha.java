@@ -62,7 +62,7 @@ public class Ficha implements Serializable{
     private int po;
     private int pl;
     private int xp;
-    private int xpNecessario;
+    private int xpNecessario; //Não está usado usado
     private String idiomas;
     private String inventario;
     private String ataques;
@@ -85,14 +85,13 @@ public class Ficha implements Serializable{
     private String escolhaEspecializada;
     private String qualiEspeciais;
     private String habiEspeciais;
-
     private String ambiente;
     private String organizacao;
     private String evolucao;
     private String tipo;
     private String subTipo;
     private String nivelAjuste;
-    private String anotacoes;
+    private String anotacoes; //Não está sendo usado
     private float nivelDesafio;
     private float espaco;
     private float alcance;
