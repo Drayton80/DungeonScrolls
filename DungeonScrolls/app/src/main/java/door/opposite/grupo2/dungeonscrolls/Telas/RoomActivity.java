@@ -140,30 +140,29 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             }
         }
 
-        fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
-        fichasUser = new int[fichasID.length];
-        int userCont = 0;
-        for(int cont = 0; cont < fichasID.length; cont++){
-            if (fichasID[cont] == 0){
-            }else {
-                fichaUser = sqLite.selecionarFicha(fichasID[cont]);
-                if (fichaUser.getXpNecessario() == 2) {
-                }else{
-                    System.out.println("---------------Monstro: " + fichaUser.getXpNecessario());
-                    fichasUser[userCont] = fichaUser.getId();
-                    System.out.println("---------------ID: " + fichasUser[userCont]);
-                    userCont++;
-                    System.out.println("---------------userCont: " + userCont);
-                }
-            }
-
-        }
-        for(int i = 0; i < fichasUser.length; i++){
-            System.out.println("---------------Id das fichas: " + fichasUser[i]);
-        }
-
         if(mestre == true){
             System.out.println("-----------------------Eu sou mestre =D, é true == " + mestre);
+            fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
+            fichasUser = new int[fichasID.length];
+            int userCont = 0;
+            for(int cont = 0; cont < fichasID.length; cont++){
+                if (fichasID[cont] == 0){
+                }else {
+                    fichaUser = sqLite.selecionarFicha(fichasID[cont]);
+                    if (fichaUser.getXpNecessario() == 2) {
+                    }else{
+                        System.out.println("---------------Monstro: " + fichaUser.getXpNecessario());
+                        fichasUser[userCont] = fichaUser.getId();
+                        System.out.println("---------------ID: " + fichasUser[userCont]);
+                        userCont++;
+                        System.out.println("---------------userCont: " + userCont);
+                    }
+                }
+
+            }
+            for(int i = 0; i < fichasUser.length; i++){
+                System.out.println("---------------Id das fichas: " + fichasUser[i]);
+            }
             //sqLite.atualizaDataFicha(fichasID);
             fichaModel = new FichaModel();
             try {
@@ -388,6 +387,27 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
     public boolean atualizaDataFicha(Activity activity) {
 
+        fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
+        fichasUser = new int[fichasID.length];
+        int userCont = 0;
+        for(int cont = 0; cont < fichasID.length; cont++){
+            if (fichasID[cont] == 0){
+            }else {
+                fichaUser = sqLite.selecionarFicha(fichasID[cont]);
+                if (fichaUser.getXpNecessario() == 2) {
+                }else{
+                    System.out.println("---------------Monstro: " + fichaUser.getXpNecessario());
+                    fichasUser[userCont] = fichaUser.getId();
+                    System.out.println("---------------ID: " + fichasUser[userCont]);
+                    userCont++;
+                    System.out.println("---------------userCont: " + userCont);
+                }
+            }
+
+        }
+        for(int i = 0; i < fichasUser.length; i++){
+            System.out.println("---------------Id das fichas: " + fichasUser[i]);
+        }
 
         docRef.collection("salas").addSnapshotListener(activity, new EventListener<QuerySnapshot>() {
             @Override
@@ -397,8 +417,8 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                     Sala sala = doc.toObject(Sala.class);
                     if(sala.getID() == salaUsada.getID()) {
                         salaUsada = sala;
-                        fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
-                        fichaModelArrayList = fichaModel.getArrayListaFicha(salaUsada.toIntArray(salaUsada.getFichasID()), sqLite);
+                        //fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
+                        fichaModelArrayList = fichaModel.getArrayListaFicha(fichasUser, sqLite);
                         fichaAdapter = new FichaAdapter(RoomActivity.this, fichaModelArrayList);
                         binding.roomListViewFichas.setAdapter(fichaAdapter);
                     }
