@@ -35,7 +35,7 @@ import java.util.concurrent.Semaphore;
 public class SQLite extends SQLiteOpenHelper{
     Semaphore mutex = new Semaphore(1);
     FirebaseFirestore fireStore;
-    DocumentReference docRef = FirebaseFirestore.getInstance().document("Data2/App");
+    DocumentReference docRef = FirebaseFirestore.getInstance().document("Data/App");
     FirebaseDatabase database;
     DatabaseReference reference;
     StorageReference storageReference;

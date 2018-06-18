@@ -1,8 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-    <data>
-        
-    </data>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -70,8 +66,8 @@
     <TextView
         android:id="@+id/roomNewSheetAutomatically_textView_ambiente"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="TextView"
+        android:layout_height="18dp"
+        android:text="@string/room_newSheetAutomatically_activity_ambiente"
         android:textAlignment="center"
         app:layout_constraintBottom_toBottomOf="@+id/roomNewSheetAutomatically_textView_nivelAjuste"
         app:layout_constraintEnd_toEndOf="@+id/roomNewSheetAutomatically_editText_tipo"
@@ -209,4 +205,3 @@
         app:layout_constraintTop_toBottomOf="@+id/roomNewSheetAutomatically_editText_alinhamento" />
 
 </android.support.constraint.ConstraintLayout>
-</layout>

@@ -69,7 +69,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     boolean deletar = false, mestre, lock = false;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
-    DocumentReference docRef = FirebaseFirestore.getInstance().document("Data2/App");
+    DocumentReference docRef = FirebaseFirestore.getInstance().document("Data/App");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
