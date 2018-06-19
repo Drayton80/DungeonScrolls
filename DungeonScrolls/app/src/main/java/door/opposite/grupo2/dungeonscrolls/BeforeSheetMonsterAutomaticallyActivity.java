@@ -1,6 +1,6 @@
 package door.opposite.grupo2.dungeonscrolls;
 
-import android.databinding.generated.callback.OnClickListener;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +12,12 @@ import java.io.IOException;
 import java.net.Socket;
 
 import door.opposite.grupo2.dungeonscrolls.Cliente.Comunicacao;
+import door.opposite.grupo2.dungeonscrolls.model.Ficha;
+import door.opposite.grupo2.dungeonscrolls.model.SQLite;
+import door.opposite.grupo2.dungeonscrolls.model.Sala;
+import door.opposite.grupo2.dungeonscrolls.model.Usuario;
+import door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel;
+import door.opposite.grupo2.dungeonscrolls.viewmodel.SalaModel;
 
 public class BeforeSheetMonsterAutomaticallyActivity extends AppCompatActivity {
 
@@ -23,12 +29,30 @@ public class BeforeSheetMonsterAutomaticallyActivity extends AppCompatActivity {
     EditText alinhamento;
     Button comfirma;
     Button cancelar;
+    SQLite sqLite;
+
+    Intent extra;
+    Usuario usuarioLogado, usuarioOn;
+    Sala salaUsada;
+    Ficha fichaUsada, fichaMonster;
+    SalaModel salaModel;
+    FichaModel fichaModel;
+    Boolean mestre = false;
+    int[] fichasID;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beforesheet_monster_automatically);
+
+
+        extra = getIntent();
+        usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
+        salaUsada = (Sala) extra.getSerializableExtra("salaUsada");
+        mestre =  extra.getBooleanExtra("mestre", mestre);
+        sqLite = new SQLite(this);
+
 
 
         ambiente = (EditText)findViewById(R.id.roomNewSheetAutomatically_editText_ambiente);
@@ -44,8 +68,16 @@ public class BeforeSheetMonsterAutomaticallyActivity extends AppCompatActivity {
         comfirma.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                System.out.println("==========================>>>>>>>>>>>> Click");
+                new Thread((new Runnable() {
+                    @Override
+                    public void run() {
+                        System.out.println("==========================>>>>>>>>>>>> RUM");
+
                 try {
-                    Socket servidor = new Socket("localhost",50008);
+
+                    Socket servidor = new Socket("10.0.2.2",50008);
+                    System.out.println("==========================>>>>>>>>>>>> TRY");
                     DataOutputStream saida = new DataOutputStream(servidor.getOutputStream());
                     Comunicacao protocolo = new Comunicacao(servidor);
 
@@ -56,22 +88,70 @@ public class BeforeSheetMonsterAutomaticallyActivity extends AppCompatActivity {
                             + NAjuste.getText() +","+ ND.getText()); //String com os atributos que serão mandados, precisam estar nesse formato!
 
                     String monstroString = protocolo.protocoloEntrada();
+                    System.out.println("==========================>>>>>>>>>>>>" + monstroString);
                     String[] monstroSeparado = monstroString.split(",");
+
+                    for(int i = 0; i < monstroSeparado.length; i++){
+                        System.out.println("==========================>>>>>>>>>>>>" + monstroSeparado[i]);
+                    }
+
+                    Ficha ficha = new Ficha("Monstro Artificial", "",
+                            "", "", "", "", "", "",
+                            0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0,
+                            0, 0, 0, 0, 0, 0, 0,
+                            0, 0, 2, "", "", "", "",
+                            "", "", "", "", "", "",
+                            0, 0, 0, 0, "", "",
+                            "", "","","", "",
+                            "", "", "", "Tipo", "", "", "",
+                            0, 0, 0);
+                    /*
+                    new Ficha("Monstro Artificial", monstroSeparado[0], monstroSeparado[1], Integer.parseInt(monstroSeparado[2]),
+                            Integer.parseInt(monstroSeparado[3]), Integer.parseInt(monstroSeparado[4]), Integer.parseInt(monstroSeparado[5]),
+                            Integer.parseInt(monstroSeparado[6]), Integer.parseInt(monstroSeparado[7]), Integer.parseInt(monstroSeparado[8]),
+                            Integer.parseInt(monstroSeparado[9]),Integer.parseInt(monstroSeparado[10]),Integer.parseInt(monstroSeparado[11]),
+                            Integer.parseInt(monstroSeparado[12]), Integer.parseInt(monstroSeparado[13]), Integer.parseInt(monstroSeparado[14]),
+                            Integer.parseInt(monstroSeparado[15]), Integer.parseInt(monstroSeparado[16]), monstroSeparado[17],
+                            Integer.parseInt(monstroSeparado[18]), monstroSeparado[19]);
+                            */
+                    sqLite.insereDataFicha(ficha);
+
+
+                    int[] aux = new int[salaUsada.toIntArray(salaUsada.getFichasID()).length +1];
+
+                    for (int i = 0; i < salaUsada.toIntArray(salaUsada.getFichasID()).length; i++){
+                        aux[i] = salaUsada.toIntArray(salaUsada.getFichasID())[i];
+                    }
+                    aux[salaUsada.toIntArray(salaUsada.getFichasID()).length] = sqLite.ultimaFicha();
+
+                    salaUsada.setFichasID(salaUsada.toIntList(aux));
+
+                    sqLite.updateDataSala(salaUsada);
+
+                    fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
+
+                    servidor.close();
+
+                    extra = new Intent(BeforeSheetMonsterAutomaticallyActivity.this, RoomMonsterListActivity.class);
+                    extra.putExtra("usuarioLogado", usuarioLogado);
+                    extra.putExtra("salaUsada", salaUsada);
+                    extra.putExtra("fichaUsada", fichaUsada);
+                    extra.putExtra("mestre", mestre);
+                    finish();
+                    startActivity(extra);
 
                 } catch (IOException e) {
                     e.printStackTrace();
+                    System.out.println("==========================>>>>>>>>>>>> kracho");
                 }
-
-
+                    }
+                })).start();
             }
         });
     }
-
-
-
-
-
-
-
-
 }
