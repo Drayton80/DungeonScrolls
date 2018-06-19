@@ -96,20 +96,20 @@ public class BeforeSheetMonsterAutomaticallyActivity extends AppCompatActivity {
                     }
 
                     Ficha ficha = new Ficha("Monstro Artificial", "",
-                            "", "", "", "", "", "",
-                            0, 0, 0, 0, 0, 0, 0,
-                            0, 0, 0, 0, 0,
-                            0, 0, 0, 0, 0, 0,
-                            0, 0, 0, 0, 0, 0,
-                            0, 0, 0, 0, 0,
-                            0, 0, 0, 0, 0, 0,
-                            0, 0, 0, 0, 0, 0, 0,
+                            "", "",  monstroSeparado[19], "", "", monstroSeparado[1],
+                            0, 0, 0, Integer.parseInt(monstroSeparado[11]), Integer.parseInt(monstroSeparado[13]), Integer.parseInt(monstroSeparado[12]), Integer.parseInt(monstroSeparado[14]),
+                            Integer.parseInt(monstroSeparado[15]), Integer.parseInt(monstroSeparado[16]), 0, 0, 0,
+                            0, 0, 0, 0, Integer.parseInt(monstroSeparado[5]), 0,
+                            0, 0, Integer.parseInt(monstroSeparado[4]), Integer.parseInt(monstroSeparado[2]), 0, Integer.parseInt(monstroSeparado[3]),
+                            0, Integer.parseInt(monstroSeparado[8]), 0, 0, Integer.parseInt(monstroSeparado[9]),
+                            0, 0, Integer.parseInt(monstroSeparado[10]), 0, 0,  Integer.parseInt(monstroSeparado[6]),
+                            0, 0, Integer.parseInt(monstroSeparado[7]), 0, 0, 0, 0,
                             0, 0, 2, "", "", "", "",
                             "", "", "", "", "", "",
                             0, 0, 0, 0, "", "",
                             "", "","","", "",
-                            "", "", "", "Tipo", "", "", "",
-                            0, 0, 0);
+                            monstroSeparado[17], "", "", monstroSeparado[0], "", NAjuste.getText().toString(), "",
+                            Integer.parseInt(monstroSeparado[18]), 0, 0);
                     /*
                     new Ficha("Monstro Artificial", monstroSeparado[0], monstroSeparado[1], Integer.parseInt(monstroSeparado[2]),
                             Integer.parseInt(monstroSeparado[3]), Integer.parseInt(monstroSeparado[4]), Integer.parseInt(monstroSeparado[5]),
