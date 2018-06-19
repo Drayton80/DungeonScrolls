@@ -14,15 +14,17 @@ import android.widget.TabHost;
 
 import door.opposite.grupo2.dungeonscrolls.R;
 import door.opposite.grupo2.dungeonscrolls.model.Usuario;
+import door.opposite.grupo2.dungeonscrolls.viewmodel.UsuarioModel;
 
 @SuppressWarnings("deprecation")
 
 public class RoomsMenu extends TabActivity implements NavigationView.OnNavigationItemSelectedListener{
 
     Intent extra;
-    Usuario usuarioLogado;
+    Usuario usuarioLogado, user;
     private DrawerLayout drawerLayout;
     private ActionBarDrawerToggle toggle;
+
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);

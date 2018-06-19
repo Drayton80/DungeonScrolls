@@ -89,11 +89,13 @@ public class SheetActivity extends AppCompatActivity implements  NavigationView.
         sqLite.atualizaDataUsuario(this);
         sqLite.atualizaDataSala(this);
         campoImagem = (ImageView) findViewById(R.id.imageView);
+
         extra = getIntent();
+        mestre = extra.getBooleanExtra("mestre", mestre);
         usuarioLogado = (Usuario) extra.getSerializableExtra("usuarioLogado");
         salaUsada = (Sala) extra.getSerializableExtra("salaUsada");
         fichaUsada = (Ficha) extra.getSerializableExtra("fichaUsada");
-        mestre = extra.getBooleanExtra("mestre", mestre);
+
         try {
             Picasso.get().load(Uri.parse(fichaUsada.getImagem())).into(campoImagem);
         } catch (Exception e) {
@@ -298,12 +300,14 @@ public class SheetActivity extends AppCompatActivity implements  NavigationView.
         if(fichaUsada.getXpNecessario() == 1) {
             extra = new Intent(SheetActivity.this, RoomActivity.class);
             extra.putExtra("usuarioLogado", usuarioLogado);
+            extra.putExtra("fichaUsada", fichaUsada);
             extra.putExtra("salaUsada", salaUsada);
             extra.putExtra("mestre", mestre);
             startActivity(extra);
         }else if(fichaUsada.getXpNecessario() == 2){
             extra = new Intent(SheetActivity.this, RoomMonsterListActivity.class);
             extra.putExtra("usuarioLogado", usuarioLogado);
+            extra.putExtra("fichaUsada", fichaUsada);
             extra.putExtra("salaUsada", salaUsada);
             extra.putExtra("mestre", mestre);
             startActivity(extra);

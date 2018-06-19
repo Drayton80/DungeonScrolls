@@ -11,7 +11,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-import door.opposite.grupo2.dungeonscrolls.Cliente.Comunicacao;
+
 import door.opposite.grupo2.dungeonscrolls.model.Ficha;
 import door.opposite.grupo2.dungeonscrolls.model.SQLite;
 import door.opposite.grupo2.dungeonscrolls.model.Sala;
@@ -79,7 +79,7 @@ public class BeforeSheetMonsterAutomaticallyActivity extends AppCompatActivity {
                     Socket servidor = new Socket("10.0.2.2",50008);
                     System.out.println("==========================>>>>>>>>>>>> TRY");
                     DataOutputStream saida = new DataOutputStream(servidor.getOutputStream());
-                    Comunicacao protocolo = new Comunicacao(servidor);
+                    Cliente.Comunicacao protocolo = new Cliente.Comunicacao(servidor);
 
 
                     saida.writeByte('2'); //Faz o sinal de que é para o servidor determinar o monstro

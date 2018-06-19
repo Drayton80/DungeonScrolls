@@ -1,4 +1,4 @@
-package door.opposite.grupo2.dungeonscrolls.Cliente;
+package Cliente;
 
 import java.net.*;
 import java.io.*;

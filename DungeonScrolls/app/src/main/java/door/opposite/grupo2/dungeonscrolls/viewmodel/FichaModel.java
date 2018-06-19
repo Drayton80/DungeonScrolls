@@ -137,7 +137,7 @@ public class FichaModel extends BaseObservable{
         this.ca = (10 + ficha.getArmadura() + ficha.getArmaduraNatural() + ficha.getCaOutros() + ficha.getDestrezaMod());
         this.caOutros = ficha.getCaOutros();
         this.caToque = (10 + ficha.getDestrezaMod());
-        this.caSurpresa = (10 + ficha.getArmadura() + ficha.getArmaduraNatural());
+        this.caSurpresa = (10 + ficha.getArmadura() + ficha.getArmaduraNatural() + ficha.getCaOutros());
         this.armadura = ficha.getArmadura();
         this.armaduraNatural = ficha.getArmaduraNatural();
         this.pv = ficha.getPv();
@@ -522,7 +522,7 @@ public class FichaModel extends BaseObservable{
     }
 
     public String getCaSurpresa() {
-        return String.valueOf(10 + armadura + armaduraNatural);
+        return String.valueOf(10 + armadura + armaduraNatural + caOutros);
     }
 
     public void setCaSurpresa(String caSurpresa) {

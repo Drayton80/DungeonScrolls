@@ -120,9 +120,11 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
         binding.setItemSalaCompleta(new SalaModel(salaUsada));
 
+        //Remove o botão de monstros para quem não é mestre
         if(mestre == false){
             binding.roomFloatingActionMonstros.setVisibility(View.INVISIBLE);
         }
+
         // Checa se o usuário é mestre, ou seja, tem as permissões necessárias dentro do escopo daquela sala
         if(mestre != true){
             for(int i = 1; i < salaUsada.toIntArray(salaUsada.getJogadoresID()).length; i++){
@@ -143,78 +145,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
             }
         }
 
-        /*fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
-        fichasUser = new int[fichasID.length];
-        int userCont = 0;
-        for(int cont = 0; cont < fichasID.length; cont++){
-            if (fichasID[cont] == 0){
-            }else {
-                fichaUser = sqLite.selecionarFicha(fichasID[cont]);
-                if (fichaUser.getXpNecessario() == 1) {
-                    System.out.println("---------------Monstro: " + fichaUser.getXpNecessario());
-                    fichasUser[userCont] = fichaUser.getId();
-                    System.out.println("---------------ID: " + fichasUser[userCont]);
-                    userCont++;
-                    System.out.println("---------------userCont: " + userCont);
-                }
-            }
-
-        }
-        for(int i = 0; i < fichasUser.length; i++){
-            System.out.println("---------------Id das fichas: " + fichasUser[i]);
-        }*/
-        /*
-        if(mestre == true){
-            System.out.println("-----------------------Eu sou mestre =D, é true == " + mestre);
-            fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
-            fichasUser = new int[fichasID.length];
-            int userCont = 0;
-            for(int cont = 0; cont < fichasID.length; cont++){
-                if (fichasID[cont] == 0){
-                }else {
-                    fichaUser = sqLite.selecionarFicha(fichasID[cont]);
-                    if (fichaUser.getXpNecessario() == 2) {
-                    }else{
-                        System.out.println("---------------Monstro: " + fichaUser.getXpNecessario());
-                        fichasUser[userCont] = fichaUser.getId();
-                        System.out.println("---------------ID: " + fichasUser[userCont]);
-                        userCont++;
-                        System.out.println("---------------userCont: " + userCont);
-                    }
-                }
-
-            }
-            for(int i = 0; i < fichasUser.length; i++){
-                System.out.println("---------------Id das fichas: " + fichasUser[i]);
-            }
-            //sqLite.atualizaDataFicha(fichasID);
-            fichaModel = new FichaModel();
-            try {
-                fichaModelArrayList = fichaModel.getArrayListaFicha(fichasUser, sqLite);
-                fichaAdapter = new FichaAdapter(this, fichaModelArrayList);
-                binding.roomListViewFichas.setAdapter(fichaAdapter);
-            }catch (Exception e){
-
-            }
-        }else if(mestre == false){
-            System.out.println("-----------------------Não sou o mestre :c, é false == " + mestre);
-            fichaSalaID = salaUsada.toIntArray(salaUsada.getFichasID());
-            fichasID = usuarioLogado.toIntArray(usuarioLogado.getFichasID());
-            fichasNaSala = new int[usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length];
-            for(int i = 0; i < usuarioLogado.toIntArray(usuarioLogado.getFichasID()).length; i++){
-                for(int j = 0; j < salaUsada.toIntArray(salaUsada.getFichasID()).length; j++){
-                    if(fichaSalaID[j] == fichasID[i]){
-                        fichasNaSala[i] = fichasID[i];
-                    }
-                }
-            }
-            //sqLite.atualizaDataFicha(fichasID);
-            fichaModel = new FichaModel();
-            fichaModelArrayList = fichaModel.getArrayListaFicha(fichasNaSala, sqLite);
-            fichaAdapter = new FichaAdapter(this, fichaModelArrayList);
-            binding.roomListViewFichas.setAdapter(fichaAdapter);
-        }
-        */
+        //Menu flutuante para remoção e vinculação de fichas
         binding.roomListViewFichas.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -287,9 +218,12 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                         }
                         aux[salaUsada.toIntArray(salaUsada.getFichasID()).length] = sqLite.ultimaFicha();
 
+                        salaUsada.setHistoria(binding.roomEditTextResumo.getText().toString());
+                        salaUsada.setNotas(binding.roomEditTextOutrasAnotacoes.getText().toString());
                         salaUsada.setFichasID(salaUsada.toIntList(aux));
 
                         sqLite.updateDataSala(salaUsada);
+
                         int[] fichasUser = removeMonster();
                         try {
                             fichasID = salaUsada.toIntArray(salaUsada.getFichasID());
@@ -335,6 +269,9 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                         usuarioLogado.setFichasID(usuarioLogado.toIntList(aux));
                         salaUsada.setFichasID(salaUsada.toIntList(aux2));
 
+                        salaUsada.setHistoria(binding.roomEditTextResumo.getText().toString());
+                        salaUsada.setNotas(binding.roomEditTextOutrasAnotacoes.getText().toString());
+
                         sqLite.updateDataSala(salaUsada);
                         sqLite.updateDataUsuario(usuarioLogado);
 
@@ -350,6 +287,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                                 }
                             }
                         }
+
                         //sqLite.atualizaDataFicha(fichasID);
                         fichaModel = new FichaModel();
                         fichaModelArrayList = fichaModel.getArrayListaFicha(fichasNaSala, sqLite);
@@ -364,6 +302,8 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
 
             @Override
             public void onClickLogin() {
+                salaUsada.setHistoria(binding.roomEditTextResumo.getText().toString());
+                salaUsada.setNotas(binding.roomEditTextOutrasAnotacoes.getText().toString());
                 extra = new Intent(RoomActivity.this, RoomMonsterListActivity.class);
                 extra.putExtra("usuarioLogado", usuarioLogado);
                 extra.putExtra("salaUsada", salaUsada);
@@ -372,6 +312,8 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
                 startActivity(extra);
             }
         });
+
+
 
     }
 
@@ -398,7 +340,7 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
     public void onBackPressed(){
         salaUsada.setHistoria(binding.roomEditTextResumo.getText().toString());
         salaUsada.setNotas(binding.roomEditTextOutrasAnotacoes.getText().toString());
-        //sqLite.updateDataSala(salaUsada);
+        sqLite.updateDataSala(salaUsada);
         extra = new Intent(RoomActivity.this, RoomsMenu.class);
         extra.putExtra("usuarioLogado", usuarioLogado);
         startActivity(extra);
@@ -418,6 +360,8 @@ public class RoomActivity extends AppCompatActivity implements PopupMenu.OnMenuI
         docRef.collection("salas").addSnapshotListener(activity, new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(QuerySnapshot documentSnapshots, FirebaseFirestoreException e) {
+                salaUsada.setHistoria(binding.roomEditTextResumo.getText().toString());
+                salaUsada.setNotas(binding.roomEditTextOutrasAnotacoes.getText().toString());
                 int[] fichasUser = removeMonster();
                 if(mestre == true){
                     System.out.println("-----------------------Eu sou mestre =D, é true == " + mestre);

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -24,6 +25,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
+import door.opposite.grupo2.dungeonscrolls.Telas.MainActivity;
 import door.opposite.grupo2.dungeonscrolls.Telas.RoomActivity;
 import door.opposite.grupo2.dungeonscrolls.Telas.RoomsMenu;
 import door.opposite.grupo2.dungeonscrolls.Telas.SheetActivity;
@@ -41,7 +43,8 @@ import door.opposite.grupo2.dungeonscrolls.model.Usuario;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.FichaModel;
 import door.opposite.grupo2.dungeonscrolls.viewmodel.SalaModel;
 
-public class RoomMonsterListActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener, NoticeDialogFragment.NoticeDialogListener, NoticeDialogFragmentFichas.NoticeDialogListenerFichas{
+public class RoomMonsterListActivity extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener, NoticeDialogFragment.NoticeDialogListener, NoticeDialogFragmentFichas.NoticeDialogListenerFichas,
+        NavigationView.OnNavigationItemSelectedListener{
     ActivityRoomMonsterlistBinding binding;
     SQLite sqLite;
     Intent extra;
@@ -70,7 +73,7 @@ public class RoomMonsterListActivity extends AppCompatActivity implements PopupM
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 
         setSupportActionBar(toolbar);
-        /*
+
         // Área do Navigation Drawer
         drawerLayout = (DrawerLayout)findViewById(R.id.room_drawer_menu);
         toggle = new android.support.v7.app.ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.common_open_on_phone, R.string.close);
@@ -88,9 +91,9 @@ public class RoomMonsterListActivity extends AppCompatActivity implements PopupM
 
 
         if (mNavigationView != null) {
-            mNavigationView.setNavigationItemSelectedListener(this);
+            mNavigationView.setNavigationItemSelectedListener(RoomMonsterListActivity.this);
         }
-        */
+
 
         // Pegando os dados que foram passados na Intent
         extra = getIntent();
@@ -308,6 +311,23 @@ public class RoomMonsterListActivity extends AppCompatActivity implements PopupM
             }
         }
         return fichasMonsterID;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menu_navigationDrawer_item_listaDeSalas:
+                extra = new Intent(RoomMonsterListActivity.this, RoomsMenu.class);
+                extra.putExtra("usuarioLogado", usuarioLogado);
+                startActivity(extra);
+                return true;
+            case R.id.menu_navigationDrawer_item_sairDaConta:
+                extra = new Intent(RoomMonsterListActivity.this, MainActivity.class);
+                startActivity(extra);
+                return true;
+        }
+
+        return true;
     }
 
     public void onBackPressed(){

@@ -44,7 +44,7 @@
                 app:fabSize="mini"
                 app:layout_constraintBottom_toTopOf="@+id/monsterList_floatingActionButton_add"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:srcCompat="@drawable/ic_skull" />
+                app:srcCompat="@drawable/float_action_button_back" />
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/monsterList_floatingActionButton_add"

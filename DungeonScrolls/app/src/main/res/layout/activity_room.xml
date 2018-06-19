@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="salvar"
+            type="door.opposite.grupo2.dungeonscrolls.commands.EventoSalvar"/>
 
         <variable
             name="itemSalaCompleta"
@@ -12,6 +15,7 @@
         <variable
             name="adicionaFicha"
             type="door.opposite.grupo2.dungeonscrolls.commands.Eventos" />
+
     </data>
 
     <android.support.v4.widget.DrawerLayout
@@ -26,6 +30,19 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             tools:context="door.opposite.grupo2.dungeonscrolls.Telas.RoomsActivity">
+
+            <android.support.design.widget.FloatingActionButton
+                android:id="@+id/room_floatingAction_salvar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:clickable="true"
+                app:backgroundTint="@color/colorPrimaryLight"
+                app:fabSize="mini"
+                app:layout_constraintBottom_toBottomOf="@+id/room_button_adicionar"
+                app:layout_constraintEnd_toStartOf="@+id/room_button_adicionar"
+                app:srcCompat="@drawable/float_action_button_save" />
 
             <android.support.design.widget.FloatingActionButton
                 android:id="@+id/room_floatingAction_monstros"
@@ -120,7 +137,7 @@
                     android:layout_marginTop="8dp"
                     android:ems="10"
                     android:inputType="textMultiLine"
-                    android:text="@{itemSalaCompleta.historia}"
+                    android:text="@={itemSalaCompleta.historia}"
                     app:layout_constraintBottom_toTopOf="@+id/white_space"
                     app:layout_constraintEnd_toEndOf="@+id/room_textView_resumo"
                     app:layout_constraintStart_toStartOf="@+id/room_textView_resumo"
@@ -156,7 +173,7 @@
                     android:layout_marginTop="8dp"
                     android:ems="10"
                     android:inputType="textMultiLine"
-                    android:text="@{itemSalaCompleta.notas}"
+                    android:text="@={itemSalaCompleta.notas}"
                     app:layout_constraintBottom_toBottomOf="@+id/room_listView_fichas"
                     app:layout_constraintEnd_toEndOf="@+id/room_textView_outrasAnotacoes"
                     app:layout_constraintStart_toStartOf="@+id/room_textView_outrasAnotacoes"
