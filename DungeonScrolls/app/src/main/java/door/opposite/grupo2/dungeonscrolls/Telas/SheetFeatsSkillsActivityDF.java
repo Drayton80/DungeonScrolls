@@ -110,4 +110,14 @@ public class SheetFeatsSkillsActivityDF extends AppCompatActivity implements  Na
         }
         return false;
     }
+
+    @Override
+    public void onBackPressed(){
+        extra = new Intent(SheetFeatsSkillsActivityDF.this, SheetActivity.class);
+        extra.putExtra("usuarioLogado", usuarioLogado);
+        extra.putExtra("salaUsada", salaUsada);
+        extra.putExtra("fichaUsada", fichaUsada);
+        extra.putExtra("mestre", mestre);
+        startActivity(extra);
+    }
 }

@@ -34,6 +34,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 import door.opposite.grupo2.dungeonscrolls.R;
+import door.opposite.grupo2.dungeonscrolls.RoomMonsterListActivity;
 import door.opposite.grupo2.dungeonscrolls.commands.Eventos;
 import door.opposite.grupo2.dungeonscrolls.commands.EventosFicha;
 import door.opposite.grupo2.dungeonscrolls.databinding.ActivitySheetBinding;
@@ -294,11 +295,19 @@ public class SheetActivity extends AppCompatActivity implements  NavigationView.
 
     @Override
     public void onBackPressed() {
-        extra = new Intent(SheetActivity.this, RoomActivity.class);
-        extra.putExtra("usuarioLogado", usuarioLogado);
-        extra.putExtra("salaUsada", salaUsada);
-        extra.putExtra("mestre", mestre);
-        startActivity(extra);
+        if(fichaUsada.getXpNecessario() == 1) {
+            extra = new Intent(SheetActivity.this, RoomActivity.class);
+            extra.putExtra("usuarioLogado", usuarioLogado);
+            extra.putExtra("salaUsada", salaUsada);
+            extra.putExtra("mestre", mestre);
+            startActivity(extra);
+        }else if(fichaUsada.getXpNecessario() == 2){
+            extra = new Intent(SheetActivity.this, RoomMonsterListActivity.class);
+            extra.putExtra("usuarioLogado", usuarioLogado);
+            extra.putExtra("salaUsada", salaUsada);
+            extra.putExtra("mestre", mestre);
+            startActivity(extra);
+        }
     }
 
 
@@ -434,4 +443,5 @@ public class SheetActivity extends AppCompatActivity implements  NavigationView.
         }
         return false;
     }
+
 }
